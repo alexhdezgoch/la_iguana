@@ -6,9 +6,9 @@ import { useSearchParams } from 'react-router-dom';
 import { hoyDe, useCampana, usePagina, useRol } from '../shell/Campana';
 import { useSesion } from '../shell/Sesion';
 import { Carga, Vacio } from '../shell/Estados';
-import { useTabla } from '../lib/hooks';
+import { useNombres, useTabla } from '../lib/hooks';
 import { fecha } from '../lib/formato';
-import type { Alerta, Evento, FiguraCampana, MiembroCampana, Narrativa, Persona, ReglaAlerta, Tema } from '../lib/tipos';
+import type { Alerta, Evento, FiguraCampana, MiembroCampana, Narrativa, Persona, PersonaVisible, ReglaAlerta, Tema } from '../lib/tipos';
 import { Bandeja } from './alertas/Bandeja';
 import { Reglas } from './alertas/Reglas';
 import { CUMPLE, plural } from './alertas/comun';
@@ -16,6 +16,10 @@ import type { Contexto } from './alertas/Detalle';
 import './Alertas.css';
 
 function porId<T extends { id: string }>(l: T[]): Map<string, T> { return new Map(l.map((x) => [x.id, x])); }
+/** Persona mínima a partir de su nombre visible, para quien no puede leer la tabla personas. */
+function personaVisible(v: PersonaVisible, org: string): Persona {
+  return { id: v.id, org_id: org, nombre: v.nombre_corto, nombre_corto: v.nombre_corto, iniciales: v.iniciales, email: null, puesto: null, rol_org: 'miembro', activa: true, extra: {} };
+}
 
 export default function Alertas() {
   usePagina('Alertas');
@@ -35,12 +39,17 @@ export default function Alertas() {
   const eventos = useTabla<Evento>('eventos', { eq: { campana_id: cid } });
   const personas = useTabla<Persona>('personas', { eq: { org_id: campana.org_id }, orden: 'nombre' });
   const miembros = useTabla<MiembroCampana>('miembros_campana', { eq: { campana_id: cid } });
+  // El rol Cliente no lee personas: sus nombres salen de v_personas_campana (nombre corto e iniciales).
+  const { nombres } = useNombres();
 
   const cx = useMemo<Contexto>(() => ({
     figuras: new Map(figuras.datos.map((f) => [f.figura_id, f])),
     narrativas: porId(narrativas.datos), temas: porId(temas.datos), eventos: porId(eventos.datos), reglas: porId(reglas.datos),
-    personas: new Map([...personas.datos, ...(yo ? [yo] : [])].map((p) => [p.id, p])),
-  }), [figuras.datos, narrativas.datos, temas.datos, eventos.datos, reglas.datos, personas.datos, yo]);
+    personas: new Map([
+      ...[...nombres.values()].map((v) => personaVisible(v, campana.org_id)),
+      ...personas.datos, ...(yo ? [yo] : []),
+    ].map((p) => [p.id, p])),
+  }), [figuras.datos, narrativas.datos, temas.datos, eventos.datos, reglas.datos, personas.datos, nombres, yo, campana.org_id]);
 
   // Responsables posibles: quien puede editar la campaña, y yo. Destinatarios de reglas: el equipo interno, y yo.
   const conYo = (ids: string[]) => {

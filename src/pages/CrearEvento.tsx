@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './CrearEvento.css';
 import { db } from '../lib/db';
 import { useTabla } from '../lib/hooks';
-import { ESTADO_EVENTO, fecha as fmtFecha, num, rango } from '../lib/formato';
+import { ESTADO_EVENTO, corto, fecha as fmtFecha, num, rango } from '../lib/formato';
 import type { CampanaFase, Evento, EventoMensaje, EventoParticipante, FiguraCampana, Narrativa } from '../lib/tipos';
 import { hoyDe, useCampana, usePagina } from '../shell/Campana';
 import { useAcciones } from '../shell/Acciones';
@@ -435,7 +435,7 @@ export default function CrearEvento() {
               <div className="dl">
                 <div><span className="mu">Menciones</span><span className="sm mu">Sin datos</span></div>
                 <div><span className="mu">Alcance</span><span className="sm mu">Sin datos</span></div>
-                <div><span className="mu">{propia ? `Neto de ${propia.nombre.split(' ').slice(-1)[0]}` : 'Neto'}</span><span className="sm mu">Sin datos</span></div>
+                <div><span className="mu">{propia ? `Neto de ${corto(propia)}` : 'Neto'}</span><span className="sm mu">Sin datos</span></div>
               </div>
               {planAbierto && mensajes.length ? (
                 <div className="list" style={{ borderTop: '1px solid rgb(22 32 25 / .07)', paddingTop: 12 }}>

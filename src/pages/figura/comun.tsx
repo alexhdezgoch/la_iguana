@@ -19,6 +19,13 @@ export function cargoDe(f: FiguraCampana): string | null {
   return typeof c === 'string' && c.trim() ? c : f.cargo;
 }
 
+/** Responsable de la figura en la campaña: la persona (responsable_id) o, si no hay, el equipo de extra_campana.responsable_equipo. */
+export function responsableDe(f: FiguraCampana, nombres: Map<string, { nombre_corto: string }>): string | null {
+  if (f.responsable_id) return nombres.get(f.responsable_id)?.nombre_corto ?? 'Equipo de la campaña';
+  const r = f.extra_campana?.responsable_equipo;
+  return typeof r === 'string' && r.trim() ? r.trim() : null;
+}
+
 export function narrativasDe(todas: Narrativa[], figuraId: string): Narrativa[] {
   return todas
     .filter((n) => n.figura_id === figuraId || (Array.isArray(n.detalle?.figura_ids) && n.detalle.figura_ids.includes(figuraId)))

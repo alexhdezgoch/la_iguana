@@ -4,7 +4,7 @@ import { neto, pct } from '../../lib/formato';
 import { contienda, reloj, type CampanaPanorama } from './derivar';
 
 /** Tarjeta de una campaña: fase, cifras de la figura propia y pendientes. */
-export function TarjetaCampana({ x, severidadMax }: { x: CampanaPanorama; severidadMax: string | null }) {
+export function TarjetaCampana({ x, severidadMax, puedeEditar }: { x: CampanaPanorama; severidadMax: string | null; puedeEditar: boolean }) {
   const { c, r } = x;
   const base = `/c/${c.id}`;
   const { avance, texto } = reloj(c, hoyDe(c));
@@ -40,7 +40,7 @@ export function TarjetaCampana({ x, severidadMax }: { x: CampanaPanorama; severi
         <div className="well sm">
           {r?.figura_propia_id
             ? 'La figura propia todavía no tiene cifras del periodo.'
-            : <>Sin figura propia todavía. <Link to={`${base}/figuras/nueva`}>Agregar figura</Link></>}
+            : <>Sin figura propia todavía.{puedeEditar ? <> <Link to={`${base}/figuras/nueva`}>Agregar figura</Link></> : null}</>}
         </div>
       )}
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, alignItems: 'center' }}>

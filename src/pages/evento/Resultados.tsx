@@ -3,11 +3,11 @@
 import { Link } from 'react-router-dom';
 import { useTabla } from '../../lib/hooks';
 import { ALERTAS_ABIERTAS, type Alerta, type Evento, type EventoMensaje, type EventoParticipante, type FiguraCampana, type Mencion, type Narrativa } from '../../lib/tipos';
-import { REL, SEVERIDAD, compacto, cuando, diaEn, diasEntre, fecha, horaEn, iniciales, neto, num, pct } from '../../lib/formato';
+import { REL, SEVERIDAD, compacto, corto, cuando, diaEn, diasEntre, fecha, horaEn, iniciales, neto, num, pct } from '../../lib/formato';
 import { useCampana } from '../../shell/Campana';
 import { Vacio } from '../../shell/Estados';
 import { Aprendizajes, Balance, NotasEquipo } from './Notas';
-import { COLOR_LADO, COLOR_REL, ESTADO_MENSAJE, delTipo, diaDe, resultadosDe } from './util';
+import { COLOR_LADO, COLOR_REL, ESTADO_MENSAJE, delTipo, diaDe, resultadosDe, ventanasDe } from './util';
 
 function ancho(v: number, max: number) {
   return `${(max > 0 ? Math.min(100, (v / max) * 100) : 0).toFixed(1)}%`;
@@ -29,7 +29,7 @@ export function Resultados({ evento, participantes, mensajes, figuras, narrativa
   const proximos = useTabla<Evento>('eventos', { eq: { campana_id: campana.id, tipo: evento.tipo, estado: ['Programado', 'Borrador'] }, desde: { fecha_inicio: hoy }, orden: 'fecha_inicio', limite: 1 });
   const proximo = proximos.datos.find((e) => e.id !== evento.id) ?? null;
 
-  const ventana = evento.ventana_horas;
+  const { antes: vAntes, despues: vDespues } = ventanasDe(evento);
   const enCurso = evento.estado === 'En curso';
   const propiaId = campana.figura_propia_id;
   const propia = propiaId ? porFigura.get(propiaId) ?? null : null;
@@ -41,18 +41,18 @@ export function Resultados({ evento, participantes, mensajes, figuras, narrativa
     let texto: string;
     if (evento.estado === 'Cancelado') { titulo = 'Evento cancelado'; texto = 'Un evento cancelado no se mide.'; }
     else if (evento.estado === 'Borrador' || evento.estado === 'Programado') {
-      const desde = evento.fecha_inicio ? new Date(new Date(`${evento.fecha_inicio}T00:00:00`).getTime() - ventana * 3600_000) : null;
+      const desde = evento.fecha_inicio ? new Date(new Date(`${evento.fecha_inicio}T00:00:00`).getTime() - vAntes * 3600_000) : null;
       const falta = desde ? diasEntre(hoy, desde) : null;
       texto = desde
-        ? `La medición empieza ${ventana} horas antes del evento, el ${fecha(desde, 'dia')}${falta != null && falta > 0 ? ` (en ${falta} ${falta === 1 ? 'día' : 'días'})` : ''}, y sigue ${ventana} horas después.`
-        : `La medición empieza ${ventana} horas antes del evento. Falta definir la fecha.`;
+        ? `La medición empieza ${vAntes} horas antes del evento, el ${fecha(desde, 'dia')}${falta != null && falta > 0 ? ` (en ${falta} ${falta === 1 ? 'día' : 'días'})` : ''}, y sigue ${vDespues} horas después.`
+        : `La medición empieza ${vAntes} horas antes del evento. Falta definir la fecha.`;
       if (evento.estado === 'Borrador') texto += ' Un borrador no se mide hasta que se programe.';
     } else {
       texto = 'La ventana del evento todavía no se ha procesado. Las cifras aparecen aquí en cuanto lleguen las menciones.';
     }
     return (
       <div className="col fade" style={{ gap: 20 }}>
-        <Vacio titulo={titulo}>{texto}{mensajes.length === 0 && evento.estado !== 'Cancelado' ? <> Mientras tanto, define los <Link to="?tab=ficha">mensajes clave</Link> y los <Link to="?tab=participantes">participantes</Link>.</> : null}</Vacio>
+        <Vacio titulo={titulo}>{texto}{puedeEditar && mensajes.length === 0 && evento.estado !== 'Cancelado' ? <> Mientras tanto, define los <Link to="?tab=ficha">mensajes clave</Link> y los <Link to="?tab=participantes">participantes</Link>.</> : null}</Vacio>
         <Relacionado alertas={alertas.datos} menciones={menciones.datos} base={base} hoy={hoy} zona={zona} />
         {evento.estado !== 'Cancelado' ? <NotasEquipo evento={evento} puedeEditar={puedeEditar} /> : null}
       </div>
@@ -65,7 +65,7 @@ export function Resultados({ evento, participantes, mensajes, figuras, narrativa
   if (evento.menciones != null) kpis.push({ l: 'Menciones', v: num(evento.menciones), s: enCurso ? 'Hasta hoy, cifra parcial' : 'En la ventana de medición' });
   if (evento.alcance != null) kpis.push({ l: 'Alcance', v: compacto(evento.alcance), s: 'Cuentas únicas estimadas' });
   if (evento.neto != null) kpis.push({
-    l: propia ? `Sentimiento neto de ${propia.nombre}` : 'Sentimiento neto', v: neto(evento.neto), cls: evento.neto >= 0 ? 'tf' : 'tu',
+    l: propia ? `Sentimiento neto de ${corto(propia)}` : 'Sentimiento neto', v: neto(evento.neto), cls: evento.neto >= 0 ? 'tf' : 'tu',
     s: dif == null ? 'Sin medición previa para comparar' : dif === 0 ? `Igual que antes ${delTipo(evento.tipo)}` : `${Math.abs(dif)} ${Math.abs(dif) === 1 ? 'punto' : 'puntos'} ${dif > 0 ? 'más' : 'menos'} que antes ${delTipo(evento.tipo)}`,
   });
   if (evento.notas_medios != null) kpis.push({ l: 'Notas en medios', v: num(evento.notas_medios), s: 'Prensa digital, radio y TV' });
@@ -74,9 +74,9 @@ export function Resultados({ evento, participantes, mensajes, figuras, narrativa
   // ---------- antes / durante / después ----------
   const dia = enCurso ? diaDe(evento, hoy) : null;
   const fases = ([
-    ['Antes', `${ventana} horas previas`, evento.menciones_antes, '#B5BCB6'],
+    ['Antes', `${vAntes} horas previas`, evento.menciones_antes, '#B5BCB6'],
     ['Durante', enCurso ? (dia ? `Hasta hoy, día ${dia.dia} de ${dia.dias}` : 'Hasta hoy') : evento.tipo === 'Debate' ? 'Transmisión del debate' : `Mientras duró ${delTipo(evento.tipo).replace(/^del /, 'el ').replace(/^de la /, 'la ')}`, evento.menciones_durante, '#285A32'],
-    ['Después', `${ventana} horas posteriores`, evento.menciones_despues, '#454E48'],
+    ['Después', `${vDespues} horas posteriores`, evento.menciones_despues, '#454E48'],
   ] as const).filter((f) => f[2] != null) as unknown as Array<[string, string, number, string]>;
   const maxFase = Math.max(0, ...fases.map((f) => f[2]));
   const pico = r.pico?.por_minuto != null && r.pico.en ? r.pico : null;
@@ -185,7 +185,7 @@ export function Resultados({ evento, participantes, mensajes, figuras, narrativa
             <thead>
               <tr>
                 <th scope="col">Mensaje clave</th>
-                <th scope="col" style={{ width: '36%' }}>{protagonista && propia ? `Parte de las ${num(protagonista.menciones)} menciones de ${propia.nombre}` : 'Parte de las menciones'}</th>
+                <th scope="col" style={{ width: '36%' }}>{protagonista && propia ? `Parte de las ${num(protagonista.menciones)} menciones de ${corto(propia)}` : 'Parte de las menciones'}</th>
                 <th scope="col" className="r">Menciones</th>
                 <th scope="col">Resultado</th>
               </tr>
@@ -298,7 +298,7 @@ export function Resultados({ evento, participantes, mensajes, figuras, narrativa
                 {publicaciones.map((p, i) => (
                   <div className="li" key={i}>
                     <div className="gr"><span className="b">{p.titulo}</span><span className="mu">{[p.canal, p.origen ? (p.origen === 'Propia' ? 'publicación propia' : p.origen.toLowerCase()) : null].filter(Boolean).join(' · ')}</span></div>
-                    {p.valor != null ? <span className="sm b" style={{ whiteSpace: 'nowrap' }}>{p.valor >= 100_000 ? compacto(p.valor) : num(p.valor)}{p.metrica ? ` ${p.metrica}` : ''}</span> : null}
+                    {p.valor != null ? <span className="sm b" style={{ whiteSpace: 'nowrap' }}>{compacto(p.valor)}{p.metrica ? ` ${p.metrica}` : ''}</span> : null}
                   </div>
                 ))}
               </div>

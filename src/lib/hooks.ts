@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { alCambiar, db, type Opciones } from './db';
+import type { PersonaVisible } from './tipos';
 
 export interface Estado<T> {
   datos: T;
@@ -56,4 +57,15 @@ export function useFila<T>(tabla: string, id: string | undefined | null): Estado
 export function useCuenta(tabla: string, opciones?: Opciones, activo = true): Estado<number> {
   const clave = JSON.stringify(opciones ?? {});
   return useConsulta<number>(() => (activo ? db.contar(tabla, opciones) : Promise.resolve(0)), [tabla, clave, activo], 0, [tabla]);
+}
+
+/**
+ * Nombres visibles del equipo: id → { nombre_corto, iniciales } de quienes integran las campañas que la persona ve
+ * (vista v_personas_campana). Úsalo para mostrar autores y responsables: funciona también para el rol Cliente,
+ * que no puede leer la tabla personas.
+ */
+export function useNombres(): { nombres: Map<string, PersonaVisible>; cargando: boolean } {
+  const t = useTabla<PersonaVisible>('v_personas_campana');
+  const nombres = useMemo(() => new Map(t.datos.map((p) => [p.id, p])), [t.datos]);
+  return { nombres, cargando: t.cargando };
 }

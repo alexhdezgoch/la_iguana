@@ -1,4 +1,4 @@
-// Formato de cifras y fechas, igual que en la demo: 62,000 · 31.0% · +17 · 4.8 M · 412 mil.
+// Formato de cifras y fechas, igual que en la demo: 62,000 · 31.0% · +17 · 4.8 M · 0.8 M.
 
 export function num(n: number | null | undefined): string {
   return n == null ? 'Sin datos' : Math.round(n).toLocaleString('en-US');
@@ -9,12 +9,32 @@ export function pct(n: number | null | undefined, decimales = 1): string {
 export function neto(n: number | null | undefined): string {
   return n == null ? 'Sin datos' : (n > 0 ? '+' : '') + n;
 }
-/** 4800000 → "4.8 M", 412000 → "412 mil", 950 → "950". */
+/** Alcance y cifras grandes como en la demo: 4800000 → "4.8 M", 800000 → "0.8 M"; por debajo de 100,000, la cifra completa: 84,000. */
 export function compacto(n: number | null | undefined): string {
   if (n == null) return 'Sin datos';
-  if (n >= 1_000_000) return (n / 1_000_000).toFixed(1) + ' M';
-  if (n >= 10_000) return Math.round(n / 1000) + ' mil';
+  if (Math.abs(n) >= 100_000) return (n / 1_000_000).toFixed(1) + ' M';
   return num(n);
+}
+
+/** Nombre corto guardado de una figura o campaña; si no tiene, el nombre completo. */
+export function corto(x: { nombre: string; nombre_corto?: string | null } | null | undefined): string {
+  if (!x) return '';
+  return x.nombre_corto?.trim() || x.nombre;
+}
+/**
+ * Nombre corto sugerido para una figura nueva: el último apellido ("Solórzano"), o inicial y apellido
+ * ("D. Rodríguez") si ya hay otra figura del equipo con ese apellido. Es solo un valor por defecto.
+ */
+export function sugerirNombreCorto(nombre: string, otros: Array<{ nombre: string; nombre_corto?: string | null }> = []): string | null {
+  const p = nombre.trim().split(/\s+/).filter(Boolean);
+  if (!p.length) return null;
+  const ultimo = p[p.length - 1];
+  if (p.length === 1) return ultimo;
+  const repetido = otros.some((o) => {
+    const q = o.nombre.trim().split(/\s+/);
+    return q[q.length - 1]?.toLowerCase() === ultimo.toLowerCase() || (o.nombre_corto ?? '').toLowerCase() === ultimo.toLowerCase();
+  });
+  return repetido ? `${p[0][0].toUpperCase()}. ${ultimo}` : ultimo;
 }
 export function nivelRiesgo(n: number | null | undefined): 'Bajo' | 'Medio' | 'Alto' | null {
   if (n == null) return null;

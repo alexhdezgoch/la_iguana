@@ -2,10 +2,10 @@
 import { hoyDe, useCampana, useRol } from '../../shell/Campana';
 import { useSesion } from '../../shell/Sesion';
 import { useAcciones } from '../../shell/Acciones';
-import { useTabla } from '../../lib/hooks';
+import { useNombres, useTabla } from '../../lib/hooks';
 import type { Persona, Reporte, ReporteEnvio } from '../../lib/tipos';
-import { Documento, imprimir, paginas } from './Documento';
-import type { Contenido } from './documento';
+import { Documento, imprimir, paginas } from '../../lib/reportes/Documento';
+import type { Contenido } from '../../lib/reportes/documento';
 import { COLA, ESTADO_ENVIO, marcaDe, momento, periodoEnvio, pieDe } from './util';
 
 export function VerEnvio({ envio, reporte, volver, editar, aprobar, reenviar, ocupado }: {
@@ -19,6 +19,8 @@ export function VerEnvio({ envio, reporte, volver, editar, aprobar, reenviar, oc
   const { org } = useSesion();
   const { aviso } = useAcciones();
   const personas = useTabla<Persona>('personas', { eq: { org_id: campana.org_id } });
+  // Cliente no lee personas: quien aprobó sale de v_personas_campana.
+  const { nombres } = useNombres();
 
   const atras = (
     <button type="button" className="lkb" onClick={volver} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, alignSelf: 'flex-start' }}>
@@ -33,7 +35,7 @@ export function VerEnvio({ envio, reporte, volver, editar, aprobar, reenviar, oc
   const pags = conDoc ? paginas(contenido) : [];
   const marca = marcaDe(contenido?.marca, campana, org);
   const pie = pieDe(contenido?.marca, reporte?.extra?.confidencial !== false, campana, org);
-  const aprobo = personas.datos.find((p) => p.id === envio.aprobado_por)?.nombre;
+  const aprobo = personas.datos.find((p) => p.id === envio.aprobado_por)?.nombre ?? (envio.aprobado_por ? nombres.get(envio.aprobado_por)?.nombre_corto : undefined);
   const facts: Array<[string, string]> = [
     ['Periodo', periodoEnvio(envio.periodo_inicio, envio.periodo_fin, zona)],
     ['Generado', momento(envio.generado_en, hoy, zona)],

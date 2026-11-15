@@ -72,6 +72,23 @@ export const COLOR_LADO: Record<string, string> = { propio: '#285A32', rival: '#
 export const ESTADO_MENSAJE: Record<string, string> = { 'Aterrizó': 'chip fav', Parcial: 'chip warn', 'No aterrizó': 'chip unf', 'Sin mensaje': 'chip watch' };
 export const ROLES = ['Protagonista', 'Oradora/or', 'Invitada/o', 'Adversaria/o', 'Moderadora/or'];
 
+/** Horas de medición antes y después: extra.ventana_antes_horas / ventana_despues_horas si existen, si no ventana_horas a cada lado. */
+export function ventanasDe(e: Evento): { antes: number; despues: number } {
+  const n = (v: unknown) => (typeof v === 'number' && v > 0 ? v : typeof v === 'string' && Number(v) > 0 ? Number(v) : null);
+  return { antes: n(e.extra?.ventana_antes_horas) ?? e.ventana_horas, despues: n(e.extra?.ventana_despues_horas) ?? e.ventana_horas };
+}
+/** "72 horas antes y después" · "24 horas antes y 48 horas después". */
+export function ventanaTexto(e: Evento): string {
+  const { antes, despues } = ventanasDe(e);
+  return antes === despues ? `${antes} horas antes y después` : `${antes} horas antes y ${despues} horas después`;
+}
+
+/** Responsable del evento: la persona (por responsable_id) o, si no hay, el equipo guardado en extra.responsable_equipo. */
+export function responsableEquipo(extra: Record<string, unknown> | null | undefined): string | null {
+  const r = extra?.responsable_equipo;
+  return typeof r === 'string' && r.trim() ? r.trim() : null;
+}
+
 export function errorTexto(e: unknown): string {
   return e instanceof Error ? e.message : String(e);
 }

@@ -3,14 +3,14 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { db } from '../../lib/db';
 import { cuando } from '../../lib/formato';
-import type { MencionFigura, NotaInterna, Persona, Sentimiento } from '../../lib/tipos';
+import type { Mencion, MencionFigura, NotaInterna, Persona, PersonaVisible, Sentimiento } from '../../lib/tipos';
 import { useAcciones } from '../../shell/Acciones';
 import { useSesion } from '../../shell/Sesion';
-import { CHIP_IMP, IMPORTANCIAS, PUNTO, SENTIMIENTOS, TEXTO_IMP, estadoDe, type Importancia, type MencionFila } from './comun';
+import { CHIP_IMP, IMPORTANCIAS, PUNTO, SENTIMIENTOS, TEXTO_IMP, estadoDe, type Importancia } from './comun';
 
 export interface Borrador { sent?: Sentimiento | null; imp?: Importancia | null; nota?: string }
 
-export function hayCambios(m: MencionFila, b: Borrador | undefined, nota: NotaInterna | null): boolean {
+export function hayCambios(m: Mencion, b: Borrador | undefined, nota: NotaInterna | null): boolean {
   if (!b) return false;
   const sentGuardado = m.sentimiento_manual ?? m.sentimiento;
   return (b.sent !== undefined && b.sent !== sentGuardado)
@@ -18,8 +18,8 @@ export function hayCambios(m: MencionFila, b: Borrador | undefined, nota: NotaIn
     || (b.nota !== undefined && b.nota.trim() !== (nota?.texto ?? ''));
 }
 
-export function Revision({ m, borrador, setBorrador, figuras, nombres, tema, narrativa, evento, nota, personas, base, hoy, zona, puedeEditar, verNotas }: {
-  m: MencionFila;
+export function Revision({ m, borrador, setBorrador, figuras, nombres, tema, narrativa, evento, nota, personas, visibles, base, hoy, zona, puedeEditar, verNotas }: {
+  m: Mencion;
   borrador: Borrador | undefined;
   setBorrador: (b: Borrador | undefined) => void;
   /** Filas de mencion_figuras de esta mención. */
@@ -31,6 +31,8 @@ export function Revision({ m, borrador, setBorrador, figuras, nombres, tema, nar
   evento: { id: string; nombre: string } | null;
   nota: NotaInterna | null;
   personas: Map<string, Persona>;
+  /** Nombres visibles (v_personas_campana): sirven también al rol Cliente, que no lee personas. */
+  visibles: Map<string, PersonaVisible>;
   base: string;
   hoy: string;
   zona: string;
@@ -52,7 +54,7 @@ export function Revision({ m, borrador, setBorrador, figuras, nombres, tema, nar
   const editable = puedeEditar && !descartada;
 
   const ids = figuras.length ? figuras.map((f) => f.figura_id) : m.figura_id ? [m.figura_id] : [];
-  const revisor = m.revisada_por ? personas.get(m.revisada_por) : undefined;
+  const revisor = m.revisada_por ? (personas.get(m.revisada_por)?.nombre ?? visibles.get(m.revisada_por)?.nombre_corto) : undefined;
 
   const notaSent = !m.sentimiento
     ? 'Sin clasificación automática todavía. Elige el sentimiento según tu lectura.'
@@ -193,7 +195,7 @@ export function Revision({ m, borrador, setBorrador, figuras, nombres, tema, nar
 
       <p className="mu">
         {m.revisada
-          ? `Revisada${revisor ? ` por ${revisor.nombre}` : ''}${m.revisada_en ? ` · ${cuando(m.revisada_en, hoy, zona)}` : ''}. `
+          ? `Revisada${revisor ? ` por ${revisor}` : ''}${m.revisada_en ? ` · ${cuando(m.revisada_en, hoy, zona)}` : ''}. `
           : ''}
         {puedeEditar ? 'Cada corrección manual queda registrada con autor y fecha. Los totales del periodo no cambian.' : 'Tu rol permite ver la revisión, no cambiarla.'}
       </p>

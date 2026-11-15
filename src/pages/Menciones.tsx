@@ -7,10 +7,10 @@ import { hoyDe, useCampana, usePagina, useRol } from '../shell/Campana';
 import { Carga, Vacio } from '../shell/Estados';
 import { Icono } from '../shell/Iconos';
 import { useAcciones } from '../shell/Acciones';
-import { useTabla } from '../lib/hooks';
+import { useNombres, useTabla } from '../lib/hooks';
 import { cuando, num, pct, rango } from '../lib/formato';
-import type { Evento, FiguraCampana, MencionFigura, Narrativa, NotaInterna, Persona, Sentimiento, Tema } from '../lib/tipos';
-import { CHIP_IMP, CHIP_SENT, PUNTO, SENTIMIENTOS, SIN, TEXTO_IMP, VISTAS, enVista, estadoDe, lista, momento, pendiente, sentimientoDe, type MencionFila, type Vista } from './menciones/comun';
+import type { Evento, FiguraCampana, Mencion, MencionFigura, Narrativa, NotaInterna, Persona, Sentimiento, Tema } from '../lib/tipos';
+import { CHIP_IMP, CHIP_SENT, PUNTO, SENTIMIENTOS, SIN, TEXTO_IMP, VISTAS, enVista, estadoDe, lista, momento, pendiente, sentimientoDe, type Vista } from './menciones/comun';
 import { Filtro, type Opcion } from './menciones/Filtro';
 import { Revision, hayCambios, type Borrador } from './menciones/Revision';
 
@@ -18,11 +18,11 @@ type ClaveFiltro = 'canal' | 'figura' | 'tema' | 'narrativa' | 'sentimiento' | '
 const FILTROS: ClaveFiltro[] = ['canal', 'figura', 'tema', 'narrativa', 'sentimiento', 'evento'];
 
 /** Valores de la mención para un filtro. Una mención puede nombrar varias figuras. */
-function valoresDe(m: MencionFila, k: ClaveFiltro, figs: Map<string, string[]>): string[] {
+function valoresDe(m: Mencion, k: ClaveFiltro, figs: Map<string, string[]>): string[] {
   if (k === 'figura') { const f = figs.get(m.id) ?? (m.figura_id ? [m.figura_id] : []); return f.length ? f : [SIN]; }
   return [valorDe(m, k)];
 }
-function valorDe(m: MencionFila, k: Exclude<ClaveFiltro, 'figura'>): string {
+function valorDe(m: Mencion, k: Exclude<ClaveFiltro, 'figura'>): string {
   switch (k) {
     case 'canal': return m.canal;
     case 'tema': return m.tema_id ?? SIN;
@@ -44,7 +44,7 @@ export default function Menciones() {
   const [params, setParams] = useSearchParams();
   const [borradores, setBorradores] = useState<Record<string, Borrador | undefined>>({});
 
-  const menciones = useTabla<MencionFila>('menciones', { eq: { campana_id: cid }, orden: [['publicada_en', 'desc']] });
+  const menciones = useTabla<Mencion>('menciones', { eq: { campana_id: cid }, orden: [['publicada_en', 'desc']] });
   const mf = useTabla<MencionFigura>('mencion_figuras', { eq: { campana_id: cid } });
   const figuras = useTabla<FiguraCampana>('v_figuras_campana', { eq: { campana_id: cid }, orden: 'orden' });
   const temas = useTabla<Tema>('temas', { eq: { campana_id: cid }, orden: 'orden' });
@@ -52,6 +52,7 @@ export default function Menciones() {
   const eventos = useTabla<Evento>('eventos', { eq: { campana_id: cid }, orden: [['fecha_inicio', 'desc']] });
   const notas = useTabla<NotaInterna>('notas_internas', { eq: { campana_id: cid, entidad: 'mencion' }, orden: [['actualizada_en', 'desc']] }, !esCliente);
   const personas = useTabla<Persona>('personas', { orden: 'nombre' });
+  const { nombres: visibles } = useNombres();
 
   const vista: Vista = (VISTAS as string[]).includes(params.get('vista') ?? '') ? (params.get('vista') as Vista) : 'Todas';
   const elegidos = Object.fromEntries(FILTROS.map((k) => [k, lista(params.get(k))])) as Record<ClaveFiltro, string[]>;
@@ -220,6 +221,7 @@ export default function Menciones() {
                   evento={sel.evento_id && evN.has(sel.evento_id) ? { id: sel.evento_id, nombre: evN.get(sel.evento_id)! } : null}
                   nota={notaDe.get(sel.id) ?? null}
                   personas={porPersona}
+                  visibles={visibles}
                   base={base}
                   hoy={hoy}
                   zona={zona}

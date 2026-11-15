@@ -1,9 +1,6 @@
 // Tipos, clases y helpers de la pantalla Menciones. Solo vocabulario fijo de la interfaz: los datos vienen de la base.
 import type { Mencion, Sentimiento } from '../../lib/tipos';
 
-/** La tabla tiene creada_en aunque el tipo compartido no lo declare. */
-export type MencionFila = Mencion & { creada_en?: string };
-
 export const SENTIMIENTOS: Sentimiento[] = ['Favorable', 'Neutral', 'Desfavorable'];
 export const PUNTO: Record<Sentimiento, string> = { Favorable: 'd df', Neutral: 'd', Desfavorable: 'd du' };
 export const CHIP_SENT: Record<Sentimiento, string> = { Favorable: 'chip fav', Neutral: 'chip watch', Desfavorable: 'chip unf' };
@@ -43,7 +40,7 @@ export function estadoDe(m: Mencion, sinGuardar = false): { texto: string; cls: 
   return { texto: 'Sin revisión', cls: 'mu' };
 }
 /** Momento para ordenar: publicada_en, o la fecha de alta si la mención todavía no se procesó. */
-export function momento(m: MencionFila): string {
+export function momento(m: Mencion): string {
   return m.publicada_en ?? m.creada_en ?? '';
 }
 export function lista(v: string | null): string[] {

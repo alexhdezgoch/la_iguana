@@ -8,11 +8,11 @@ import { useConsulta } from '../../lib/hooks';
 import { db } from '../../lib/db';
 import { fecha, rango } from '../../lib/formato';
 import type { Evento, Persona, Reporte, ReportePlantilla } from '../../lib/tipos';
-import { Documento, imprimir, paginas } from './Documento';
+import { Documento, imprimir, paginas } from '../../lib/reportes/Documento';
 import {
   ANALISIS_TIPO, DIAS_SEMANA, FORMATOS_DEST, FRECUENCIAS, SECCIONES_TIPO, TABLAS_DOC, TIPOS_REPORTE,
   cargarDatos, construir, eventoPorDefecto, type Contenido, type SeccionCfg,
-} from './documento';
+} from '../../lib/reportes/documento';
 import { contarDest, listasDe, marcaDe, nombreDest, pieDe, proximoEnvio, textoProgramacion, type Destinatario } from './util';
 
 interface Form {

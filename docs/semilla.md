@@ -11,7 +11,8 @@ Los datos están en `supabase/seed/<tabla>.json`. `rig/semilla.mjs` los carga en
 - **Totales guardados.** `temas.menciones`, `figura_metricas.menciones`, `narrativas.menciones` y similares son instantáneas. No se recalculan sumando series. Las series (`series_diarias`) sí suman exactamente el total del periodo, salvo que se diga otra cosa.
 - **Pendientes de revisión** (barra lateral, Menciones): `requiere_revision and not revisada and estado <> 'Descartada'`. Hoy hay 3 / 4 / 0 (presidenciales / zulia / chacao) en `v_campanas_resumen.menciones_por_revisar`.
 - **Alertas abiertas**: `estado in ('Nueva','En revisión','Pospuesta')`. Hoy hay 5 / 3 / 1 en `v_campanas_resumen.alertas_abiertas`. `ALERTAS_ABIERTAS` está en `tipos`.
-- **Personas**: siempre por `persona_id`. El nombre visible es `personas.nombre`. Las iniciales son derivadas.
+- **Personas**: siempre por `persona_id`. El nombre visible es `personas.nombre`. Las iniciales son derivadas. Para mostrar autores y responsables a cualquier rol (también Cliente, que no lee `personas`) está la vista `v_personas_campana` (`id`, `nombre_corto`, `iniciales`) y el hook `useNombres()`.
+- **Nombres cortos**: `figuras.nombre_corto` ("Machado", "González U.", "D. Rodríguez", "J. Rodríguez") para encabezados como "Neto de Machado"; `campanas.nombre_corto` ("Presidenciales", "Zulia", "Chacao") para filtros y chips. Pueden ser null: se usa `nombre` (helper `corto()` de `formato.ts`).
 - Las citas de publicaciones ciudadanas se guardan como descripciones neutras en tercera persona. La fuente es el medio, o `Cuenta pública` / `Cuenta oficial`. La cobertura se cuenta en notas y nunca se valora en dinero. La coordinación siempre es "posible".
 
 ## Vocabularios
@@ -55,7 +56,7 @@ Las listas de tipos de evento, roles, tipos de figura, redes, tipos de término 
 - Selector de campaña: `v_campanas_resumen` (nombre, contienda, iniciales, vista).
 - Contadores: Menciones = `menciones_por_revisar` y Alertas = `alertas_abiertas`.
 - Equipo del pie: `organizaciones` (nombre). El aviso "Escenario hipotético" se muestra cuando `campanas.es_demo`.
-- Breadcrumb: `campanas.titulo_largo`. El selector "Últimos 30 días" es texto fijo, porque solo existe el periodo `30d`.
+- Breadcrumb: `campanas.titulo_largo`. El botón de periodo muestra el periodo guardado de la campaña (`nombrePeriodo`: "Últimos 30 días" cuando `periodo_fin` es la fecha de corte), porque solo existe el corte `30d`.
 - La campana muestra las alertas abiertas, igual que la barra lateral.
 
 ## 1. Resumen (Main) — `/c/:id`

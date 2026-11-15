@@ -37,6 +37,12 @@ function contextoDe(a: Alerta, cx: Contexto): string {
   return [base, texto].filter(Boolean).join(' ');
 }
 
+/** Filtro de Menciones (?narrativa=, ?tema=, ?evento=, ?figura=) con lo más específico que la alerta tenga. */
+function filtroMenciones(a: Alerta): string {
+  const [k, v] = a.narrativa_id ? ['narrativa', a.narrativa_id] : a.evento_id ? ['evento', a.evento_id] : a.tema_id ? ['tema', a.tema_id] : a.figura_id ? ['figura', a.figura_id] : [null, null];
+  return k && v ? `?${k}=${encodeURIComponent(v)}` : '';
+}
+
 function enlaceDe(a: Alerta, base: string): { texto: string; a: string } | null {
   const pref: string | undefined = a.detalle?.contexto?.enlace;
   const orden = pref === 'temas' ? ['temas', 'evento', 'figura'] : pref === 'figura' ? ['figura', 'evento', 'temas'] : ['evento', 'figura', 'temas'];
@@ -229,7 +235,7 @@ export function Detalle({ alerta: a, campana, cx, responsables, yo, puedeEditar,
       <section className="card">
         <div className="ch">
           <h2>Evidencia</h2>
-          <Link className="lk" to={`${base}/menciones`}>{relacionadas != null ? `Ver las ${num(relacionadas)} en Menciones` : 'Ver Menciones'}</Link>
+          <Link className="lk" to={`${base}/menciones${filtroMenciones(a)}`}>{relacionadas != null ? `Ver las ${num(relacionadas)} en Menciones` : 'Ver Menciones'}</Link>
         </div>
         {evidencia.length ? (
           <div className="list">

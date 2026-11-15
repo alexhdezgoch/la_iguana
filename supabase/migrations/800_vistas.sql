@@ -4,7 +4,7 @@
 create view public.v_figuras_campana with (security_invoker = true) as
 select
   cf.id, cf.campana_id, cf.figura_id, cf.relacion, cf.orden, cf.responsable_id, cf.extra as extra_campana,
-  f.org_id, f.nombre, f.iniciales, f.cargo, f.partido, f.coalicion, f.territorio, f.tipo, f.cuentas, f.trayectoria, f.extra,
+  f.org_id, f.nombre, f.nombre_corto, f.iniciales, f.cargo, f.partido, f.coalicion, f.territorio, f.tipo, f.cuentas, f.trayectoria, f.extra,
   m.periodo, coalesce(m.menciones, 0) as menciones, m.participacion, m.favorable, m.neutral, m.desfavorable, m.neto,
   m.alcance, m.seguidores, m.interaccion, m.notas_medios, m.riesgo, m.riesgo_nivel, coalesce(m.detalle, '{}'::jsonb) as detalle
 from public.campana_figuras cf
@@ -14,7 +14,7 @@ left join public.figura_metricas m on m.campana_id = cf.campana_id and m.figura_
 -- Una fila por campaña con lo que muestran Panorama y la barra lateral.
 create view public.v_campanas_resumen with (security_invoker = true) as
 select
-  c.id, c.id as campana_id, c.org_id, c.nombre, c.contienda, c.titulo_largo, c.iniciales, c.ambito, c.fase, c.vista, c.es_demo, c.orden,
+  c.id, c.id as campana_id, c.org_id, c.nombre, c.nombre_corto, c.contienda, c.titulo_largo, c.iniciales, c.ambito, c.fase, c.vista, c.es_demo, c.orden,
   c.inicio_campana, c.fin_campana, c.veda_inicio, c.veda_fin, c.jornada, c.fecha_corte, c.zona_horaria, c.figura_propia_id,
   fp.nombre as figura_propia,
   m.menciones, m.participacion, m.neto, m.riesgo, m.riesgo_nivel,

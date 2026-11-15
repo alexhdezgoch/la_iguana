@@ -4,6 +4,7 @@
   "org_id": "brujula",
   "iniciales": "MM",
   "nombre": "María Corina Machado",
+  "nombre_corto": "Machado",
   "cargo": "Líder opositora",
   "partido": "Vente Venezuela",
   "coalicion": "Plataforma Unitaria Democrática",
@@ -16,6 +17,7 @@
   "org_id": "brujula",
   "iniciales": "DR",
   "nombre": "Delcy Rodríguez",
+  "nombre_corto": "D. Rodríguez",
   "cargo": "Presidenta encargada",
   "partido": "PSUV",
   "coalicion": "Gran Polo Patriótico"
@@ -25,6 +27,7 @@
   "org_id": "brujula",
   "iniciales": "JR",
   "nombre": "Jorge Rodríguez",
+  "nombre_corto": "J. Rodríguez",
   "cargo": "Presidente de la AN",
   "partido": "PSUV"
  },
@@ -33,6 +36,7 @@
   "org_id": "brujula",
   "iniciales": "HC",
   "nombre": "Henrique Capriles",
+  "nombre_corto": "Capriles",
   "cargo": "Diputado opositor",
   "partido": "Unión y Cambio"
  },
@@ -41,6 +45,7 @@
   "org_id": "brujula",
   "iniciales": "EG",
   "nombre": "Edmundo González Urrutia",
+  "nombre_corto": "González U.",
   "cargo": "Excandidato presidencial",
   "partido": "PUD"
  },
@@ -49,6 +54,7 @@
   "org_id": "brujula",
   "iniciales": "MR",
   "nombre": "Manuel Rosales",
+  "nombre_corto": "Rosales",
   "cargo": "Dirigente zuliano",
   "partido": "UNT"
  },
@@ -57,6 +63,7 @@
   "org_id": "brujula",
   "iniciales": "JG",
   "nombre": "Juan Pablo Guanipa",
+  "nombre_corto": "Guanipa",
   "cargo": "Dirigente opositor",
   "partido": "Primero Justicia"
  },
@@ -65,6 +72,7 @@
   "org_id": "brujula",
   "iniciales": "AE",
   "nombre": "Antonio Ecarri",
+  "nombre_corto": "Ecarri",
   "cargo": "Dirigente político",
   "partido": "Alianza Lápiz"
  },
@@ -73,6 +81,7 @@
   "org_id": "brujula",
   "iniciales": "LC",
   "nombre": "Luis Caldera",
+  "nombre_corto": "Caldera",
   "cargo": "Precandidato a gobernador",
   "partido": "PSUV"
  },
@@ -81,6 +90,7 @@
   "org_id": "brujula",
   "iniciales": "GD",
   "nombre": "Gustavo Duque",
+  "nombre_corto": "Duque",
   "cargo": "Alcalde de Chacao",
   "partido": "Fuerza Vecinal"
  }

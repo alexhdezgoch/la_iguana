@@ -17,7 +17,7 @@ function pieCampana(c: Campana): string {
   return `${ambito} · ${c.fase.toLowerCase()}`;
 }
 
-function Selector({ actual, campanas, resumenes }: { actual: Campana | null; campanas: Campana[]; resumenes: CampanaResumen[] }) {
+function Selector({ actual, campanas, resumenes, puedeCrear }: { actual: Campana | null; campanas: Campana[]; resumenes: CampanaResumen[]; puedeCrear: boolean }) {
   const [abierto, setAbierto] = useState(false);
   const ref = useRef<HTMLDetailsElement>(null);
   const loc = useLocation();
@@ -64,11 +64,13 @@ function Selector({ actual, campanas, resumenes }: { actual: Campana | null; cam
             </Link>
           );
         })}
-        <div className="swn">
-          <Link className="swi" to="/nueva-campana" style={{ textDecoration: 'none' }}>
-            <span className="swp"><Icono n="mas" g={2} /></span>Nueva campaña
-          </Link>
-        </div>
+        {puedeCrear ? (
+          <div className="swn">
+            <Link className="swi" to="/nueva-campana" style={{ textDecoration: 'none' }}>
+              <span className="swp"><Icono n="mas" g={2} /></span>Nueva campaña
+            </Link>
+          </div>
+        ) : null}
       </div>
     </details>
   );
@@ -86,7 +88,7 @@ export function Layout() {
   const { campanaId } = useParams();
   const { campanas, resumenes, cargando, error } = useCampanas();
   const actual = useCampanaOpcional();
-  const { org, usuario, salir } = useSesion();
+  const { org, usuario, persona, salir } = useSesion();
   const { titulo, migas } = usePaginaActual();
   const { abrirBuscador, abrirPeriodo, periodo } = useAcciones();
 
@@ -112,7 +114,7 @@ export function Layout() {
     <div className="app">
       <nav className="side" aria-label="Navegación">
         <Link className="logo" to="/"><Logo />La Iguana</Link>
-        <Selector actual={actual} campanas={campanas} resumenes={resumenes} />
+        <Selector actual={actual} campanas={campanas} resumenes={resumenes} puedeCrear={!!persona && persona.rol_org !== 'externo'} />
         <button type="button" className="find" onClick={abrirBuscador}><Icono n="buscar" />Buscar<span className="kbd">Ctrl K</span></button>
         {destino ? (
           <>
@@ -154,7 +156,7 @@ export function Layout() {
             {titulo ? <span className="here">{titulo}</span> : null}
           </div>
           {esDemo ? <span className="chip warn sp" title="Personas y partidos reales. Cifras, menciones y eventos inventados para la demostración.">Demo · escenario hipotético</span> : <span className="sp" />}
-          <button type="button" className="btn bg" onClick={(e) => abrirPeriodo(e.currentTarget)}><Icono n="eventos" />{periodo}</button>
+          <button type="button" className="btn bg" data-periodo="" onClick={(e) => abrirPeriodo(e.currentTarget)}><Icono n="eventos" />{periodo}</button>
           {destino ? (
             <Link className="btn bg bi" to={`${base}/alertas`} aria-label={`Alertas, ${abiertas} abiertas`}>
               <Icono n="alertas" />{abiertas ? <span className="dotn" /> : null}

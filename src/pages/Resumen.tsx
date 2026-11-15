@@ -2,7 +2,7 @@
 //   1. usePagina(título)  2. hooks de datos filtrados por campana_id  3. <Carga> mientras llegan
 //   4. todo texto y cifra sale de los datos; lo que no existe muestra un estado vacío, nunca un valor inventado.
 import { Link } from 'react-router-dom';
-import { hoyDe, useCampana, usePagina } from '../shell/Campana';
+import { hoyDe, useCampana, usePagina, useRol } from '../shell/Campana';
 import { Carga, Vacio } from '../shell/Estados';
 import { useTabla } from '../lib/hooks';
 import { REL, SEVERIDAD, diasEntre, fecha, neto, num, pct, rango } from '../lib/formato';
@@ -36,6 +36,7 @@ export default function Resumen() {
   const cid = campana.id;
   const hoy = hoyDe(campana);
   const base = `/c/${cid}`;
+  const { puedeEditar } = useRol();
 
   const figuras = useTabla<FiguraCampana>('v_figuras_campana', { eq: { campana_id: cid }, orden: [['participacion', 'desc'], ['orden', 'asc']] });
   const alertas = useTabla<Alerta>('alertas', { eq: { campana_id: cid, estado: ALERTAS_ABIERTAS }, orden: 'orden' });
@@ -48,8 +49,12 @@ export default function Resumen() {
   const propia = figuras.datos.find((f) => f.figura_id === propiaId) ?? null;
   const total = figuras.datos.reduce((n, f) => n + f.menciones, 0);
   const maxPart = Math.max(1, ...figuras.datos.map((f) => f.participacion ?? 0));
-  const lugar = propia ? figuras.datos.findIndex((f) => f.figura_id === propia.figura_id) + 1 : 0;
-  const rival = figuras.datos.find((f) => f.figura_id !== propiaId) ?? null;
+  // Con corte: la figura propia tiene participación guardada. Sin corte (campaña nueva), no hay lugar ni comparación.
+  const conCorte = !!propia && propia.participacion != null;
+  const conPart = figuras.datos.filter((f) => f.participacion != null);
+  const lugar = conCorte ? conPart.findIndex((f) => f.figura_id === propia!.figura_id) + 1 : 0;
+  const rival = conCorte ? conPart.find((f) => f.figura_id !== propiaId) ?? null : null;
+  const conMetricas = figuras.datos.filter((f) => f.periodo != null).length;
   const maxTema = Math.max(1, ...temas.datos.map((t) => t.porcentaje ?? 0));
   const proximo = eventos.datos[0] ?? null;
   const enDias = proximo ? diasEntre(hoy, proximo.fecha_inicio) : null;
@@ -92,8 +97,12 @@ export default function Resumen() {
               <div className="ch"><span className="kl">Menciones de {propia.nombre}</span><span className="chip own">Propia</span></div>
               <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-end', justifyContent: 'space-between', gap: '8px 20px' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-                  <span className="kv">{num(propia.menciones)}</span>
-                  <span className="mu">de {num(total)} entre las {figuras.datos.length} figuras monitoreadas</span>
+                  <span className="kv">{propia.periodo != null ? num(propia.menciones) : 'Sin datos'}</span>
+                  <span className="mu">
+                    {propia.periodo != null
+                      ? `de ${num(total)} entre ${conMetricas === 1 ? 'la figura monitoreada' : `las ${conMetricas} figuras monitoreadas`}`
+                      : 'Las cifras aparecen con las primeras menciones'}
+                  </span>
                 </div>
                 <Tendencia serie={serie.datos.map((s) => s.menciones)} />
               </div>
@@ -102,13 +111,14 @@ export default function Resumen() {
               <span className="kl">Participación</span>
               <span className="kv">{pct(propia.participacion)}</span>
               <span className="mu">
-                {lugar === 1 ? 'Primer lugar.' : lugar ? `Lugar ${lugar}.` : ''}
-                {rival ? ` ${rival.nombre} tiene ${pct(rival.participacion)}` : ''}
+                {conCorte
+                  ? <>{lugar === 1 ? 'Primer lugar.' : lugar ? `Lugar ${lugar}.` : ''}{rival ? ` ${rival.nombre} tiene ${pct(rival.participacion)}` : ''}</>
+                  : 'Todavía sin menciones medidas'}
               </span>
             </div>
             <div className="kpi">
               <span className="kl">Sentimiento neto</span>
-              <span className={'kv ' + ((propia.neto ?? 0) >= 0 ? 'tf' : 'tu')}>{neto(propia.neto)}</span>
+              <span className={'kv' + (propia.neto == null ? '' : propia.neto >= 0 ? ' tf' : ' tu')}>{neto(propia.neto)}</span>
               <span className="mu">{propia.favorable != null ? `${propia.favorable}% favorable menos ${propia.desfavorable}% desfavorable` : 'Sin desglose todavía'}</span>
             </div>
             <div className="kpi">
@@ -122,7 +132,9 @@ export default function Resumen() {
           </section>
         ) : (
           <Vacio titulo="Esta campaña todavía no tiene figura propia">
-            <Link to={`${base}/figuras/nueva`}>Agregar una figura</Link> con relación Propia para ver sus cifras aquí.
+            {puedeEditar
+              ? <><Link to={`${base}/figuras/nueva`}>Agregar una figura</Link> con relación Propia para ver sus cifras aquí.</>
+              : 'Cuando el equipo defina la figura propia, sus cifras aparecerán aquí.'}
           </Vacio>
         )}
 
@@ -138,10 +150,10 @@ export default function Resumen() {
                   <div className="br" key={f.id}>
                     <div style={{ flex: '0 0 176px', minWidth: 0, display: 'flex', flexDirection: 'column' }}>
                       <Link className="tl sm" to={`${base}/figuras/${f.figura_id}`}>{f.nombre}</Link>
-                      <span className="mu">{f.relacion} · neto {neto(f.neto)}</span>
+                      <span className="mu">{f.relacion}{f.neto != null ? ` · neto ${neto(f.neto)}` : ''}</span>
                     </div>
                     <div className="bar"><i style={{ width: `${(((f.participacion ?? 0) / maxPart) * 100).toFixed(1)}%`, background: REL[f.relacion].color }} /></div>
-                    <div className="sm b r" style={{ flex: '0 0 48px' }}>{pct(f.participacion)}</div>
+                    <div className={f.participacion != null ? 'sm b r' : 'sm mu r'} style={{ flex: '0 0 48px' }} title={f.participacion != null ? undefined : 'Sin datos todavía'}>{f.participacion != null ? pct(f.participacion) : '–'}</div>
                   </div>
                 ))}
               </div>
@@ -161,7 +173,7 @@ export default function Resumen() {
                   {alertas.datos.map((a) => (
                     <div className="li" key={a.id} style={{ alignItems: 'flex-start' }}>
                       <span className={SEVERIDAD[a.severidad]} style={{ flex: '0 0 54px', justifyContent: 'center' }}>{a.severidad}</span>
-                      <span className="sm">{a.texto}</span>
+                      <Link className="sm tl" style={{ fontWeight: 400 }} to={`${base}/alertas?alerta=${encodeURIComponent(a.id)}`}>{a.texto}</Link>
                     </div>
                   ))}
                 </div>
@@ -183,7 +195,7 @@ export default function Resumen() {
                 <>
                   <span className="kl">Próximo evento</span>
                   <h2>Sin eventos por venir</h2>
-                  <div style={{ paddingTop: 6 }}><Link className="lk" to={`${base}/eventos/nuevo`}>Crear evento</Link></div>
+                  <div style={{ paddingTop: 6 }}>{puedeEditar ? <Link className="lk" to={`${base}/eventos/nuevo`}>Crear evento</Link> : <Link className="lk" to={`${base}/eventos`}>Ver eventos</Link>}</div>
                 </>
               )}
             </section>

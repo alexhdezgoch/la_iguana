@@ -13,10 +13,9 @@ function llevaNombreDeFigura({ c, r }: CampanaPanorama): boolean {
 export function etiqueta(x: CampanaPanorama): string {
   return llevaNombreDeFigura(x) ? x.c.contienda ?? x.c.nombre : x.c.nombre;
 }
-/** Nombre corto para filtros y chips: "Presidenciales", "Zulia", "Chacao". */
+/** Nombre corto para filtros y chips: campanas.nombre_corto ("Presidenciales", "Zulia", "Chacao"); sin él, el nombre largo. */
 export function corto(x: CampanaPanorama): string {
-  if (llevaNombreDeFigura(x)) return x.c.ambito ?? x.c.contienda ?? x.c.nombre;
-  return x.c.territorio?.split(',')[0].trim() || x.c.nombre;
+  return x.c.nombre_corto?.trim() || etiqueta(x);
 }
 /** Subtítulo de la tarjeta: "Regionales 2027 · figura propia: Manuel Rosales". */
 export function contienda(x: CampanaPanorama): string {

@@ -3,7 +3,8 @@
 import { Link, useSearchParams } from 'react-router-dom';
 import { useCampana, usePagina, useRol } from '../shell/Campana';
 import { Carga, Vacio } from '../shell/Estados';
-import { useTabla } from '../lib/hooks';
+import { useNombres, useTabla } from '../lib/hooks';
+import { responsableDe } from './figura/comun';
 import { REL, RIESGO_PUNTO, compacto, iniciales, neto, num, pct, rango } from '../lib/formato';
 import type { FiguraCampana, Relacion } from '../lib/tipos';
 import './Figuras.css';
@@ -38,6 +39,7 @@ export default function Figuras() {
 
   const figuras = useTabla<FiguraCampana>('v_figuras_campana', { eq: { campana_id: cid }, orden: 'orden' });
   const todas = figuras.datos;
+  const { nombres } = useNombres();
 
   const pedida = params.get('relacion');
   const sel: Relacion | 'Todas' = RELACIONES.includes(pedida as Relacion) ? (pedida as Relacion) : 'Todas';
@@ -157,6 +159,7 @@ export default function Figuras() {
                       const rel = REL[f.relacion] ?? REL['A observar'];
                       const cargo = cargoDe(f);
                       const vacia = sinCorte(f);
+                      const responsable = responsableDe(f, nombres);
                       return (
                         <tr key={f.id}>
                           <td>
@@ -165,7 +168,7 @@ export default function Figuras() {
                               <span className="gr">
                                 <Link className="tl" to={`${base}/figuras/${f.figura_id}`} style={{ whiteSpace: 'nowrap' }}>{f.nombre}</Link>
                                 <span className="mu" style={{ whiteSpace: 'nowrap' }}>
-                                  {cargo || 'Sin cargo'}
+                                  {cargo || 'Sin cargo'}{responsable ? ` · ${responsable}` : ''}
                                 </span>
                               </span>
                             </div>

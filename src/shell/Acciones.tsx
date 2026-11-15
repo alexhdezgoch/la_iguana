@@ -3,6 +3,9 @@
 import { createContext, useCallback, useContext, useMemo, useRef, useState, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { Paneles } from './acciones/Paneles';
+import { useCampanaDeRuta } from './acciones/Buscador';
+import { nombrePeriodo } from './acciones/Periodo';
+import { useCampanas } from './Campana';
 
 export interface Aviso { id: number; texto: string; enlace?: { texto: string; a: string } }
 export type Panel =
@@ -22,7 +25,10 @@ export interface Acciones {
   abrirDescarga: (reporte?: string) => void;
   cerrarPanel: () => void;
   panel: Panel | null;
-  /** Periodo elegido en la barra superior. Solo hay datos del periodo de la campaña por ahora. */
+  /**
+   * Periodo de la barra superior. Por defecto, el periodo guardado de la campaña actual (nombrePeriodo: "Últimos 30 días");
+   * en las vistas del equipo, el de las campañas si todas comparten corte. Solo hay datos de ese periodo por ahora.
+   */
   periodo: string;
   setPeriodo: (p: string) => void;
 }
@@ -37,7 +43,18 @@ export function useAcciones(): Acciones {
 export function ProveedorAcciones({ children }: { children: ReactNode }) {
   const [avisos, setAvisos] = useState<Aviso[]>([]);
   const [panel, setPanel] = useState<Panel | null>(null);
-  const [periodo, setPeriodo] = useState('Últimos 30 días');
+  // Lo elegido vale para la campaña en la que se eligió; al cambiar de campaña vuelve a su periodo guardado.
+  const actual = useCampanaDeRuta();
+  const { campanas } = useCampanas();
+  const clave = actual?.id ?? '';
+  const [elegido, setElegido] = useState<{ clave: string; texto: string } | null>(null);
+  const defecto = useMemo(() => {
+    if (actual) return nombrePeriodo(actual) ?? 'Sin periodo con datos';
+    const nombres = [...new Set(campanas.map((c) => nombrePeriodo(c)).filter((t): t is string => !!t))];
+    return nombres.length === 1 ? nombres[0] : nombres.length ? 'Periodo de cada campaña' : 'Sin periodo con datos';
+  }, [actual, campanas]);
+  const periodo = elegido && elegido.clave === clave ? elegido.texto : defecto;
+  const setPeriodo = useCallback((texto: string) => setElegido({ clave, texto }), [clave]);
   const sig = useRef(1);
 
   const aviso = useCallback((texto: string, enlace?: { texto: string; a: string }) => {
@@ -56,7 +73,7 @@ export function ProveedorAcciones({ children }: { children: ReactNode }) {
     panel,
     periodo,
     setPeriodo,
-  }), [aviso, panel, periodo]);
+  }), [aviso, panel, periodo, setPeriodo]);
 
   return (
     <Ctx.Provider value={valor}>

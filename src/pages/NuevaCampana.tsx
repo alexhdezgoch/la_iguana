@@ -10,7 +10,7 @@ import { Carga, Vacio } from '../shell/Estados';
 import { avisar, db } from '../lib/db';
 import { useConsulta, useTabla } from '../lib/hooks';
 import { fecha } from '../lib/formato';
-import type { Borrador, CampanaFigura, Figura, MiembroCampana, Persona } from '../lib/tipos';
+import type { Borrador, CampanaFigura, Figura, Persona } from '../lib/tipos';
 import { PASOS, normalizar, parametro, problemas, revisarCalendario, type DatosB } from './nueva-campana/modelo';
 import { PasoCalendario, PasoContienda, PasoEquipo, PasoFiguras, PasoRevisar, PasoTerminos, nombreFigura, type Ctx } from './nueva-campana/Pasos';
 import { VistaPrevia } from './nueva-campana/VistaPrevia';
@@ -30,7 +30,6 @@ export default function NuevaCampana() {
   const yo = persona?.id ?? null;
   const orgId = org?.id ?? '';
 
-  const membresias = useTabla<MiembroCampana>('miembros_campana', { eq: { persona_id: yo ?? '' } }, !!yo);
   const directorio = useTabla<Figura>('figuras', { eq: { org_id: orgId }, orden: 'nombre' }, !!orgId);
   const vinculos = useTabla<CampanaFigura>('campana_figuras', {});
   const personas = useTabla<Persona>('personas', { eq: { org_id: orgId, activa: true }, orden: 'nombre' }, !!orgId);
@@ -188,7 +187,7 @@ export default function NuevaCampana() {
     terminado.current = true;
     await cola.current;
     try {
-      const id = await db.rpc<string>('crear_campana', { p: parametro(d, org.id, yo, hoy) });
+      const id = await db.rpc<string>('crear_campana', { p: parametro(d, org.id, yo, hoy, directorio.datos) });
       avisar('campanas', 'campana_fases', 'campana_figuras', 'figuras', 'terminos', 'miembros_campana', 'personas');
       if (bidRef.current) {
         await db.borrar('borradores', bidRef.current).catch(() => {});
@@ -204,15 +203,16 @@ export default function NuevaCampana() {
   };
 
   // ---------- quién puede crear ----------
-  const puedeCrear = !!persona && persona.rol_org !== 'externo'
-    && (persona.rol_org === 'admin' || membresias.datos.some((m) => m.rol === 'Administración' || m.rol === 'Análisis'));
+  // Misma regla que crear_campana (850_funciones.sql), Panorama y el buscador: cualquier persona activa del equipo
+  // que no sea externa (cliente o invitada) puede crear una campaña, y queda en ella como Administración.
+  const puedeCrear = !!persona && persona.rol_org !== 'externo';
 
-  if (!membresias.cargando && !puedeCrear) {
+  if (!puedeCrear) {
     return (
       <main className="page pg-nueva-campana">
-        <div className="ph"><div><h1>Nueva campaña</h1><p className="mu">Crear campañas es para quien administra o analiza en {org?.nombre ?? 'el equipo'}.</p></div></div>
+        <div className="ph"><div><h1>Nueva campaña</h1><p className="mu">Crear campañas es para el equipo interno de {org?.nombre ?? 'el equipo'}.</p></div></div>
         <Vacio titulo="Tu cuenta no puede crear campañas">
-          Tu acceso es de solo lectura o de cliente. Pide a quien administra {org?.nombre ?? 'el equipo'} que cree la campaña o que te dé un rol de Análisis. <Link to="/">Ver todas las campañas</Link>
+          Tu acceso es de cliente o de invitación externa. Pide a {org?.nombre ?? 'el equipo'} que cree la campaña. <Link to="/">Ver todas las campañas</Link>
         </Vacio>
       </main>
     );
@@ -230,7 +230,7 @@ export default function NuevaCampana() {
     : `Borrador · se guarda solo mientras avanzas · paso ${paso + 1} de 6`;
 
   return (
-    <Carga estados={[membresias, directorio, personas, vinculos, borradores]}>
+    <Carga estados={[directorio, personas, vinculos, borradores]}>
       {!ctx ? <main className="page"><div className="cargando">Cargando…</div></main> : (
         <main className="page pg-nueva-campana">
           <div className="ph">

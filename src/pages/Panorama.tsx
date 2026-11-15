@@ -9,7 +9,7 @@ import { Icono } from '../shell/Iconos';
 import { useSesion } from '../shell/Sesion';
 import { useTabla } from '../lib/hooks';
 import { SEVERIDAD, ESTADO_EVENTO, fecha, num } from '../lib/formato';
-import { ALERTAS_ABIERTAS, type Alerta, type CampanaResumen, type Evento, type FiguraCampana } from '../lib/tipos';
+import { ALERTAS_ABIERTAS, type Alerta, type CampanaResumen, type Evento, type FiguraCampana, type MiembroCampana } from '../lib/tipos';
 import { agruparFiguras, alertasParaHoy, corto, etiqueta, lasCampanas, porFase, type CampanaPanorama } from './panorama/derivar';
 import { TarjetaCampana } from './panorama/TarjetaCampana';
 import { TablaFiguras } from './panorama/TablaFiguras';
@@ -33,6 +33,7 @@ export default function Panorama() {
   const resumenes = useTabla<CampanaResumen>('v_campanas_resumen', { orden: 'orden' });
   const figuras = useTabla<FiguraCampana>('v_figuras_campana', { orden: 'orden' });
   const alertas = useTabla<Alerta>('alertas', { eq: { estado: ALERTAS_ABIERTAS }, orden: [['detectada_en', 'desc']] });
+  const misRoles = useTabla<MiembroCampana>('miembros_campana', { eq: { persona_id: persona?.id ?? '' } }, !!persona);
   const eventos = useTabla<Evento>('eventos', { neq: { estado: 'Cancelado' }, desde: { fecha_inicio: desde }, orden: [['fecha_inicio', 'asc'], ['hora', 'asc']] });
 
   const lista: CampanaPanorama[] = useMemo(
@@ -90,7 +91,11 @@ export default function Panorama() {
     .slice(0, 3);
   const primera = lista[0] ?? null;
   const conAlertas = lista.find((x) => (x.r?.alertas_abiertas ?? 0) > 0) ?? primera;
-  const puedeCrear = persona?.rol_org === 'admin' || persona?.rol_org === 'miembro';
+  // Misma regla que crear_campana y que el asistente: cualquier persona activa del equipo que no sea externa.
+  const puedeCrear = !!persona && persona.rol_org !== 'externo';
+  // Enlaces a altas (figura, evento) solo hacia campañas donde la persona puede escribir.
+  const editable = (cid: string | null | undefined) => !!cid && !!persona
+    && (persona.rol_org === 'admin' || misRoles.datos.some((m) => m.campana_id === cid && (m.rol === 'Administración' || m.rol === 'Análisis')));
   const hoyTexto = fecha(hoy, 'completo').replace(/^./, (l) => l.toLowerCase());
 
   return (
@@ -121,7 +126,7 @@ export default function Panorama() {
             </section>
 
             <div className="row" style={{ alignItems: 'stretch' }}>
-              {lista.map((x) => <TarjetaCampana key={x.c.id} x={x} severidadMax={severidadMax.get(x.c.id) ?? null} />)}
+              {lista.map((x) => <TarjetaCampana key={x.c.id} x={x} severidadMax={severidadMax.get(x.c.id) ?? null} puedeEditar={editable(x.c.id)} />)}
             </div>
 
             <div className="pn-cab">
@@ -141,7 +146,9 @@ export default function Panorama() {
               <TablaFiguras filas={filas} cortoDe={cortoDe} />
             ) : (
               <Vacio titulo={filtro ? `${etiquetaDe(filtro)} todavía no tiene figuras` : 'Todavía no hay figuras en seguimiento'}>
-                <Link to={`/c/${filtro ?? primera?.c.id}/figuras/nueva`}>Agregar una figura</Link> para ver sus cifras aquí.
+                {editable(filtro ?? primera?.c.id)
+                  ? <><Link to={`/c/${filtro ?? primera?.c.id}/figuras/nueva`}>Agregar una figura</Link> para ver sus cifras aquí.</>
+                  : 'Cuando el equipo agregue figuras, aparecerán aquí con sus cifras.'}
               </Vacio>
             )}
 
@@ -182,7 +189,7 @@ export default function Panorama() {
                     })}
                   </div>
                 ) : (
-                  <p className="mu">Sin eventos por venir.{primera ? <> <Link to={`/c/${primera.c.id}/eventos/nuevo`}>Crear evento</Link></> : null}</p>
+                  <p className="mu">Sin eventos por venir.{primera && editable(primera.c.id) ? <> <Link to={`/c/${primera.c.id}/eventos/nuevo`}>Crear evento</Link></> : null}</p>
                 )}
               </section>
             </div>

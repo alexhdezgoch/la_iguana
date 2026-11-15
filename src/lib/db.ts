@@ -42,6 +42,7 @@ export function alCambiar(tabla: string, fn: () => void): () => void {
 const VISTAS: Record<string, string[]> = {
   v_figuras_campana: ['campana_figuras', 'figuras', 'figura_metricas'],
   v_campanas_resumen: ['campanas', 'campana_figuras', 'alertas', 'menciones', 'figura_metricas'],
+  v_personas_campana: ['personas', 'miembros_campana'],
 };
 /** Avisa a los hooks que una tabla cambió. db.* lo hace solo; llámalo a mano después de un db.rpc. */
 export function avisar(...tablas: string[]) {

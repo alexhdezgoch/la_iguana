@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { db } from '../../lib/db';
 import { useTabla } from '../../lib/hooks';
 import { compacto, cuando, fecha, neto, num, pct } from '../../lib/formato';
-import type { FiguraCampana, Narrativa, NotaInterna, Persona, Tema } from '../../lib/tipos';
+import type { FiguraCampana, Narrativa, NotaInterna, PersonaVisible, Tema } from '../../lib/tipos';
 import { useAcciones } from '../../shell/Acciones';
 import { useSesion } from '../../shell/Sesion';
 import { DIR, TEND, figuraDeNarrativa, pctDeFigura, signoPct, type Canal } from './calculos';
@@ -57,8 +57,8 @@ export function Detalle(p: PropsDetalle) {
 
   const notas = useTabla<NotaInterna>('notas_internas', { eq: { campana_id: p.campanaId, entidad: 'narrativa', entidad_id: n.id }, orden: [['creada_en', 'desc']] }, !p.esCliente);
   const autores = [...new Set(notas.datos.map((x) => x.autor_id).filter(Boolean) as string[])];
-  const personas = useTabla<Persona>('personas', { eq: { id: autores } }, autores.length > 0);
-  const nombrePersona = (id: string | null) => personas.datos.find((x) => x.id === id)?.nombre_corto ?? personas.datos.find((x) => x.id === id)?.nombre ?? 'Equipo';
+  const personas = useTabla<PersonaVisible>('v_personas_campana', { eq: { id: autores } }, autores.length > 0);
+  const nombrePersona = (id: string | null) => personas.datos.find((x) => x.id === id)?.nombre_corto ?? 'Equipo';
 
   const fig = figuraDeNarrativa(n, figs);
   const tema = n.tema_id ? p.temas.get(n.tema_id) : undefined;

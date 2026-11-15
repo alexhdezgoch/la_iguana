@@ -5,8 +5,9 @@ import { useTabla } from '../../lib/hooks';
 import { cuando } from '../../lib/formato';
 import { useAcciones } from '../../shell/Acciones';
 import { hoyDe, useCampana, useRol } from '../../shell/Campana';
+import { Confirmar } from '../../shell/Estados';
 import { useSesion } from '../../shell/Sesion';
-import type { Evento, NotaInterna, Persona } from '../../lib/tipos';
+import type { Evento, NotaInterna, PersonaVisible } from '../../lib/tipos';
 import { errorTexto } from './util';
 
 /** Campo de texto largo que se guarda en una columna de eventos. */
@@ -102,9 +103,10 @@ export function NotasEquipo({ evento, puedeEditar }: { evento: Evento; puedeEdit
   const [abierto, setAbierto] = useState(false);
   const [ocupado, setOcupado] = useState(false);
   const notas = useTabla<NotaInterna>('notas_internas', { eq: { campana_id: campana.id, entidad: 'evento', entidad_id: evento.id }, orden: [['creada_en', 'desc']] }, !esCliente);
-  const personas = useTabla<Persona>('personas', { eq: { org_id: campana.org_id } }, !esCliente);
+  const [borrando, setBorrando] = useState<string | null>(null); // id de la nota por confirmar
+  const personas = useTabla<PersonaVisible>('v_personas_campana', {}, !esCliente);
   if (esCliente) return null;
-  const nombre = (id: string | null) => personas.datos.find((p) => p.id === id)?.nombre ?? 'Equipo';
+  const nombre = (id: string | null) => personas.datos.find((p) => p.id === id)?.nombre_corto ?? 'Equipo';
 
   async function crear(e: React.FormEvent) {
     e.preventDefault();
@@ -117,7 +119,7 @@ export function NotasEquipo({ evento, puedeEditar }: { evento: Evento; puedeEdit
     } catch (err) { aviso(errorTexto(err)); } finally { setOcupado(false); }
   }
   async function borrar(n: NotaInterna) {
-    if (!window.confirm('¿Borrar esta nota?')) return;
+    setBorrando(null);
     try { await db.borrar('notas_internas', n.id); aviso('Nota borrada'); } catch (err) { aviso(errorTexto(err)); }
   }
 
@@ -145,7 +147,9 @@ export function NotasEquipo({ evento, puedeEditar }: { evento: Evento; puedeEdit
                 <span className="ev-pre">{n.texto}</span>
                 <span className="mu">{nombre(n.autor_id)} · {cuando(n.creada_en, hoy, campana.zona_horaria)}</span>
               </div>
-              {puedeEditar && n.autor_id === persona?.id ? <button type="button" className="enlace-btn" onClick={() => borrar(n)}>Borrar</button> : null}
+              {puedeEditar && n.autor_id === persona?.id ? (borrando === n.id
+                ? <Confirmar pregunta="¿Borrar esta nota?" si="Sí, borrar" alConfirmar={() => borrar(n)} alCancelar={() => setBorrando(null)} />
+                : <button type="button" className="enlace-btn" onClick={() => setBorrando(n.id)}>Borrar</button>) : null}
             </div>
           ))}
         </div>

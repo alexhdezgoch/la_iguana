@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { hoyDe, useCampana, usePagina, useRol } from '../shell/Campana';
 import { Carga, Vacio } from '../shell/Estados';
+import { useAcciones } from '../shell/Acciones';
 import { useTabla } from '../lib/hooks';
 import { REL, fecha, num } from '../lib/formato';
 import type { Alerta, Evento, FiguraCampana, Narrativa, SerieDiaria, Tema, TemaFigura } from '../lib/tipos';
@@ -56,6 +57,7 @@ function Desplegable({ etiqueta, valor, opciones, elegir, desactivado }: { etiqu
 
 export default function Temas() {
   usePagina('Temas y narrativas');
+  const { abrirDescarga } = useAcciones();
   const campana = useCampana();
   const cid = campana.id;
   const hoy = hoyDe(campana);
@@ -214,7 +216,7 @@ export default function Temas() {
         <div className="ph"><div><h1>Temas y narrativas</h1><p className="mu">Sin menciones clasificadas todavía.</p></div></div>
         <Vacio titulo="Todavía no hay temas ni narrativas">
           Los temas y narrativas aparecen cuando hay menciones clasificadas de las figuras en seguimiento.{' '}
-          {figQ.datos.length ? <Link to={`${base}/menciones`}>Ver menciones</Link> : <Link to={`${base}/figuras/nueva`}>Agregar una figura</Link>}
+          {figQ.datos.length ? <Link to={`${base}/menciones`}>Ver menciones</Link> : puedeEditar ? <Link to={`${base}/figuras/nueva`}>Agregar una figura</Link> : null}
         </Vacio>
       </main>
     );
@@ -228,7 +230,7 @@ export default function Temas() {
             <h1>Temas y narrativas</h1>
             <p className="mu">{subtitulo}</p>
           </div>
-          <div className="acts"><Link className="btn bg" to={`${base}/reportes`}>Descargar reporte</Link></div>
+          <div className="acts"><button type="button" className="btn bg" onClick={() => abrirDescarga('Semanal')}>Descargar reporte</button></div>
         </div>
 
         <div className="fbar" role="group" aria-label="Filtros de temas y narrativas">

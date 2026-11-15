@@ -27,12 +27,6 @@ export function totalConversacion(propia: FiguraCampana | null): number | null {
   return Math.round((propia.menciones * 100) / propia.participacion);
 }
 
-/** Último apellido, para encabezados cortos ("Neto de Rosales"). */
-export function apellido(nombre: string): string {
-  const p = nombre.trim().split(/\s+/);
-  return p[p.length - 1] ?? nombre;
-}
-
 export function cargoDe(f: FiguraCampana): string | null {
   const c = f.extra_campana?.cargo;
   return typeof c === 'string' && c ? c : f.cargo;

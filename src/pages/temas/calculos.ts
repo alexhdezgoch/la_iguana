@@ -1,6 +1,6 @@
 // Derivados de Temas y narrativas: ventanas de días, conteos por ventana y canal, nombres cortos.
 // Nada de datos aquí: todo sale de las filas que recibe.
-import { aFecha, diasEntre, num } from '../../lib/formato';
+import { aFecha, corto, diasEntre, num } from '../../lib/formato';
 import type { Evento, FiguraCampana, Json, Narrativa, SerieDiaria } from '../../lib/tipos';
 
 export interface Canal { canal: string; porcentaje: number }
@@ -93,19 +93,9 @@ export function ventanaEvento(e: Evento, dias: string[]): { desde: number; hasta
   return { desde, hasta };
 }
 
-/** Nombre corto para encabezados: apellido; con inicial si dos figuras lo comparten. */
-export function nombresCortos(figs: Array<Pick<FiguraCampana, 'figura_id' | 'nombre' | 'extra'>>): Map<string, string> {
-  const ultimo = (n: string) => n.trim().split(/\s+/).pop() ?? n;
-  const cuenta = new Map<string, number>();
-  figs.forEach((f) => cuenta.set(ultimo(f.nombre), (cuenta.get(ultimo(f.nombre)) ?? 0) + 1));
-  const m = new Map<string, string>();
-  figs.forEach((f) => {
-    const propio = f.extra?.nombre_corto as string | undefined;
-    if (propio) { m.set(f.figura_id, propio); return; }
-    const u = ultimo(f.nombre);
-    m.set(f.figura_id, (cuenta.get(u) ?? 0) > 1 ? `${f.nombre.trim()[0]}. ${u}` : u);
-  });
-  return m;
+/** Nombre corto para encabezados: figuras.nombre_corto ("González U."); si la figura no tiene, su nombre. */
+export function nombresCortos(figs: Array<Pick<FiguraCampana, 'figura_id' | 'nombre' | 'nombre_corto'>>): Map<string, string> {
+  return new Map(figs.map((f) => [f.figura_id, corto(f)]));
 }
 
 export const ORDEN_REL: Record<string, number> = { Propia: 0, Aliada: 1, Rival: 2, 'A observar': 3 };

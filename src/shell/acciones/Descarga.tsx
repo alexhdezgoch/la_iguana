@@ -11,9 +11,9 @@ import { useConsulta } from '../../lib/hooks';
 import { db } from '../../lib/db';
 import { fecha, rango } from '../../lib/formato';
 import type { RolCampana } from '../../lib/tipos';
-import { TABLAS_DOC, aCsv, cargarDatos, construir, descargar, nombreArchivo, type SeccionCfg } from '../../pages/reportes/documento';
-import { documentoHtml, imprimir } from '../../pages/reportes/Documento';
-import { marcaDe, pieDe } from '../../pages/reportes/util';
+import { TABLAS_DOC, aCsv, cargarDatos, construir, descargar, nombreArchivo, type SeccionCfg } from '../../lib/reportes/documento';
+import { documentoHtml, imprimir } from '../../lib/reportes/Documento';
+import { marcaDe, pieDe } from '../../lib/reportes/marca';
 import './Descarga.css';
 
 type Tipo = 'Corte diario' | 'Post-evento' | 'Semanal' | 'Perfil de figura';

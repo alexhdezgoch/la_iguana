@@ -8,11 +8,11 @@ import { hoyDe, useCampana, usePagina, useRol } from '../shell/Campana';
 import { Carga, Vacio } from '../shell/Estados';
 import { Icono } from '../shell/Iconos';
 import { useAcciones } from '../shell/Acciones';
-import { useTabla } from '../lib/hooks';
+import { useNombres, useTabla } from '../lib/hooks';
 import { db } from '../lib/db';
-import { REL, compacto, fecha, iniciales, neto, num, pct } from '../lib/formato';
+import { REL, compacto, corto, fecha, iniciales, neto, num, pct } from '../lib/formato';
 import type { CampanaFigura, Evento, EventoParticipante, FiguraCampana, Mencion, MencionFigura, Narrativa, Relacion, SerieDiaria, Tema, TemaFigura } from '../lib/tipos';
-import { cargoDe, narrativasDe, type EventoFigura } from './figura/comun';
+import { cargoDe, narrativasDe, responsableDe, type EventoFigura } from './figura/comun';
 import { Comparacion } from './figura/Comparacion';
 import { Notas } from './figura/Notas';
 import { Audiencia, Cobertura, Conversacion, ListaEventos, ListaNarrativas, Publicaciones, Sentimiento, TemasNarrativas } from './figura/Pestanas';
@@ -60,6 +60,7 @@ export default function Figura() {
   const menciones = useTabla<Mencion>('menciones', { eq: { campana_id: cid, id: idsMencion }, neq: { estado: 'Descartada' }, orden: [['publicada_en', 'desc']], limite: 50 }, idsMencion.length > 0);
 
   const f = figuras.datos.find((x) => x.figura_id === figuraId) ?? null;
+  const { nombres } = useNombres();
   usePagina(f ? f.nombre : figuras.cargando ? 'Figura' : 'Figura no encontrada', [{ texto: 'Figuras', a: `${base}/figuras` }]);
 
   const total = figuras.datos.reduce((n, x) => n + (x.menciones ?? 0), 0);
@@ -114,6 +115,7 @@ export default function Figura() {
   const cargo = f ? cargoDe(f) : null;
   const subtitulo = f ? [cargo, typeof f.extra?.subtitulo === 'string' ? f.extra.subtitulo : null].filter(Boolean).join(' · ') : '';
   const meta = f ? [f.partido, f.coalicion, f.territorio, f.seguidores != null ? `${compacto(f.seguidores)} seguidores · medido el ${fecha(hoy, 'largo')}` : null].filter(Boolean).join(' · ') : '';
+  const responsable = f ? responsableDe(f, nombres) : null;
   const sinCorte = f ? f.periodo == null : false;
 
   return (
@@ -126,6 +128,7 @@ export default function Figura() {
               <div className="fg-nom"><h1>{f.nombre}</h1><span className={`chip ${rel.cls}`}>{f.relacion}</span></div>
               {subtitulo ? <p style={{ color: '#454E48' }}>{subtitulo}</p> : null}
               {meta ? <p className="mu">{meta}</p> : null}
+              {responsable ? <p className="mu">Responsable en la campaña: {responsable}</p> : null}
             </div>
             <div className="fg-acc">
               {puedeEditar && f.relacion !== 'Propia' ? (
@@ -169,7 +172,7 @@ export default function Figura() {
                 {comparacion.filas.length > 1 ? <Comparacion titulo={comparacion.titulo} filas={comparacion.filas} actual={f.figura_id} base={base} /> : null}
                 <div className="row">
                   <Cobertura f={f} />
-                  <ListaEventos eventos={eventosFigura} nombre={f.nombre} base={base} max={4} />
+                  <ListaEventos eventos={eventosFigura} nombre={corto(f)} base={base} max={4} />
                 </div>
                 {rol && !esCliente ? <Notas campanaId={cid} figuraId={f.figura_id} hoy={hoy} zona={campana.zona_horaria} puedeEditar={puedeEditar} /> : null}
               </div>
@@ -178,7 +181,7 @@ export default function Figura() {
             {pestana === 'temas' ? <TemasNarrativas temaFiguras={temaFig.datos} temas={temas.datos} narrativas={narrativas} base={base} /> : null}
             {pestana === 'publicaciones' ? <Publicaciones menciones={menciones.datos} enlaces={enlaces.datos} figuraId={f.figura_id} hoy={hoy} zona={campana.zona_horaria} base={base} /> : null}
             {pestana === 'audiencia' ? <Audiencia f={f} hoy={hoy} /> : null}
-            {pestana === 'eventos' ? <div className="row fade"><ListaEventos eventos={eventosFigura} nombre={f.nombre} base={base} /></div> : null}
+            {pestana === 'eventos' ? <div className="row fade"><ListaEventos eventos={eventosFigura} nombre={corto(f)} base={base} /></div> : null}
             {pestana === 'comparar' ? (
               <div className="col fade" style={{ gap: 12 }}>
                 <Comparacion titulo={`Todas las figuras · ${figuras.datos.length}`} filas={figuras.datos} actual={f.figura_id} base={base} />

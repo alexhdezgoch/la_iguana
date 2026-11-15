@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import { Vacio } from '../../shell/Estados';
 import { useTabla } from '../../lib/hooks';
-import { ESTADO_EVENTO, aFecha, diasEntre, fecha, neto, num } from '../../lib/formato';
+import { ESTADO_EVENTO, aFecha, corto, diasEntre, fecha, neto, num } from '../../lib/formato';
 import type { Evento } from '../../lib/tipos';
-import { CargaSeccion, apellido, enLista, plural, type Ctx } from './comun';
+import { CargaSeccion, enLista, plural, type Ctx } from './comun';
 
 const MES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
 
@@ -54,7 +54,7 @@ export default function SecEventos({ c }: { c: Ctx }) {
                     <th scope="col">Tipo y origen</th>
                     <th scope="col">Estado</th>
                     <th scope="col" className="r">Menciones</th>
-                    <th scope="col" className="r">{propia ? `Neto de ${apellido(propia.nombre)}` : 'Sentimiento neto'}</th>
+                    <th scope="col" className="r">{propia ? `Neto de ${corto(propia)}` : 'Sentimiento neto'}</th>
                     <th scope="col" className="r">Notas en medios</th>
                   </tr>
                 </thead>

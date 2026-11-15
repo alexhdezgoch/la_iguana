@@ -4,9 +4,10 @@ import { db } from '../../lib/db';
 import { fecha, rango } from '../../lib/formato';
 import { useAcciones } from '../../shell/Acciones';
 import { useCampana } from '../../shell/Campana';
-import { useFila } from '../../lib/hooks';
-import type { Evento, EventoMensaje, Narrativa, Persona } from '../../lib/tipos';
-import { errorTexto, origenTexto } from './util';
+import { Confirmar } from '../../shell/Estados';
+import { useTabla } from '../../lib/hooks';
+import type { Evento, EventoMensaje, Narrativa, PersonaVisible } from '../../lib/tipos';
+import { errorTexto, origenTexto, responsableEquipo, ventanasDe } from './util';
 
 function terminosDe(s: string): string[] {
   return s.split(',').map((t) => t.trim()).filter(Boolean);
@@ -42,7 +43,10 @@ export function Ficha({ evento, mensajes, narrativas, puedeEditar, guardando, ca
   const campana = useCampana();
   const { aviso } = useAcciones();
   const [editando, setEditando] = useState<string | null>(null); // id del mensaje, o 'nuevo'
-  const responsable = useFila<Persona>('personas', evento.responsable_id);
+  const [confirmando, setConfirmando] = useState<string | null>(null); // id del mensaje a quitar, o 'cancelar'
+  // Nombre visible del responsable: v_personas_campana sirve también al rol Cliente, que no lee personas.
+  const responsable = useTabla<PersonaVisible>('v_personas_campana', { eq: { id: evento.responsable_id ?? '' }, limite: 1 }, !!evento.responsable_id);
+  const { antes, despues } = ventanasDe(evento);
   const narrativa = narrativas.find((n) => n.id === evento.narrativa_id) ?? null;
   const region = typeof evento.extra?.estado_region === 'string' ? (evento.extra.estado_region as string) : null;
   const horaFin = typeof evento.extra?.hora_fin === 'string' ? (evento.extra.hora_fin as string) : null;
@@ -56,9 +60,9 @@ export function Ficha({ evento, mensajes, narrativas, puedeEditar, guardando, ca
     ['Ciudad y estado', [evento.ciudad, region].filter(Boolean).join(', ') || null],
     ['Objetivo', evento.objetivos],
     ['Narrativa a impulsar', narrativa?.nombre ?? null],
-    ['Ventana de medición', `${evento.ventana_horas} horas antes y ${evento.ventana_horas} horas después`],
+    ['Ventana de medición', `${antes} horas antes y ${despues} horas después`],
     ['Asistencia', evento.asistencia != null ? evento.asistencia.toLocaleString('en-US') + ' personas' : null],
-    ['Responsable', responsable.datos?.nombre ?? null],
+    ['Responsable', evento.responsable_id ? (responsable.datos[0]?.nombre_corto ?? 'Equipo de la campaña') : responsableEquipo(evento.extra)],
   ];
 
   async function guardarMensaje(texto: string, terminos: string[], m?: EventoMensaje) {
@@ -72,7 +76,7 @@ export function Ficha({ evento, mensajes, narrativas, puedeEditar, guardando, ca
     }
   }
   async function quitar(m: EventoMensaje) {
-    if (!window.confirm(`¿Quitar el mensaje "${m.texto}"?`)) return;
+    setConfirmando(null);
     try { await db.borrar('evento_mensajes', m.id); aviso('Mensaje quitado'); } catch (e) { aviso(errorTexto(e)); }
   }
 
@@ -91,7 +95,11 @@ export function Ficha({ evento, mensajes, narrativas, puedeEditar, guardando, ca
           ))}
         </div>
         {cancelable ? (
-          <div><button type="button" className="enlace-btn" disabled={guardando} onClick={cancelar}>Cancelar evento</button></div>
+          <div>
+            {confirmando === 'cancelar'
+              ? <Confirmar pregunta="¿Cancelar este evento? Se puede reprogramar después." si="Sí, cancelar" no="No, mantenerlo" ocupado={guardando} alConfirmar={() => { setConfirmando(null); cancelar(); }} alCancelar={() => setConfirmando(null)} />
+              : <button type="button" className="enlace-btn" disabled={guardando} onClick={() => setConfirmando('cancelar')}>Cancelar evento</button>}
+          </div>
         ) : null}
       </section>
 
@@ -104,12 +112,14 @@ export function Ficha({ evento, mensajes, narrativas, puedeEditar, guardando, ca
             ) : (
               <div className="li" key={m.id}>
                 <div className="gr"><span className="b">{m.texto}</span><span className="mu">{m.terminos.length ? `Términos: ${m.terminos.join(', ')}` : 'Sin términos de búsqueda'}</span></div>
-                {puedeEditar ? (
+                {puedeEditar ? (confirmando === m.id ? (
+                  <Confirmar pregunta="¿Quitar este mensaje?" si="Sí, quitar" alConfirmar={() => quitar(m)} alCancelar={() => setConfirmando(null)} />
+                ) : (
                   <div className="ev-mini">
                     <button type="button" className="enlace-btn" onClick={() => setEditando(m.id)} aria-label={`Editar ${m.texto}`}>Editar</button>
-                    {m.menciones == null ? <button type="button" className="enlace-btn" onClick={() => quitar(m)} aria-label={`Quitar ${m.texto}`}>Quitar</button> : null}
+                    {m.menciones == null ? <button type="button" className="enlace-btn" onClick={() => setConfirmando(m.id)} aria-label={`Quitar ${m.texto}`}>Quitar</button> : null}
                   </div>
-                ) : null}
+                )) : null}
               </div>
             ))}
           </div>

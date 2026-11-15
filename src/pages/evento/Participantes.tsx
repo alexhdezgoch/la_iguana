@@ -6,6 +6,7 @@ import { REL, iniciales, neto, num } from '../../lib/formato';
 import { useAcciones } from '../../shell/Acciones';
 import { useCampana } from '../../shell/Campana';
 import { Icono } from '../../shell/Iconos';
+import { Confirmar } from '../../shell/Estados';
 import type { Evento, EventoParticipante, FiguraCampana } from '../../lib/tipos';
 import { ROLES, errorTexto, midiendo } from './util';
 
@@ -19,6 +20,7 @@ export function Participantes({ evento, participantes, figuras, puedeEditar }: {
   const [figuraId, setFiguraId] = useState('');
   const [rol, setRol] = useState('Invitada/o');
   const [ocupado, setOcupado] = useState(false);
+  const [quitando, setQuitando] = useState<string | null>(null); // id del participante por confirmar
 
   const porFigura = new Map(figuras.map((f) => [f.figura_id, f]));
   const disponibles = figuras.filter((f) => !participantes.some((p) => p.figura_id === f.figura_id));
@@ -43,8 +45,8 @@ export function Participantes({ evento, participantes, figuras, puedeEditar }: {
   async function cambiarRol(p: EventoParticipante, nuevo: string) {
     try { await db.cambiar<EventoParticipante>('evento_participantes', p.id, { rol: nuevo }); aviso('Rol actualizado'); } catch (err) { aviso(errorTexto(err)); }
   }
-  async function quitar(p: EventoParticipante, nombre: string) {
-    if (!window.confirm(`¿Quitar a ${nombre} del evento?`)) return;
+  async function quitar(p: EventoParticipante) {
+    setQuitando(null);
     try { await db.borrar('evento_participantes', p.id); aviso('Participante quitado'); } catch (err) { aviso(errorTexto(err)); }
   }
 
@@ -119,7 +121,13 @@ export function Participantes({ evento, participantes, figuras, puedeEditar }: {
                     </td>
                     <td className="r">{p.menciones != null ? num(p.menciones) : <span className="mu">Sin medir</span>}</td>
                     <td className="r">{p.neto != null ? <span className={p.neto >= 0 ? 'b tf' : 'b tu'}>{neto(p.neto)}</span> : <span className="mu">Sin medir</span>}</td>
-                    {puedeEditar ? <td className="r"><button type="button" className="enlace-btn" onClick={() => quitar(p, nombre)} aria-label={`Quitar a ${nombre}`}>Quitar</button></td> : null}
+                    {puedeEditar ? (
+                      <td className="r">
+                        {quitando === p.id
+                          ? <Confirmar pregunta={`¿Quitar a ${nombre} del evento?`} si="Sí, quitar" alConfirmar={() => quitar(p)} alCancelar={() => setQuitando(null)} />
+                          : <button type="button" className="enlace-btn" onClick={() => setQuitando(p.id)} aria-label={`Quitar a ${nombre}`}>Quitar</button>}
+                      </td>
+                    ) : null}
                   </tr>
                 );
               })}

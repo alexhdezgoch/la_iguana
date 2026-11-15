@@ -61,18 +61,18 @@ LISTAS = [
 ]
 base_c = {'org_id': 'brujula', 'pais': 'Venezuela', 'fecha_corte': '2027-05-13', 'periodo_inicio': '2027-04-14',
           'periodo_fin': '2027-05-13', 'es_demo': True}
-add('campanas', dict(base_c, id='presidenciales', nombre='María Corina Machado', contienda='Presidenciales 2027',
+add('campanas', dict(base_c, id='presidenciales', nombre='María Corina Machado', nombre_corto='Presidenciales', contienda='Presidenciales 2027',
     titulo_largo='Presidenciales Venezuela 2027', iniciales='MM', ambito='Presidenciales', territorio='Venezuela',
     fase='Campaña', inicio_campana='2027-04-04', fin_campana='2027-06-02', veda_inicio='2027-06-03', veda_fin='2027-06-05',
     jornada='2027-06-06', figura_propia_id='machado', vista='completa', orden=1,
     extra={'nota_temas': 'El primer debate movió Economía y salarios. Desde el 4 de mayo crece Fecha electoral, por la mesa de diálogo.',
            'listas_destinatarios': LISTAS,
            'marca_cliente': {'nombre': 'Comando de campaña · Machado 2027', 'iniciales': 'MM'}}))
-add('campanas', dict(base_c, id='zulia', nombre='Gobernación del Zulia', contienda='Regionales 2027', titulo_largo='Gobernación del Zulia',
+add('campanas', dict(base_c, id='zulia', nombre='Gobernación del Zulia', nombre_corto='Zulia', contienda='Regionales 2027', titulo_largo='Gobernación del Zulia',
     iniciales='GZ', ambito='Regionales', territorio='Zulia', fase='Precampaña', figura_propia_id='rosales', vista='compacta', orden=2,
     extra={'nota_temas': 'El servicio eléctrico concentra casi un tercio de la conversación y es el tema que más crece: 38% en 48 horas en Maracaibo.',
            'avance_fase': 18}))
-add('campanas', dict(base_c, id='chacao', nombre='Alcaldía de Chacao', contienda='Municipales 2027', titulo_largo='Alcaldía de Chacao',
+add('campanas', dict(base_c, id='chacao', nombre='Alcaldía de Chacao', nombre_corto='Chacao', contienda='Municipales 2027', titulo_largo='Alcaldía de Chacao',
     iniciales='AC', ambito='Municipales', territorio='Chacao, Miranda', fase='Precampaña', figura_propia_id='duque', vista='compacta', orden=3,
     extra={'nota_temas': 'Movilidad es el tema con más volumen del periodo y el de la única alerta abierta de la campaña.',
            'avance_fase': 10}))
@@ -110,8 +110,11 @@ FIGS = [
     ('caldera', 'LC', 'Luis Caldera', 'Precandidato a gobernador', 'PSUV', None, {}),
     ('duque', 'GD', 'Gustavo Duque', 'Alcalde de Chacao', 'Fuerza Vecinal', None, {}),
 ]
+# Nombre corto para encabezados y columnas, como lo escribe la demo (Temas: "González U.", "D. Rodríguez").
+CORTO = {'machado': 'Machado', 'delcy-rodriguez': 'D. Rodríguez', 'jorge-rodriguez': 'J. Rodríguez', 'capriles': 'Capriles',
+         'gonzalez-urrutia': 'González U.', 'rosales': 'Rosales', 'guanipa': 'Guanipa', 'ecarri': 'Ecarri', 'caldera': 'Caldera', 'duque': 'Duque'}
 for fid, ini, nombre, cargo, partido, coal, extra in FIGS:
-    f = {'id': fid, 'org_id': 'brujula', 'iniciales': ini, 'nombre': nombre, 'cargo': cargo, 'partido': partido}
+    f = {'id': fid, 'org_id': 'brujula', 'iniciales': ini, 'nombre': nombre, 'nombre_corto': CORTO[fid], 'cargo': cargo, 'partido': partido}
     if coal: f['coalicion'] = coal
     if extra: f['extra'] = extra
     add('figuras', f)
@@ -516,6 +519,8 @@ for (mid, c, fu, ft, ca, en, ti, se, im, te, na, ev, rev, res, fig, otras) in M:
          'tema_id': te, 'narrativa_id': na, 'evento_id': ev, 'sentimiento': se, 'importancia': im, 'requiere_revision': True, 'revisada': rev,
          'estado': 'Procesada', 'origen': 'Ingesta'}
     if res: r['resumen'] = res
+    # Quién la revisó: la persona de Análisis de cada campaña (en chacao, quien la administra).
+    if rev: r['revisada_por'] = {'presidenciales': 'daniela', 'zulia': 'andres', 'chacao': 'lucia'}[c]
     add('menciones', r)
     add('mencion_figuras', {'id': f'{mid}-{fig}', 'campana_id': c, 'mencion_id': mid, 'figura_id': fig, 'sentimiento': se})
     for f2, s2 in otras:
@@ -628,7 +633,7 @@ AL = [
                   'evidencia': [ev_('El Pitazo', 'Medio digital', ts('2027-05-12', '17:15'), 'Crónica de la gira por Mérida y San Cristóbal', 180000, 'Neutral'),
                                 ev_('Cuenta pública', 'X', ts('2027-05-12', '18:05'), 'Publicaciones ciudadanas que comparten la nota', 36000, 'Favorable')],
                   'menciones_relacionadas': 640, 'contexto': {'texto': None, 'enlace': 'evento'},
-                  'nota_estado': 'Si el alcance sigue creciendo, vuelve antes a la bandeja.',
+                  'nota_estado': 'Si el alcance sigue creciendo, conviene retomarla antes de esa hora.',
                   'pasos': ['Agregar al reporte semanal', 'Compartir con el equipo de prensa']},
          orden=5,
          log=[(None, 'Se disparó la regla "Nota en medio destacado"', '17:20', '2027-05-12'), (None, 'Notificada en la app a 3 destinatarios', '17:20', '2027-05-12'),

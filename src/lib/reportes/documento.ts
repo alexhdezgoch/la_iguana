@@ -1,12 +1,12 @@
 // Documento de reporte: arma el contenido (misma forma que reporte_envios.contenido) a partir de los datos reales
 // de la campaña. Lo usan la vista previa de Reportes, "Enviar ahora" (guarda una copia) y el panel Descargar reporte.
 // Aquí no hay cifras ni nombres escritos: todo sale de las tablas. Lo que no existe queda como sección vacía.
-import { db } from '../../lib/db';
-import { compacto, diaEn, diasEntre, fecha, neto, num, pct, rango } from '../../lib/formato';
+import { db } from '../db';
+import { compacto, diaEn, diasEntre, fecha, neto, num, pct, rango } from '../formato';
 import {
   ALERTAS_ABIERTAS, type Alerta, type Campana, type Evento, type EventoMensaje, type EventoParticipante, type FiguraCampana,
   type Mencion, type Narrativa, type NotaInterna, type Tema,
-} from '../../lib/tipos';
+} from '../tipos';
 
 // ---------- forma del contenido ----------
 export interface ItemDoc {

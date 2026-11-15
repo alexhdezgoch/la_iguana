@@ -13,17 +13,19 @@ export interface Persona {
   id: string; org_id: string; nombre: string; nombre_corto: N<string>; iniciales: N<string>; email: N<string>; puesto: N<string>;
   rol_org: 'admin' | 'miembro' | 'externo'; activa: boolean; extra: Json;
 }
+/** Vista v_personas_campana: nombre visible de quienes integran las campañas que ves. Sirve también al rol Cliente, que no lee `personas`. */
+export interface PersonaVisible { id: string; nombre_corto: string; iniciales: N<string> }
 export interface Borrador { id: string; org_id: string; persona_id: string; tipo: string; datos: Json; actualizado_en: string }
 
 export interface Campana {
-  id: string; org_id: string; nombre: string; contienda: N<string>; titulo_largo: N<string>; iniciales: N<string>; ambito: N<string>;
+  id: string; org_id: string; nombre: string; nombre_corto: N<string>; contienda: N<string>; titulo_largo: N<string>; iniciales: N<string>; ambito: N<string>;
   pais: N<string>; territorio: N<string>; fase: string; inicio_campana: N<string>; fin_campana: N<string>; veda_inicio: N<string>;
   veda_fin: N<string>; jornada: N<string>; fecha_corte: N<string>; zona_horaria: string; periodo_inicio: N<string>; periodo_fin: N<string>;
   figura_propia_id: N<string>; vista: 'completa' | 'compacta'; es_demo: boolean; estado: string; orden: number; extra: Json;
 }
 /** Vista v_campanas_resumen: la campaña más las cifras de su figura propia y sus pendientes. */
 export interface CampanaResumen {
-  id: string; campana_id: string; org_id: string; nombre: string; contienda: N<string>; titulo_largo: N<string>; iniciales: N<string>;
+  id: string; campana_id: string; org_id: string; nombre: string; nombre_corto: N<string>; contienda: N<string>; titulo_largo: N<string>; iniciales: N<string>;
   ambito: N<string>; fase: string; vista: 'completa' | 'compacta'; es_demo: boolean; orden: number;
   inicio_campana: N<string>; fin_campana: N<string>; veda_inicio: N<string>; veda_fin: N<string>; jornada: N<string>; fecha_corte: N<string>; zona_horaria: string;
   figura_propia_id: N<string>; figura_propia: N<string>;
@@ -36,7 +38,7 @@ export interface CampanaFase { id: string; campana_id: string; nombre: string; i
 export interface Cuenta { red: string; usuario: string; seguidores?: number | null; verificada?: boolean }
 /** La persona pública, una vez por equipo. */
 export interface Figura {
-  id: string; org_id: string; nombre: string; iniciales: N<string>; cargo: N<string>; partido: N<string>; coalicion: N<string>;
+  id: string; org_id: string; nombre: string; nombre_corto: N<string>; iniciales: N<string>; cargo: N<string>; partido: N<string>; coalicion: N<string>;
   territorio: N<string>; tipo: N<string>; cuentas: Cuenta[]; trayectoria: N<string>; extra: Json;
 }
 /** Vínculo figura–campaña. */
@@ -46,7 +48,7 @@ export interface CampanaFigura {
 /** Vista v_figuras_campana: figura + relación en la campaña + corte de 30 días. Es lo que casi todas las pantallas necesitan. */
 export interface FiguraCampana {
   id: string; campana_id: string; figura_id: string; relacion: Relacion; orden: number; responsable_id: N<string>; extra_campana: Json;
-  org_id: string; nombre: string; iniciales: N<string>; cargo: N<string>; partido: N<string>; coalicion: N<string>; territorio: N<string>;
+  org_id: string; nombre: string; nombre_corto: N<string>; iniciales: N<string>; cargo: N<string>; partido: N<string>; coalicion: N<string>; territorio: N<string>;
   tipo: N<string>; cuentas: Cuenta[]; trayectoria: N<string>; extra: Json;
   periodo: N<string>; menciones: number; participacion: N<number>; favorable: N<number>; neutral: N<number>; desfavorable: N<number>;
   neto: N<number>; alcance: N<number>; seguidores: N<number>; interaccion: N<number>; notas_medios: N<number>; riesgo: N<number>;
@@ -102,7 +104,7 @@ export interface Mencion {
   url: N<string>; publicada_en: N<string>; figura_id: N<string>; tema_id: N<string>; narrativa_id: N<string>; evento_id: N<string>;
   sentimiento: N<Sentimiento>; sentimiento_manual: N<Sentimiento>; importancia: N<'alto' | 'medio' | 'bajo'>; alcance: N<number>;
   interacciones: N<number>; requiere_revision: boolean; revisada: boolean; revisada_por: N<string>; revisada_en: N<string>;
-  estado: 'Por procesar' | 'Procesada' | 'Descartada'; origen: 'Ingesta' | 'Manual'; extra: Json;
+  estado: 'Por procesar' | 'Procesada' | 'Descartada'; origen: 'Ingesta' | 'Manual'; extra: Json; creada_en: string;
 }
 export interface MencionFigura {
   id: string; campana_id: string; mencion_id: string; figura_id: string; sentimiento: N<Sentimiento>; sentimiento_manual: N<Sentimiento>;

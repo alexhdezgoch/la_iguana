@@ -13,7 +13,7 @@ import { diaEn, fecha, rango } from '../lib/formato';
 import type { Evento, Persona, Reporte, ReporteEnvio, ReportePlantilla } from '../lib/tipos';
 import { Editor } from './reportes/Editor';
 import { VerEnvio } from './reportes/VerEnvio';
-import type { Contenido, SeccionCfg } from './reportes/documento';
+import type { Contenido, SeccionCfg } from '../lib/reportes/documento';
 import { COLA, ESTADO_ENVIO, aLas, descripcionDe, enDias, gmt, listasDe, momento, nombreDest, periodoEnvio, ponerEnCola, resumenDest } from './reportes/util';
 import './Reportes.css';
 

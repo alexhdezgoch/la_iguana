@@ -43,9 +43,10 @@ $$;
 -- Crea una campaña completa en una sola transacción y deja a quien la crea como Administración.
 -- p = {
 --   org_id,
---   campana:  { nombre, contienda, titulo_largo, iniciales, ambito, pais, territorio, fase, inicio_campana, fin_campana, veda_inicio, veda_fin, jornada, extra },
+--   campana:  { nombre, nombre_corto?, contienda, titulo_largo, iniciales, ambito, pais, territorio, fase, inicio_campana, fin_campana, veda_inicio, veda_fin, jornada,
+--               zona_horaria? (por defecto America/Caracas), extra },
 --   fases:    [ { nombre, inicio, fin } ],
---   figuras:  [ { figura_id } | { nueva: { nombre, iniciales, cargo, partido, coalicion, territorio, tipo, cuentas, trayectoria } }, cada una con relacion y terminos: [ { texto, tipo } ] ],
+--   figuras:  [ { figura_id } | { nueva: { nombre, nombre_corto?, iniciales, cargo, partido, coalicion, territorio, tipo, cuentas, trayectoria } }, cada una con relacion y terminos: [ { texto, tipo } ] ],
 --   terminos: [ { texto, tipo } ],                      -- de la campaña (incluye exclusiones)
 --   equipo:   [ { persona_id, rol } | { nombre, email, rol } ]
 -- }
@@ -68,12 +69,14 @@ begin
     raise exception 'Falta el nombre de la campaña' using errcode = '22023';
   end if;
 
-  insert into public.campanas (org_id, nombre, contienda, titulo_largo, iniciales, ambito, pais, territorio, fase,
-    inicio_campana, fin_campana, veda_inicio, veda_fin, jornada, extra, creada_por, orden)
-  values (v_org, trim(c->>'nombre'), c->>'contienda', coalesce(c->>'titulo_largo', c->>'contienda'), c->>'iniciales', c->>'ambito', c->>'pais', c->>'territorio',
+  insert into public.campanas (org_id, nombre, nombre_corto, contienda, titulo_largo, iniciales, ambito, pais, territorio, fase,
+    inicio_campana, fin_campana, veda_inicio, veda_fin, jornada, zona_horaria, extra, creada_por, orden)
+  values (v_org, trim(c->>'nombre'), nullif(trim(c->>'nombre_corto'), ''), c->>'contienda', coalesce(c->>'titulo_largo', c->>'contienda'), c->>'iniciales', c->>'ambito', c->>'pais', c->>'territorio',
     coalesce(nullif(c->>'fase', ''), 'Precampaña'),
     nullif(c->>'inicio_campana', '')::date, nullif(c->>'fin_campana', '')::date, nullif(c->>'veda_inicio', '')::date,
-    nullif(c->>'veda_fin', '')::date, nullif(c->>'jornada', '')::date, coalesce(c->'extra', '{}'::jsonb), v_yo,
+    nullif(c->>'veda_fin', '')::date, nullif(c->>'jornada', '')::date,
+    coalesce(nullif(trim(c->>'zona_horaria'), ''), nullif(trim(c->'extra'->>'zona_horaria'), ''), 'America/Caracas'),
+    coalesce(c->'extra', '{}'::jsonb) - 'zona_horaria', v_yo,
     (select coalesce(max(orden), 0) + 1 from public.campanas where org_id = v_org))
   returning id into v_id;
 
@@ -94,8 +97,8 @@ begin
         raise exception 'La figura % no es de este equipo', v_fig using errcode = '22023';
       end if;
     else
-      insert into public.figuras (org_id, nombre, iniciales, cargo, partido, coalicion, territorio, tipo, cuentas, trayectoria)
-      values (v_org, f->'nueva'->>'nombre', f->'nueva'->>'iniciales', f->'nueva'->>'cargo', f->'nueva'->>'partido', f->'nueva'->>'coalicion',
+      insert into public.figuras (org_id, nombre, nombre_corto, iniciales, cargo, partido, coalicion, territorio, tipo, cuentas, trayectoria)
+      values (v_org, f->'nueva'->>'nombre', nullif(trim(f->'nueva'->>'nombre_corto'), ''), f->'nueva'->>'iniciales', f->'nueva'->>'cargo', f->'nueva'->>'partido', f->'nueva'->>'coalicion',
         f->'nueva'->>'territorio', f->'nueva'->>'tipo', coalesce(f->'nueva'->'cuentas', '[]'::jsonb), f->'nueva'->>'trayectoria')
       returning id into v_fig;
     end if;

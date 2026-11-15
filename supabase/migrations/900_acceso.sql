@@ -61,6 +61,23 @@ language sql stable security definer set search_path = public as $$
   end;
 $$;
 
+-- Nombres visibles del equipo para quien no puede leer `personas` (rol Cliente, invitados externos):
+-- solo id, nombre corto e iniciales de quienes son miembros de alguna campaña que quien consulta ve,
+-- más quienes administran el equipo de esas campañas (son Administración en todas). Nada más de la persona.
+create or replace function public.personas_de_mis_campanas()
+returns table (id text, nombre_corto text, iniciales text)
+language sql stable security definer set search_path = public as $$
+  select p.id, coalesce(p.nombre_corto, p.nombre), p.iniciales
+  from public.personas p
+  where p.activa and (
+    p.id in (select m.persona_id from public.miembros_campana m where m.campana_id in (select public.campanas_visibles()))
+    or (p.rol_org = 'admin' and p.org_id in (select c.org_id from public.campanas c where c.id in (select public.campanas_visibles())))
+  );
+$$;
+-- La app la lee como tabla: useTabla('v_personas_campana').
+create view public.v_personas_campana with (security_invoker = true) as
+  select * from public.personas_de_mis_campanas();
+
 -- Al crear una cuenta, se enlaza con la persona que tenga ese correo.
 create or replace function public.al_crear_usuario() returns trigger
 language plpgsql security definer set search_path = public as $$

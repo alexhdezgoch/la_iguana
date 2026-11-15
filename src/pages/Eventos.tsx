@@ -5,7 +5,7 @@ import { hoyDe, useCampana, usePagina, useRol } from '../shell/Campana';
 import { Carga, Vacio } from '../shell/Estados';
 import { Icono } from '../shell/Iconos';
 import { useTabla } from '../lib/hooks';
-import { ESTADO_EVENTO, aFecha, compacto, diasEntre, fecha, neto, num, rango } from '../lib/formato';
+import { ESTADO_EVENTO, aFecha, compacto, corto, diasEntre, fecha, neto, num, rango } from '../lib/formato';
 import type { Evento, EstadoEvento, FiguraCampana } from '../lib/tipos';
 import './Eventos.css';
 
@@ -17,12 +17,6 @@ const GRUPO: Record<EstadoEvento, Grupo> = {
 /** Valor de ?estado= en la URL. */
 const CLAVE: Record<Grupo, string> = { Activos: 'activos', 'Por venir': 'por-venir', Cerrados: 'cerrados' };
 const ORIGEN: Record<string, [string, string]> = { Propio: ['propio', 'propios'], 'De rival': ['de rival', 'de rivales'], Institucional: ['institucional', 'institucionales'] };
-
-/** Alcance como en la demo: 800,000 → "0.8 M"; por debajo de 100 mil, el formato compacto. */
-function alcance(n: number | null): string {
-  if (n == null) return 'Sin datos';
-  return n >= 100_000 ? (n / 1_000_000).toFixed(1) + ' M' : compacto(n);
-}
 
 function dias(n: number) { return `${n} ${n === 1 ? 'día' : 'días'}`; }
 
@@ -82,8 +76,8 @@ export default function Eventos() {
   const propiaId = campana.figura_propia_id;
   const propia = useTabla<FiguraCampana>('v_figuras_campana', { eq: { campana_id: cid, figura_id: propiaId ?? '' }, limite: 1 }, !!propiaId);
   const nombrePropia = propia.datos[0]?.nombre ?? null;
-  // Encabezado corto como en la demo ("Neto de Machado"): último nombre, con el completo en el title.
-  const cortoPropia = nombrePropia ? nombrePropia.trim().split(/\s+/).pop() : null;
+  // Encabezado corto como en la demo ("Neto de Machado"): figuras.nombre_corto, con el nombre completo en el title.
+  const cortoPropia = propia.datos[0] ? corto(propia.datos[0]) : null;
 
   const todos = ordenar(eventos.datos);
   const de = (g: Grupo) => todos.filter((e) => GRUPO[e.estado] === g);
@@ -198,7 +192,7 @@ function Fila({ e, hoy, base }: { e: Evento; hoy: string; base: string }) {
         {nota ? <div className="mu ev-nota">{nota}</div> : null}
       </td>
       <td className={nc(e.menciones)}>{num(e.menciones)}</td>
-      <td className={nc(e.alcance)}>{alcance(e.alcance)}</td>
+      <td className={nc(e.alcance)}>{compacto(e.alcance)}</td>
       <td className="r nw"><span className={e.neto == null ? 'mu' : e.neto >= 0 ? 'b tf' : 'b tu'}>{neto(e.neto)}</span></td>
       <td className={nc(e.notas_medios)}>{num(e.notas_medios)}</td>
     </tr>

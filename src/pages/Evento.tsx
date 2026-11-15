@@ -13,7 +13,7 @@ import type { Evento as EventoFila, EventoMensaje, EventoParticipante, FiguraCam
 import { Ficha } from './evento/Ficha';
 import { Participantes } from './evento/Participantes';
 import { Resultados } from './evento/Resultados';
-import { SIGUIENTE, TABS, diaDe, errorTexto, midiendo, notaPara, origenTexto, type Tab } from './evento/util';
+import { SIGUIENTE, TABS, diaDe, errorTexto, midiendo, notaPara, origenTexto, ventanaTexto, type Tab } from './evento/util';
 import './Evento.css';
 
 export default function Evento() {
@@ -59,7 +59,7 @@ export default function Evento() {
     ? (varios ? rango(evento.fecha_inicio, evento.fecha_fin) + ' de ' + evento.fecha_inicio.slice(0, 4) : fecha(evento.fecha_inicio, 'completo'))
     : 'Sin fecha';
   const lugar = [evento.sede, evento.ciudad].filter(Boolean).join(', ');
-  const sub = [cuandoTxt, lugar, `ventana de ${evento.ventana_horas} horas antes y después`].filter(Boolean).join(' · ');
+  const sub = [cuandoTxt, lugar, `ventana de ${ventanaTexto(evento)}`].filter(Boolean).join(' · ');
   const dia = evento.estado === 'En curso' ? diaDe(evento, hoy) : null;
   const faltan = evento.fecha_inicio ? diasEntre(hoy, evento.fecha_inicio) : null;
   let marca: string | null = null;
@@ -73,7 +73,6 @@ export default function Evento() {
   async function cambiarEstado(nuevo: EventoFila['estado']) {
     if (!evento) return;
     if (nuevo === 'Programado' && !evento.fecha_inicio) { aviso('Falta la fecha del evento para programarlo.'); return; }
-    if (nuevo === 'Cancelado' && !window.confirm('¿Cancelar este evento? Se puede reprogramar después.')) return;
     setGuardando(true);
     try {
       await db.cambiar<EventoFila>('eventos', evento.id, { estado: nuevo, nota_estado: notaPara(nuevo, evento.nota_estado) });

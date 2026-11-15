@@ -4,7 +4,8 @@ import { useState } from 'react';
 import { db } from '../../lib/db';
 import { useTabla } from '../../lib/hooks';
 import { cuando } from '../../lib/formato';
-import type { NotaInterna, Persona } from '../../lib/tipos';
+import type { NotaInterna, PersonaVisible } from '../../lib/tipos';
+import { Confirmar } from '../../shell/Estados';
 import { useSesion } from '../../shell/Sesion';
 import { useAcciones } from '../../shell/Acciones';
 
@@ -15,12 +16,13 @@ export function Notas({ campanaId, figuraId, hoy, zona, puedeEditar }: Props) {
   const { aviso } = useAcciones();
   const notas = useTabla<NotaInterna>('notas_internas', { eq: { campana_id: campanaId, entidad: 'figura', entidad_id: figuraId }, orden: [['creada_en', 'desc']] });
   const autorIds = [...new Set(notas.datos.map((n) => n.autor_id).filter((x): x is string => !!x))];
-  const autores = useTabla<Persona>('personas', { eq: { id: autorIds } }, autorIds.length > 0);
+  const autores = useTabla<PersonaVisible>('v_personas_campana', { eq: { id: autorIds } }, autorIds.length > 0);
   const [texto, setTexto] = useState('');
   const [editando, setEditando] = useState<{ id: string; texto: string } | null>(null);
   const [ocupado, setOcupado] = useState(false);
+  const [borrando, setBorrando] = useState<string | null>(null); // id de la nota por confirmar
 
-  const nombre = (id: string | null) => autores.datos.find((p) => p.id === id)?.nombre ?? 'Alguien del equipo';
+  const nombre = (id: string | null) => autores.datos.find((p) => p.id === id)?.nombre_corto ?? 'Alguien del equipo';
 
   async function guardar() {
     const t = texto.trim();
@@ -48,7 +50,7 @@ export function Notas({ campanaId, figuraId, hoy, zona, puedeEditar }: Props) {
     } finally { setOcupado(false); }
   }
   async function borrar(id: string) {
-    if (!window.confirm('¿Borrar esta nota? No se puede deshacer.')) return;
+    setBorrando(null);
     try {
       await db.borrar('notas_internas', id);
       aviso('Nota borrada');
@@ -92,10 +94,12 @@ export function Notas({ campanaId, figuraId, hoy, zona, puedeEditar }: Props) {
                     </>
                   ) : <p className="fg-txt">{n.texto}</p>}
                 </div>
-                {puedeEditar && mia && !enEdicion ? (
+                {puedeEditar && mia && !enEdicion && borrando === n.id ? (
+                  <Confirmar pregunta="¿Borrar esta nota? No se puede deshacer." si="Sí, borrar" alConfirmar={() => borrar(n.id)} alCancelar={() => setBorrando(null)} />
+                ) : puedeEditar && mia && !enEdicion ? (
                   <div className="fg-acc">
                     <button type="button" className="enlace-btn" onClick={() => setEditando({ id: n.id, texto: n.texto })}>Editar</button>
-                    <button type="button" className="enlace-btn" onClick={() => borrar(n.id)}>Borrar</button>
+                    <button type="button" className="enlace-btn" onClick={() => setBorrando(n.id)}>Borrar</button>
                   </div>
                 ) : null}
               </div>

@@ -6,7 +6,7 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import './AgregarFigura.css';
 import { db } from '../lib/db';
 import { useTabla } from '../lib/hooks';
-import { REL, iniciales, num } from '../lib/formato';
+import { REL, iniciales, num, sugerirNombreCorto } from '../lib/formato';
 import type { CampanaFigura, Cuenta, Figura, FiguraCampana, Relacion } from '../lib/tipos';
 import { useCampana, useCampanas, usePagina } from '../shell/Campana';
 import { useSesion } from '../shell/Sesion';
@@ -166,7 +166,7 @@ export default function AgregarFigura() {
       const nombre = f.nombre.trim();
       const limpio = (s: string) => s.trim() || null;
       const fig = await db.crear<Figura>('figuras', {
-        org_id: campana.org_id, nombre, iniciales: iniciales(nombre) || null,
+        org_id: campana.org_id, nombre, nombre_corto: sugerirNombreCorto(nombre, figuras.datos), iniciales: iniciales(nombre) || null,
         cargo: limpio(f.cargo), partido: limpio(f.partido), coalicion: limpio(f.coalicion), territorio: limpio(f.territorio), tipo: f.tipo,
         cuentas, extra: { persona_publica: { confirmada_por: persona?.id ?? null, en: new Date().toISOString() } },
       });

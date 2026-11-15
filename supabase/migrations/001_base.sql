@@ -59,6 +59,7 @@ create table public.campanas (
   id text primary key default public.nuevo_id(),
   org_id text not null references public.organizaciones(id) on delete cascade,
   nombre text not null,                 -- "María Corina Machado"
+  nombre_corto text,                    -- "Presidenciales", para filtros y chips; null = se usa nombre
   contienda text,                       -- "Presidenciales 2027"
   titulo_largo text,                    -- "Presidenciales Venezuela 2027"
   iniciales text,
@@ -115,6 +116,7 @@ create table public.figuras (
   id text primary key default public.nuevo_id(),
   org_id text not null references public.organizaciones(id) on delete cascade,
   nombre text not null,
+  nombre_corto text,                    -- "Machado", "D. Rodríguez", para encabezados; null = se usa nombre
   iniciales text,
   cargo text,
   partido text,

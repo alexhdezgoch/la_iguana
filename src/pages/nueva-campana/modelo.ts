@@ -1,7 +1,7 @@
 // Modelo del asistente de nueva campaña: forma del borrador (borradores.datos), validación por paso
 // y armado del parámetro de crear_campana (supabase/migrations/850_funciones.sql).
 // Solo catálogos de interfaz y reglas: ningún dato de ejemplo vive aquí.
-import { diasEntre, fecha, iniciales } from '../../lib/formato';
+import { diasEntre, fecha, iniciales, sugerirNombreCorto } from '../../lib/formato';
 import type { Relacion, RolCampana } from '../../lib/tipos';
 
 export interface TerminoB { texto: string; tipo: string }
@@ -192,7 +192,8 @@ export function problemas(d: DatosB, hoy: string, nombreDe: (f: FiguraB) => stri
 }
 
 // ---------- crear_campana ----------
-export function parametro(d: DatosB, orgId: string, yo: string | null, hoy: string) {
+/** `otras`: figuras del directorio del equipo, para sugerir un nombre corto que no se repita ("D. Rodríguez"). */
+export function parametro(d: DatosB, orgId: string, yo: string | null, hoy: string, otras: Array<{ nombre: string; nombre_corto?: string | null }> = []) {
   const fases = d.fases.filter((p) => p.nombre);
   const de = (n: string) => fases.find((p) => p.nombre === n);
   const camp = de('Campaña'), veda = de('Veda');
@@ -203,6 +204,9 @@ export function parametro(d: DatosB, orgId: string, yo: string | null, hoy: stri
     org_id: orgId,
     campana: {
       nombre,
+      // Nombre corto para filtros y chips ("Zulia", "Chacao", "Presidenciales"): el municipio, el estado o el ámbito.
+      nombre_corto: d.campana.municipio.trim() || d.campana.estado.trim() || (d.campana.tipo_eleccion === 'Presidencial' ? ambito : null),
+      zona_horaria: d.campana.zona_horaria || 'America/Caracas',
       contienda: [ambito, anio].filter(Boolean).join(' '),
       titulo_largo: nombre,
       iniciales: inicialesCampana(nombre),
@@ -219,7 +223,6 @@ export function parametro(d: DatosB, orgId: string, yo: string | null, hoy: stri
         tipo_eleccion: d.campana.tipo_eleccion,
         estado: d.campana.estado || null,
         municipio: d.campana.municipio || null,
-        zona_horaria: d.campana.zona_horaria,
         temas: d.temas,
       },
     },
@@ -227,7 +230,7 @@ export function parametro(d: DatosB, orgId: string, yo: string | null, hoy: stri
     figuras: figurasOrdenadas(d.figuras).map((f) => ({
       ...(f.figura_id
         ? { figura_id: f.figura_id }
-        : { nueva: { nombre: f.nueva!.nombre.trim(), iniciales: iniciales(f.nueva!.nombre), partido: f.nueva!.partido?.trim() || null, cargo: f.nueva!.cargo?.trim() || null } }),
+        : { nueva: { nombre: f.nueva!.nombre.trim(), nombre_corto: sugerirNombreCorto(f.nueva!.nombre, otras), iniciales: iniciales(f.nueva!.nombre), partido: f.nueva!.partido?.trim() || null, cargo: f.nueva!.cargo?.trim() || null } }),
       relacion: f.relacion,
       terminos: f.terminos.map((t) => ({ texto: t.texto, tipo: t.tipo })),
     })),

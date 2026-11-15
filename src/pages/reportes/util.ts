@@ -1,9 +1,9 @@
 // Ayudas de Reportes: destinatarios, marca, programación y fechas relativas al "hoy" de la campaña.
 import { db } from '../../lib/db';
 import { diaEn, diasEntre, fecha, horaEn } from '../../lib/formato';
-import type { Campana, Json, Organizacion, Persona, Reporte, ReporteEnvio } from '../../lib/tipos';
-import type { Marca } from './Documento';
-import { DIAS_SEMANA, cargarDatos, construir, type Contenido, type SeccionCfg } from './documento';
+import type { Campana, Json, Persona, Reporte, ReporteEnvio } from '../../lib/tipos';
+import { DIAS_SEMANA, cargarDatos, construir, type Contenido, type SeccionCfg } from '../../lib/reportes/documento';
+export { marcaDe, pieDe } from '../../lib/reportes/marca';
 
 export const ESTADO_ENVIO: Record<string, string> = {
   Entregado: 'chip live', 'Envío parcial': 'chip warn', 'En revisión': 'chip ring', Borrador: 'chip watch', Fallido: 'chip unf', 'Pendiente de envío': 'chip ring',
@@ -38,16 +38,6 @@ export function resumenDest(dest: Json[], listas: Lista[], personas: Persona[]):
   const nombres = (dest as Destinatario[]).map((d) => (d.lista ? listas.find((l) => l.id === d.lista)?.nombre ?? d.lista : nombreDest(d, listas, personas).nombre));
   const texto = nombres.length > 1 ? `${nombres.slice(0, -1).join(', ')} y ${nombres[nombres.length - 1]}` : nombres[0];
   return `${contarDest(dest, listas)} · ${texto}`;
-}
-
-export function marcaDe(m: string | undefined, c: Campana, org: Organizacion | null): Marca {
-  const cli = c.extra?.marca_cliente;
-  if (m === 'Cliente') return { iniciales: cli?.iniciales ?? c.iniciales ?? '', nombre: cli?.nombre ?? c.nombre };
-  return { iniciales: org?.iniciales ?? '', nombre: org?.nombre ?? 'Equipo' };
-}
-export function pieDe(m: string | undefined, confidencial: boolean, c: Campana, org: Organizacion | null): string {
-  const quien = m === 'Cliente' ? marcaDe('Cliente', c, org).nombre : `Preparado por ${org?.nombre ?? 'el equipo'}`;
-  return [confidencial ? 'Confidencial' : null, quien, c.es_demo ? 'cifras ilustrativas' : null].filter(Boolean).join(' · ');
 }
 
 // ---------- fechas ----------
