@@ -61,6 +61,18 @@ await espera('analista ve el directorio de figuras del equipo', 'analista', cuen
 await espera('cliente ve solo las figuras de su campaña', 'cliente', cuenta('select 1 from figuras'), n(8));
 await espera('cliente ve alertas de su campaña', 'cliente', cuenta('select 1 from alertas'), alguno);
 await espera('cliente solo se ve a sí mismo en personas', 'cliente', cuenta('select 1 from personas'), n(1));
+// Nombres del equipo (v_personas_campana): solo id, nombre corto e iniciales de miembros de campañas visibles.
+await espera('cliente ve los nombres del equipo de su campaña', 'cliente', async (c) => {
+  const r = await c.query('select * from v_personas_campana order by id');
+  const ids = r.rows.map((x) => x.id);
+  const cols = r.fields.map((f) => f.name).sort().join(',');
+  return JSON.stringify({ cols, lucia: ids.includes('lucia'), carla: ids.includes('carla'), yo: ids.includes('rig-cliente'), valentina: ids.includes('valentina') });
+}, (r) => r.ok && r.valor === JSON.stringify({ cols: 'id,iniciales,nombre_corto', lucia: true, carla: true, yo: true, valentina: false }));
+// Fuera de los miembros de presidenciales solo puede aparecer quien administra el equipo (rig-admin).
+await espera('cliente no ve nombres de personas fuera de su campaña', 'cliente', cuenta(`select 1 from v_personas_campana v
+  where v.id not in (select persona_id from miembros_campana where campana_id = 'presidenciales') and v.id <> 'rig-admin'`), n(0));
+await espera('ajeno no ve nombres del equipo de Brújula', 'ajeno', cuenta('select 1 from v_personas_campana'), n(0));
+await espera('anónimo no lee nombres del equipo', 'anon', cuenta('select 1 from v_personas_campana'), nada);
 
 // ---------- notas internas ----------
 const nota = `insert into notas_internas (campana_id, entidad, entidad_id, texto) values ('presidenciales', 'figura', 'machado', 'nota de prueba')`;
@@ -117,6 +129,14 @@ await espera('analista crea una campaña completa y queda como Administración',
     mi_rol($1) as rol`, [id]);
   return JSON.stringify(r.rows[0]);
 }, (r) => r.ok && r.valor === JSON.stringify({ figuras: 2, terminos: 2, miembros: 3, propia: 'rosales', rol: 'Administración' }));
+await espera('crear_campana guarda zona horaria y nombres cortos', 'analista', async (c) => {
+  const p = JSON.stringify({ org_id: 'brujula', campana: { nombre: 'Campaña Z', nombre_corto: 'Z', zona_horaria: 'America/Bogota' }, figuras: [{ nueva: { nombre: 'Figura Z', nombre_corto: 'Z.' }, relacion: 'Propia' }] });
+  const id = (await c.query('select crear_campana($1::jsonb) as id', [p])).rows[0].id;
+  const r = await c.query(`select c.zona_horaria, c.nombre_corto, f.nombre_corto as fig from campanas c join figuras f on f.id = c.figura_propia_id where c.id = $1`, [id]);
+  const id2 = (await c.query('select crear_campana($1::jsonb) as id', [JSON.stringify({ org_id: 'brujula', campana: { nombre: 'Campaña sin zona' } })])).rows[0].id;
+  const d = (await c.query('select zona_horaria from campanas where id = $1', [id2])).rows[0].zona_horaria;
+  return JSON.stringify({ ...r.rows[0], defecto: d });
+}, (r) => r.ok && r.valor === JSON.stringify({ zona_horaria: 'America/Bogota', nombre_corto: 'Z', fig: 'Z.', defecto: 'America/Caracas' }));
 await espera('cliente no crea campañas', 'cliente', async (c) => (await c.query('select crear_campana($1::jsonb)', [nueva])).rowCount, rechaza);
 await espera('ajeno no crea campañas en Brújula', 'ajeno', async (c) => (await c.query('select crear_campana($1::jsonb)', [nueva])).rowCount, rechaza);
 await espera('analista no invita personas', 'analista', async (c) => (await c.query(`select invitar_persona('presidenciales', 'X', 'x@x.test', 'Cliente')`)).rowCount, rechaza);
