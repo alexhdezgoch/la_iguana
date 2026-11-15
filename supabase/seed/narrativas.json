@@ -7,9 +7,115 @@
   "nombre": "Que vuelvan a casa",
   "direccion": "Favorable",
   "menciones": 14300,
+  "menciones_24h": 640,
+  "cambio_24h": 6,
+  "cambio_7d": 18,
   "tendencia": "En aumento",
-  "cambio_24h": null,
-  "orden": 1
+  "detectada_el": "2027-04-16",
+  "veces_promedio": null,
+  "alcance": 3400000,
+  "cuentas_unicas": 9800,
+  "neto": 58,
+  "estado": "Activa",
+  "seguida": false,
+  "descripcion": "El plan de retorno de migrantes como promesa central de la campaña.",
+  "resumen": "Agrupa las menciones que asocian a la figura con el regreso de los venezolanos en el exterior y con su plan de retorno. Creció con la gira por los Andes, que empezó el 10 de mayo. Es la narrativa favorable más grande del periodo.",
+  "resumen_aprobado": true,
+  "orden": 1,
+  "detalle": {
+   "canales": [
+    {
+     "canal": "X",
+     "porcentaje": 34
+    },
+    {
+     "canal": "Facebook",
+     "porcentaje": 22
+    },
+    {
+     "canal": "TikTok",
+     "porcentaje": 19
+    },
+    {
+     "canal": "Instagram",
+     "porcentaje": 13
+    },
+    {
+     "canal": "Medios",
+     "porcentaje": 8
+    },
+    {
+     "canal": "YouTube",
+     "porcentaje": 4
+    }
+   ],
+   "impulsores": [
+    {
+     "figura_id": "machado",
+     "porcentaje": 9
+    },
+    {
+     "figura_id": "gonzalez-urrutia",
+     "porcentaje": 5
+    },
+    {
+     "medio": "Unión Radio",
+     "porcentaje": 3
+    },
+    {
+     "medio": "El Pitazo",
+     "porcentaje": 2
+    }
+   ],
+   "publicaciones": [
+    {
+     "canal": "X",
+     "fuente": "Cuenta oficial de una figura en seguimiento",
+     "descripcion": "Publicación sobre el plan de retorno de migrantes",
+     "alcance": 343000
+    },
+    {
+     "canal": "Medio digital",
+     "fuente": "El Pitazo",
+     "descripcion": "Nota sobre el plan de retorno de migrantes",
+     "alcance": 243000
+    },
+    {
+     "canal": "Facebook",
+     "fuente": "Cuenta pública",
+     "descripcion": "Publicación ciudadana de ejemplo sobre el plan de retorno de migrantes",
+     "alcance": 172000
+    },
+    {
+     "canal": "Radio",
+     "fuente": "Unión Radio",
+     "descripcion": "Segmento sobre el plan de retorno de migrantes",
+     "alcance": 114000
+    },
+    {
+     "canal": "TikTok",
+     "fuente": "Cuenta pública",
+     "descripcion": "Video o publicación de ejemplo sobre el plan de retorno de migrantes",
+     "alcance": 72000
+    }
+   ],
+   "terminos": [
+    "#QueVuelvanACasa",
+    "plan de retorno",
+    "gira por los Andes",
+    "reencuentro"
+   ],
+   "relacionadas": [
+    {
+     "narrativa_id": "pres-voto-exterior",
+     "tipo": "Relacionada"
+    },
+    {
+     "narrativa_id": "pres-primera-presidenta",
+     "tipo": "Relacionada"
+    }
+   ]
+  }
  },
  {
   "id": "pres-fuera-del-dialogo",
@@ -19,9 +125,126 @@
   "nombre": "Fuera del diálogo",
   "direccion": "Desfavorable",
   "menciones": 9600,
-  "tendencia": "En aumento",
+  "menciones_24h": 2300,
   "cambio_24h": 62,
-  "orden": 2
+  "cambio_7d": 140,
+  "tendencia": "En aumento",
+  "detectada_el": "2027-05-04",
+  "veces_promedio": null,
+  "alcance": 2600000,
+  "cuentas_unicas": 5900,
+  "neto": -64,
+  "estado": "Activa",
+  "seguida": true,
+  "descripcion": "Su ausencia en la mesa de diálogo como argumento contra la exigencia de fecha electoral.",
+  "resumen": "Agrupa las menciones que cuestionan que la figura exija una fecha electoral sin participar en la mesa de diálogo. Apareció el 4 de mayo y se aceleró tras la cuarta ronda y la conferencia de prensa del 11 de mayo. Creció 62% en las últimas 24 horas.",
+  "resumen_aprobado": false,
+  "orden": 2,
+  "detalle": {
+   "canales": [
+    {
+     "canal": "X",
+     "porcentaje": 41
+    },
+    {
+     "canal": "Facebook",
+     "porcentaje": 24
+    },
+    {
+     "canal": "TikTok",
+     "porcentaje": 15
+    },
+    {
+     "canal": "Instagram",
+     "porcentaje": 9
+    },
+    {
+     "canal": "Medios",
+     "porcentaje": 7
+    },
+    {
+     "canal": "YouTube",
+     "porcentaje": 4
+    }
+   ],
+   "impulsores": [
+    {
+     "figura_id": "jorge-rodriguez",
+     "porcentaje": 12
+    },
+    {
+     "figura_id": "delcy-rodriguez",
+     "porcentaje": 9
+    },
+    {
+     "medio": "Efecto Cocuyo",
+     "porcentaje": 5
+    },
+    {
+     "medio": "El Pitazo",
+     "porcentaje": 3
+    }
+   ],
+   "publicaciones": [
+    {
+     "canal": "X",
+     "fuente": "Cuenta oficial de una figura rival",
+     "descripcion": "Publicación sobre la cuarta ronda del diálogo",
+     "alcance": 230000
+    },
+    {
+     "canal": "Medio digital",
+     "fuente": "Efecto Cocuyo",
+     "descripcion": "Nota sobre la cuarta ronda del diálogo",
+     "alcance": 163000
+    },
+    {
+     "canal": "Facebook",
+     "fuente": "Cuenta pública",
+     "descripcion": "Publicación ciudadana de ejemplo sobre la cuarta ronda del diálogo",
+     "alcance": 115000
+    },
+    {
+     "canal": "Televisión",
+     "fuente": "Globovisión",
+     "descripcion": "Segmento sobre la cuarta ronda del diálogo",
+     "alcance": 77000
+    },
+    {
+     "canal": "TikTok",
+     "fuente": "Cuenta pública",
+     "descripcion": "Video o publicación de ejemplo sobre la cuarta ronda del diálogo",
+     "alcance": 48000
+    }
+   ],
+   "terminos": [
+    "mesa de diálogo",
+    "cuarta ronda",
+    "fecha electoral",
+    "acuerdos"
+   ],
+   "relacionadas": [
+    {
+     "narrativa_id": "pres-fecha-cierta",
+     "tipo": "Contranarrativa"
+    },
+    {
+     "narrativa_id": "pres-linea-dura",
+     "tipo": "Relacionada"
+    },
+    {
+     "narrativa_id": "pres-dialogo-resultados",
+     "tipo": "Relacionada"
+    }
+   ],
+   "coordinacion": {
+    "nivel": "Medio",
+    "senales": [
+     "Posibles textos idénticos: 312 publicaciones en X con la misma redacción.",
+     "Posible ráfaga: 44% de esas publicaciones salió entre las 20:00 y las 21:00 del 11 de mayo."
+    ]
+   }
+  }
  },
  {
   "id": "pres-primera-presidenta",
@@ -31,20 +254,1074 @@
   "nombre": "Primera presidenta",
   "direccion": "Favorable",
   "menciones": 8100,
+  "menciones_24h": 270,
+  "cambio_24h": 1,
+  "cambio_7d": 3,
   "tendencia": "Estable",
-  "cambio_24h": null,
-  "orden": 3
+  "detectada_el": "2027-04-16",
+  "veces_promedio": null,
+  "alcance": 2100000,
+  "cuentas_unicas": 6400,
+  "neto": 71,
+  "estado": "Activa",
+  "seguida": false,
+  "descripcion": "La posibilidad de que Venezuela elija a su primera mujer presidenta.",
+  "resumen": "Agrupa las menciones que presentan la candidatura como la posibilidad de elegir a la primera presidenta del país. Tuvo su mayor volumen en el primer debate, el 25 de abril, y se mantiene estable desde entonces.",
+  "resumen_aprobado": true,
+  "orden": 3,
+  "detalle": {
+   "canales": [
+    {
+     "canal": "X",
+     "porcentaje": 22
+    },
+    {
+     "canal": "Facebook",
+     "porcentaje": 18
+    },
+    {
+     "canal": "TikTok",
+     "porcentaje": 31
+    },
+    {
+     "canal": "Instagram",
+     "porcentaje": 21
+    },
+    {
+     "canal": "Medios",
+     "porcentaje": 5
+    },
+    {
+     "canal": "YouTube",
+     "porcentaje": 3
+    }
+   ],
+   "impulsores": [
+    {
+     "figura_id": "machado",
+     "porcentaje": 6
+    },
+    {
+     "figura_id": "guanipa",
+     "porcentaje": 3
+    },
+    {
+     "medio": "Tal Cual",
+     "porcentaje": 2
+    }
+   ],
+   "publicaciones": [
+    {
+     "canal": "TikTok",
+     "fuente": "Cuenta oficial de una figura en seguimiento",
+     "descripcion": "Publicación sobre la candidatura y el primer debate",
+     "alcance": 194000
+    },
+    {
+     "canal": "Medio digital",
+     "fuente": "Tal Cual",
+     "descripcion": "Nota sobre la candidatura y el primer debate",
+     "alcance": 138000
+    },
+    {
+     "canal": "X",
+     "fuente": "Cuenta pública",
+     "descripcion": "Publicación ciudadana de ejemplo sobre la candidatura y el primer debate",
+     "alcance": 97000
+    },
+    {
+     "canal": "Televisión",
+     "fuente": "Venevisión",
+     "descripcion": "Segmento sobre la candidatura y el primer debate",
+     "alcance": 65000
+    },
+    {
+     "canal": "Instagram",
+     "fuente": "Cuenta pública",
+     "descripcion": "Video o publicación de ejemplo sobre la candidatura y el primer debate",
+     "alcance": 41000
+    }
+   ],
+   "terminos": [
+    "#PrimeraPresidenta",
+    "primera mujer",
+    "debate presidencial"
+   ],
+   "relacionadas": [
+    {
+     "narrativa_id": "pres-que-vuelvan-a-casa",
+     "tipo": "Relacionada"
+    }
+   ]
+  }
  },
  {
   "id": "pres-linea-dura",
   "campana_id": "presidenciales",
   "figura_id": "machado",
-  "tema_id": "pres-otros",
+  "tema_id": "pres-fecha-electoral",
   "nombre": "Línea dura, sin acuerdos",
   "direccion": "Desfavorable",
   "menciones": 4200,
+  "menciones_24h": 80,
+  "cambio_24h": -4,
+  "cambio_7d": -22,
   "tendencia": "A la baja",
-  "cambio_24h": null,
+  "detectada_el": "2027-04-15",
+  "veces_promedio": null,
+  "alcance": 900000,
+  "cuentas_unicas": 2700,
+  "neto": -52,
+  "estado": "Activa",
+  "seguida": false,
+  "descripcion": "Su postura descrita como poco dispuesta a negociar.",
+  "resumen": "Agrupa las menciones que describen la postura de la figura como inflexible frente a acuerdos políticos. Viene a la baja desde el primer debate. Parte de su conversación se trasladó a \"Fuera del diálogo\".",
+  "resumen_aprobado": true,
+  "orden": 4,
+  "detalle": {
+   "canales": [
+    {
+     "canal": "X",
+     "porcentaje": 46
+    },
+    {
+     "canal": "Facebook",
+     "porcentaje": 27
+    },
+    {
+     "canal": "TikTok",
+     "porcentaje": 8
+    },
+    {
+     "canal": "Instagram",
+     "porcentaje": 6
+    },
+    {
+     "canal": "Medios",
+     "porcentaje": 9
+    },
+    {
+     "canal": "YouTube",
+     "porcentaje": 4
+    }
+   ],
+   "impulsores": [
+    {
+     "figura_id": "capriles",
+     "porcentaje": 7
+    },
+    {
+     "figura_id": "jorge-rodriguez",
+     "porcentaje": 5
+    }
+   ],
+   "publicaciones": [
+    {
+     "canal": "X",
+     "fuente": "Cuenta oficial de una figura rival",
+     "descripcion": "Publicación sobre la disposición a negociar",
+     "alcance": 101000
+    },
+    {
+     "canal": "Medio digital",
+     "fuente": "El Nacional",
+     "descripcion": "Nota sobre la disposición a negociar",
+     "alcance": 71000
+    },
+    {
+     "canal": "Facebook",
+     "fuente": "Cuenta pública",
+     "descripcion": "Publicación ciudadana de ejemplo sobre la disposición a negociar",
+     "alcance": 50000
+    },
+    {
+     "canal": "Radio",
+     "fuente": "Unión Radio",
+     "descripcion": "Segmento sobre la disposición a negociar",
+     "alcance": 34000
+    },
+    {
+     "canal": "Medios",
+     "fuente": "Cuenta pública",
+     "descripcion": "Video o publicación de ejemplo sobre la disposición a negociar",
+     "alcance": 21000
+    }
+   ],
+   "terminos": [
+    "línea dura",
+    "sin acuerdos",
+    "negociación"
+   ],
+   "relacionadas": [
+    {
+     "narrativa_id": "pres-fuera-del-dialogo",
+     "tipo": "Relacionada"
+    },
+    {
+     "narrativa_id": "pres-participar",
+     "tipo": "Relacionada"
+    }
+   ]
+  }
+ },
+ {
+  "id": "pres-voto-exterior",
+  "campana_id": "presidenciales",
+  "figura_id": "machado",
+  "tema_id": "pres-migracion",
+  "nombre": "Voto en el exterior",
+  "direccion": "Favorable",
+  "menciones": 3900,
+  "menciones_24h": 2100,
+  "cambio_24h": 210,
+  "cambio_7d": null,
+  "tendencia": "Emergente",
+  "detectada_el": "2027-05-09",
+  "veces_promedio": 3.1,
+  "alcance": 800000,
+  "cuentas_unicas": 2900,
+  "neto": 49,
+  "estado": "Activa",
+  "seguida": false,
+  "descripcion": "El derecho a votar de los venezolanos que viven fuera del país.",
+  "resumen": "Agrupa las menciones sobre el registro y el voto de los venezolanos en el exterior, asociadas a la propuesta de la figura. Se detectó el 9 de mayo, un día antes de la gira, y hoy triplica su promedio de 7 días.",
+  "resumen_aprobado": false,
+  "orden": 5,
+  "detalle": {
+   "canales": [
+    {
+     "canal": "X",
+     "porcentaje": 37
+    },
+    {
+     "canal": "Facebook",
+     "porcentaje": 16
+    },
+    {
+     "canal": "TikTok",
+     "porcentaje": 24
+    },
+    {
+     "canal": "Instagram",
+     "porcentaje": 15
+    },
+    {
+     "canal": "Medios",
+     "porcentaje": 5
+    },
+    {
+     "canal": "YouTube",
+     "porcentaje": 3
+    }
+   ],
+   "impulsores": [
+    {
+     "figura_id": "machado",
+     "porcentaje": 7
+    },
+    {
+     "figura_id": "gonzalez-urrutia",
+     "porcentaje": 4
+    },
+    {
+     "medio": "Efecto Cocuyo",
+     "porcentaje": 3
+    }
+   ],
+   "publicaciones": [
+    {
+     "canal": "X",
+     "fuente": "Cuenta oficial de una figura en seguimiento",
+     "descripcion": "Publicación sobre voto en el exterior",
+     "alcance": 94000
+    },
+    {
+     "canal": "Medio digital",
+     "fuente": "Efecto Cocuyo",
+     "descripcion": "Nota sobre voto en el exterior",
+     "alcance": 66000
+    },
+    {
+     "canal": "TikTok",
+     "fuente": "Cuenta pública",
+     "descripcion": "Publicación ciudadana de ejemplo sobre voto en el exterior",
+     "alcance": 47000
+    },
+    {
+     "canal": "Radio",
+     "fuente": "Unión Radio",
+     "descripcion": "Segmento sobre voto en el exterior",
+     "alcance": 31000
+    },
+    {
+     "canal": "Facebook",
+     "fuente": "Cuenta pública",
+     "descripcion": "Video o publicación de ejemplo sobre voto en el exterior",
+     "alcance": 20000
+    }
+   ],
+   "terminos": [
+    "#VotoEnElExterior",
+    "registro electoral",
+    "consulados"
+   ],
+   "relacionadas": [
+    {
+     "narrativa_id": "pres-que-vuelvan-a-casa",
+     "tipo": "Relacionada"
+    },
+    {
+     "narrativa_id": "pres-fecha-cierta",
+     "tipo": "Relacionada"
+    }
+   ]
+  }
+ },
+ {
+  "id": "pres-salario-bolivares",
+  "campana_id": "presidenciales",
+  "figura_id": null,
+  "tema_id": "pres-economia",
+  "nombre": "Salario en bolívares",
+  "direccion": "Sin dirección",
+  "menciones": 3100,
+  "menciones_24h": 1700,
+  "cambio_24h": 140,
+  "cambio_7d": null,
+  "tendencia": "Emergente",
+  "detectada_el": "2027-05-08",
+  "veces_promedio": 2.4,
+  "alcance": 700000,
+  "cuentas_unicas": 2500,
+  "neto": null,
+  "estado": "Activa",
+  "seguida": false,
+  "descripcion": "El debate sobre el valor y el ajuste de los salarios en bolívares.",
+  "resumen": "Agrupa las menciones sobre el valor del salario en bolívares y las propuestas de ajuste. No está asociada a una sola figura: aparece en la conversación del tema Economía y salarios. Se detectó el 8 de mayo.",
+  "resumen_aprobado": false,
+  "orden": 6,
+  "detalle": {
+   "canales": [
+    {
+     "canal": "X",
+     "porcentaje": 29
+    },
+    {
+     "canal": "Facebook",
+     "porcentaje": 31
+    },
+    {
+     "canal": "TikTok",
+     "porcentaje": 17
+    },
+    {
+     "canal": "Instagram",
+     "porcentaje": 8
+    },
+    {
+     "canal": "Medios",
+     "porcentaje": 11
+    },
+    {
+     "canal": "YouTube",
+     "porcentaje": 4
+    }
+   ],
+   "impulsores": [
+    {
+     "figura_id": "capriles",
+     "porcentaje": 4
+    },
+    {
+     "figura_id": "delcy-rodriguez",
+     "porcentaje": 4
+    },
+    {
+     "medio": "Unión Radio",
+     "porcentaje": 3
+    }
+   ],
+   "publicaciones": [
+    {
+     "canal": "Facebook",
+     "fuente": "Cuenta pública",
+     "descripcion": "Publicación sobre salario en bolívares",
+     "alcance": 74000
+    },
+    {
+     "canal": "Medio digital",
+     "fuente": "Tal Cual",
+     "descripcion": "Nota sobre salario en bolívares",
+     "alcance": 53000
+    },
+    {
+     "canal": "X",
+     "fuente": "Cuenta pública",
+     "descripcion": "Publicación ciudadana de ejemplo sobre salario en bolívares",
+     "alcance": 37000
+    },
+    {
+     "canal": "Radio",
+     "fuente": "Unión Radio",
+     "descripcion": "Segmento sobre salario en bolívares",
+     "alcance": 25000
+    },
+    {
+     "canal": "TikTok",
+     "fuente": "Cuenta pública",
+     "descripcion": "Video o publicación de ejemplo sobre salario en bolívares",
+     "alcance": 16000
+    }
+   ],
+   "terminos": [
+    "salario mínimo",
+    "bolívares",
+    "ajuste salarial"
+   ],
+   "relacionadas": [
+    {
+     "narrativa_id": "pres-continuidad",
+     "tipo": "Relacionada"
+    }
+   ]
+  }
+ },
+ {
+  "id": "pres-fecha-cierta",
+  "campana_id": "presidenciales",
+  "figura_id": null,
+  "tema_id": "pres-fecha-electoral",
+  "nombre": "Fecha cierta",
+  "direccion": "Sin dirección",
+  "menciones": 2600,
+  "menciones_24h": 1400,
+  "cambio_24h": 120,
+  "cambio_7d": null,
+  "tendencia": "Emergente",
+  "detectada_el": "2027-05-10",
+  "veces_promedio": 2.2,
+  "alcance": 600000,
+  "cuentas_unicas": 2100,
+  "neto": null,
+  "estado": "Activa",
+  "seguida": false,
+  "descripcion": "La exigencia de una fecha electoral definida y sin cambios.",
+  "resumen": "Agrupa las menciones que piden confirmar la fecha de la elección sin nuevos cambios. La usan varias figuras, entre ellas la propia, y funciona como respuesta a \"Fuera del diálogo\". Se detectó el 10 de mayo.",
+  "resumen_aprobado": false,
+  "orden": 7,
+  "detalle": {
+   "canales": [
+    {
+     "canal": "X",
+     "porcentaje": 44
+    },
+    {
+     "canal": "Facebook",
+     "porcentaje": 19
+    },
+    {
+     "canal": "TikTok",
+     "porcentaje": 14
+    },
+    {
+     "canal": "Instagram",
+     "porcentaje": 10
+    },
+    {
+     "canal": "Medios",
+     "porcentaje": 9
+    },
+    {
+     "canal": "YouTube",
+     "porcentaje": 4
+    }
+   ],
+   "impulsores": [
+    {
+     "figura_id": "machado",
+     "porcentaje": 8
+    },
+    {
+     "figura_id": "gonzalez-urrutia",
+     "porcentaje": 6
+    },
+    {
+     "figura_id": "guanipa",
+     "porcentaje": 5
+    },
+    {
+     "medio": "Runrunes",
+     "porcentaje": 2
+    }
+   ],
+   "publicaciones": [
+    {
+     "canal": "X",
+     "fuente": "Cuenta oficial de una figura en seguimiento",
+     "descripcion": "Publicación sobre la fecha de la elección",
+     "alcance": 62000
+    },
+    {
+     "canal": "Medio digital",
+     "fuente": "Runrunes",
+     "descripcion": "Nota sobre la fecha de la elección",
+     "alcance": 44000
+    },
+    {
+     "canal": "Facebook",
+     "fuente": "Cuenta pública",
+     "descripcion": "Publicación ciudadana de ejemplo sobre la fecha de la elección",
+     "alcance": 31000
+    },
+    {
+     "canal": "Radio",
+     "fuente": "Unión Radio",
+     "descripcion": "Segmento sobre la fecha de la elección",
+     "alcance": 21000
+    },
+    {
+     "canal": "TikTok",
+     "fuente": "Cuenta pública",
+     "descripcion": "Video o publicación de ejemplo sobre la fecha de la elección",
+     "alcance": 13000
+    }
+   ],
+   "terminos": [
+    "#FechaCierta",
+    "cronograma electoral",
+    "jornada electoral"
+   ],
+   "relacionadas": [
+    {
+     "narrativa_id": "pres-fuera-del-dialogo",
+     "tipo": "Contranarrativa"
+    },
+    {
+     "narrativa_id": "pres-voto-exterior",
+     "tipo": "Relacionada"
+    }
+   ],
+   "figura_ids": [
+    "machado",
+    "gonzalez-urrutia",
+    "guanipa"
+   ]
+  }
+ },
+ {
+  "id": "pres-continuidad",
+  "campana_id": "presidenciales",
+  "figura_id": "delcy-rodriguez",
+  "tema_id": "pres-economia",
+  "nombre": "Continuidad y estabilidad",
+  "direccion": "Posicionamiento",
+  "menciones": 5400,
+  "menciones_24h": 190,
+  "cambio_24h": 2,
+  "cambio_7d": -1,
+  "tendencia": "Estable",
+  "detectada_el": "2027-04-14",
+  "veces_promedio": null,
+  "alcance": 1300000,
+  "cuentas_unicas": 3600,
+  "neto": 12,
+  "estado": "Activa",
+  "seguida": false,
+  "descripcion": "Posicionamiento en torno a la continuidad de la gestión.",
+  "resumen": "Posicionamiento en torno a la continuidad de la gestión. La etiqueta es neutral: describe el mensaje que promueve la figura, sin valorarlo. Agrupa publicaciones propias de la figura y menciones de terceros que lo repiten.",
+  "resumen_aprobado": false,
+  "orden": 8,
+  "detalle": {
+   "canales": [
+    {
+     "canal": "X",
+     "porcentaje": 30
+    },
+    {
+     "canal": "Facebook",
+     "porcentaje": 28
+    },
+    {
+     "canal": "TikTok",
+     "porcentaje": 12
+    },
+    {
+     "canal": "Instagram",
+     "porcentaje": 9
+    },
+    {
+     "canal": "Medios",
+     "porcentaje": 17
+    },
+    {
+     "canal": "YouTube",
+     "porcentaje": 4
+    }
+   ],
+   "impulsores": [
+    {
+     "figura_id": "delcy-rodriguez",
+     "porcentaje": 14
+    },
+    {
+     "figura_id": "jorge-rodriguez",
+     "porcentaje": 6
+    },
+    {
+     "medio": "Globovisión",
+     "porcentaje": 4
+    }
+   ],
+   "publicaciones": [
+    {
+     "canal": "X",
+     "fuente": "Cuenta oficial de una figura en seguimiento",
+     "descripcion": "Publicación sobre la continuidad de la gestión",
+     "alcance": 130000
+    },
+    {
+     "canal": "Medio digital",
+     "fuente": "Globovisión",
+     "descripcion": "Nota sobre la continuidad de la gestión",
+     "alcance": 92000
+    },
+    {
+     "canal": "Facebook",
+     "fuente": "Cuenta pública",
+     "descripcion": "Publicación ciudadana de ejemplo sobre la continuidad de la gestión",
+     "alcance": 65000
+    },
+    {
+     "canal": "Televisión",
+     "fuente": "Venevisión",
+     "descripcion": "Segmento sobre la continuidad de la gestión",
+     "alcance": 43000
+    },
+    {
+     "canal": "Medios",
+     "fuente": "Cuenta pública",
+     "descripcion": "Video o publicación de ejemplo sobre la continuidad de la gestión",
+     "alcance": 27000
+    }
+   ],
+   "terminos": [
+    "continuidad",
+    "estabilidad",
+    "gestión"
+   ],
+   "relacionadas": [
+    {
+     "narrativa_id": "pres-salario-bolivares",
+     "tipo": "Relacionada"
+    }
+   ]
+  }
+ },
+ {
+  "id": "pres-participar",
+  "campana_id": "presidenciales",
+  "figura_id": "capriles",
+  "tema_id": "pres-fecha-electoral",
+  "nombre": "Participar en las elecciones",
+  "direccion": "Posicionamiento",
+  "menciones": 3200,
+  "menciones_24h": 170,
+  "cambio_24h": 9,
+  "cambio_7d": 24,
+  "tendencia": "En aumento",
+  "detectada_el": "2027-04-18",
+  "veces_promedio": null,
+  "alcance": 800000,
+  "cuentas_unicas": 2300,
+  "neto": 21,
+  "estado": "Activa",
+  "seguida": false,
+  "descripcion": "Posicionamiento a favor de participar en la elección.",
+  "resumen": "Posicionamiento a favor de participar en la elección. La etiqueta es neutral: describe el mensaje que promueve la figura, sin valorarlo. Agrupa publicaciones propias de la figura y menciones de terceros que lo repiten.",
+  "resumen_aprobado": false,
+  "orden": 9,
+  "detalle": {
+   "canales": [
+    {
+     "canal": "X",
+     "porcentaje": 39
+    },
+    {
+     "canal": "Facebook",
+     "porcentaje": 25
+    },
+    {
+     "canal": "TikTok",
+     "porcentaje": 11
+    },
+    {
+     "canal": "Instagram",
+     "porcentaje": 9
+    },
+    {
+     "canal": "Medios",
+     "porcentaje": 12
+    },
+    {
+     "canal": "YouTube",
+     "porcentaje": 4
+    }
+   ],
+   "impulsores": [
+    {
+     "figura_id": "capriles",
+     "porcentaje": 13
+    },
+    {
+     "medio": "Tal Cual",
+     "porcentaje": 3
+    }
+   ],
+   "publicaciones": [
+    {
+     "canal": "X",
+     "fuente": "Cuenta oficial de una figura en seguimiento",
+     "descripcion": "Publicación sobre la participación en la elección",
+     "alcance": 77000
+    },
+    {
+     "canal": "Medio digital",
+     "fuente": "Tal Cual",
+     "descripcion": "Nota sobre la participación en la elección",
+     "alcance": 54000
+    },
+    {
+     "canal": "Facebook",
+     "fuente": "Cuenta pública",
+     "descripcion": "Publicación ciudadana de ejemplo sobre la participación en la elección",
+     "alcance": 38000
+    },
+    {
+     "canal": "Radio",
+     "fuente": "Unión Radio",
+     "descripcion": "Segmento sobre la participación en la elección",
+     "alcance": 26000
+    },
+    {
+     "canal": "Medios",
+     "fuente": "Cuenta pública",
+     "descripcion": "Video o publicación de ejemplo sobre la participación en la elección",
+     "alcance": 16000
+    }
+   ],
+   "terminos": [
+    "participación",
+    "voto",
+    "ruta electoral"
+   ],
+   "relacionadas": [
+    {
+     "narrativa_id": "pres-linea-dura",
+     "tipo": "Relacionada"
+    },
+    {
+     "narrativa_id": "pres-fecha-cierta",
+     "tipo": "Relacionada"
+    }
+   ]
+  }
+ },
+ {
+  "id": "pres-dialogo-resultados",
+  "campana_id": "presidenciales",
+  "figura_id": "jorge-rodriguez",
+  "tema_id": "pres-fecha-electoral",
+  "nombre": "Diálogo con resultados",
+  "direccion": "Posicionamiento",
+  "menciones": 2300,
+  "menciones_24h": 150,
+  "cambio_24h": 12,
+  "cambio_7d": 31,
+  "tendencia": "En aumento",
+  "detectada_el": "2027-05-02",
+  "veces_promedio": null,
+  "alcance": 700000,
+  "cuentas_unicas": 1800,
+  "neto": 4,
+  "estado": "Activa",
+  "seguida": false,
+  "descripcion": "Posicionamiento que presenta la mesa de diálogo como vía de acuerdos.",
+  "resumen": "Posicionamiento que presenta la mesa de diálogo como vía de acuerdos. La etiqueta es neutral: describe el mensaje que promueve la figura, sin valorarlo. Agrupa publicaciones propias de la figura y menciones de terceros que lo repiten.",
+  "resumen_aprobado": false,
+  "orden": 10,
+  "detalle": {
+   "canales": [
+    {
+     "canal": "X",
+     "porcentaje": 36
+    },
+    {
+     "canal": "Facebook",
+     "porcentaje": 24
+    },
+    {
+     "canal": "TikTok",
+     "porcentaje": 10
+    },
+    {
+     "canal": "Instagram",
+     "porcentaje": 7
+    },
+    {
+     "canal": "Medios",
+     "porcentaje": 19
+    },
+    {
+     "canal": "YouTube",
+     "porcentaje": 4
+    }
+   ],
+   "impulsores": [
+    {
+     "figura_id": "jorge-rodriguez",
+     "porcentaje": 15
+    },
+    {
+     "figura_id": "delcy-rodriguez",
+     "porcentaje": 7
+    },
+    {
+     "medio": "Globovisión",
+     "porcentaje": 4
+    }
+   ],
+   "publicaciones": [
+    {
+     "canal": "X",
+     "fuente": "Cuenta oficial de una figura en seguimiento",
+     "descripcion": "Publicación sobre los acuerdos de la mesa de diálogo",
+     "alcance": 55000
+    },
+    {
+     "canal": "Medio digital",
+     "fuente": "Globovisión",
+     "descripcion": "Nota sobre los acuerdos de la mesa de diálogo",
+     "alcance": 39000
+    },
+    {
+     "canal": "Facebook",
+     "fuente": "Cuenta pública",
+     "descripcion": "Publicación ciudadana de ejemplo sobre los acuerdos de la mesa de diálogo",
+     "alcance": 28000
+    },
+    {
+     "canal": "Televisión",
+     "fuente": "Venevisión",
+     "descripcion": "Segmento sobre los acuerdos de la mesa de diálogo",
+     "alcance": 18000
+    },
+    {
+     "canal": "Medios",
+     "fuente": "Cuenta pública",
+     "descripcion": "Video o publicación de ejemplo sobre los acuerdos de la mesa de diálogo",
+     "alcance": 12000
+    }
+   ],
+   "terminos": [
+    "mesa de diálogo",
+    "acuerdos",
+    "cuarta ronda"
+   ],
+   "relacionadas": [
+    {
+     "narrativa_id": "pres-fuera-del-dialogo",
+     "tipo": "Relacionada"
+    },
+    {
+     "narrativa_id": "pres-fecha-cierta",
+     "tipo": "Contranarrativa"
+    }
+   ]
+  }
+ },
+ {
+  "id": "pres-unidad",
+  "campana_id": "presidenciales",
+  "figura_id": "gonzalez-urrutia",
+  "tema_id": "pres-otros",
+  "nombre": "Unidad para ganar",
+  "direccion": "Posicionamiento",
+  "menciones": 1700,
+  "menciones_24h": 60,
+  "cambio_24h": 0,
+  "cambio_7d": 4,
+  "tendencia": "Estable",
+  "detectada_el": "2027-04-20",
+  "veces_promedio": null,
+  "alcance": 400000,
+  "cuentas_unicas": 1300,
+  "neto": 33,
+  "estado": "Activa",
+  "seguida": false,
+  "descripcion": "Posicionamiento sobre la unidad de la oposición en torno a una candidatura.",
+  "resumen": "Posicionamiento sobre la unidad de la oposición en torno a una candidatura. La etiqueta es neutral: describe el mensaje que promueve la figura, sin valorarlo. Agrupa publicaciones propias de la figura y menciones de terceros que lo repiten.",
+  "resumen_aprobado": false,
+  "orden": 11,
+  "detalle": {
+   "canales": [
+    {
+     "canal": "X",
+     "porcentaje": 35
+    },
+    {
+     "canal": "Facebook",
+     "porcentaje": 26
+    },
+    {
+     "canal": "TikTok",
+     "porcentaje": 14
+    },
+    {
+     "canal": "Instagram",
+     "porcentaje": 13
+    },
+    {
+     "canal": "Medios",
+     "porcentaje": 8
+    },
+    {
+     "canal": "YouTube",
+     "porcentaje": 4
+    }
+   ],
+   "impulsores": [
+    {
+     "figura_id": "gonzalez-urrutia",
+     "porcentaje": 11
+    },
+    {
+     "figura_id": "guanipa",
+     "porcentaje": 6
+    },
+    {
+     "medio": "El Nacional",
+     "porcentaje": 2
+    }
+   ],
+   "publicaciones": [
+    {
+     "canal": "X",
+     "fuente": "Cuenta oficial de una figura en seguimiento",
+     "descripcion": "Publicación sobre la unidad de la oposición",
+     "alcance": 41000
+    },
+    {
+     "canal": "Medio digital",
+     "fuente": "El Nacional",
+     "descripcion": "Nota sobre la unidad de la oposición",
+     "alcance": 29000
+    },
+    {
+     "canal": "Facebook",
+     "fuente": "Cuenta pública",
+     "descripcion": "Publicación ciudadana de ejemplo sobre la unidad de la oposición",
+     "alcance": 20000
+    },
+    {
+     "canal": "Radio",
+     "fuente": "Unión Radio",
+     "descripcion": "Segmento sobre la unidad de la oposición",
+     "alcance": 14000
+    },
+    {
+     "canal": "TikTok",
+     "fuente": "Cuenta pública",
+     "descripcion": "Video o publicación de ejemplo sobre la unidad de la oposición",
+     "alcance": 9000
+    }
+   ],
+   "terminos": [
+    "unidad",
+    "candidatura unitaria"
+   ],
+   "relacionadas": [
+    {
+     "narrativa_id": "pres-primera-presidenta",
+     "tipo": "Relacionada"
+    }
+   ]
+  }
+ },
+ {
+  "id": "zulia-experiencia",
+  "campana_id": "zulia",
+  "figura_id": "rosales",
+  "nombre": "Experiencia de gestión",
+  "direccion": "Favorable",
+  "menciones": 2900,
+  "tendencia": "Estable",
+  "descripcion": "Lo presenta como una figura con trayectoria en el gobierno regional.",
+  "orden": 1
+ },
+ {
+  "id": "zulia-recuperar-servicios",
+  "campana_id": "zulia",
+  "figura_id": "rosales",
+  "nombre": "Recuperar los servicios del Zulia",
+  "direccion": "Favorable",
+  "menciones": 2100,
+  "tendencia": "En aumento",
+  "descripcion": "Asocia su nombre con propuestas sobre electricidad y agua.",
+  "orden": 2
+ },
+ {
+  "id": "zulia-mas-de-lo-mismo",
+  "campana_id": "zulia",
+  "figura_id": "rosales",
+  "nombre": "Más de lo mismo",
+  "direccion": "Desfavorable",
+  "menciones": 1600,
+  "tendencia": "Estable",
+  "descripcion": "Cuestiona que represente una renovación para el estado.",
+  "orden": 3
+ },
+ {
+  "id": "zulia-sin-plan-electrico",
+  "campana_id": "zulia",
+  "figura_id": "rosales",
+  "nombre": "Sin plan para el servicio eléctrico",
+  "direccion": "Desfavorable",
+  "menciones": 1300,
+  "tendencia": "En aumento",
+  "descripcion": "Reclama propuestas más concretas sobre las fallas eléctricas.",
   "orden": 4
+ },
+ {
+  "id": "chacao-gestion-cercana",
+  "campana_id": "chacao",
+  "figura_id": "duque",
+  "nombre": "Gestión cercana al vecino",
+  "direccion": "Favorable",
+  "menciones": 1400,
+  "tendencia": "Estable",
+  "descripcion": "Lo asocia con atención directa a las comunidades del municipio.",
+  "orden": 1
+ },
+ {
+  "id": "chacao-ordenado",
+  "campana_id": "chacao",
+  "figura_id": "duque",
+  "nombre": "Chacao ordenado",
+  "direccion": "Favorable",
+  "menciones": 900,
+  "tendencia": "En aumento",
+  "descripcion": "Destaca el mantenimiento de plazas, aceras y espacios públicos.",
+  "orden": 2
+ },
+ {
+  "id": "chacao-trafico",
+  "campana_id": "chacao",
+  "figura_id": "duque",
+  "nombre": "El tráfico sigue igual",
+  "direccion": "Desfavorable",
+  "menciones": 600,
+  "tendencia": "Estable",
+  "descripcion": "Reclama más resultados en movilidad y estacionamiento.",
+  "orden": 3
  }
 ]

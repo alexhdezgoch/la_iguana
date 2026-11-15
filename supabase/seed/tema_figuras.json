@@ -1,0 +1,578 @@
+[
+ {
+  "id": "pres-economia-machado",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-economia",
+  "figura_id": "machado",
+  "menciones": 13520,
+  "porcentaje": 26,
+  "porcentaje_propias": 18,
+  "neto": 14,
+  "favorable": 34,
+  "neutral": 46,
+  "desfavorable": 20
+ },
+ {
+  "id": "pres-economia-gonzalez-urrutia",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-economia",
+  "figura_id": "gonzalez-urrutia",
+  "menciones": 2600,
+  "porcentaje": 5,
+  "porcentaje_propias": 16,
+  "neto": 14
+ },
+ {
+  "id": "pres-economia-guanipa",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-economia",
+  "figura_id": "guanipa",
+  "menciones": 2080,
+  "porcentaje": 4,
+  "porcentaje_propias": 20,
+  "neto": 3
+ },
+ {
+  "id": "pres-economia-delcy-rodriguez",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-economia",
+  "figura_id": "delcy-rodriguez",
+  "menciones": 16120,
+  "porcentaje": 31,
+  "porcentaje_propias": 30,
+  "neto": -4
+ },
+ {
+  "id": "pres-economia-jorge-rodriguez",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-economia",
+  "figura_id": "jorge-rodriguez",
+  "menciones": 5200,
+  "porcentaje": 10,
+  "porcentaje_propias": 14,
+  "neto": -27
+ },
+ {
+  "id": "pres-economia-capriles",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-economia",
+  "figura_id": "capriles",
+  "menciones": 7280,
+  "porcentaje": 14,
+  "porcentaje_propias": 32,
+  "neto": 13
+ },
+ {
+  "id": "pres-economia-rosales",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-economia",
+  "figura_id": "rosales",
+  "menciones": 3120,
+  "porcentaje": 6,
+  "porcentaje_propias": 22,
+  "neto": 24
+ },
+ {
+  "id": "pres-economia-ecarri",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-economia",
+  "figura_id": "ecarri",
+  "menciones": 2080,
+  "porcentaje": 4,
+  "porcentaje_propias": 24,
+  "neto": 4
+ },
+ {
+  "id": "pres-migracion-machado",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-migracion",
+  "figura_id": "machado",
+  "menciones": 15580,
+  "porcentaje": 41,
+  "porcentaje_propias": 34,
+  "neto": 40,
+  "favorable": 52,
+  "neutral": 36,
+  "desfavorable": 12
+ },
+ {
+  "id": "pres-migracion-gonzalez-urrutia",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-migracion",
+  "figura_id": "gonzalez-urrutia",
+  "menciones": 3040,
+  "porcentaje": 8,
+  "porcentaje_propias": 22,
+  "neto": 22
+ },
+ {
+  "id": "pres-migracion-guanipa",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-migracion",
+  "figura_id": "guanipa",
+  "menciones": 1900,
+  "porcentaje": 5,
+  "porcentaje_propias": 14,
+  "neto": 11
+ },
+ {
+  "id": "pres-migracion-delcy-rodriguez",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-migracion",
+  "figura_id": "delcy-rodriguez",
+  "menciones": 8360,
+  "porcentaje": 22,
+  "porcentaje_propias": 16,
+  "neto": 4,
+  "porcentaje_hace_7d": 16,
+  "porcentaje_propias_hace_7d": 5
+ },
+ {
+  "id": "pres-migracion-jorge-rodriguez",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-migracion",
+  "figura_id": "jorge-rodriguez",
+  "menciones": 3040,
+  "porcentaje": 8,
+  "porcentaje_propias": 6,
+  "neto": -19
+ },
+ {
+  "id": "pres-migracion-capriles",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-migracion",
+  "figura_id": "capriles",
+  "menciones": 3420,
+  "porcentaje": 9,
+  "porcentaje_propias": 10,
+  "neto": 21
+ },
+ {
+  "id": "pres-migracion-rosales",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-migracion",
+  "figura_id": "rosales",
+  "menciones": 1520,
+  "porcentaje": 4,
+  "porcentaje_propias": 6,
+  "neto": 32
+ },
+ {
+  "id": "pres-migracion-ecarri",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-migracion",
+  "figura_id": "ecarri",
+  "menciones": 1140,
+  "porcentaje": 3,
+  "porcentaje_propias": 4,
+  "neto": 12
+ },
+ {
+  "id": "pres-fecha-electoral-machado",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-fecha-electoral",
+  "figura_id": "machado",
+  "menciones": 12240,
+  "porcentaje": 36,
+  "porcentaje_propias": 24,
+  "neto": -16,
+  "favorable": 22,
+  "neutral": 40,
+  "desfavorable": 38
+ },
+ {
+  "id": "pres-fecha-electoral-gonzalez-urrutia",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-fecha-electoral",
+  "figura_id": "gonzalez-urrutia",
+  "menciones": 2720,
+  "porcentaje": 8,
+  "porcentaje_propias": 30,
+  "neto": 10
+ },
+ {
+  "id": "pres-fecha-electoral-guanipa",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-fecha-electoral",
+  "figura_id": "guanipa",
+  "menciones": 2040,
+  "porcentaje": 6,
+  "porcentaje_propias": 28,
+  "neto": -1
+ },
+ {
+  "id": "pres-fecha-electoral-delcy-rodriguez",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-fecha-electoral",
+  "figura_id": "delcy-rodriguez",
+  "menciones": 6800,
+  "porcentaje": 20,
+  "porcentaje_propias": 8,
+  "neto": -8
+ },
+ {
+  "id": "pres-fecha-electoral-jorge-rodriguez",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-fecha-electoral",
+  "figura_id": "jorge-rodriguez",
+  "menciones": 5780,
+  "porcentaje": 17,
+  "porcentaje_propias": 34,
+  "neto": -31
+ },
+ {
+  "id": "pres-fecha-electoral-capriles",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-fecha-electoral",
+  "figura_id": "capriles",
+  "menciones": 2380,
+  "porcentaje": 7,
+  "porcentaje_propias": 12,
+  "neto": 9
+ },
+ {
+  "id": "pres-fecha-electoral-rosales",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-fecha-electoral",
+  "figura_id": "rosales",
+  "menciones": 1360,
+  "porcentaje": 4,
+  "porcentaje_propias": 10,
+  "neto": 20
+ },
+ {
+  "id": "pres-fecha-electoral-ecarri",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-fecha-electoral",
+  "figura_id": "ecarri",
+  "menciones": 680,
+  "porcentaje": 2,
+  "porcentaje_propias": 8,
+  "neto": 0
+ },
+ {
+  "id": "pres-servicios-machado",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-servicios",
+  "figura_id": "machado",
+  "menciones": 6760,
+  "porcentaje": 26,
+  "porcentaje_propias": 8,
+  "neto": 18,
+  "favorable": 36,
+  "neutral": 46,
+  "desfavorable": 18
+ },
+ {
+  "id": "pres-servicios-gonzalez-urrutia",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-servicios",
+  "figura_id": "gonzalez-urrutia",
+  "menciones": 1040,
+  "porcentaje": 4,
+  "porcentaje_propias": 8,
+  "neto": 17
+ },
+ {
+  "id": "pres-servicios-guanipa",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-servicios",
+  "figura_id": "guanipa",
+  "menciones": 1040,
+  "porcentaje": 4,
+  "porcentaje_propias": 12,
+  "neto": 6
+ },
+ {
+  "id": "pres-servicios-delcy-rodriguez",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-servicios",
+  "figura_id": "delcy-rodriguez",
+  "menciones": 7800,
+  "porcentaje": 30,
+  "porcentaje_propias": 20,
+  "neto": -1
+ },
+ {
+  "id": "pres-servicios-jorge-rodriguez",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-servicios",
+  "figura_id": "jorge-rodriguez",
+  "menciones": 2860,
+  "porcentaje": 11,
+  "porcentaje_propias": 10,
+  "neto": -24
+ },
+ {
+  "id": "pres-servicios-capriles",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-servicios",
+  "figura_id": "capriles",
+  "menciones": 3120,
+  "porcentaje": 12,
+  "porcentaje_propias": 22,
+  "neto": 16
+ },
+ {
+  "id": "pres-servicios-rosales",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-servicios",
+  "figura_id": "rosales",
+  "menciones": 2340,
+  "porcentaje": 9,
+  "porcentaje_propias": 34,
+  "neto": 27
+ },
+ {
+  "id": "pres-servicios-ecarri",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-servicios",
+  "figura_id": "ecarri",
+  "menciones": 1040,
+  "porcentaje": 4,
+  "porcentaje_propias": 14,
+  "neto": 7
+ },
+ {
+  "id": "pres-salud-machado",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-salud",
+  "figura_id": "machado",
+  "menciones": 4400,
+  "porcentaje": 20,
+  "porcentaje_propias": 5,
+  "neto": 23,
+  "favorable": 38,
+  "neutral": 47,
+  "desfavorable": 15
+ },
+ {
+  "id": "pres-salud-gonzalez-urrutia",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-salud",
+  "figura_id": "gonzalez-urrutia",
+  "menciones": 1100,
+  "porcentaje": 5,
+  "porcentaje_propias": 9,
+  "neto": 18
+ },
+ {
+  "id": "pres-salud-guanipa",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-salud",
+  "figura_id": "guanipa",
+  "menciones": 880,
+  "porcentaje": 4,
+  "porcentaje_propias": 6,
+  "neto": 7
+ },
+ {
+  "id": "pres-salud-delcy-rodriguez",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-salud",
+  "figura_id": "delcy-rodriguez",
+  "menciones": 7920,
+  "porcentaje": 36,
+  "porcentaje_propias": 14,
+  "neto": 0
+ },
+ {
+  "id": "pres-salud-jorge-rodriguez",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-salud",
+  "figura_id": "jorge-rodriguez",
+  "menciones": 2860,
+  "porcentaje": 13,
+  "porcentaje_propias": 6,
+  "neto": -23
+ },
+ {
+  "id": "pres-salud-capriles",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-salud",
+  "figura_id": "capriles",
+  "menciones": 2640,
+  "porcentaje": 12,
+  "porcentaje_propias": 10,
+  "neto": 17
+ },
+ {
+  "id": "pres-salud-rosales",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-salud",
+  "figura_id": "rosales",
+  "menciones": 1320,
+  "porcentaje": 6,
+  "porcentaje_propias": 10,
+  "neto": 28
+ },
+ {
+  "id": "pres-salud-ecarri",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-salud",
+  "figura_id": "ecarri",
+  "menciones": 880,
+  "porcentaje": 4,
+  "porcentaje_propias": 12,
+  "neto": 8
+ },
+ {
+  "id": "pres-seguridad-machado",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-seguridad",
+  "figura_id": "machado",
+  "menciones": 3120,
+  "porcentaje": 26,
+  "porcentaje_propias": 4,
+  "neto": 8,
+  "favorable": 30,
+  "neutral": 48,
+  "desfavorable": 22
+ },
+ {
+  "id": "pres-seguridad-gonzalez-urrutia",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-seguridad",
+  "figura_id": "gonzalez-urrutia",
+  "menciones": 480,
+  "porcentaje": 4,
+  "porcentaje_propias": 5,
+  "neto": 15
+ },
+ {
+  "id": "pres-seguridad-guanipa",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-seguridad",
+  "figura_id": "guanipa",
+  "menciones": 600,
+  "porcentaje": 5,
+  "porcentaje_propias": 10,
+  "neto": 4
+ },
+ {
+  "id": "pres-seguridad-delcy-rodriguez",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-seguridad",
+  "figura_id": "delcy-rodriguez",
+  "menciones": 3360,
+  "porcentaje": 28,
+  "porcentaje_propias": 6,
+  "neto": -3
+ },
+ {
+  "id": "pres-seguridad-jorge-rodriguez",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-seguridad",
+  "figura_id": "jorge-rodriguez",
+  "menciones": 1920,
+  "porcentaje": 16,
+  "porcentaje_propias": 18,
+  "neto": -26
+ },
+ {
+  "id": "pres-seguridad-capriles",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-seguridad",
+  "figura_id": "capriles",
+  "menciones": 1440,
+  "porcentaje": 12,
+  "porcentaje_propias": 6,
+  "neto": 14
+ },
+ {
+  "id": "pres-seguridad-rosales",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-seguridad",
+  "figura_id": "rosales",
+  "menciones": 720,
+  "porcentaje": 6,
+  "porcentaje_propias": 8,
+  "neto": 25
+ },
+ {
+  "id": "pres-seguridad-ecarri",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-seguridad",
+  "figura_id": "ecarri",
+  "menciones": 360,
+  "porcentaje": 3,
+  "porcentaje_propias": 6,
+  "neto": 5
+ },
+ {
+  "id": "pres-otros-machado",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-otros",
+  "figura_id": "machado",
+  "menciones": 6309,
+  "porcentaje": 39.4,
+  "porcentaje_propias": 7,
+  "favorable": 48,
+  "neutral": 38,
+  "desfavorable": 14,
+  "neto": 34
+ },
+ {
+  "id": "pres-otros-gonzalez-urrutia",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-otros",
+  "figura_id": "gonzalez-urrutia",
+  "menciones": 1009,
+  "porcentaje": 6.3,
+  "porcentaje_propias": 10
+ },
+ {
+  "id": "pres-otros-guanipa",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-otros",
+  "figura_id": "guanipa",
+  "menciones": 455,
+  "porcentaje": 2.8,
+  "porcentaje_propias": 10
+ },
+ {
+  "id": "pres-otros-delcy-rodriguez",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-otros",
+  "figura_id": "delcy-rodriguez",
+  "menciones": 3599,
+  "porcentaje": 22.5,
+  "porcentaje_propias": 6
+ },
+ {
+  "id": "pres-otros-jorge-rodriguez",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-otros",
+  "figura_id": "jorge-rodriguez",
+  "menciones": 2314,
+  "porcentaje": 14.5,
+  "porcentaje_propias": 12
+ },
+ {
+  "id": "pres-otros-capriles",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-otros",
+  "figura_id": "capriles",
+  "menciones": 1701,
+  "porcentaje": 10.6,
+  "porcentaje_propias": 8
+ },
+ {
+  "id": "pres-otros-rosales",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-otros",
+  "figura_id": "rosales",
+  "menciones": 613,
+  "porcentaje": 3.8,
+  "porcentaje_propias": 10
+ },
+ {
+  "id": "pres-otros-ecarri",
+  "campana_id": "presidenciales",
+  "tema_id": "pres-otros",
+  "figura_id": "ecarri",
+  "menciones": 0,
+  "porcentaje": 0.0,
+  "porcentaje_propias": 32
+ }
+]

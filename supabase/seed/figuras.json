@@ -5,7 +5,11 @@
   "iniciales": "MM",
   "nombre": "María Corina Machado",
   "cargo": "Líder opositora",
-  "partido": "Vente Venezuela"
+  "partido": "Vente Venezuela",
+  "coalicion": "Plataforma Unitaria Democrática",
+  "extra": {
+   "subtitulo": "precandidata presidencial · Nobel de la Paz 2025"
+  }
  },
  {
   "id": "delcy-rodriguez",
@@ -13,7 +17,8 @@
   "iniciales": "DR",
   "nombre": "Delcy Rodríguez",
   "cargo": "Presidenta encargada",
-  "partido": "PSUV"
+  "partido": "PSUV",
+  "coalicion": "Gran Polo Patriótico"
  },
  {
   "id": "jorge-rodriguez",
@@ -68,7 +73,7 @@
   "org_id": "brujula",
   "iniciales": "LC",
   "nombre": "Luis Caldera",
-  "cargo": null,
+  "cargo": "Precandidato a gobernador",
   "partido": "PSUV"
  },
  {
@@ -76,7 +81,7 @@
   "org_id": "brujula",
   "iniciales": "GD",
   "nombre": "Gustavo Duque",
-  "cargo": null,
+  "cargo": "Alcalde de Chacao",
   "partido": "Fuerza Vecinal"
  }
 ]

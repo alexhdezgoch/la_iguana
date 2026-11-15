@@ -1,0 +1,44 @@
+[
+ {
+  "id": "pres-primer-debate-machado",
+  "campana_id": "presidenciales",
+  "evento_id": "pres-primer-debate",
+  "figura_id": "machado",
+  "rol": "Protagonista",
+  "menciones": 18400,
+  "participacion": 40,
+  "favorable": 44,
+  "neutral": 35,
+  "desfavorable": 21,
+  "neto": 23,
+  "orden": 1
+ },
+ {
+  "id": "pres-primer-debate-delcy-rodriguez",
+  "campana_id": "presidenciales",
+  "evento_id": "pres-primer-debate",
+  "figura_id": "delcy-rodriguez",
+  "rol": "Adversaria/o",
+  "menciones": 16100,
+  "participacion": 35,
+  "favorable": 27,
+  "neutral": 36,
+  "desfavorable": 37,
+  "neto": -10,
+  "orden": 2
+ },
+ {
+  "id": "pres-primer-debate-capriles",
+  "campana_id": "presidenciales",
+  "evento_id": "pres-primer-debate",
+  "figura_id": "capriles",
+  "rol": "Adversaria/o",
+  "menciones": 8280,
+  "participacion": 18,
+  "favorable": 36,
+  "neutral": 46,
+  "desfavorable": 18,
+  "neto": 18,
+  "orden": 3
+ }
+]

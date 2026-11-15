@@ -1,0 +1,142 @@
+[
+ {
+  "id": "borrador-maracaibo",
+  "org_id": "brujula",
+  "persona_id": "valentina",
+  "tipo": "nueva-campana",
+  "actualizado_en": "2027-05-13T09:00:00-04:00",
+  "datos": {
+   "paso": 0,
+   "campana": {
+    "nombre": "Alcaldía de Maracaibo 2027",
+    "tipo_eleccion": "Alcaldía",
+    "pais": "Venezuela",
+    "estado": "Zulia",
+    "municipio": "Maracaibo",
+    "zona_horaria": "America/Caracas",
+    "jornada": "2027-12-05"
+   },
+   "fases": [
+    {
+     "nombre": "Precampaña",
+     "inicio": "2027-05-01",
+     "fin": "2027-11-04"
+    },
+    {
+     "nombre": "Campaña",
+     "inicio": "2027-11-05",
+     "fin": "2027-12-02"
+    },
+    {
+     "nombre": "Veda",
+     "inicio": "2027-12-03",
+     "fin": "2027-12-04"
+    },
+    {
+     "nombre": "Jornada",
+     "inicio": "2027-12-05",
+     "fin": "2027-12-05"
+    },
+    {
+     "nombre": "Post-electoral",
+     "inicio": "2027-12-06",
+     "fin": "2027-12-20"
+    }
+   ],
+   "figuras": [
+    {
+     "figura_id": "guanipa",
+     "relacion": "Propia",
+     "terminos": [
+      {
+       "texto": "Juan Pablo Guanipa",
+       "tipo": "Nombre"
+      },
+      {
+       "texto": "Guanipa",
+       "tipo": "Nombre"
+      },
+      {
+       "texto": "Guanipa alcaldía",
+       "tipo": "Nombre"
+      }
+     ]
+    },
+    {
+     "figura_id": "caldera",
+     "relacion": "Rival",
+     "terminos": [
+      {
+       "texto": "Luis Caldera",
+       "tipo": "Nombre"
+      },
+      {
+       "texto": "Caldera",
+       "tipo": "Nombre"
+      }
+     ]
+    },
+    {
+     "figura_id": "rosales",
+     "relacion": "Aliada",
+     "terminos": [
+      {
+       "texto": "Rosales Maracaibo",
+       "tipo": "Nombre"
+      }
+     ]
+    }
+   ],
+   "confirmo_personas_publicas": true,
+   "terminos": [
+    {
+     "texto": "Alcaldía de Maracaibo",
+     "tipo": "Término"
+    },
+    {
+     "texto": "elecciones Maracaibo",
+     "tipo": "Término"
+    },
+    {
+     "texto": "#Maracaibo2027",
+     "tipo": "Término"
+    },
+    {
+     "texto": "béisbol",
+     "tipo": "Exclusión"
+    },
+    {
+     "texto": "lotería",
+     "tipo": "Exclusión"
+    }
+   ],
+   "temas": [
+    "Servicio eléctrico",
+    "Agua",
+    "Transporte y vialidad",
+    "Seguridad",
+    "Aseo urbano",
+    "Empleo"
+   ],
+   "equipo": [
+    {
+     "persona_id": "valentina",
+     "rol": "Administración"
+    },
+    {
+     "persona_id": "andres-v",
+     "rol": "Análisis"
+    },
+    {
+     "persona_id": "carolina",
+     "rol": "Análisis"
+    },
+    {
+     "nombre": "Coordinación de la campaña",
+     "nota": "Invitación externa · cliente",
+     "rol": "Cliente"
+    }
+   ]
+  }
+ }
+]

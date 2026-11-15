@@ -1,5 +1,4805 @@
 [
  {
+  "id": "pres-economia-2027-04-14",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-economia",
+  "fecha": "2027-04-14",
+  "menciones": 1246
+ },
+ {
+  "id": "pres-economia-2027-04-15",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-economia",
+  "fecha": "2027-04-15",
+  "menciones": 1258
+ },
+ {
+  "id": "pres-economia-2027-04-16",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-economia",
+  "fecha": "2027-04-16",
+  "menciones": 1271
+ },
+ {
+  "id": "pres-economia-2027-04-17",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-economia",
+  "fecha": "2027-04-17",
+  "menciones": 1283
+ },
+ {
+  "id": "pres-economia-2027-04-18",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-economia",
+  "fecha": "2027-04-18",
+  "menciones": 1296
+ },
+ {
+  "id": "pres-economia-2027-04-19",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-economia",
+  "fecha": "2027-04-19",
+  "menciones": 1308
+ },
+ {
+  "id": "pres-economia-2027-04-20",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-economia",
+  "fecha": "2027-04-20",
+  "menciones": 1320
+ },
+ {
+  "id": "pres-economia-2027-04-21",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-economia",
+  "fecha": "2027-04-21",
+  "menciones": 1333
+ },
+ {
+  "id": "pres-economia-2027-04-22",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-economia",
+  "fecha": "2027-04-22",
+  "menciones": 1345
+ },
+ {
+  "id": "pres-economia-2027-04-23",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-economia",
+  "fecha": "2027-04-23",
+  "menciones": 1358
+ },
+ {
+  "id": "pres-economia-2027-04-24",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-economia",
+  "fecha": "2027-04-24",
+  "menciones": 1370
+ },
+ {
+  "id": "pres-economia-2027-04-25",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-economia",
+  "fecha": "2027-04-25",
+  "menciones": 4726
+ },
+ {
+  "id": "pres-economia-2027-04-26",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-economia",
+  "fecha": "2027-04-26",
+  "menciones": 3523
+ },
+ {
+  "id": "pres-economia-2027-04-27",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-economia",
+  "fecha": "2027-04-27",
+  "menciones": 1408
+ },
+ {
+  "id": "pres-economia-2027-04-28",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-economia",
+  "fecha": "2027-04-28",
+  "menciones": 1420
+ },
+ {
+  "id": "pres-economia-2027-04-29",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-economia",
+  "fecha": "2027-04-29",
+  "menciones": 1433
+ },
+ {
+  "id": "pres-economia-2027-04-30",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-economia",
+  "fecha": "2027-04-30",
+  "menciones": 1445
+ },
+ {
+  "id": "pres-economia-2027-05-01",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-economia",
+  "fecha": "2027-05-01",
+  "menciones": 1457
+ },
+ {
+  "id": "pres-economia-2027-05-02",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-economia",
+  "fecha": "2027-05-02",
+  "menciones": 1470
+ },
+ {
+  "id": "pres-economia-2027-05-03",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-economia",
+  "fecha": "2027-05-03",
+  "menciones": 1482
+ },
+ {
+  "id": "pres-economia-2027-05-04",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-economia",
+  "fecha": "2027-05-04",
+  "menciones": 1495
+ },
+ {
+  "id": "pres-economia-2027-05-05",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-economia",
+  "fecha": "2027-05-05",
+  "menciones": 1507
+ },
+ {
+  "id": "pres-economia-2027-05-06",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-economia",
+  "fecha": "2027-05-06",
+  "menciones": 1520
+ },
+ {
+  "id": "pres-economia-2027-05-07",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-economia",
+  "fecha": "2027-05-07",
+  "menciones": 1532
+ },
+ {
+  "id": "pres-economia-2027-05-08",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-economia",
+  "fecha": "2027-05-08",
+  "menciones": 1545
+ },
+ {
+  "id": "pres-economia-2027-05-09",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-economia",
+  "fecha": "2027-05-09",
+  "menciones": 1557
+ },
+ {
+  "id": "pres-economia-2027-05-10",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-economia",
+  "fecha": "2027-05-10",
+  "menciones": 1570
+ },
+ {
+  "id": "pres-economia-2027-05-11",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-economia",
+  "fecha": "2027-05-11",
+  "menciones": 3202
+ },
+ {
+  "id": "pres-economia-2027-05-12",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-economia",
+  "fecha": "2027-05-12",
+  "menciones": 2716
+ },
+ {
+  "id": "pres-economia-2027-05-13",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-economia",
+  "fecha": "2027-05-13",
+  "menciones": 2604
+ },
+ {
+  "id": "pres-migracion-2027-04-14",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-migracion",
+  "fecha": "2027-04-14",
+  "menciones": 853
+ },
+ {
+  "id": "pres-migracion-2027-04-15",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-migracion",
+  "fecha": "2027-04-15",
+  "menciones": 862
+ },
+ {
+  "id": "pres-migracion-2027-04-16",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-migracion",
+  "fecha": "2027-04-16",
+  "menciones": 870
+ },
+ {
+  "id": "pres-migracion-2027-04-17",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-migracion",
+  "fecha": "2027-04-17",
+  "menciones": 879
+ },
+ {
+  "id": "pres-migracion-2027-04-18",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-migracion",
+  "fecha": "2027-04-18",
+  "menciones": 887
+ },
+ {
+  "id": "pres-migracion-2027-04-19",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-migracion",
+  "fecha": "2027-04-19",
+  "menciones": 896
+ },
+ {
+  "id": "pres-migracion-2027-04-20",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-migracion",
+  "fecha": "2027-04-20",
+  "menciones": 904
+ },
+ {
+  "id": "pres-migracion-2027-04-21",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-migracion",
+  "fecha": "2027-04-21",
+  "menciones": 913
+ },
+ {
+  "id": "pres-migracion-2027-04-22",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-migracion",
+  "fecha": "2027-04-22",
+  "menciones": 921
+ },
+ {
+  "id": "pres-migracion-2027-04-23",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-migracion",
+  "fecha": "2027-04-23",
+  "menciones": 930
+ },
+ {
+  "id": "pres-migracion-2027-04-24",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-migracion",
+  "fecha": "2027-04-24",
+  "menciones": 939
+ },
+ {
+  "id": "pres-migracion-2027-04-25",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-migracion",
+  "fecha": "2027-04-25",
+  "menciones": 2312
+ },
+ {
+  "id": "pres-migracion-2027-04-26",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-migracion",
+  "fecha": "2027-04-26",
+  "menciones": 1723
+ },
+ {
+  "id": "pres-migracion-2027-04-27",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-migracion",
+  "fecha": "2027-04-27",
+  "menciones": 964
+ },
+ {
+  "id": "pres-migracion-2027-04-28",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-migracion",
+  "fecha": "2027-04-28",
+  "menciones": 973
+ },
+ {
+  "id": "pres-migracion-2027-04-29",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-migracion",
+  "fecha": "2027-04-29",
+  "menciones": 981
+ },
+ {
+  "id": "pres-migracion-2027-04-30",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-migracion",
+  "fecha": "2027-04-30",
+  "menciones": 990
+ },
+ {
+  "id": "pres-migracion-2027-05-01",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-migracion",
+  "fecha": "2027-05-01",
+  "menciones": 998
+ },
+ {
+  "id": "pres-migracion-2027-05-02",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-migracion",
+  "fecha": "2027-05-02",
+  "menciones": 1007
+ },
+ {
+  "id": "pres-migracion-2027-05-03",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-migracion",
+  "fecha": "2027-05-03",
+  "menciones": 1015
+ },
+ {
+  "id": "pres-migracion-2027-05-04",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-migracion",
+  "fecha": "2027-05-04",
+  "menciones": 1024
+ },
+ {
+  "id": "pres-migracion-2027-05-05",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-migracion",
+  "fecha": "2027-05-05",
+  "menciones": 1032
+ },
+ {
+  "id": "pres-migracion-2027-05-06",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-migracion",
+  "fecha": "2027-05-06",
+  "menciones": 1041
+ },
+ {
+  "id": "pres-migracion-2027-05-07",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-migracion",
+  "fecha": "2027-05-07",
+  "menciones": 1049
+ },
+ {
+  "id": "pres-migracion-2027-05-08",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-migracion",
+  "fecha": "2027-05-08",
+  "menciones": 1058
+ },
+ {
+  "id": "pres-migracion-2027-05-09",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-migracion",
+  "fecha": "2027-05-09",
+  "menciones": 1067
+ },
+ {
+  "id": "pres-migracion-2027-05-10",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-migracion",
+  "fecha": "2027-05-10",
+  "menciones": 1697
+ },
+ {
+  "id": "pres-migracion-2027-05-11",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-migracion",
+  "fecha": "2027-05-11",
+  "menciones": 3462
+ },
+ {
+  "id": "pres-migracion-2027-05-12",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-migracion",
+  "fecha": "2027-05-12",
+  "menciones": 2937
+ },
+ {
+  "id": "pres-migracion-2027-05-13",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-migracion",
+  "fecha": "2027-05-13",
+  "menciones": 2816
+ },
+ {
+  "id": "pres-fecha-electoral-2027-04-14",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-fecha-electoral",
+  "fecha": "2027-04-14",
+  "menciones": 633
+ },
+ {
+  "id": "pres-fecha-electoral-2027-04-15",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-fecha-electoral",
+  "fecha": "2027-04-15",
+  "menciones": 639
+ },
+ {
+  "id": "pres-fecha-electoral-2027-04-16",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-fecha-electoral",
+  "fecha": "2027-04-16",
+  "menciones": 645
+ },
+ {
+  "id": "pres-fecha-electoral-2027-04-17",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-fecha-electoral",
+  "fecha": "2027-04-17",
+  "menciones": 651
+ },
+ {
+  "id": "pres-fecha-electoral-2027-04-18",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-fecha-electoral",
+  "fecha": "2027-04-18",
+  "menciones": 658
+ },
+ {
+  "id": "pres-fecha-electoral-2027-04-19",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-fecha-electoral",
+  "fecha": "2027-04-19",
+  "menciones": 664
+ },
+ {
+  "id": "pres-fecha-electoral-2027-04-20",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-fecha-electoral",
+  "fecha": "2027-04-20",
+  "menciones": 670
+ },
+ {
+  "id": "pres-fecha-electoral-2027-04-21",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-fecha-electoral",
+  "fecha": "2027-04-21",
+  "menciones": 677
+ },
+ {
+  "id": "pres-fecha-electoral-2027-04-22",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-fecha-electoral",
+  "fecha": "2027-04-22",
+  "menciones": 683
+ },
+ {
+  "id": "pres-fecha-electoral-2027-04-23",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-fecha-electoral",
+  "fecha": "2027-04-23",
+  "menciones": 689
+ },
+ {
+  "id": "pres-fecha-electoral-2027-04-24",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-fecha-electoral",
+  "fecha": "2027-04-24",
+  "menciones": 696
+ },
+ {
+  "id": "pres-fecha-electoral-2027-04-25",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-fecha-electoral",
+  "fecha": "2027-04-25",
+  "menciones": 1714
+ },
+ {
+  "id": "pres-fecha-electoral-2027-04-26",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-fecha-electoral",
+  "fecha": "2027-04-26",
+  "menciones": 1278
+ },
+ {
+  "id": "pres-fecha-electoral-2027-04-27",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-fecha-electoral",
+  "fecha": "2027-04-27",
+  "menciones": 715
+ },
+ {
+  "id": "pres-fecha-electoral-2027-04-28",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-fecha-electoral",
+  "fecha": "2027-04-28",
+  "menciones": 721
+ },
+ {
+  "id": "pres-fecha-electoral-2027-04-29",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-fecha-electoral",
+  "fecha": "2027-04-29",
+  "menciones": 727
+ },
+ {
+  "id": "pres-fecha-electoral-2027-04-30",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-fecha-electoral",
+  "fecha": "2027-04-30",
+  "menciones": 734
+ },
+ {
+  "id": "pres-fecha-electoral-2027-05-01",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-fecha-electoral",
+  "fecha": "2027-05-01",
+  "menciones": 740
+ },
+ {
+  "id": "pres-fecha-electoral-2027-05-02",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-fecha-electoral",
+  "fecha": "2027-05-02",
+  "menciones": 746
+ },
+ {
+  "id": "pres-fecha-electoral-2027-05-03",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-fecha-electoral",
+  "fecha": "2027-05-03",
+  "menciones": 753
+ },
+ {
+  "id": "pres-fecha-electoral-2027-05-04",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-fecha-electoral",
+  "fecha": "2027-05-04",
+  "menciones": 949
+ },
+ {
+  "id": "pres-fecha-electoral-2027-05-05",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-fecha-electoral",
+  "fecha": "2027-05-05",
+  "menciones": 1052
+ },
+ {
+  "id": "pres-fecha-electoral-2027-05-06",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-fecha-electoral",
+  "fecha": "2027-05-06",
+  "menciones": 1157
+ },
+ {
+  "id": "pres-fecha-electoral-2027-05-07",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-fecha-electoral",
+  "fecha": "2027-05-07",
+  "menciones": 1264
+ },
+ {
+  "id": "pres-fecha-electoral-2027-05-08",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-fecha-electoral",
+  "fecha": "2027-05-08",
+  "menciones": 1373
+ },
+ {
+  "id": "pres-fecha-electoral-2027-05-09",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-fecha-electoral",
+  "fecha": "2027-05-09",
+  "menciones": 1482
+ },
+ {
+  "id": "pres-fecha-electoral-2027-05-10",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-fecha-electoral",
+  "fecha": "2027-05-10",
+  "menciones": 1594
+ },
+ {
+  "id": "pres-fecha-electoral-2027-05-11",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-fecha-electoral",
+  "fecha": "2027-05-11",
+  "menciones": 3454
+ },
+ {
+  "id": "pres-fecha-electoral-2027-05-12",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-fecha-electoral",
+  "fecha": "2027-05-12",
+  "menciones": 3102
+ },
+ {
+  "id": "pres-fecha-electoral-2027-05-13",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-fecha-electoral",
+  "fecha": "2027-05-13",
+  "menciones": 3140
+ },
+ {
+  "id": "pres-servicios-2027-04-14",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-servicios",
+  "fecha": "2027-04-14",
+  "menciones": 697
+ },
+ {
+  "id": "pres-servicios-2027-04-15",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-servicios",
+  "fecha": "2027-04-15",
+  "menciones": 701
+ },
+ {
+  "id": "pres-servicios-2027-04-16",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-servicios",
+  "fecha": "2027-04-16",
+  "menciones": 705
+ },
+ {
+  "id": "pres-servicios-2027-04-17",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-servicios",
+  "fecha": "2027-04-17",
+  "menciones": 709
+ },
+ {
+  "id": "pres-servicios-2027-04-18",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-servicios",
+  "fecha": "2027-04-18",
+  "menciones": 713
+ },
+ {
+  "id": "pres-servicios-2027-04-19",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-servicios",
+  "fecha": "2027-04-19",
+  "menciones": 717
+ },
+ {
+  "id": "pres-servicios-2027-04-20",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-servicios",
+  "fecha": "2027-04-20",
+  "menciones": 721
+ },
+ {
+  "id": "pres-servicios-2027-04-21",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-servicios",
+  "fecha": "2027-04-21",
+  "menciones": 724
+ },
+ {
+  "id": "pres-servicios-2027-04-22",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-servicios",
+  "fecha": "2027-04-22",
+  "menciones": 728
+ },
+ {
+  "id": "pres-servicios-2027-04-23",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-servicios",
+  "fecha": "2027-04-23",
+  "menciones": 732
+ },
+ {
+  "id": "pres-servicios-2027-04-24",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-servicios",
+  "fecha": "2027-04-24",
+  "menciones": 736
+ },
+ {
+  "id": "pres-servicios-2027-04-25",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-servicios",
+  "fecha": "2027-04-25",
+  "menciones": 1805
+ },
+ {
+  "id": "pres-servicios-2027-04-26",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-servicios",
+  "fecha": "2027-04-26",
+  "menciones": 1340
+ },
+ {
+  "id": "pres-servicios-2027-04-27",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-servicios",
+  "fecha": "2027-04-27",
+  "menciones": 746
+ },
+ {
+  "id": "pres-servicios-2027-04-28",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-servicios",
+  "fecha": "2027-04-28",
+  "menciones": 750
+ },
+ {
+  "id": "pres-servicios-2027-04-29",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-servicios",
+  "fecha": "2027-04-29",
+  "menciones": 753
+ },
+ {
+  "id": "pres-servicios-2027-04-30",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-servicios",
+  "fecha": "2027-04-30",
+  "menciones": 756
+ },
+ {
+  "id": "pres-servicios-2027-05-01",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-servicios",
+  "fecha": "2027-05-01",
+  "menciones": 760
+ },
+ {
+  "id": "pres-servicios-2027-05-02",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-servicios",
+  "fecha": "2027-05-02",
+  "menciones": 763
+ },
+ {
+  "id": "pres-servicios-2027-05-03",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-servicios",
+  "fecha": "2027-05-03",
+  "menciones": 766
+ },
+ {
+  "id": "pres-servicios-2027-05-04",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-servicios",
+  "fecha": "2027-05-04",
+  "menciones": 769
+ },
+ {
+  "id": "pres-servicios-2027-05-05",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-servicios",
+  "fecha": "2027-05-05",
+  "menciones": 772
+ },
+ {
+  "id": "pres-servicios-2027-05-06",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-servicios",
+  "fecha": "2027-05-06",
+  "menciones": 775
+ },
+ {
+  "id": "pres-servicios-2027-05-07",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-servicios",
+  "fecha": "2027-05-07",
+  "menciones": 778
+ },
+ {
+  "id": "pres-servicios-2027-05-08",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-servicios",
+  "fecha": "2027-05-08",
+  "menciones": 781
+ },
+ {
+  "id": "pres-servicios-2027-05-09",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-servicios",
+  "fecha": "2027-05-09",
+  "menciones": 784
+ },
+ {
+  "id": "pres-servicios-2027-05-10",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-servicios",
+  "fecha": "2027-05-10",
+  "menciones": 786
+ },
+ {
+  "id": "pres-servicios-2027-05-11",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-servicios",
+  "fecha": "2027-05-11",
+  "menciones": 1597
+ },
+ {
+  "id": "pres-servicios-2027-05-12",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-servicios",
+  "fecha": "2027-05-12",
+  "menciones": 1349
+ },
+ {
+  "id": "pres-servicios-2027-05-13",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-servicios",
+  "fecha": "2027-05-13",
+  "menciones": 1287
+ },
+ {
+  "id": "pres-salud-2027-04-14",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-salud",
+  "fecha": "2027-04-14",
+  "menciones": 552
+ },
+ {
+  "id": "pres-salud-2027-04-15",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-salud",
+  "fecha": "2027-04-15",
+  "menciones": 558
+ },
+ {
+  "id": "pres-salud-2027-04-16",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-salud",
+  "fecha": "2027-04-16",
+  "menciones": 563
+ },
+ {
+  "id": "pres-salud-2027-04-17",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-salud",
+  "fecha": "2027-04-17",
+  "menciones": 569
+ },
+ {
+  "id": "pres-salud-2027-04-18",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-salud",
+  "fecha": "2027-04-18",
+  "menciones": 574
+ },
+ {
+  "id": "pres-salud-2027-04-19",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-salud",
+  "fecha": "2027-04-19",
+  "menciones": 580
+ },
+ {
+  "id": "pres-salud-2027-04-20",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-salud",
+  "fecha": "2027-04-20",
+  "menciones": 585
+ },
+ {
+  "id": "pres-salud-2027-04-21",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-salud",
+  "fecha": "2027-04-21",
+  "menciones": 591
+ },
+ {
+  "id": "pres-salud-2027-04-22",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-salud",
+  "fecha": "2027-04-22",
+  "menciones": 596
+ },
+ {
+  "id": "pres-salud-2027-04-23",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-salud",
+  "fecha": "2027-04-23",
+  "menciones": 602
+ },
+ {
+  "id": "pres-salud-2027-04-24",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-salud",
+  "fecha": "2027-04-24",
+  "menciones": 607
+ },
+ {
+  "id": "pres-salud-2027-04-25",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-salud",
+  "fecha": "2027-04-25",
+  "menciones": 1496
+ },
+ {
+  "id": "pres-salud-2027-04-26",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-salud",
+  "fecha": "2027-04-26",
+  "menciones": 1115
+ },
+ {
+  "id": "pres-salud-2027-04-27",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-salud",
+  "fecha": "2027-04-27",
+  "menciones": 624
+ },
+ {
+  "id": "pres-salud-2027-04-28",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-salud",
+  "fecha": "2027-04-28",
+  "menciones": 629
+ },
+ {
+  "id": "pres-salud-2027-04-29",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-salud",
+  "fecha": "2027-04-29",
+  "menciones": 635
+ },
+ {
+  "id": "pres-salud-2027-04-30",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-salud",
+  "fecha": "2027-04-30",
+  "menciones": 640
+ },
+ {
+  "id": "pres-salud-2027-05-01",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-salud",
+  "fecha": "2027-05-01",
+  "menciones": 646
+ },
+ {
+  "id": "pres-salud-2027-05-02",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-salud",
+  "fecha": "2027-05-02",
+  "menciones": 651
+ },
+ {
+  "id": "pres-salud-2027-05-03",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-salud",
+  "fecha": "2027-05-03",
+  "menciones": 657
+ },
+ {
+  "id": "pres-salud-2027-05-04",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-salud",
+  "fecha": "2027-05-04",
+  "menciones": 662
+ },
+ {
+  "id": "pres-salud-2027-05-05",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-salud",
+  "fecha": "2027-05-05",
+  "menciones": 668
+ },
+ {
+  "id": "pres-salud-2027-05-06",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-salud",
+  "fecha": "2027-05-06",
+  "menciones": 674
+ },
+ {
+  "id": "pres-salud-2027-05-07",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-salud",
+  "fecha": "2027-05-07",
+  "menciones": 679
+ },
+ {
+  "id": "pres-salud-2027-05-08",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-salud",
+  "fecha": "2027-05-08",
+  "menciones": 685
+ },
+ {
+  "id": "pres-salud-2027-05-09",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-salud",
+  "fecha": "2027-05-09",
+  "menciones": 690
+ },
+ {
+  "id": "pres-salud-2027-05-10",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-salud",
+  "fecha": "2027-05-10",
+  "menciones": 696
+ },
+ {
+  "id": "pres-salud-2027-05-11",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-salud",
+  "fecha": "2027-05-11",
+  "menciones": 1419
+ },
+ {
+  "id": "pres-salud-2027-05-12",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-salud",
+  "fecha": "2027-05-12",
+  "menciones": 1203
+ },
+ {
+  "id": "pres-salud-2027-05-13",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-salud",
+  "fecha": "2027-05-13",
+  "menciones": 1154
+ },
+ {
+  "id": "pres-seguridad-2027-04-14",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-seguridad",
+  "fecha": "2027-04-14",
+  "menciones": 330
+ },
+ {
+  "id": "pres-seguridad-2027-04-15",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-seguridad",
+  "fecha": "2027-04-15",
+  "menciones": 331
+ },
+ {
+  "id": "pres-seguridad-2027-04-16",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-seguridad",
+  "fecha": "2027-04-16",
+  "menciones": 333
+ },
+ {
+  "id": "pres-seguridad-2027-04-17",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-seguridad",
+  "fecha": "2027-04-17",
+  "menciones": 334
+ },
+ {
+  "id": "pres-seguridad-2027-04-18",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-seguridad",
+  "fecha": "2027-04-18",
+  "menciones": 335
+ },
+ {
+  "id": "pres-seguridad-2027-04-19",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-seguridad",
+  "fecha": "2027-04-19",
+  "menciones": 337
+ },
+ {
+  "id": "pres-seguridad-2027-04-20",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-seguridad",
+  "fecha": "2027-04-20",
+  "menciones": 338
+ },
+ {
+  "id": "pres-seguridad-2027-04-21",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-seguridad",
+  "fecha": "2027-04-21",
+  "menciones": 339
+ },
+ {
+  "id": "pres-seguridad-2027-04-22",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-seguridad",
+  "fecha": "2027-04-22",
+  "menciones": 341
+ },
+ {
+  "id": "pres-seguridad-2027-04-23",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-seguridad",
+  "fecha": "2027-04-23",
+  "menciones": 342
+ },
+ {
+  "id": "pres-seguridad-2027-04-24",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-seguridad",
+  "fecha": "2027-04-24",
+  "menciones": 343
+ },
+ {
+  "id": "pres-seguridad-2027-04-25",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-seguridad",
+  "fecha": "2027-04-25",
+  "menciones": 840
+ },
+ {
+  "id": "pres-seguridad-2027-04-26",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-seguridad",
+  "fecha": "2027-04-26",
+  "menciones": 622
+ },
+ {
+  "id": "pres-seguridad-2027-04-27",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-seguridad",
+  "fecha": "2027-04-27",
+  "menciones": 346
+ },
+ {
+  "id": "pres-seguridad-2027-04-28",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-seguridad",
+  "fecha": "2027-04-28",
+  "menciones": 347
+ },
+ {
+  "id": "pres-seguridad-2027-04-29",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-seguridad",
+  "fecha": "2027-04-29",
+  "menciones": 348
+ },
+ {
+  "id": "pres-seguridad-2027-04-30",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-seguridad",
+  "fecha": "2027-04-30",
+  "menciones": 349
+ },
+ {
+  "id": "pres-seguridad-2027-05-01",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-seguridad",
+  "fecha": "2027-05-01",
+  "menciones": 350
+ },
+ {
+  "id": "pres-seguridad-2027-05-02",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-seguridad",
+  "fecha": "2027-05-02",
+  "menciones": 351
+ },
+ {
+  "id": "pres-seguridad-2027-05-03",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-seguridad",
+  "fecha": "2027-05-03",
+  "menciones": 352
+ },
+ {
+  "id": "pres-seguridad-2027-05-04",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-seguridad",
+  "fecha": "2027-05-04",
+  "menciones": 352
+ },
+ {
+  "id": "pres-seguridad-2027-05-05",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-seguridad",
+  "fecha": "2027-05-05",
+  "menciones": 353
+ },
+ {
+  "id": "pres-seguridad-2027-05-06",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-seguridad",
+  "fecha": "2027-05-06",
+  "menciones": 354
+ },
+ {
+  "id": "pres-seguridad-2027-05-07",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-seguridad",
+  "fecha": "2027-05-07",
+  "menciones": 355
+ },
+ {
+  "id": "pres-seguridad-2027-05-08",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-seguridad",
+  "fecha": "2027-05-08",
+  "menciones": 355
+ },
+ {
+  "id": "pres-seguridad-2027-05-09",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-seguridad",
+  "fecha": "2027-05-09",
+  "menciones": 356
+ },
+ {
+  "id": "pres-seguridad-2027-05-10",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-seguridad",
+  "fecha": "2027-05-10",
+  "menciones": 356
+ },
+ {
+  "id": "pres-seguridad-2027-05-11",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-seguridad",
+  "fecha": "2027-05-11",
+  "menciones": 722
+ },
+ {
+  "id": "pres-seguridad-2027-05-12",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-seguridad",
+  "fecha": "2027-05-12",
+  "menciones": 609
+ },
+ {
+  "id": "pres-seguridad-2027-05-13",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-seguridad",
+  "fecha": "2027-05-13",
+  "menciones": 580
+ },
+ {
+  "id": "pres-otros-2027-04-14",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-otros",
+  "fecha": "2027-04-14",
+  "menciones": 401
+ },
+ {
+  "id": "pres-otros-2027-04-15",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-otros",
+  "fecha": "2027-04-15",
+  "menciones": 405
+ },
+ {
+  "id": "pres-otros-2027-04-16",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-otros",
+  "fecha": "2027-04-16",
+  "menciones": 409
+ },
+ {
+  "id": "pres-otros-2027-04-17",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-otros",
+  "fecha": "2027-04-17",
+  "menciones": 413
+ },
+ {
+  "id": "pres-otros-2027-04-18",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-otros",
+  "fecha": "2027-04-18",
+  "menciones": 417
+ },
+ {
+  "id": "pres-otros-2027-04-19",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-otros",
+  "fecha": "2027-04-19",
+  "menciones": 421
+ },
+ {
+  "id": "pres-otros-2027-04-20",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-otros",
+  "fecha": "2027-04-20",
+  "menciones": 425
+ },
+ {
+  "id": "pres-otros-2027-04-21",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-otros",
+  "fecha": "2027-04-21",
+  "menciones": 430
+ },
+ {
+  "id": "pres-otros-2027-04-22",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-otros",
+  "fecha": "2027-04-22",
+  "menciones": 434
+ },
+ {
+  "id": "pres-otros-2027-04-23",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-otros",
+  "fecha": "2027-04-23",
+  "menciones": 438
+ },
+ {
+  "id": "pres-otros-2027-04-24",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-otros",
+  "fecha": "2027-04-24",
+  "menciones": 442
+ },
+ {
+  "id": "pres-otros-2027-04-25",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-otros",
+  "fecha": "2027-04-25",
+  "menciones": 1088
+ },
+ {
+  "id": "pres-otros-2027-04-26",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-otros",
+  "fecha": "2027-04-26",
+  "menciones": 811
+ },
+ {
+  "id": "pres-otros-2027-04-27",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-otros",
+  "fecha": "2027-04-27",
+  "menciones": 454
+ },
+ {
+  "id": "pres-otros-2027-04-28",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-otros",
+  "fecha": "2027-04-28",
+  "menciones": 458
+ },
+ {
+  "id": "pres-otros-2027-04-29",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-otros",
+  "fecha": "2027-04-29",
+  "menciones": 462
+ },
+ {
+  "id": "pres-otros-2027-04-30",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-otros",
+  "fecha": "2027-04-30",
+  "menciones": 466
+ },
+ {
+  "id": "pres-otros-2027-05-01",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-otros",
+  "fecha": "2027-05-01",
+  "menciones": 470
+ },
+ {
+  "id": "pres-otros-2027-05-02",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-otros",
+  "fecha": "2027-05-02",
+  "menciones": 474
+ },
+ {
+  "id": "pres-otros-2027-05-03",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-otros",
+  "fecha": "2027-05-03",
+  "menciones": 478
+ },
+ {
+  "id": "pres-otros-2027-05-04",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-otros",
+  "fecha": "2027-05-04",
+  "menciones": 482
+ },
+ {
+  "id": "pres-otros-2027-05-05",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-otros",
+  "fecha": "2027-05-05",
+  "menciones": 486
+ },
+ {
+  "id": "pres-otros-2027-05-06",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-otros",
+  "fecha": "2027-05-06",
+  "menciones": 490
+ },
+ {
+  "id": "pres-otros-2027-05-07",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-otros",
+  "fecha": "2027-05-07",
+  "menciones": 494
+ },
+ {
+  "id": "pres-otros-2027-05-08",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-otros",
+  "fecha": "2027-05-08",
+  "menciones": 498
+ },
+ {
+  "id": "pres-otros-2027-05-09",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-otros",
+  "fecha": "2027-05-09",
+  "menciones": 502
+ },
+ {
+  "id": "pres-otros-2027-05-10",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-otros",
+  "fecha": "2027-05-10",
+  "menciones": 506
+ },
+ {
+  "id": "pres-otros-2027-05-11",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-otros",
+  "fecha": "2027-05-11",
+  "menciones": 1032
+ },
+ {
+  "id": "pres-otros-2027-05-12",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-otros",
+  "fecha": "2027-05-12",
+  "menciones": 875
+ },
+ {
+  "id": "pres-otros-2027-05-13",
+  "campana_id": "presidenciales",
+  "entidad": "tema",
+  "entidad_id": "pres-otros",
+  "fecha": "2027-05-13",
+  "menciones": 839
+ },
+ {
+  "id": "pres-que-vuelvan-a-casa-2027-04-14",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-que-vuelvan-a-casa",
+  "fecha": "2027-04-14",
+  "menciones": 407
+ },
+ {
+  "id": "pres-que-vuelvan-a-casa-2027-04-15",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-que-vuelvan-a-casa",
+  "fecha": "2027-04-15",
+  "menciones": 407
+ },
+ {
+  "id": "pres-que-vuelvan-a-casa-2027-04-16",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-que-vuelvan-a-casa",
+  "fecha": "2027-04-16",
+  "menciones": 407
+ },
+ {
+  "id": "pres-que-vuelvan-a-casa-2027-04-17",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-que-vuelvan-a-casa",
+  "fecha": "2027-04-17",
+  "menciones": 407
+ },
+ {
+  "id": "pres-que-vuelvan-a-casa-2027-04-18",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-que-vuelvan-a-casa",
+  "fecha": "2027-04-18",
+  "menciones": 407
+ },
+ {
+  "id": "pres-que-vuelvan-a-casa-2027-04-19",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-que-vuelvan-a-casa",
+  "fecha": "2027-04-19",
+  "menciones": 407
+ },
+ {
+  "id": "pres-que-vuelvan-a-casa-2027-04-20",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-que-vuelvan-a-casa",
+  "fecha": "2027-04-20",
+  "menciones": 407
+ },
+ {
+  "id": "pres-que-vuelvan-a-casa-2027-04-21",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-que-vuelvan-a-casa",
+  "fecha": "2027-04-21",
+  "menciones": 407
+ },
+ {
+  "id": "pres-que-vuelvan-a-casa-2027-04-22",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-que-vuelvan-a-casa",
+  "fecha": "2027-04-22",
+  "menciones": 407
+ },
+ {
+  "id": "pres-que-vuelvan-a-casa-2027-04-23",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-que-vuelvan-a-casa",
+  "fecha": "2027-04-23",
+  "menciones": 407
+ },
+ {
+  "id": "pres-que-vuelvan-a-casa-2027-04-24",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-que-vuelvan-a-casa",
+  "fecha": "2027-04-24",
+  "menciones": 407
+ },
+ {
+  "id": "pres-que-vuelvan-a-casa-2027-04-25",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-que-vuelvan-a-casa",
+  "fecha": "2027-04-25",
+  "menciones": 697
+ },
+ {
+  "id": "pres-que-vuelvan-a-casa-2027-04-26",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-que-vuelvan-a-casa",
+  "fecha": "2027-04-26",
+  "menciones": 407
+ },
+ {
+  "id": "pres-que-vuelvan-a-casa-2027-04-27",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-que-vuelvan-a-casa",
+  "fecha": "2027-04-27",
+  "menciones": 407
+ },
+ {
+  "id": "pres-que-vuelvan-a-casa-2027-04-28",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-que-vuelvan-a-casa",
+  "fecha": "2027-04-28",
+  "menciones": 407
+ },
+ {
+  "id": "pres-que-vuelvan-a-casa-2027-04-29",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-que-vuelvan-a-casa",
+  "fecha": "2027-04-29",
+  "menciones": 407
+ },
+ {
+  "id": "pres-que-vuelvan-a-casa-2027-04-30",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-que-vuelvan-a-casa",
+  "fecha": "2027-04-30",
+  "menciones": 407
+ },
+ {
+  "id": "pres-que-vuelvan-a-casa-2027-05-01",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-que-vuelvan-a-casa",
+  "fecha": "2027-05-01",
+  "menciones": 407
+ },
+ {
+  "id": "pres-que-vuelvan-a-casa-2027-05-02",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-que-vuelvan-a-casa",
+  "fecha": "2027-05-02",
+  "menciones": 407
+ },
+ {
+  "id": "pres-que-vuelvan-a-casa-2027-05-03",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-que-vuelvan-a-casa",
+  "fecha": "2027-05-03",
+  "menciones": 407
+ },
+ {
+  "id": "pres-que-vuelvan-a-casa-2027-05-04",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-que-vuelvan-a-casa",
+  "fecha": "2027-05-04",
+  "menciones": 407
+ },
+ {
+  "id": "pres-que-vuelvan-a-casa-2027-05-05",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-que-vuelvan-a-casa",
+  "fecha": "2027-05-05",
+  "menciones": 407
+ },
+ {
+  "id": "pres-que-vuelvan-a-casa-2027-05-06",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-que-vuelvan-a-casa",
+  "fecha": "2027-05-06",
+  "menciones": 407
+ },
+ {
+  "id": "pres-que-vuelvan-a-casa-2027-05-07",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-que-vuelvan-a-casa",
+  "fecha": "2027-05-07",
+  "menciones": 407
+ },
+ {
+  "id": "pres-que-vuelvan-a-casa-2027-05-08",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-que-vuelvan-a-casa",
+  "fecha": "2027-05-08",
+  "menciones": 406
+ },
+ {
+  "id": "pres-que-vuelvan-a-casa-2027-05-09",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-que-vuelvan-a-casa",
+  "fecha": "2027-05-09",
+  "menciones": 406
+ },
+ {
+  "id": "pres-que-vuelvan-a-casa-2027-05-10",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-que-vuelvan-a-casa",
+  "fecha": "2027-05-10",
+  "menciones": 930
+ },
+ {
+  "id": "pres-que-vuelvan-a-casa-2027-05-11",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-que-vuelvan-a-casa",
+  "fecha": "2027-05-11",
+  "menciones": 930
+ },
+ {
+  "id": "pres-que-vuelvan-a-casa-2027-05-12",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-que-vuelvan-a-casa",
+  "fecha": "2027-05-12",
+  "menciones": 930
+ },
+ {
+  "id": "pres-que-vuelvan-a-casa-2027-05-13",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-que-vuelvan-a-casa",
+  "fecha": "2027-05-13",
+  "menciones": 640
+ },
+ {
+  "id": "pres-fuera-del-dialogo-2027-04-14",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fuera-del-dialogo",
+  "fecha": "2027-04-14",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fuera-del-dialogo-2027-04-15",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fuera-del-dialogo",
+  "fecha": "2027-04-15",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fuera-del-dialogo-2027-04-16",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fuera-del-dialogo",
+  "fecha": "2027-04-16",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fuera-del-dialogo-2027-04-17",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fuera-del-dialogo",
+  "fecha": "2027-04-17",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fuera-del-dialogo-2027-04-18",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fuera-del-dialogo",
+  "fecha": "2027-04-18",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fuera-del-dialogo-2027-04-19",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fuera-del-dialogo",
+  "fecha": "2027-04-19",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fuera-del-dialogo-2027-04-20",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fuera-del-dialogo",
+  "fecha": "2027-04-20",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fuera-del-dialogo-2027-04-21",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fuera-del-dialogo",
+  "fecha": "2027-04-21",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fuera-del-dialogo-2027-04-22",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fuera-del-dialogo",
+  "fecha": "2027-04-22",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fuera-del-dialogo-2027-04-23",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fuera-del-dialogo",
+  "fecha": "2027-04-23",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fuera-del-dialogo-2027-04-24",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fuera-del-dialogo",
+  "fecha": "2027-04-24",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fuera-del-dialogo-2027-04-25",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fuera-del-dialogo",
+  "fecha": "2027-04-25",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fuera-del-dialogo-2027-04-26",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fuera-del-dialogo",
+  "fecha": "2027-04-26",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fuera-del-dialogo-2027-04-27",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fuera-del-dialogo",
+  "fecha": "2027-04-27",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fuera-del-dialogo-2027-04-28",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fuera-del-dialogo",
+  "fecha": "2027-04-28",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fuera-del-dialogo-2027-04-29",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fuera-del-dialogo",
+  "fecha": "2027-04-29",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fuera-del-dialogo-2027-04-30",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fuera-del-dialogo",
+  "fecha": "2027-04-30",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fuera-del-dialogo-2027-05-01",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fuera-del-dialogo",
+  "fecha": "2027-05-01",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fuera-del-dialogo-2027-05-02",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fuera-del-dialogo",
+  "fecha": "2027-05-02",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fuera-del-dialogo-2027-05-03",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fuera-del-dialogo",
+  "fecha": "2027-05-03",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fuera-del-dialogo-2027-05-04",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fuera-del-dialogo",
+  "fecha": "2027-05-04",
+  "menciones": 162
+ },
+ {
+  "id": "pres-fuera-del-dialogo-2027-05-05",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fuera-del-dialogo",
+  "fecha": "2027-05-05",
+  "menciones": 324
+ },
+ {
+  "id": "pres-fuera-del-dialogo-2027-05-06",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fuera-del-dialogo",
+  "fecha": "2027-05-06",
+  "menciones": 487
+ },
+ {
+  "id": "pres-fuera-del-dialogo-2027-05-07",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fuera-del-dialogo",
+  "fecha": "2027-05-07",
+  "menciones": 649
+ },
+ {
+  "id": "pres-fuera-del-dialogo-2027-05-08",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fuera-del-dialogo",
+  "fecha": "2027-05-08",
+  "menciones": 811
+ },
+ {
+  "id": "pres-fuera-del-dialogo-2027-05-09",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fuera-del-dialogo",
+  "fecha": "2027-05-09",
+  "menciones": 973
+ },
+ {
+  "id": "pres-fuera-del-dialogo-2027-05-10",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fuera-del-dialogo",
+  "fecha": "2027-05-10",
+  "menciones": 1136
+ },
+ {
+  "id": "pres-fuera-del-dialogo-2027-05-11",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fuera-del-dialogo",
+  "fecha": "2027-05-11",
+  "menciones": 1298
+ },
+ {
+  "id": "pres-fuera-del-dialogo-2027-05-12",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fuera-del-dialogo",
+  "fecha": "2027-05-12",
+  "menciones": 1460
+ },
+ {
+  "id": "pres-fuera-del-dialogo-2027-05-13",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fuera-del-dialogo",
+  "fecha": "2027-05-13",
+  "menciones": 2300
+ },
+ {
+  "id": "pres-primera-presidenta-2027-04-14",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-primera-presidenta",
+  "fecha": "2027-04-14",
+  "menciones": 247
+ },
+ {
+  "id": "pres-primera-presidenta-2027-04-15",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-primera-presidenta",
+  "fecha": "2027-04-15",
+  "menciones": 247
+ },
+ {
+  "id": "pres-primera-presidenta-2027-04-16",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-primera-presidenta",
+  "fecha": "2027-04-16",
+  "menciones": 247
+ },
+ {
+  "id": "pres-primera-presidenta-2027-04-17",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-primera-presidenta",
+  "fecha": "2027-04-17",
+  "menciones": 247
+ },
+ {
+  "id": "pres-primera-presidenta-2027-04-18",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-primera-presidenta",
+  "fecha": "2027-04-18",
+  "menciones": 247
+ },
+ {
+  "id": "pres-primera-presidenta-2027-04-19",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-primera-presidenta",
+  "fecha": "2027-04-19",
+  "menciones": 247
+ },
+ {
+  "id": "pres-primera-presidenta-2027-04-20",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-primera-presidenta",
+  "fecha": "2027-04-20",
+  "menciones": 246
+ },
+ {
+  "id": "pres-primera-presidenta-2027-04-21",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-primera-presidenta",
+  "fecha": "2027-04-21",
+  "menciones": 246
+ },
+ {
+  "id": "pres-primera-presidenta-2027-04-22",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-primera-presidenta",
+  "fecha": "2027-04-22",
+  "menciones": 246
+ },
+ {
+  "id": "pres-primera-presidenta-2027-04-23",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-primera-presidenta",
+  "fecha": "2027-04-23",
+  "menciones": 246
+ },
+ {
+  "id": "pres-primera-presidenta-2027-04-24",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-primera-presidenta",
+  "fecha": "2027-04-24",
+  "menciones": 246
+ },
+ {
+  "id": "pres-primera-presidenta-2027-04-25",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-primera-presidenta",
+  "fecha": "2027-04-25",
+  "menciones": 739
+ },
+ {
+  "id": "pres-primera-presidenta-2027-04-26",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-primera-presidenta",
+  "fecha": "2027-04-26",
+  "menciones": 443
+ },
+ {
+  "id": "pres-primera-presidenta-2027-04-27",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-primera-presidenta",
+  "fecha": "2027-04-27",
+  "menciones": 246
+ },
+ {
+  "id": "pres-primera-presidenta-2027-04-28",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-primera-presidenta",
+  "fecha": "2027-04-28",
+  "menciones": 246
+ },
+ {
+  "id": "pres-primera-presidenta-2027-04-29",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-primera-presidenta",
+  "fecha": "2027-04-29",
+  "menciones": 246
+ },
+ {
+  "id": "pres-primera-presidenta-2027-04-30",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-primera-presidenta",
+  "fecha": "2027-04-30",
+  "menciones": 246
+ },
+ {
+  "id": "pres-primera-presidenta-2027-05-01",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-primera-presidenta",
+  "fecha": "2027-05-01",
+  "menciones": 246
+ },
+ {
+  "id": "pres-primera-presidenta-2027-05-02",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-primera-presidenta",
+  "fecha": "2027-05-02",
+  "menciones": 246
+ },
+ {
+  "id": "pres-primera-presidenta-2027-05-03",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-primera-presidenta",
+  "fecha": "2027-05-03",
+  "menciones": 246
+ },
+ {
+  "id": "pres-primera-presidenta-2027-05-04",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-primera-presidenta",
+  "fecha": "2027-05-04",
+  "menciones": 246
+ },
+ {
+  "id": "pres-primera-presidenta-2027-05-05",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-primera-presidenta",
+  "fecha": "2027-05-05",
+  "menciones": 246
+ },
+ {
+  "id": "pres-primera-presidenta-2027-05-06",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-primera-presidenta",
+  "fecha": "2027-05-06",
+  "menciones": 246
+ },
+ {
+  "id": "pres-primera-presidenta-2027-05-07",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-primera-presidenta",
+  "fecha": "2027-05-07",
+  "menciones": 246
+ },
+ {
+  "id": "pres-primera-presidenta-2027-05-08",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-primera-presidenta",
+  "fecha": "2027-05-08",
+  "menciones": 246
+ },
+ {
+  "id": "pres-primera-presidenta-2027-05-09",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-primera-presidenta",
+  "fecha": "2027-05-09",
+  "menciones": 246
+ },
+ {
+  "id": "pres-primera-presidenta-2027-05-10",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-primera-presidenta",
+  "fecha": "2027-05-10",
+  "menciones": 246
+ },
+ {
+  "id": "pres-primera-presidenta-2027-05-11",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-primera-presidenta",
+  "fecha": "2027-05-11",
+  "menciones": 246
+ },
+ {
+  "id": "pres-primera-presidenta-2027-05-12",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-primera-presidenta",
+  "fecha": "2027-05-12",
+  "menciones": 246
+ },
+ {
+  "id": "pres-primera-presidenta-2027-05-13",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-primera-presidenta",
+  "fecha": "2027-05-13",
+  "menciones": 270
+ },
+ {
+  "id": "pres-linea-dura-2027-04-14",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-linea-dura",
+  "fecha": "2027-04-14",
+  "menciones": 215
+ },
+ {
+  "id": "pres-linea-dura-2027-04-15",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-linea-dura",
+  "fecha": "2027-04-15",
+  "menciones": 210
+ },
+ {
+  "id": "pres-linea-dura-2027-04-16",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-linea-dura",
+  "fecha": "2027-04-16",
+  "menciones": 204
+ },
+ {
+  "id": "pres-linea-dura-2027-04-17",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-linea-dura",
+  "fecha": "2027-04-17",
+  "menciones": 198
+ },
+ {
+  "id": "pres-linea-dura-2027-04-18",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-linea-dura",
+  "fecha": "2027-04-18",
+  "menciones": 192
+ },
+ {
+  "id": "pres-linea-dura-2027-04-19",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-linea-dura",
+  "fecha": "2027-04-19",
+  "menciones": 187
+ },
+ {
+  "id": "pres-linea-dura-2027-04-20",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-linea-dura",
+  "fecha": "2027-04-20",
+  "menciones": 181
+ },
+ {
+  "id": "pres-linea-dura-2027-04-21",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-linea-dura",
+  "fecha": "2027-04-21",
+  "menciones": 175
+ },
+ {
+  "id": "pres-linea-dura-2027-04-22",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-linea-dura",
+  "fecha": "2027-04-22",
+  "menciones": 170
+ },
+ {
+  "id": "pres-linea-dura-2027-04-23",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-linea-dura",
+  "fecha": "2027-04-23",
+  "menciones": 164
+ },
+ {
+  "id": "pres-linea-dura-2027-04-24",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-linea-dura",
+  "fecha": "2027-04-24",
+  "menciones": 158
+ },
+ {
+  "id": "pres-linea-dura-2027-04-25",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-linea-dura",
+  "fecha": "2027-04-25",
+  "menciones": 343
+ },
+ {
+  "id": "pres-linea-dura-2027-04-26",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-linea-dura",
+  "fecha": "2027-04-26",
+  "menciones": 147
+ },
+ {
+  "id": "pres-linea-dura-2027-04-27",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-linea-dura",
+  "fecha": "2027-04-27",
+  "menciones": 141
+ },
+ {
+  "id": "pres-linea-dura-2027-04-28",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-linea-dura",
+  "fecha": "2027-04-28",
+  "menciones": 136
+ },
+ {
+  "id": "pres-linea-dura-2027-04-29",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-linea-dura",
+  "fecha": "2027-04-29",
+  "menciones": 130
+ },
+ {
+  "id": "pres-linea-dura-2027-04-30",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-linea-dura",
+  "fecha": "2027-04-30",
+  "menciones": 124
+ },
+ {
+  "id": "pres-linea-dura-2027-05-01",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-linea-dura",
+  "fecha": "2027-05-01",
+  "menciones": 118
+ },
+ {
+  "id": "pres-linea-dura-2027-05-02",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-linea-dura",
+  "fecha": "2027-05-02",
+  "menciones": 113
+ },
+ {
+  "id": "pres-linea-dura-2027-05-03",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-linea-dura",
+  "fecha": "2027-05-03",
+  "menciones": 107
+ },
+ {
+  "id": "pres-linea-dura-2027-05-04",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-linea-dura",
+  "fecha": "2027-05-04",
+  "menciones": 101
+ },
+ {
+  "id": "pres-linea-dura-2027-05-05",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-linea-dura",
+  "fecha": "2027-05-05",
+  "menciones": 96
+ },
+ {
+  "id": "pres-linea-dura-2027-05-06",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-linea-dura",
+  "fecha": "2027-05-06",
+  "menciones": 90
+ },
+ {
+  "id": "pres-linea-dura-2027-05-07",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-linea-dura",
+  "fecha": "2027-05-07",
+  "menciones": 84
+ },
+ {
+  "id": "pres-linea-dura-2027-05-08",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-linea-dura",
+  "fecha": "2027-05-08",
+  "menciones": 79
+ },
+ {
+  "id": "pres-linea-dura-2027-05-09",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-linea-dura",
+  "fecha": "2027-05-09",
+  "menciones": 73
+ },
+ {
+  "id": "pres-linea-dura-2027-05-10",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-linea-dura",
+  "fecha": "2027-05-10",
+  "menciones": 67
+ },
+ {
+  "id": "pres-linea-dura-2027-05-11",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-linea-dura",
+  "fecha": "2027-05-11",
+  "menciones": 61
+ },
+ {
+  "id": "pres-linea-dura-2027-05-12",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-linea-dura",
+  "fecha": "2027-05-12",
+  "menciones": 56
+ },
+ {
+  "id": "pres-linea-dura-2027-05-13",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-linea-dura",
+  "fecha": "2027-05-13",
+  "menciones": 80
+ },
+ {
+  "id": "pres-voto-exterior-2027-04-14",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-voto-exterior",
+  "fecha": "2027-04-14",
+  "menciones": 0
+ },
+ {
+  "id": "pres-voto-exterior-2027-04-15",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-voto-exterior",
+  "fecha": "2027-04-15",
+  "menciones": 0
+ },
+ {
+  "id": "pres-voto-exterior-2027-04-16",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-voto-exterior",
+  "fecha": "2027-04-16",
+  "menciones": 0
+ },
+ {
+  "id": "pres-voto-exterior-2027-04-17",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-voto-exterior",
+  "fecha": "2027-04-17",
+  "menciones": 0
+ },
+ {
+  "id": "pres-voto-exterior-2027-04-18",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-voto-exterior",
+  "fecha": "2027-04-18",
+  "menciones": 0
+ },
+ {
+  "id": "pres-voto-exterior-2027-04-19",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-voto-exterior",
+  "fecha": "2027-04-19",
+  "menciones": 0
+ },
+ {
+  "id": "pres-voto-exterior-2027-04-20",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-voto-exterior",
+  "fecha": "2027-04-20",
+  "menciones": 0
+ },
+ {
+  "id": "pres-voto-exterior-2027-04-21",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-voto-exterior",
+  "fecha": "2027-04-21",
+  "menciones": 0
+ },
+ {
+  "id": "pres-voto-exterior-2027-04-22",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-voto-exterior",
+  "fecha": "2027-04-22",
+  "menciones": 0
+ },
+ {
+  "id": "pres-voto-exterior-2027-04-23",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-voto-exterior",
+  "fecha": "2027-04-23",
+  "menciones": 0
+ },
+ {
+  "id": "pres-voto-exterior-2027-04-24",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-voto-exterior",
+  "fecha": "2027-04-24",
+  "menciones": 0
+ },
+ {
+  "id": "pres-voto-exterior-2027-04-25",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-voto-exterior",
+  "fecha": "2027-04-25",
+  "menciones": 0
+ },
+ {
+  "id": "pres-voto-exterior-2027-04-26",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-voto-exterior",
+  "fecha": "2027-04-26",
+  "menciones": 0
+ },
+ {
+  "id": "pres-voto-exterior-2027-04-27",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-voto-exterior",
+  "fecha": "2027-04-27",
+  "menciones": 0
+ },
+ {
+  "id": "pres-voto-exterior-2027-04-28",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-voto-exterior",
+  "fecha": "2027-04-28",
+  "menciones": 0
+ },
+ {
+  "id": "pres-voto-exterior-2027-04-29",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-voto-exterior",
+  "fecha": "2027-04-29",
+  "menciones": 0
+ },
+ {
+  "id": "pres-voto-exterior-2027-04-30",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-voto-exterior",
+  "fecha": "2027-04-30",
+  "menciones": 0
+ },
+ {
+  "id": "pres-voto-exterior-2027-05-01",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-voto-exterior",
+  "fecha": "2027-05-01",
+  "menciones": 0
+ },
+ {
+  "id": "pres-voto-exterior-2027-05-02",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-voto-exterior",
+  "fecha": "2027-05-02",
+  "menciones": 0
+ },
+ {
+  "id": "pres-voto-exterior-2027-05-03",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-voto-exterior",
+  "fecha": "2027-05-03",
+  "menciones": 0
+ },
+ {
+  "id": "pres-voto-exterior-2027-05-04",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-voto-exterior",
+  "fecha": "2027-05-04",
+  "menciones": 0
+ },
+ {
+  "id": "pres-voto-exterior-2027-05-05",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-voto-exterior",
+  "fecha": "2027-05-05",
+  "menciones": 0
+ },
+ {
+  "id": "pres-voto-exterior-2027-05-06",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-voto-exterior",
+  "fecha": "2027-05-06",
+  "menciones": 0
+ },
+ {
+  "id": "pres-voto-exterior-2027-05-07",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-voto-exterior",
+  "fecha": "2027-05-07",
+  "menciones": 0
+ },
+ {
+  "id": "pres-voto-exterior-2027-05-08",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-voto-exterior",
+  "fecha": "2027-05-08",
+  "menciones": 0
+ },
+ {
+  "id": "pres-voto-exterior-2027-05-09",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-voto-exterior",
+  "fecha": "2027-05-09",
+  "menciones": 180
+ },
+ {
+  "id": "pres-voto-exterior-2027-05-10",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-voto-exterior",
+  "fecha": "2027-05-10",
+  "menciones": 360
+ },
+ {
+  "id": "pres-voto-exterior-2027-05-11",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-voto-exterior",
+  "fecha": "2027-05-11",
+  "menciones": 540
+ },
+ {
+  "id": "pres-voto-exterior-2027-05-12",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-voto-exterior",
+  "fecha": "2027-05-12",
+  "menciones": 720
+ },
+ {
+  "id": "pres-voto-exterior-2027-05-13",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-voto-exterior",
+  "fecha": "2027-05-13",
+  "menciones": 2100
+ },
+ {
+  "id": "pres-salario-bolivares-2027-04-14",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-salario-bolivares",
+  "fecha": "2027-04-14",
+  "menciones": 0
+ },
+ {
+  "id": "pres-salario-bolivares-2027-04-15",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-salario-bolivares",
+  "fecha": "2027-04-15",
+  "menciones": 0
+ },
+ {
+  "id": "pres-salario-bolivares-2027-04-16",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-salario-bolivares",
+  "fecha": "2027-04-16",
+  "menciones": 0
+ },
+ {
+  "id": "pres-salario-bolivares-2027-04-17",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-salario-bolivares",
+  "fecha": "2027-04-17",
+  "menciones": 0
+ },
+ {
+  "id": "pres-salario-bolivares-2027-04-18",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-salario-bolivares",
+  "fecha": "2027-04-18",
+  "menciones": 0
+ },
+ {
+  "id": "pres-salario-bolivares-2027-04-19",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-salario-bolivares",
+  "fecha": "2027-04-19",
+  "menciones": 0
+ },
+ {
+  "id": "pres-salario-bolivares-2027-04-20",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-salario-bolivares",
+  "fecha": "2027-04-20",
+  "menciones": 0
+ },
+ {
+  "id": "pres-salario-bolivares-2027-04-21",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-salario-bolivares",
+  "fecha": "2027-04-21",
+  "menciones": 0
+ },
+ {
+  "id": "pres-salario-bolivares-2027-04-22",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-salario-bolivares",
+  "fecha": "2027-04-22",
+  "menciones": 0
+ },
+ {
+  "id": "pres-salario-bolivares-2027-04-23",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-salario-bolivares",
+  "fecha": "2027-04-23",
+  "menciones": 0
+ },
+ {
+  "id": "pres-salario-bolivares-2027-04-24",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-salario-bolivares",
+  "fecha": "2027-04-24",
+  "menciones": 0
+ },
+ {
+  "id": "pres-salario-bolivares-2027-04-25",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-salario-bolivares",
+  "fecha": "2027-04-25",
+  "menciones": 0
+ },
+ {
+  "id": "pres-salario-bolivares-2027-04-26",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-salario-bolivares",
+  "fecha": "2027-04-26",
+  "menciones": 0
+ },
+ {
+  "id": "pres-salario-bolivares-2027-04-27",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-salario-bolivares",
+  "fecha": "2027-04-27",
+  "menciones": 0
+ },
+ {
+  "id": "pres-salario-bolivares-2027-04-28",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-salario-bolivares",
+  "fecha": "2027-04-28",
+  "menciones": 0
+ },
+ {
+  "id": "pres-salario-bolivares-2027-04-29",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-salario-bolivares",
+  "fecha": "2027-04-29",
+  "menciones": 0
+ },
+ {
+  "id": "pres-salario-bolivares-2027-04-30",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-salario-bolivares",
+  "fecha": "2027-04-30",
+  "menciones": 0
+ },
+ {
+  "id": "pres-salario-bolivares-2027-05-01",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-salario-bolivares",
+  "fecha": "2027-05-01",
+  "menciones": 0
+ },
+ {
+  "id": "pres-salario-bolivares-2027-05-02",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-salario-bolivares",
+  "fecha": "2027-05-02",
+  "menciones": 0
+ },
+ {
+  "id": "pres-salario-bolivares-2027-05-03",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-salario-bolivares",
+  "fecha": "2027-05-03",
+  "menciones": 0
+ },
+ {
+  "id": "pres-salario-bolivares-2027-05-04",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-salario-bolivares",
+  "fecha": "2027-05-04",
+  "menciones": 0
+ },
+ {
+  "id": "pres-salario-bolivares-2027-05-05",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-salario-bolivares",
+  "fecha": "2027-05-05",
+  "menciones": 0
+ },
+ {
+  "id": "pres-salario-bolivares-2027-05-06",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-salario-bolivares",
+  "fecha": "2027-05-06",
+  "menciones": 0
+ },
+ {
+  "id": "pres-salario-bolivares-2027-05-07",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-salario-bolivares",
+  "fecha": "2027-05-07",
+  "menciones": 0
+ },
+ {
+  "id": "pres-salario-bolivares-2027-05-08",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-salario-bolivares",
+  "fecha": "2027-05-08",
+  "menciones": 93
+ },
+ {
+  "id": "pres-salario-bolivares-2027-05-09",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-salario-bolivares",
+  "fecha": "2027-05-09",
+  "menciones": 187
+ },
+ {
+  "id": "pres-salario-bolivares-2027-05-10",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-salario-bolivares",
+  "fecha": "2027-05-10",
+  "menciones": 280
+ },
+ {
+  "id": "pres-salario-bolivares-2027-05-11",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-salario-bolivares",
+  "fecha": "2027-05-11",
+  "menciones": 373
+ },
+ {
+  "id": "pres-salario-bolivares-2027-05-12",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-salario-bolivares",
+  "fecha": "2027-05-12",
+  "menciones": 467
+ },
+ {
+  "id": "pres-salario-bolivares-2027-05-13",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-salario-bolivares",
+  "fecha": "2027-05-13",
+  "menciones": 1700
+ },
+ {
+  "id": "pres-fecha-cierta-2027-04-14",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fecha-cierta",
+  "fecha": "2027-04-14",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fecha-cierta-2027-04-15",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fecha-cierta",
+  "fecha": "2027-04-15",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fecha-cierta-2027-04-16",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fecha-cierta",
+  "fecha": "2027-04-16",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fecha-cierta-2027-04-17",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fecha-cierta",
+  "fecha": "2027-04-17",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fecha-cierta-2027-04-18",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fecha-cierta",
+  "fecha": "2027-04-18",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fecha-cierta-2027-04-19",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fecha-cierta",
+  "fecha": "2027-04-19",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fecha-cierta-2027-04-20",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fecha-cierta",
+  "fecha": "2027-04-20",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fecha-cierta-2027-04-21",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fecha-cierta",
+  "fecha": "2027-04-21",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fecha-cierta-2027-04-22",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fecha-cierta",
+  "fecha": "2027-04-22",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fecha-cierta-2027-04-23",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fecha-cierta",
+  "fecha": "2027-04-23",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fecha-cierta-2027-04-24",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fecha-cierta",
+  "fecha": "2027-04-24",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fecha-cierta-2027-04-25",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fecha-cierta",
+  "fecha": "2027-04-25",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fecha-cierta-2027-04-26",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fecha-cierta",
+  "fecha": "2027-04-26",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fecha-cierta-2027-04-27",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fecha-cierta",
+  "fecha": "2027-04-27",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fecha-cierta-2027-04-28",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fecha-cierta",
+  "fecha": "2027-04-28",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fecha-cierta-2027-04-29",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fecha-cierta",
+  "fecha": "2027-04-29",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fecha-cierta-2027-04-30",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fecha-cierta",
+  "fecha": "2027-04-30",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fecha-cierta-2027-05-01",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fecha-cierta",
+  "fecha": "2027-05-01",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fecha-cierta-2027-05-02",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fecha-cierta",
+  "fecha": "2027-05-02",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fecha-cierta-2027-05-03",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fecha-cierta",
+  "fecha": "2027-05-03",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fecha-cierta-2027-05-04",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fecha-cierta",
+  "fecha": "2027-05-04",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fecha-cierta-2027-05-05",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fecha-cierta",
+  "fecha": "2027-05-05",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fecha-cierta-2027-05-06",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fecha-cierta",
+  "fecha": "2027-05-06",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fecha-cierta-2027-05-07",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fecha-cierta",
+  "fecha": "2027-05-07",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fecha-cierta-2027-05-08",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fecha-cierta",
+  "fecha": "2027-05-08",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fecha-cierta-2027-05-09",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fecha-cierta",
+  "fecha": "2027-05-09",
+  "menciones": 0
+ },
+ {
+  "id": "pres-fecha-cierta-2027-05-10",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fecha-cierta",
+  "fecha": "2027-05-10",
+  "menciones": 200
+ },
+ {
+  "id": "pres-fecha-cierta-2027-05-11",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fecha-cierta",
+  "fecha": "2027-05-11",
+  "menciones": 400
+ },
+ {
+  "id": "pres-fecha-cierta-2027-05-12",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fecha-cierta",
+  "fecha": "2027-05-12",
+  "menciones": 600
+ },
+ {
+  "id": "pres-fecha-cierta-2027-05-13",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-fecha-cierta",
+  "fecha": "2027-05-13",
+  "menciones": 1400
+ },
+ {
+  "id": "pres-continuidad-2027-04-14",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-continuidad",
+  "fecha": "2027-04-14",
+  "menciones": 175
+ },
+ {
+  "id": "pres-continuidad-2027-04-15",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-continuidad",
+  "fecha": "2027-04-15",
+  "menciones": 175
+ },
+ {
+  "id": "pres-continuidad-2027-04-16",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-continuidad",
+  "fecha": "2027-04-16",
+  "menciones": 175
+ },
+ {
+  "id": "pres-continuidad-2027-04-17",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-continuidad",
+  "fecha": "2027-04-17",
+  "menciones": 175
+ },
+ {
+  "id": "pres-continuidad-2027-04-18",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-continuidad",
+  "fecha": "2027-04-18",
+  "menciones": 175
+ },
+ {
+  "id": "pres-continuidad-2027-04-19",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-continuidad",
+  "fecha": "2027-04-19",
+  "menciones": 175
+ },
+ {
+  "id": "pres-continuidad-2027-04-20",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-continuidad",
+  "fecha": "2027-04-20",
+  "menciones": 175
+ },
+ {
+  "id": "pres-continuidad-2027-04-21",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-continuidad",
+  "fecha": "2027-04-21",
+  "menciones": 175
+ },
+ {
+  "id": "pres-continuidad-2027-04-22",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-continuidad",
+  "fecha": "2027-04-22",
+  "menciones": 175
+ },
+ {
+  "id": "pres-continuidad-2027-04-23",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-continuidad",
+  "fecha": "2027-04-23",
+  "menciones": 175
+ },
+ {
+  "id": "pres-continuidad-2027-04-24",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-continuidad",
+  "fecha": "2027-04-24",
+  "menciones": 175
+ },
+ {
+  "id": "pres-continuidad-2027-04-25",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-continuidad",
+  "fecha": "2027-04-25",
+  "menciones": 314
+ },
+ {
+  "id": "pres-continuidad-2027-04-26",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-continuidad",
+  "fecha": "2027-04-26",
+  "menciones": 175
+ },
+ {
+  "id": "pres-continuidad-2027-04-27",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-continuidad",
+  "fecha": "2027-04-27",
+  "menciones": 175
+ },
+ {
+  "id": "pres-continuidad-2027-04-28",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-continuidad",
+  "fecha": "2027-04-28",
+  "menciones": 175
+ },
+ {
+  "id": "pres-continuidad-2027-04-29",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-continuidad",
+  "fecha": "2027-04-29",
+  "menciones": 175
+ },
+ {
+  "id": "pres-continuidad-2027-04-30",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-continuidad",
+  "fecha": "2027-04-30",
+  "menciones": 175
+ },
+ {
+  "id": "pres-continuidad-2027-05-01",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-continuidad",
+  "fecha": "2027-05-01",
+  "menciones": 175
+ },
+ {
+  "id": "pres-continuidad-2027-05-02",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-continuidad",
+  "fecha": "2027-05-02",
+  "menciones": 175
+ },
+ {
+  "id": "pres-continuidad-2027-05-03",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-continuidad",
+  "fecha": "2027-05-03",
+  "menciones": 175
+ },
+ {
+  "id": "pres-continuidad-2027-05-04",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-continuidad",
+  "fecha": "2027-05-04",
+  "menciones": 175
+ },
+ {
+  "id": "pres-continuidad-2027-05-05",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-continuidad",
+  "fecha": "2027-05-05",
+  "menciones": 175
+ },
+ {
+  "id": "pres-continuidad-2027-05-06",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-continuidad",
+  "fecha": "2027-05-06",
+  "menciones": 175
+ },
+ {
+  "id": "pres-continuidad-2027-05-07",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-continuidad",
+  "fecha": "2027-05-07",
+  "menciones": 175
+ },
+ {
+  "id": "pres-continuidad-2027-05-08",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-continuidad",
+  "fecha": "2027-05-08",
+  "menciones": 175
+ },
+ {
+  "id": "pres-continuidad-2027-05-09",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-continuidad",
+  "fecha": "2027-05-09",
+  "menciones": 174
+ },
+ {
+  "id": "pres-continuidad-2027-05-10",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-continuidad",
+  "fecha": "2027-05-10",
+  "menciones": 174
+ },
+ {
+  "id": "pres-continuidad-2027-05-11",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-continuidad",
+  "fecha": "2027-05-11",
+  "menciones": 174
+ },
+ {
+  "id": "pres-continuidad-2027-05-12",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-continuidad",
+  "fecha": "2027-05-12",
+  "menciones": 174
+ },
+ {
+  "id": "pres-continuidad-2027-05-13",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-continuidad",
+  "fecha": "2027-05-13",
+  "menciones": 190
+ },
+ {
+  "id": "pres-participar-2027-04-14",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-participar",
+  "fecha": "2027-04-14",
+  "menciones": 60
+ },
+ {
+  "id": "pres-participar-2027-04-15",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-participar",
+  "fecha": "2027-04-15",
+  "menciones": 63
+ },
+ {
+  "id": "pres-participar-2027-04-16",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-participar",
+  "fecha": "2027-04-16",
+  "menciones": 66
+ },
+ {
+  "id": "pres-participar-2027-04-17",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-participar",
+  "fecha": "2027-04-17",
+  "menciones": 69
+ },
+ {
+  "id": "pres-participar-2027-04-18",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-participar",
+  "fecha": "2027-04-18",
+  "menciones": 72
+ },
+ {
+  "id": "pres-participar-2027-04-19",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-participar",
+  "fecha": "2027-04-19",
+  "menciones": 75
+ },
+ {
+  "id": "pres-participar-2027-04-20",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-participar",
+  "fecha": "2027-04-20",
+  "menciones": 78
+ },
+ {
+  "id": "pres-participar-2027-04-21",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-participar",
+  "fecha": "2027-04-21",
+  "menciones": 81
+ },
+ {
+  "id": "pres-participar-2027-04-22",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-participar",
+  "fecha": "2027-04-22",
+  "menciones": 84
+ },
+ {
+  "id": "pres-participar-2027-04-23",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-participar",
+  "fecha": "2027-04-23",
+  "menciones": 87
+ },
+ {
+  "id": "pres-participar-2027-04-24",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-participar",
+  "fecha": "2027-04-24",
+  "menciones": 90
+ },
+ {
+  "id": "pres-participar-2027-04-25",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-participar",
+  "fecha": "2027-04-25",
+  "menciones": 172
+ },
+ {
+  "id": "pres-participar-2027-04-26",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-participar",
+  "fecha": "2027-04-26",
+  "menciones": 96
+ },
+ {
+  "id": "pres-participar-2027-04-27",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-participar",
+  "fecha": "2027-04-27",
+  "menciones": 99
+ },
+ {
+  "id": "pres-participar-2027-04-28",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-participar",
+  "fecha": "2027-04-28",
+  "menciones": 102
+ },
+ {
+  "id": "pres-participar-2027-04-29",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-participar",
+  "fecha": "2027-04-29",
+  "menciones": 105
+ },
+ {
+  "id": "pres-participar-2027-04-30",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-participar",
+  "fecha": "2027-04-30",
+  "menciones": 108
+ },
+ {
+  "id": "pres-participar-2027-05-01",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-participar",
+  "fecha": "2027-05-01",
+  "menciones": 111
+ },
+ {
+  "id": "pres-participar-2027-05-02",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-participar",
+  "fecha": "2027-05-02",
+  "menciones": 114
+ },
+ {
+  "id": "pres-participar-2027-05-03",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-participar",
+  "fecha": "2027-05-03",
+  "menciones": 117
+ },
+ {
+  "id": "pres-participar-2027-05-04",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-participar",
+  "fecha": "2027-05-04",
+  "menciones": 120
+ },
+ {
+  "id": "pres-participar-2027-05-05",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-participar",
+  "fecha": "2027-05-05",
+  "menciones": 123
+ },
+ {
+  "id": "pres-participar-2027-05-06",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-participar",
+  "fecha": "2027-05-06",
+  "menciones": 125
+ },
+ {
+  "id": "pres-participar-2027-05-07",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-participar",
+  "fecha": "2027-05-07",
+  "menciones": 128
+ },
+ {
+  "id": "pres-participar-2027-05-08",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-participar",
+  "fecha": "2027-05-08",
+  "menciones": 131
+ },
+ {
+  "id": "pres-participar-2027-05-09",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-participar",
+  "fecha": "2027-05-09",
+  "menciones": 134
+ },
+ {
+  "id": "pres-participar-2027-05-10",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-participar",
+  "fecha": "2027-05-10",
+  "menciones": 137
+ },
+ {
+  "id": "pres-participar-2027-05-11",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-participar",
+  "fecha": "2027-05-11",
+  "menciones": 140
+ },
+ {
+  "id": "pres-participar-2027-05-12",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-participar",
+  "fecha": "2027-05-12",
+  "menciones": 143
+ },
+ {
+  "id": "pres-participar-2027-05-13",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-participar",
+  "fecha": "2027-05-13",
+  "menciones": 170
+ },
+ {
+  "id": "pres-dialogo-resultados-2027-04-14",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-dialogo-resultados",
+  "fecha": "2027-04-14",
+  "menciones": 0
+ },
+ {
+  "id": "pres-dialogo-resultados-2027-04-15",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-dialogo-resultados",
+  "fecha": "2027-04-15",
+  "menciones": 0
+ },
+ {
+  "id": "pres-dialogo-resultados-2027-04-16",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-dialogo-resultados",
+  "fecha": "2027-04-16",
+  "menciones": 0
+ },
+ {
+  "id": "pres-dialogo-resultados-2027-04-17",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-dialogo-resultados",
+  "fecha": "2027-04-17",
+  "menciones": 0
+ },
+ {
+  "id": "pres-dialogo-resultados-2027-04-18",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-dialogo-resultados",
+  "fecha": "2027-04-18",
+  "menciones": 0
+ },
+ {
+  "id": "pres-dialogo-resultados-2027-04-19",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-dialogo-resultados",
+  "fecha": "2027-04-19",
+  "menciones": 0
+ },
+ {
+  "id": "pres-dialogo-resultados-2027-04-20",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-dialogo-resultados",
+  "fecha": "2027-04-20",
+  "menciones": 0
+ },
+ {
+  "id": "pres-dialogo-resultados-2027-04-21",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-dialogo-resultados",
+  "fecha": "2027-04-21",
+  "menciones": 0
+ },
+ {
+  "id": "pres-dialogo-resultados-2027-04-22",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-dialogo-resultados",
+  "fecha": "2027-04-22",
+  "menciones": 0
+ },
+ {
+  "id": "pres-dialogo-resultados-2027-04-23",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-dialogo-resultados",
+  "fecha": "2027-04-23",
+  "menciones": 0
+ },
+ {
+  "id": "pres-dialogo-resultados-2027-04-24",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-dialogo-resultados",
+  "fecha": "2027-04-24",
+  "menciones": 0
+ },
+ {
+  "id": "pres-dialogo-resultados-2027-04-25",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-dialogo-resultados",
+  "fecha": "2027-04-25",
+  "menciones": 0
+ },
+ {
+  "id": "pres-dialogo-resultados-2027-04-26",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-dialogo-resultados",
+  "fecha": "2027-04-26",
+  "menciones": 0
+ },
+ {
+  "id": "pres-dialogo-resultados-2027-04-27",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-dialogo-resultados",
+  "fecha": "2027-04-27",
+  "menciones": 0
+ },
+ {
+  "id": "pres-dialogo-resultados-2027-04-28",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-dialogo-resultados",
+  "fecha": "2027-04-28",
+  "menciones": 0
+ },
+ {
+  "id": "pres-dialogo-resultados-2027-04-29",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-dialogo-resultados",
+  "fecha": "2027-04-29",
+  "menciones": 0
+ },
+ {
+  "id": "pres-dialogo-resultados-2027-04-30",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-dialogo-resultados",
+  "fecha": "2027-04-30",
+  "menciones": 0
+ },
+ {
+  "id": "pres-dialogo-resultados-2027-05-01",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-dialogo-resultados",
+  "fecha": "2027-05-01",
+  "menciones": 0
+ },
+ {
+  "id": "pres-dialogo-resultados-2027-05-02",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-dialogo-resultados",
+  "fecha": "2027-05-02",
+  "menciones": 122
+ },
+ {
+  "id": "pres-dialogo-resultados-2027-05-03",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-dialogo-resultados",
+  "fecha": "2027-05-03",
+  "menciones": 137
+ },
+ {
+  "id": "pres-dialogo-resultados-2027-05-04",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-dialogo-resultados",
+  "fecha": "2027-05-04",
+  "menciones": 152
+ },
+ {
+  "id": "pres-dialogo-resultados-2027-05-05",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-dialogo-resultados",
+  "fecha": "2027-05-05",
+  "menciones": 166
+ },
+ {
+  "id": "pres-dialogo-resultados-2027-05-06",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-dialogo-resultados",
+  "fecha": "2027-05-06",
+  "menciones": 181
+ },
+ {
+  "id": "pres-dialogo-resultados-2027-05-07",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-dialogo-resultados",
+  "fecha": "2027-05-07",
+  "menciones": 195
+ },
+ {
+  "id": "pres-dialogo-resultados-2027-05-08",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-dialogo-resultados",
+  "fecha": "2027-05-08",
+  "menciones": 210
+ },
+ {
+  "id": "pres-dialogo-resultados-2027-05-09",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-dialogo-resultados",
+  "fecha": "2027-05-09",
+  "menciones": 225
+ },
+ {
+  "id": "pres-dialogo-resultados-2027-05-10",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-dialogo-resultados",
+  "fecha": "2027-05-10",
+  "menciones": 239
+ },
+ {
+  "id": "pres-dialogo-resultados-2027-05-11",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-dialogo-resultados",
+  "fecha": "2027-05-11",
+  "menciones": 254
+ },
+ {
+  "id": "pres-dialogo-resultados-2027-05-12",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-dialogo-resultados",
+  "fecha": "2027-05-12",
+  "menciones": 269
+ },
+ {
+  "id": "pres-dialogo-resultados-2027-05-13",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-dialogo-resultados",
+  "fecha": "2027-05-13",
+  "menciones": 150
+ },
+ {
+  "id": "pres-unidad-2027-04-14",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-unidad",
+  "fecha": "2027-04-14",
+  "menciones": 57
+ },
+ {
+  "id": "pres-unidad-2027-04-15",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-unidad",
+  "fecha": "2027-04-15",
+  "menciones": 57
+ },
+ {
+  "id": "pres-unidad-2027-04-16",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-unidad",
+  "fecha": "2027-04-16",
+  "menciones": 57
+ },
+ {
+  "id": "pres-unidad-2027-04-17",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-unidad",
+  "fecha": "2027-04-17",
+  "menciones": 57
+ },
+ {
+  "id": "pres-unidad-2027-04-18",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-unidad",
+  "fecha": "2027-04-18",
+  "menciones": 57
+ },
+ {
+  "id": "pres-unidad-2027-04-19",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-unidad",
+  "fecha": "2027-04-19",
+  "menciones": 57
+ },
+ {
+  "id": "pres-unidad-2027-04-20",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-unidad",
+  "fecha": "2027-04-20",
+  "menciones": 57
+ },
+ {
+  "id": "pres-unidad-2027-04-21",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-unidad",
+  "fecha": "2027-04-21",
+  "menciones": 57
+ },
+ {
+  "id": "pres-unidad-2027-04-22",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-unidad",
+  "fecha": "2027-04-22",
+  "menciones": 57
+ },
+ {
+  "id": "pres-unidad-2027-04-23",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-unidad",
+  "fecha": "2027-04-23",
+  "menciones": 57
+ },
+ {
+  "id": "pres-unidad-2027-04-24",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-unidad",
+  "fecha": "2027-04-24",
+  "menciones": 57
+ },
+ {
+  "id": "pres-unidad-2027-04-25",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-unidad",
+  "fecha": "2027-04-25",
+  "menciones": 57
+ },
+ {
+  "id": "pres-unidad-2027-04-26",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-unidad",
+  "fecha": "2027-04-26",
+  "menciones": 57
+ },
+ {
+  "id": "pres-unidad-2027-04-27",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-unidad",
+  "fecha": "2027-04-27",
+  "menciones": 57
+ },
+ {
+  "id": "pres-unidad-2027-04-28",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-unidad",
+  "fecha": "2027-04-28",
+  "menciones": 57
+ },
+ {
+  "id": "pres-unidad-2027-04-29",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-unidad",
+  "fecha": "2027-04-29",
+  "menciones": 57
+ },
+ {
+  "id": "pres-unidad-2027-04-30",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-unidad",
+  "fecha": "2027-04-30",
+  "menciones": 56
+ },
+ {
+  "id": "pres-unidad-2027-05-01",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-unidad",
+  "fecha": "2027-05-01",
+  "menciones": 56
+ },
+ {
+  "id": "pres-unidad-2027-05-02",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-unidad",
+  "fecha": "2027-05-02",
+  "menciones": 56
+ },
+ {
+  "id": "pres-unidad-2027-05-03",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-unidad",
+  "fecha": "2027-05-03",
+  "menciones": 56
+ },
+ {
+  "id": "pres-unidad-2027-05-04",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-unidad",
+  "fecha": "2027-05-04",
+  "menciones": 56
+ },
+ {
+  "id": "pres-unidad-2027-05-05",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-unidad",
+  "fecha": "2027-05-05",
+  "menciones": 56
+ },
+ {
+  "id": "pres-unidad-2027-05-06",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-unidad",
+  "fecha": "2027-05-06",
+  "menciones": 56
+ },
+ {
+  "id": "pres-unidad-2027-05-07",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-unidad",
+  "fecha": "2027-05-07",
+  "menciones": 56
+ },
+ {
+  "id": "pres-unidad-2027-05-08",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-unidad",
+  "fecha": "2027-05-08",
+  "menciones": 56
+ },
+ {
+  "id": "pres-unidad-2027-05-09",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-unidad",
+  "fecha": "2027-05-09",
+  "menciones": 56
+ },
+ {
+  "id": "pres-unidad-2027-05-10",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-unidad",
+  "fecha": "2027-05-10",
+  "menciones": 56
+ },
+ {
+  "id": "pres-unidad-2027-05-11",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-unidad",
+  "fecha": "2027-05-11",
+  "menciones": 56
+ },
+ {
+  "id": "pres-unidad-2027-05-12",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-unidad",
+  "fecha": "2027-05-12",
+  "menciones": 56
+ },
+ {
+  "id": "pres-unidad-2027-05-13",
+  "campana_id": "presidenciales",
+  "entidad": "narrativa",
+  "entidad_id": "pres-unidad",
+  "fecha": "2027-05-13",
+  "menciones": 60
+ },
+ {
+  "id": "zulia-rosales-2027-04-14",
+  "campana_id": "zulia",
+  "entidad": "figura",
+  "entidad_id": "rosales",
+  "fecha": "2027-04-14",
+  "menciones": 243
+ },
+ {
+  "id": "zulia-rosales-2027-04-15",
+  "campana_id": "zulia",
+  "entidad": "figura",
+  "entidad_id": "rosales",
+  "fecha": "2027-04-15",
+  "menciones": 236
+ },
+ {
+  "id": "zulia-rosales-2027-04-16",
+  "campana_id": "zulia",
+  "entidad": "figura",
+  "entidad_id": "rosales",
+  "fecha": "2027-04-16",
+  "menciones": 229
+ },
+ {
+  "id": "zulia-rosales-2027-04-17",
+  "campana_id": "zulia",
+  "entidad": "figura",
+  "entidad_id": "rosales",
+  "fecha": "2027-04-17",
+  "menciones": 252
+ },
+ {
+  "id": "zulia-rosales-2027-04-18",
+  "campana_id": "zulia",
+  "entidad": "figura",
+  "entidad_id": "rosales",
+  "fecha": "2027-04-18",
+  "menciones": 274
+ },
+ {
+  "id": "zulia-rosales-2027-04-19",
+  "campana_id": "zulia",
+  "entidad": "figura",
+  "entidad_id": "rosales",
+  "fecha": "2027-04-19",
+  "menciones": 266
+ },
+ {
+  "id": "zulia-rosales-2027-04-20",
+  "campana_id": "zulia",
+  "entidad": "figura",
+  "entidad_id": "rosales",
+  "fecha": "2027-04-20",
+  "menciones": 260
+ },
+ {
+  "id": "zulia-rosales-2027-04-21",
+  "campana_id": "zulia",
+  "entidad": "figura",
+  "entidad_id": "rosales",
+  "fecha": "2027-04-21",
+  "menciones": 275
+ },
+ {
+  "id": "zulia-rosales-2027-04-22",
+  "campana_id": "zulia",
+  "entidad": "figura",
+  "entidad_id": "rosales",
+  "fecha": "2027-04-22",
+  "menciones": 288
+ },
+ {
+  "id": "zulia-rosales-2027-04-23",
+  "campana_id": "zulia",
+  "entidad": "figura",
+  "entidad_id": "rosales",
+  "fecha": "2027-04-23",
+  "menciones": 281
+ },
+ {
+  "id": "zulia-rosales-2027-04-24",
+  "campana_id": "zulia",
+  "entidad": "figura",
+  "entidad_id": "rosales",
+  "fecha": "2027-04-24",
+  "menciones": 277
+ },
+ {
+  "id": "zulia-rosales-2027-04-25",
+  "campana_id": "zulia",
+  "entidad": "figura",
+  "entidad_id": "rosales",
+  "fecha": "2027-04-25",
+  "menciones": 300
+ },
+ {
+  "id": "zulia-rosales-2027-04-26",
+  "campana_id": "zulia",
+  "entidad": "figura",
+  "entidad_id": "rosales",
+  "fecha": "2027-04-26",
+  "menciones": 319
+ },
+ {
+  "id": "zulia-rosales-2027-04-27",
+  "campana_id": "zulia",
+  "entidad": "figura",
+  "entidad_id": "rosales",
+  "fecha": "2027-04-27",
+  "menciones": 311
+ },
+ {
+  "id": "zulia-rosales-2027-04-28",
+  "campana_id": "zulia",
+  "entidad": "figura",
+  "entidad_id": "rosales",
+  "fecha": "2027-04-28",
+  "menciones": 307
+ },
+ {
+  "id": "zulia-rosales-2027-04-29",
+  "campana_id": "zulia",
+  "entidad": "figura",
+  "entidad_id": "rosales",
+  "fecha": "2027-04-29",
+  "menciones": 322
+ },
+ {
+  "id": "zulia-rosales-2027-04-30",
+  "campana_id": "zulia",
+  "entidad": "figura",
+  "entidad_id": "rosales",
+  "fecha": "2027-04-30",
+  "menciones": 333
+ },
+ {
+  "id": "zulia-rosales-2027-05-01",
+  "campana_id": "zulia",
+  "entidad": "figura",
+  "entidad_id": "rosales",
+  "fecha": "2027-05-01",
+  "menciones": 326
+ },
+ {
+  "id": "zulia-rosales-2027-05-02",
+  "campana_id": "zulia",
+  "entidad": "figura",
+  "entidad_id": "rosales",
+  "fecha": "2027-05-02",
+  "menciones": 323
+ },
+ {
+  "id": "zulia-rosales-2027-05-03",
+  "campana_id": "zulia",
+  "entidad": "figura",
+  "entidad_id": "rosales",
+  "fecha": "2027-05-03",
+  "menciones": 338
+ },
+ {
+  "id": "zulia-rosales-2027-05-04",
+  "campana_id": "zulia",
+  "entidad": "figura",
+  "entidad_id": "rosales",
+  "fecha": "2027-05-04",
+  "menciones": 362
+ },
+ {
+  "id": "zulia-rosales-2027-05-05",
+  "campana_id": "zulia",
+  "entidad": "figura",
+  "entidad_id": "rosales",
+  "fecha": "2027-05-05",
+  "menciones": 412
+ },
+ {
+  "id": "zulia-rosales-2027-05-06",
+  "campana_id": "zulia",
+  "entidad": "figura",
+  "entidad_id": "rosales",
+  "fecha": "2027-05-06",
+  "menciones": 609
+ },
+ {
+  "id": "zulia-rosales-2027-05-07",
+  "campana_id": "zulia",
+  "entidad": "figura",
+  "entidad_id": "rosales",
+  "fecha": "2027-05-07",
+  "menciones": 486
+ },
+ {
+  "id": "zulia-rosales-2027-05-08",
+  "campana_id": "zulia",
+  "entidad": "figura",
+  "entidad_id": "rosales",
+  "fecha": "2027-05-08",
+  "menciones": 382
+ },
+ {
+  "id": "zulia-rosales-2027-05-09",
+  "campana_id": "zulia",
+  "entidad": "figura",
+  "entidad_id": "rosales",
+  "fecha": "2027-05-09",
+  "menciones": 389
+ },
+ {
+  "id": "zulia-rosales-2027-05-10",
+  "campana_id": "zulia",
+  "entidad": "figura",
+  "entidad_id": "rosales",
+  "fecha": "2027-05-10",
+  "menciones": 410
+ },
+ {
+  "id": "zulia-rosales-2027-05-11",
+  "campana_id": "zulia",
+  "entidad": "figura",
+  "entidad_id": "rosales",
+  "fecha": "2027-05-11",
+  "menciones": 498
+ },
+ {
+  "id": "zulia-rosales-2027-05-12",
+  "campana_id": "zulia",
+  "entidad": "figura",
+  "entidad_id": "rosales",
+  "fecha": "2027-05-12",
+  "menciones": 597
+ },
+ {
+  "id": "zulia-rosales-2027-05-13",
+  "campana_id": "zulia",
+  "entidad": "figura",
+  "entidad_id": "rosales",
+  "fecha": "2027-05-13",
+  "menciones": 655
+ },
+ {
+  "id": "chacao-duque-2027-04-14",
+  "campana_id": "chacao",
+  "entidad": "figura",
+  "entidad_id": "duque",
+  "fecha": "2027-04-14",
+  "menciones": 137
+ },
+ {
+  "id": "chacao-duque-2027-04-15",
+  "campana_id": "chacao",
+  "entidad": "figura",
+  "entidad_id": "duque",
+  "fecha": "2027-04-15",
+  "menciones": 133
+ },
+ {
+  "id": "chacao-duque-2027-04-16",
+  "campana_id": "chacao",
+  "entidad": "figura",
+  "entidad_id": "duque",
+  "fecha": "2027-04-16",
+  "menciones": 130
+ },
+ {
+  "id": "chacao-duque-2027-04-17",
+  "campana_id": "chacao",
+  "entidad": "figura",
+  "entidad_id": "duque",
+  "fecha": "2027-04-17",
+  "menciones": 137
+ },
+ {
+  "id": "chacao-duque-2027-04-18",
+  "campana_id": "chacao",
+  "entidad": "figura",
+  "entidad_id": "duque",
+  "fecha": "2027-04-18",
+  "menciones": 144
+ },
+ {
+  "id": "chacao-duque-2027-04-19",
+  "campana_id": "chacao",
+  "entidad": "figura",
+  "entidad_id": "duque",
+  "fecha": "2027-04-19",
+  "menciones": 141
+ },
+ {
+  "id": "chacao-duque-2027-04-20",
+  "campana_id": "chacao",
+  "entidad": "figura",
+  "entidad_id": "duque",
+  "fecha": "2027-04-20",
+  "menciones": 138
+ },
+ {
+  "id": "chacao-duque-2027-04-21",
+  "campana_id": "chacao",
+  "entidad": "figura",
+  "entidad_id": "duque",
+  "fecha": "2027-04-21",
+  "menciones": 145
+ },
+ {
+  "id": "chacao-duque-2027-04-22",
+  "campana_id": "chacao",
+  "entidad": "figura",
+  "entidad_id": "duque",
+  "fecha": "2027-04-22",
+  "menciones": 157
+ },
+ {
+  "id": "chacao-duque-2027-04-23",
+  "campana_id": "chacao",
+  "entidad": "figura",
+  "entidad_id": "duque",
+  "fecha": "2027-04-23",
+  "menciones": 212
+ },
+ {
+  "id": "chacao-duque-2027-04-24",
+  "campana_id": "chacao",
+  "entidad": "figura",
+  "entidad_id": "duque",
+  "fecha": "2027-04-24",
+  "menciones": 168
+ },
+ {
+  "id": "chacao-duque-2027-04-25",
+  "campana_id": "chacao",
+  "entidad": "figura",
+  "entidad_id": "duque",
+  "fecha": "2027-04-25",
+  "menciones": 159
+ },
+ {
+  "id": "chacao-duque-2027-04-26",
+  "campana_id": "chacao",
+  "entidad": "figura",
+  "entidad_id": "duque",
+  "fecha": "2027-04-26",
+  "menciones": 153
+ },
+ {
+  "id": "chacao-duque-2027-04-27",
+  "campana_id": "chacao",
+  "entidad": "figura",
+  "entidad_id": "duque",
+  "fecha": "2027-04-27",
+  "menciones": 157
+ },
+ {
+  "id": "chacao-duque-2027-04-28",
+  "campana_id": "chacao",
+  "entidad": "figura",
+  "entidad_id": "duque",
+  "fecha": "2027-04-28",
+  "menciones": 159
+ },
+ {
+  "id": "chacao-duque-2027-04-29",
+  "campana_id": "chacao",
+  "entidad": "figura",
+  "entidad_id": "duque",
+  "fecha": "2027-04-29",
+  "menciones": 155
+ },
+ {
+  "id": "chacao-duque-2027-04-30",
+  "campana_id": "chacao",
+  "entidad": "figura",
+  "entidad_id": "duque",
+  "fecha": "2027-04-30",
+  "menciones": 154
+ },
+ {
+  "id": "chacao-duque-2027-05-01",
+  "campana_id": "chacao",
+  "entidad": "figura",
+  "entidad_id": "duque",
+  "fecha": "2027-05-01",
+  "menciones": 161
+ },
+ {
+  "id": "chacao-duque-2027-05-02",
+  "campana_id": "chacao",
+  "entidad": "figura",
+  "entidad_id": "duque",
+  "fecha": "2027-05-02",
+  "menciones": 174
+ },
+ {
+  "id": "chacao-duque-2027-05-03",
+  "campana_id": "chacao",
+  "entidad": "figura",
+  "entidad_id": "duque",
+  "fecha": "2027-05-03",
+  "menciones": 207
+ },
+ {
+  "id": "chacao-duque-2027-05-04",
+  "campana_id": "chacao",
+  "entidad": "figura",
+  "entidad_id": "duque",
+  "fecha": "2027-05-04",
+  "menciones": 312
+ },
+ {
+  "id": "chacao-duque-2027-05-05",
+  "campana_id": "chacao",
+  "entidad": "figura",
+  "entidad_id": "duque",
+  "fecha": "2027-05-05",
+  "menciones": 243
+ },
+ {
+  "id": "chacao-duque-2027-05-06",
+  "campana_id": "chacao",
+  "entidad": "figura",
+  "entidad_id": "duque",
+  "fecha": "2027-05-06",
+  "menciones": 182
+ },
+ {
+  "id": "chacao-duque-2027-05-07",
+  "campana_id": "chacao",
+  "entidad": "figura",
+  "entidad_id": "duque",
+  "fecha": "2027-05-07",
+  "menciones": 178
+ },
+ {
+  "id": "chacao-duque-2027-05-08",
+  "campana_id": "chacao",
+  "entidad": "figura",
+  "entidad_id": "duque",
+  "fecha": "2027-05-08",
+  "menciones": 176
+ },
+ {
+  "id": "chacao-duque-2027-05-09",
+  "campana_id": "chacao",
+  "entidad": "figura",
+  "entidad_id": "duque",
+  "fecha": "2027-05-09",
+  "menciones": 184
+ },
+ {
+  "id": "chacao-duque-2027-05-10",
+  "campana_id": "chacao",
+  "entidad": "figura",
+  "entidad_id": "duque",
+  "fecha": "2027-05-10",
+  "menciones": 191
+ },
+ {
+  "id": "chacao-duque-2027-05-11",
+  "campana_id": "chacao",
+  "entidad": "figura",
+  "entidad_id": "duque",
+  "fecha": "2027-05-11",
+  "menciones": 196
+ },
+ {
+  "id": "chacao-duque-2027-05-12",
+  "campana_id": "chacao",
+  "entidad": "figura",
+  "entidad_id": "duque",
+  "fecha": "2027-05-12",
+  "menciones": 204
+ },
+ {
+  "id": "chacao-duque-2027-05-13",
+  "campana_id": "chacao",
+  "entidad": "figura",
+  "entidad_id": "duque",
+  "fecha": "2027-05-13",
+  "menciones": 213
+ },
+ {
   "id": "pres-machado-2027-04-14",
   "campana_id": "presidenciales",
   "entidad": "figura",

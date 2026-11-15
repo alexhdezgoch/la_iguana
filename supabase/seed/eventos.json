@@ -4,18 +4,20 @@
   "campana_id": "presidenciales",
   "nombre": "Gira \"Que vuelvan a casa\" por los Andes",
   "tipo": "Gira",
-  "es_crisis": false,
   "origen": "Propio",
   "estado": "En curso",
   "fecha_inicio": "2027-05-10",
   "fecha_fin": "2027-05-14",
+  "hora": "09:00",
   "sede": "Mérida y San Cristóbal",
-  "ciudad": null,
-  "nota_estado": "Día 4 de 5",
+  "narrativa_id": "pres-que-vuelvan-a-casa",
   "menciones": 9700,
   "alcance": 800000,
   "neto": 19,
-  "notas_medios": 17
+  "notas_medios": 17,
+  "extra": {
+   "hora_fin": "21:00"
+  }
  },
  {
   "id": "pres-respuesta-dialogo",
@@ -27,6 +29,7 @@
   "estado": "En análisis",
   "fecha_inicio": "2027-05-11",
   "fecha_fin": "2027-05-11",
+  "hora": "11:00",
   "sede": "Comando de campaña",
   "ciudad": "Caracas",
   "nota_estado": "Resultados preliminares",
@@ -40,61 +43,151 @@
   "campana_id": "presidenciales",
   "nombre": "Segundo debate presidencial",
   "tipo": "Debate",
-  "es_crisis": false,
   "origen": "Institucional",
   "estado": "Programado",
   "fecha_inicio": "2027-05-23",
   "fecha_fin": "2027-05-23",
+  "hora": "17:00",
   "sede": "Teatro Baralt",
-  "ciudad": "Maracaibo",
-  "nota_estado": "En 10 días",
-  "menciones": null,
-  "alcance": null,
-  "neto": null,
-  "notas_medios": null
+  "ciudad": "Maracaibo"
  },
  {
   "id": "pres-cierre-campana",
   "campana_id": "presidenciales",
   "nombre": "Cierre de campaña",
   "tipo": "Mitin",
-  "es_crisis": false,
   "origen": "Propio",
   "estado": "Borrador",
   "fecha_inicio": "2027-06-02",
   "fecha_fin": "2027-06-02",
+  "hora": "17:00",
   "sede": "Avenida Bolívar",
   "ciudad": "Caracas",
-  "nota_estado": "Falta la ficha",
-  "menciones": null,
-  "alcance": null,
-  "neto": null,
-  "notas_medios": null
+  "nota_estado": "Falta la ficha"
  },
  {
   "id": "pres-primer-debate",
   "campana_id": "presidenciales",
   "nombre": "Primer debate presidencial",
   "tipo": "Debate",
-  "es_crisis": false,
   "origen": "Institucional",
   "estado": "Cerrado",
   "fecha_inicio": "2027-04-25",
   "fecha_fin": "2027-04-25",
+  "hora": "20:00",
   "sede": "Aula Magna de la UCV",
   "ciudad": "Caracas",
   "nota_estado": "Resultados finales",
+  "objetivos": "Ganar la conversación del debate y posicionar el plan de retorno.",
+  "narrativa_id": "pres-que-vuelvan-a-casa",
+  "hashtags": [
+   "#DebatePresidencial",
+   "#QueVuelvanACasa",
+   "#HastaElFinal"
+  ],
+  "ventana_horas": 72,
   "menciones": 46000,
+  "menciones_antes": 6400,
+  "menciones_durante": 18200,
+  "menciones_despues": 21400,
   "alcance": 3200000,
   "neto": 23,
-  "notas_medios": 64
+  "neto_antes": 14,
+  "notas_medios": 64,
+  "veredicto": "Machado ganó la conversación y mejoró 9 puntos, de +14 a +23. El mensaje de salario no aterrizó.",
+  "resultados": {
+   "pico": {
+    "por_minuto": 410,
+    "en": "2027-04-25T20:47:00-04:00",
+    "contexto": "durante el intercambio sobre la fecha electoral",
+    "tema_id": "pres-fecha-electoral"
+   },
+   "otros": {
+    "menciones": 3220,
+    "participacion": 7
+   },
+   "sin_mensaje": {
+    "menciones": 9016,
+    "porcentaje": 49
+   },
+   "cobertura": {
+    "digitales": 38,
+    "radio": 14,
+    "television": 12,
+    "favorables": 25,
+    "neutrales": 27,
+    "desfavorables": 12
+   },
+   "reacciones": [
+    {
+     "figura_id": "delcy-rodriguez",
+     "publicaciones": 9,
+     "narrativa_id": "pres-fuera-del-dialogo",
+     "menciones": 6900
+    },
+    {
+     "figura_id": "jorge-rodriguez",
+     "publicaciones": 2,
+     "narrativa_id": null,
+     "menciones": null
+    }
+   ],
+   "hashtags": [
+    {
+     "hashtag": "#DebatePresidencial",
+     "menciones": 21300,
+     "lado": "Neutral"
+    },
+    {
+     "hashtag": "#QueVuelvanACasa",
+     "menciones": 7800,
+     "lado": "Propio"
+    },
+    {
+     "hashtag": "#VenezuelaEnPaz",
+     "menciones": 5600,
+     "lado": "Rival",
+     "nota": "Hashtag del PSUV"
+    },
+    {
+     "hashtag": "#HastaElFinal",
+     "menciones": 4100,
+     "lado": "Propio"
+    }
+   ],
+   "publicaciones": [
+    {
+     "titulo": "Clip de Machado sobre el retorno",
+     "canal": "TikTok",
+     "origen": "Propia",
+     "metrica": "reproducciones",
+     "valor": 1100000
+    },
+    {
+     "titulo": "Hilo de análisis sobre lo que dejó el debate",
+     "canal": "X",
+     "origen": "Tercero",
+     "metrica": "interacciones",
+     "valor": 18400
+    },
+    {
+     "titulo": "Video de Delcy Rodríguez sobre el diálogo",
+     "canal": "Facebook",
+     "origen": "Rival",
+     "metrica": "reproducciones",
+     "valor": 640000
+    }
+   ]
+  },
+  "extra": {
+   "estado_region": "Distrito Capital"
+  }
  },
  {
   "id": "pres-arranque",
   "campana_id": "presidenciales",
   "nombre": "Arranque de campaña",
   "tipo": "Mitin",
-  "es_crisis": false,
   "origen": "Propio",
   "estado": "Cerrado",
   "fecha_inicio": "2027-04-04",
@@ -106,5 +199,91 @@
   "alcance": 2400000,
   "neto": 21,
   "notas_medios": 41
+ },
+ {
+  "id": "zulia-recorrido",
+  "campana_id": "zulia",
+  "nombre": "Recorrido por Maracaibo y Cabimas",
+  "tipo": "Gira",
+  "origen": "Propio",
+  "estado": "Borrador",
+  "fecha_inicio": "2027-05-18",
+  "fecha_fin": "2027-05-18",
+  "sede": "Maracaibo y Cabimas",
+  "extra": {
+   "estado_region": "Zulia"
+  }
+ },
+ {
+  "id": "zulia-rueda-electrico",
+  "campana_id": "zulia",
+  "nombre": "Rueda de prensa sobre el servicio eléctrico",
+  "tipo": "Conferencia de prensa",
+  "origen": "Propio",
+  "estado": "Cerrado",
+  "fecha_inicio": "2027-05-06",
+  "fecha_fin": "2027-05-06",
+  "ciudad": "Maracaibo",
+  "menciones": 1240,
+  "neto": 11,
+  "notas_medios": 9,
+  "extra": {
+   "estado_region": "Zulia"
+  }
+ },
+ {
+  "id": "zulia-encuentro-gremios",
+  "campana_id": "zulia",
+  "nombre": "Encuentro con gremios en Ciudad Ojeda",
+  "tipo": "Encuentro ciudadano",
+  "origen": "Propio",
+  "estado": "Cerrado",
+  "fecha_inicio": "2027-04-28",
+  "fecha_fin": "2027-04-28",
+  "ciudad": "Ciudad Ojeda",
+  "menciones": 620,
+  "notas_medios": 4,
+  "extra": {
+   "estado_region": "Zulia"
+  }
+ },
+ {
+  "id": "chacao-asamblea-altamira",
+  "campana_id": "chacao",
+  "nombre": "Asamblea vecinal en Altamira",
+  "tipo": "Encuentro ciudadano",
+  "origen": "Propio",
+  "estado": "Programado",
+  "fecha_inicio": "2027-05-20",
+  "fecha_fin": "2027-05-20",
+  "sede": "Plaza Altamira",
+  "ciudad": "Chacao"
+ },
+ {
+  "id": "chacao-rueda-movilidad",
+  "campana_id": "chacao",
+  "nombre": "Rueda de prensa sobre el plan de movilidad",
+  "tipo": "Conferencia de prensa",
+  "origen": "Propio",
+  "estado": "Cerrado",
+  "fecha_inicio": "2027-05-04",
+  "fecha_fin": "2027-05-04",
+  "ciudad": "Chacao",
+  "menciones": 380,
+  "neto": 14,
+  "notas_medios": 5
+ },
+ {
+  "id": "chacao-jornada-espacios",
+  "campana_id": "chacao",
+  "nombre": "Jornada de espacios públicos en Los Palos Grandes",
+  "tipo": "Encuentro ciudadano",
+  "origen": "Propio",
+  "estado": "Cerrado",
+  "fecha_inicio": "2027-04-24",
+  "fecha_fin": "2027-04-24",
+  "sede": "Los Palos Grandes",
+  "ciudad": "Chacao",
+  "menciones": 210
  }
 ]

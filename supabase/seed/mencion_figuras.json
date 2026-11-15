@@ -1,0 +1,142 @@
+[
+ {
+  "id": "pres-mencion-1-machado",
+  "campana_id": "presidenciales",
+  "mencion_id": "pres-mencion-1",
+  "figura_id": "machado",
+  "sentimiento": "Desfavorable"
+ },
+ {
+  "id": "pres-mencion-2-machado",
+  "campana_id": "presidenciales",
+  "mencion_id": "pres-mencion-2",
+  "figura_id": "machado",
+  "sentimiento": "Desfavorable"
+ },
+ {
+  "id": "pres-mencion-3-machado",
+  "campana_id": "presidenciales",
+  "mencion_id": "pres-mencion-3",
+  "figura_id": "machado",
+  "sentimiento": "Favorable"
+ },
+ {
+  "id": "pres-mencion-4-machado",
+  "campana_id": "presidenciales",
+  "mencion_id": "pres-mencion-4",
+  "figura_id": "machado",
+  "sentimiento": "Favorable"
+ },
+ {
+  "id": "pres-mencion-4-gonzalez-urrutia",
+  "campana_id": "presidenciales",
+  "mencion_id": "pres-mencion-4",
+  "figura_id": "gonzalez-urrutia",
+  "sentimiento": null
+ },
+ {
+  "id": "pres-mencion-5-machado",
+  "campana_id": "presidenciales",
+  "mencion_id": "pres-mencion-5",
+  "figura_id": "machado",
+  "sentimiento": "Neutral"
+ },
+ {
+  "id": "pres-mencion-6-machado",
+  "campana_id": "presidenciales",
+  "mencion_id": "pres-mencion-6",
+  "figura_id": "machado",
+  "sentimiento": "Favorable"
+ },
+ {
+  "id": "pres-mencion-7-machado",
+  "campana_id": "presidenciales",
+  "mencion_id": "pres-mencion-7",
+  "figura_id": "machado",
+  "sentimiento": "Desfavorable"
+ },
+ {
+  "id": "zulia-mencion-1-rosales",
+  "campana_id": "zulia",
+  "mencion_id": "zulia-mencion-1",
+  "figura_id": "rosales",
+  "sentimiento": "Neutral"
+ },
+ {
+  "id": "zulia-mencion-2-rosales",
+  "campana_id": "zulia",
+  "mencion_id": "zulia-mencion-2",
+  "figura_id": "rosales",
+  "sentimiento": "Favorable"
+ },
+ {
+  "id": "zulia-mencion-3-rosales",
+  "campana_id": "zulia",
+  "mencion_id": "zulia-mencion-3",
+  "figura_id": "rosales",
+  "sentimiento": "Desfavorable"
+ },
+ {
+  "id": "zulia-mencion-4-caldera",
+  "campana_id": "zulia",
+  "mencion_id": "zulia-mencion-4",
+  "figura_id": "caldera",
+  "sentimiento": "Neutral"
+ },
+ {
+  "id": "zulia-mencion-5-guanipa",
+  "campana_id": "zulia",
+  "mencion_id": "zulia-mencion-5",
+  "figura_id": "guanipa",
+  "sentimiento": "Favorable"
+ },
+ {
+  "id": "zulia-mencion-5-rosales",
+  "campana_id": "zulia",
+  "mencion_id": "zulia-mencion-5",
+  "figura_id": "rosales",
+  "sentimiento": null
+ },
+ {
+  "id": "zulia-mencion-6-caldera",
+  "campana_id": "zulia",
+  "mencion_id": "zulia-mencion-6",
+  "figura_id": "caldera",
+  "sentimiento": "Neutral"
+ },
+ {
+  "id": "chacao-mencion-1-duque",
+  "campana_id": "chacao",
+  "mencion_id": "chacao-mencion-1",
+  "figura_id": "duque",
+  "sentimiento": "Neutral"
+ },
+ {
+  "id": "chacao-mencion-2-duque",
+  "campana_id": "chacao",
+  "mencion_id": "chacao-mencion-2",
+  "figura_id": "duque",
+  "sentimiento": "Favorable"
+ },
+ {
+  "id": "chacao-mencion-3-duque",
+  "campana_id": "chacao",
+  "mencion_id": "chacao-mencion-3",
+  "figura_id": "duque",
+  "sentimiento": "Favorable"
+ },
+ {
+  "id": "chacao-mencion-4-duque",
+  "campana_id": "chacao",
+  "mencion_id": "chacao-mencion-4",
+  "figura_id": "duque",
+  "sentimiento": "Desfavorable"
+ },
+ {
+  "id": "chacao-mencion-5-duque",
+  "campana_id": "chacao",
+  "mencion_id": "chacao-mencion-5",
+  "figura_id": "duque",
+  "sentimiento": "Neutral"
+ }
+]

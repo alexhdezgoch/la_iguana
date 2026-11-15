@@ -1,0 +1,303 @@
+[
+ {
+  "id": "pres-rep-diario",
+  "nombre": "Corte diario",
+  "tipo": "Corte diario",
+  "frecuencia": "Diario",
+  "hora": "07:00",
+  "destinatarios": [
+   {
+    "lista": "comando",
+    "formato": "Correo con PDF"
+   },
+   {
+    "lista": "candidata",
+    "formato": "WhatsApp resumen"
+   },
+   {
+    "lista": "cliente",
+    "formato": "Enlace con acceso"
+   },
+   {
+    "persona_id": "lucia",
+    "formato": "Correo con PDF"
+   }
+  ],
+  "secciones": [
+   {
+    "id": "esencial",
+    "titulo": "Lo esencial",
+    "ia": true,
+    "activa": true
+   },
+   {
+    "id": "cifras",
+    "titulo": "Cifras del día",
+    "ia": false,
+    "activa": true
+   },
+   {
+    "id": "alertas",
+    "titulo": "Alertas de las últimas 24 horas",
+    "ia": false,
+    "activa": true
+   },
+   {
+    "id": "narr",
+    "titulo": "Narrativas en movimiento",
+    "ia": false,
+    "activa": true
+   },
+   {
+    "id": "medios",
+    "titulo": "Medios",
+    "ia": false,
+    "activa": true
+   },
+   {
+    "id": "rivales",
+    "titulo": "Rivales",
+    "ia": false,
+    "activa": true
+   },
+   {
+    "id": "agenda",
+    "titulo": "Agenda de hoy y próximos eventos",
+    "ia": false,
+    "activa": true
+   },
+   {
+    "id": "reco",
+    "titulo": "Recomendación",
+    "ia": true,
+    "activa": true
+   }
+  ],
+  "formato": "PDF",
+  "estado": "Activo",
+  "requiere_aprobacion": false,
+  "ultimo_envio": "2027-05-13T07:02:00-04:00",
+  "proximo_envio": "2027-05-14T07:00:00-04:00",
+  "plantilla_id": "pres-plantilla-diario",
+  "orden": 1,
+  "extra": {
+   "descripcion": "Todos los días a las 7:00. Cubre de 7:00 a 7:00.",
+   "marca": "Consultora",
+   "confidencial": true,
+   "seccion_analisis": "reco",
+   "borrador_hora": "06:00",
+   "borrador_cierre": "06:30",
+   "periodo_texto": "Últimas 24 horas, de 7:00 a 7:00 · María Corina Machado frente a 3 rivales"
+  },
+  "campana_id": "presidenciales"
+ },
+ {
+  "id": "pres-rep-semanal",
+  "nombre": "Semanal de narrativas",
+  "tipo": "Semanal de narrativas",
+  "frecuencia": "Semanal",
+  "hora": "08:00",
+  "destinatarios": [
+   {
+    "lista": "candidata",
+    "formato": "Correo con PDF"
+   },
+   {
+    "lista": "cliente",
+    "formato": "Enlace con acceso"
+   },
+   {
+    "persona_id": "lucia",
+    "formato": "Correo con PDF"
+   },
+   {
+    "persona_id": "tomas",
+    "formato": "Correo con PDF"
+   }
+  ],
+  "secciones": [
+   {
+    "id": "resumen",
+    "titulo": "Resumen ejecutivo",
+    "ia": true,
+    "activa": true
+   },
+   {
+    "id": "narr",
+    "titulo": "Narrativas",
+    "ia": false,
+    "activa": true
+   },
+   {
+    "id": "temas",
+    "titulo": "Temas",
+    "ia": false,
+    "activa": true
+   },
+   {
+    "id": "part",
+    "titulo": "Participación por figura",
+    "ia": false,
+    "activa": true
+   },
+   {
+    "id": "vigilar",
+    "titulo": "Para vigilar",
+    "ia": false,
+    "activa": true
+   }
+  ],
+  "formato": "PDF",
+  "estado": "Activo",
+  "requiere_aprobacion": true,
+  "ultimo_envio": "2027-05-10T08:01:00-04:00",
+  "proximo_envio": "2027-05-17T08:00:00-04:00",
+  "plantilla_id": "pres-plantilla-semanal",
+  "orden": 2,
+  "extra": {
+   "descripcion": "Todos los lunes a las 8:00. Compara con la semana anterior.",
+   "dia": "lunes",
+   "marca": "Consultora",
+   "confidencial": true,
+   "seccion_analisis": "resumen",
+   "periodo_texto": "Semana en curso frente a la anterior · las 8 figuras de la campaña"
+  },
+  "campana_id": "presidenciales"
+ },
+ {
+  "id": "pres-rep-post",
+  "nombre": "Post-evento automático",
+  "tipo": "Post-evento",
+  "frecuencia": "Por evento",
+  "destinatarios": [
+   {
+    "lista": "comando",
+    "formato": "Correo con PDF"
+   },
+   {
+    "lista": "candidata",
+    "formato": "Correo con PDF"
+   }
+  ],
+  "secciones": [
+   {
+    "id": "balance",
+    "titulo": "Balance",
+    "ia": true,
+    "activa": true
+   },
+   {
+    "id": "cifras",
+    "titulo": "Cifras del evento",
+    "ia": false,
+    "activa": true
+   },
+   {
+    "id": "curva",
+    "titulo": "Antes, durante y después",
+    "ia": false,
+    "activa": true
+   },
+   {
+    "id": "gano",
+    "titulo": "Quién ganó la conversación",
+    "ia": false,
+    "activa": true
+   },
+   {
+    "id": "mensajes",
+    "titulo": "Mensajes clave",
+    "ia": false,
+    "activa": true
+   },
+   {
+    "id": "medios",
+    "titulo": "Cobertura en medios",
+    "ia": false,
+    "activa": true
+   },
+   {
+    "id": "rivales",
+    "titulo": "Reacciones de rivales",
+    "ia": false,
+    "activa": true
+   },
+   {
+    "id": "aprend",
+    "titulo": "Aprendizajes",
+    "ia": false,
+    "activa": true
+   }
+  ],
+  "formato": "PDF",
+  "estado": "Activo",
+  "requiere_aprobacion": true,
+  "ultimo_envio": "2027-04-28T21:40:00-04:00",
+  "proximo_envio": "2027-05-26T17:00:00-04:00",
+  "plantilla_id": "pres-plantilla-post",
+  "orden": 3,
+  "extra": {
+   "descripcion": "Se genera 72 horas después de cada evento propio o debate.",
+   "proximo_evento_id": "pres-segundo-debate",
+   "marca": "Consultora",
+   "confidencial": true,
+   "seccion_analisis": "balance"
+  },
+  "campana_id": "presidenciales"
+ },
+ {
+  "id": "pres-rep-cliente",
+  "nombre": "Resumen para el cliente",
+  "tipo": "Corte diario",
+  "frecuencia": "Una vez",
+  "destinatarios": [
+   {
+    "lista": "cliente",
+    "formato": "Enlace con acceso"
+   }
+  ],
+  "secciones": [
+   {
+    "id": "esencial",
+    "titulo": "Lo esencial",
+    "ia": true,
+    "activa": true
+   },
+   {
+    "id": "cifras",
+    "titulo": "Cifras del día",
+    "ia": false,
+    "activa": true
+   },
+   {
+    "id": "narr",
+    "titulo": "Narrativas en movimiento",
+    "ia": false,
+    "activa": true
+   },
+   {
+    "id": "medios",
+    "titulo": "Medios",
+    "ia": false,
+    "activa": true
+   },
+   {
+    "id": "agenda",
+    "titulo": "Agenda de hoy y próximos eventos",
+    "ia": false,
+    "activa": true
+   }
+  ],
+  "formato": "PDF",
+  "estado": "Activo",
+  "requiere_aprobacion": true,
+  "plantilla_id": "pres-plantilla-cliente",
+  "orden": 4,
+  "extra": {
+   "marca": "Cliente",
+   "confidencial": true,
+   "seccion_analisis": "esencial"
+  },
+  "campana_id": "presidenciales"
+ }
+]

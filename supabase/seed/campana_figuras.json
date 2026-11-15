@@ -4,14 +4,20 @@
   "campana_id": "presidenciales",
   "figura_id": "machado",
   "relacion": "Propia",
-  "orden": 1
+  "orden": 1,
+  "extra": {
+   "candidatura": true
+  }
  },
  {
   "id": "pres-delcy-rodriguez",
   "campana_id": "presidenciales",
   "figura_id": "delcy-rodriguez",
   "relacion": "Rival",
-  "orden": 2
+  "orden": 2,
+  "extra": {
+   "candidatura": true
+  }
  },
  {
   "id": "pres-jorge-rodriguez",
@@ -25,7 +31,10 @@
   "campana_id": "presidenciales",
   "figura_id": "capriles",
   "relacion": "Rival",
-  "orden": 4
+  "orden": 4,
+  "extra": {
+   "candidatura": true
+  }
  },
  {
   "id": "pres-gonzalez-urrutia",
@@ -60,21 +69,27 @@
   "campana_id": "zulia",
   "figura_id": "rosales",
   "relacion": "Propia",
-  "orden": 1
- },
- {
-  "id": "zulia-guanipa",
-  "campana_id": "zulia",
-  "figura_id": "guanipa",
-  "relacion": "Aliada",
-  "orden": 2
+  "orden": 1,
+  "extra": {
+   "cargo": "Precandidato a gobernador"
+  }
  },
  {
   "id": "zulia-caldera",
   "campana_id": "zulia",
   "figura_id": "caldera",
   "relacion": "Rival",
-  "orden": 3
+  "orden": 2
+ },
+ {
+  "id": "zulia-guanipa",
+  "campana_id": "zulia",
+  "figura_id": "guanipa",
+  "relacion": "Aliada",
+  "orden": 3,
+  "extra": {
+   "cargo": "Dirigente regional"
+  }
  },
  {
   "id": "chacao-duque",

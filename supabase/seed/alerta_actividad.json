@@ -1,0 +1,170 @@
+[
+ {
+  "id": "pres-alerta-1-a1",
+  "campana_id": "presidenciales",
+  "alerta_id": "pres-alerta-1",
+  "persona_id": null,
+  "texto": "Se disparó la regla \"Narrativa en contra crece\"",
+  "creada_en": "2027-05-13T07:12:00-04:00"
+ },
+ {
+  "id": "pres-alerta-1-a2",
+  "campana_id": "presidenciales",
+  "alerta_id": "pres-alerta-1",
+  "persona_id": null,
+  "texto": "Notificada por WhatsApp a 3 destinatarios y en la app",
+  "creada_en": "2027-05-13T07:12:00-04:00"
+ },
+ {
+  "id": "pres-alerta-1-a3",
+  "campana_id": "presidenciales",
+  "alerta_id": "pres-alerta-1",
+  "persona_id": null,
+  "texto": "Segundo y tercer disparo agrupados en esta alerta",
+  "creada_en": "2027-05-13T08:30:00-04:00"
+ },
+ {
+  "id": "pres-alerta-2-a1",
+  "campana_id": "presidenciales",
+  "alerta_id": "pres-alerta-2",
+  "persona_id": null,
+  "texto": "Se disparó la regla \"Riesgo alto en rivales\"",
+  "creada_en": "2027-05-13T04:20:00-04:00"
+ },
+ {
+  "id": "pres-alerta-2-a2",
+  "campana_id": "presidenciales",
+  "alerta_id": "pres-alerta-2",
+  "persona_id": null,
+  "texto": "Notificada por email a 2 destinatarios y en la app",
+  "creada_en": "2027-05-13T04:20:00-04:00"
+ },
+ {
+  "id": "pres-alerta-2-a3",
+  "campana_id": "presidenciales",
+  "alerta_id": "pres-alerta-2",
+  "persona_id": "daniela",
+  "texto": "tomó la alerta · En revisión",
+  "creada_en": "2027-05-13T06:05:00-04:00"
+ },
+ {
+  "id": "pres-alerta-3-a1",
+  "campana_id": "presidenciales",
+  "alerta_id": "pres-alerta-3",
+  "persona_id": null,
+  "texto": "Se disparó la regla \"Rival en tema propio\"",
+  "creada_en": "2027-05-13T06:25:00-04:00"
+ },
+ {
+  "id": "pres-alerta-3-a2",
+  "campana_id": "presidenciales",
+  "alerta_id": "pres-alerta-3",
+  "persona_id": null,
+  "texto": "Notificada en la app y por Slack a 4 destinatarios",
+  "creada_en": "2027-05-13T06:25:00-04:00"
+ },
+ {
+  "id": "pres-alerta-4-a1",
+  "campana_id": "presidenciales",
+  "alerta_id": "pres-alerta-4",
+  "persona_id": null,
+  "texto": "Se disparó la regla \"Sentimiento de aliadas\"",
+  "creada_en": "2027-05-12T18:40:00-04:00"
+ },
+ {
+  "id": "pres-alerta-4-a2",
+  "campana_id": "presidenciales",
+  "alerta_id": "pres-alerta-4",
+  "persona_id": null,
+  "texto": "Notificada por email a 2 destinatarios",
+  "creada_en": "2027-05-12T18:40:00-04:00"
+ },
+ {
+  "id": "pres-alerta-4-a3",
+  "campana_id": "presidenciales",
+  "alerta_id": "pres-alerta-4",
+  "persona_id": "andres",
+  "texto": "tomó la alerta · En revisión",
+  "creada_en": "2027-05-12T19:10:00-04:00"
+ },
+ {
+  "id": "pres-alerta-5-a1",
+  "campana_id": "presidenciales",
+  "alerta_id": "pres-alerta-5",
+  "persona_id": null,
+  "texto": "Se disparó la regla \"Nota en medio destacado\"",
+  "creada_en": "2027-05-12T17:20:00-04:00"
+ },
+ {
+  "id": "pres-alerta-5-a2",
+  "campana_id": "presidenciales",
+  "alerta_id": "pres-alerta-5",
+  "persona_id": null,
+  "texto": "Notificada en la app a 3 destinatarios",
+  "creada_en": "2027-05-12T17:20:00-04:00"
+ },
+ {
+  "id": "pres-alerta-5-a3",
+  "campana_id": "presidenciales",
+  "alerta_id": "pres-alerta-5",
+  "persona_id": "carla",
+  "texto": "pospuso la alerta hasta mañana 7:00",
+  "creada_en": "2027-05-12T17:45:00-04:00"
+ },
+ {
+  "id": "pres-alerta-6-a1",
+  "campana_id": "presidenciales",
+  "alerta_id": "pres-alerta-6",
+  "persona_id": null,
+  "texto": "Se disparó la regla \"Pico de menciones\"",
+  "creada_en": "2027-04-25T20:10:00-04:00"
+ },
+ {
+  "id": "pres-alerta-6-a2",
+  "campana_id": "presidenciales",
+  "alerta_id": "pres-alerta-6",
+  "persona_id": null,
+  "texto": "Notificada por WhatsApp y email a 5 destinatarios",
+  "creada_en": "2027-04-25T20:10:00-04:00"
+ },
+ {
+  "id": "pres-alerta-6-a3",
+  "campana_id": "presidenciales",
+  "alerta_id": "pres-alerta-6",
+  "persona_id": "daniela",
+  "texto": "tomó la alerta · En revisión",
+  "creada_en": "2027-04-25T20:14:00-04:00"
+ },
+ {
+  "id": "pres-alerta-6-a4",
+  "campana_id": "presidenciales",
+  "alerta_id": "pres-alerta-6",
+  "persona_id": "daniela",
+  "texto": "resolvió la alerta",
+  "creada_en": "2027-04-26T09:00:00-04:00"
+ },
+ {
+  "id": "pres-alerta-7-a1",
+  "campana_id": "presidenciales",
+  "alerta_id": "pres-alerta-7",
+  "persona_id": null,
+  "texto": "Se disparó la regla \"Pico de menciones\"",
+  "creada_en": "2027-05-09T16:00:00-04:00"
+ },
+ {
+  "id": "pres-alerta-7-a2",
+  "campana_id": "presidenciales",
+  "alerta_id": "pres-alerta-7",
+  "persona_id": null,
+  "texto": "Notificada por WhatsApp y email a 5 destinatarios",
+  "creada_en": "2027-05-09T16:00:00-04:00"
+ },
+ {
+  "id": "pres-alerta-7-a3",
+  "campana_id": "presidenciales",
+  "alerta_id": "pres-alerta-7",
+  "persona_id": "andres",
+  "texto": "descartó la alerta · No relevante",
+  "creada_en": "2027-05-09T16:30:00-04:00"
+ }
+]

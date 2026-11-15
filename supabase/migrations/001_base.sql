@@ -216,7 +216,13 @@ create table public.tema_figuras (
   tema_id text not null references public.temas(id) on delete cascade,
   figura_id text not null references public.figuras(id) on delete cascade,
   menciones integer not null default 0,
-  porcentaje double precision,
+  porcentaje double precision,         -- % de la conversación de la figura que cae en este tema
+  porcentaje_propias double precision, -- % de las publicaciones propias de la figura en este tema
+  porcentaje_hace_7d double precision,
+  porcentaje_propias_hace_7d double precision,
+  favorable integer,                   -- %, solo cuando se mide el sentimiento por tema
+  neutral integer,
+  desfavorable integer,
   neto integer,
   unique (tema_id, figura_id)
 );
@@ -230,11 +236,20 @@ create table public.narrativas (
   nombre text not null,
   direccion text not null default 'Sin dirección' check (direccion in ('Favorable','Desfavorable','Sin dirección','Posicionamiento')),
   menciones integer not null default 0,
+  menciones_24h integer,
   tendencia text,                       -- En aumento, Estable, A la baja
   cambio_24h double precision,
+  cambio_7d double precision,
+  veces_promedio double precision,      -- volumen de las últimas 24 h frente a su promedio
+  detectada_el date,
+  alcance bigint,
+  cuentas_unicas integer,
+  neto integer,
   estado text not null default 'Activa',
   seguida boolean not null default false,
   descripcion text,
+  resumen text,                         -- resumen generado, revisable por el equipo
+  resumen_aprobado boolean not null default false,
   orden integer not null default 0,
   detalle jsonb not null default '{}'::jsonb   -- canales, quién la impulsa, hallazgos "posibles", relacionadas
 );
@@ -375,6 +390,8 @@ create table public.reglas_alerta (
   activa boolean not null default true,
   narrativa_id text references public.narrativas(id) on delete cascade,
   figura_id text references public.figuras(id) on delete cascade,
+  disparos_30d integer not null default 0,
+  ultimo_disparo timestamptz,
   orden integer not null default 0,
   extra jsonb not null default '{}'::jsonb,
   creada_en timestamptz not null default now()
@@ -422,6 +439,23 @@ create index on public.alerta_actividad (alerta_id);
 -- Reportes
 -- ====================================================================
 
+-- Plantillas de reporte: estructura base (secciones y marca) desde la que se crea un reporte.
+create table public.reporte_plantillas (
+  id text primary key default public.nuevo_id(),
+  campana_id text not null references public.campanas(id) on delete cascade,
+  nombre text not null,
+  etiqueta text,                        -- Base, Marca del cliente
+  descripcion text,
+  tipo text not null,                   -- Corte diario, Post-evento, Semanal de narrativas
+  secciones jsonb not null default '[]'::jsonb,   -- [{id, titulo, ia}]
+  marca text not null default 'Consultora' check (marca in ('Consultora','Cliente')),
+  usos integer not null default 0,
+  orden integer not null default 0,
+  extra jsonb not null default '{}'::jsonb,
+  creada_en timestamptz not null default now()
+);
+create index on public.reporte_plantillas (campana_id);
+
 create table public.reportes (
   id text primary key default public.nuevo_id(),
   campana_id text not null references public.campanas(id) on delete cascade,
@@ -433,6 +467,7 @@ create table public.reportes (
   secciones jsonb not null default '[]'::jsonb,
   formato text,
   evento_id text references public.eventos(id) on delete set null,
+  plantilla_id text references public.reporte_plantillas(id) on delete set null,
   estado text not null default 'Activo',
   requiere_aprobacion boolean not null default false,
   ultimo_envio timestamptz,
@@ -449,10 +484,13 @@ create table public.reporte_envios (
   campana_id text not null references public.campanas(id) on delete cascade,
   reporte_id text not null references public.reportes(id) on delete cascade,
   titulo text,
+  periodo_inicio timestamptz,
+  periodo_fin timestamptz,
   generado_en timestamptz not null default now(),
   enviado_en timestamptz,
   estado text not null default 'Pendiente de envío',
   destinatarios integer,
+  entregados integer,
   aprobado_por text references public.personas(id) on delete set null,
   contenido jsonb not null default '{}'::jsonb,
   extra jsonb not null default '{}'::jsonb

@@ -1,0 +1,46 @@
+[
+ {
+  "id": "pres-primer-debate-m1",
+  "campana_id": "presidenciales",
+  "evento_id": "pres-primer-debate",
+  "texto": "Plan de retorno de migrantes",
+  "terminos": [
+   "plan de retorno",
+   "vuelvan a casa",
+   "#QueVuelvanACasa"
+  ],
+  "menciones": 5520,
+  "porcentaje": 30,
+  "estado": "Aterrizó",
+  "orden": 1
+ },
+ {
+  "id": "pres-primer-debate-m2",
+  "campana_id": "presidenciales",
+  "evento_id": "pres-primer-debate",
+  "texto": "Fecha electoral en 2027",
+  "terminos": [
+   "fecha electoral",
+   "cronograma",
+   "elecciones 2027"
+  ],
+  "menciones": 2760,
+  "porcentaje": 15,
+  "estado": "Parcial",
+  "orden": 2
+ },
+ {
+  "id": "pres-primer-debate-m3",
+  "campana_id": "presidenciales",
+  "evento_id": "pres-primer-debate",
+  "texto": "Recuperar el salario",
+  "terminos": [
+   "salario digno",
+   "recuperar el salario"
+  ],
+  "menciones": 1104,
+  "porcentaje": 6,
+  "estado": "No aterrizó",
+  "orden": 3
+ }
+]

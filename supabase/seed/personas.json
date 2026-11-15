@@ -5,7 +5,8 @@
   "nombre": "Lucía G.",
   "nombre_corto": "Lucía G.",
   "iniciales": "LG",
-  "rol_org": "admin"
+  "rol_org": "admin",
+  "puesto": "Analista de guardia"
  },
  {
   "id": "daniela",
@@ -30,5 +31,50 @@
   "nombre_corto": "Carla R.",
   "iniciales": "CR",
   "rol_org": "miembro"
+ },
+ {
+  "id": "andrea",
+  "org_id": "brujula",
+  "nombre": "Andrea",
+  "nombre_corto": "Andrea",
+  "iniciales": "AN",
+  "rol_org": "miembro",
+  "puesto": "Coordinación digital"
+ },
+ {
+  "id": "tomas",
+  "org_id": "brujula",
+  "nombre": "Tomás Arráiz",
+  "nombre_corto": "Tomás A.",
+  "iniciales": "TA",
+  "rol_org": "miembro",
+  "puesto": "Director de estrategia"
+ },
+ {
+  "id": "valentina",
+  "org_id": "brujula",
+  "nombre": "Valentina Ríos",
+  "nombre_corto": "Valentina R.",
+  "iniciales": "VR",
+  "rol_org": "miembro",
+  "email": "valentina@brujula.example"
+ },
+ {
+  "id": "andres-v",
+  "org_id": "brujula",
+  "nombre": "Andrés Villalobos",
+  "nombre_corto": "Andrés V.",
+  "iniciales": "AV",
+  "rol_org": "miembro",
+  "email": "andres@brujula.example"
+ },
+ {
+  "id": "carolina",
+  "org_id": "brujula",
+  "nombre": "Carolina Atencio",
+  "nombre_corto": "Carolina A.",
+  "iniciales": "CA",
+  "rol_org": "miembro",
+  "email": "carolina@brujula.example"
  }
 ]

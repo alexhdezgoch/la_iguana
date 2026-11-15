@@ -1,0 +1,56 @@
+[
+ {
+  "id": "pres-m-lucia",
+  "campana_id": "presidenciales",
+  "persona_id": "lucia",
+  "rol": "Administración"
+ },
+ {
+  "id": "pres-m-daniela",
+  "campana_id": "presidenciales",
+  "persona_id": "daniela",
+  "rol": "Análisis"
+ },
+ {
+  "id": "pres-m-andres",
+  "campana_id": "presidenciales",
+  "persona_id": "andres",
+  "rol": "Análisis"
+ },
+ {
+  "id": "pres-m-carla",
+  "campana_id": "presidenciales",
+  "persona_id": "carla",
+  "rol": "Análisis"
+ },
+ {
+  "id": "pres-m-andrea",
+  "campana_id": "presidenciales",
+  "persona_id": "andrea",
+  "rol": "Análisis"
+ },
+ {
+  "id": "pres-m-tomas",
+  "campana_id": "presidenciales",
+  "persona_id": "tomas",
+  "rol": "Análisis"
+ },
+ {
+  "id": "zulia-m-lucia",
+  "campana_id": "zulia",
+  "persona_id": "lucia",
+  "rol": "Administración"
+ },
+ {
+  "id": "zulia-m-andres",
+  "campana_id": "zulia",
+  "persona_id": "andres",
+  "rol": "Análisis"
+ },
+ {
+  "id": "chacao-m-lucia",
+  "campana_id": "chacao",
+  "persona_id": "lucia",
+  "rol": "Administración"
+ }
+]

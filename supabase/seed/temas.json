@@ -5,8 +5,37 @@
   "nombre": "Economía y salarios",
   "menciones": 52000,
   "porcentaje": 26,
+  "cambio": 4,
+  "es_propio": false,
   "orden": 1,
-  "es_propio": false
+  "detalle": {
+   "canales": [
+    {
+     "canal": "X",
+     "porcentaje": 38
+    },
+    {
+     "canal": "Facebook",
+     "porcentaje": 22
+    },
+    {
+     "canal": "TikTok",
+     "porcentaje": 14
+    },
+    {
+     "canal": "Instagram",
+     "porcentaje": 10
+    },
+    {
+     "canal": "Medios",
+     "porcentaje": 9
+    },
+    {
+     "canal": "YouTube",
+     "porcentaje": 7
+    }
+   ]
+  }
  },
  {
   "id": "pres-migracion",
@@ -14,8 +43,37 @@
   "nombre": "Migración y retorno",
   "menciones": 38000,
   "porcentaje": 19,
+  "cambio": 11,
+  "es_propio": true,
   "orden": 2,
-  "es_propio": true
+  "detalle": {
+   "canales": [
+    {
+     "canal": "X",
+     "porcentaje": 38
+    },
+    {
+     "canal": "Facebook",
+     "porcentaje": 22
+    },
+    {
+     "canal": "TikTok",
+     "porcentaje": 14
+    },
+    {
+     "canal": "Instagram",
+     "porcentaje": 10
+    },
+    {
+     "canal": "Medios",
+     "porcentaje": 9
+    },
+    {
+     "canal": "YouTube",
+     "porcentaje": 7
+    }
+   ]
+  }
  },
  {
   "id": "pres-fecha-electoral",
@@ -23,8 +81,37 @@
   "nombre": "Fecha electoral",
   "menciones": 34000,
   "porcentaje": 17,
+  "cambio": 18,
+  "es_propio": false,
   "orden": 3,
-  "es_propio": false
+  "detalle": {
+   "canales": [
+    {
+     "canal": "X",
+     "porcentaje": 38
+    },
+    {
+     "canal": "Facebook",
+     "porcentaje": 22
+    },
+    {
+     "canal": "TikTok",
+     "porcentaje": 14
+    },
+    {
+     "canal": "Instagram",
+     "porcentaje": 10
+    },
+    {
+     "canal": "Medios",
+     "porcentaje": 9
+    },
+    {
+     "canal": "YouTube",
+     "porcentaje": 7
+    }
+   ]
+  }
  },
  {
   "id": "pres-servicios",
@@ -32,8 +119,37 @@
   "nombre": "Servicios públicos",
   "menciones": 26000,
   "porcentaje": 13,
+  "cambio": -3,
+  "es_propio": false,
   "orden": 4,
-  "es_propio": false
+  "detalle": {
+   "canales": [
+    {
+     "canal": "X",
+     "porcentaje": 38
+    },
+    {
+     "canal": "Facebook",
+     "porcentaje": 22
+    },
+    {
+     "canal": "TikTok",
+     "porcentaje": 14
+    },
+    {
+     "canal": "Instagram",
+     "porcentaje": 10
+    },
+    {
+     "canal": "Medios",
+     "porcentaje": 9
+    },
+    {
+     "canal": "YouTube",
+     "porcentaje": 7
+    }
+   ]
+  }
  },
  {
   "id": "pres-salud",
@@ -41,8 +157,37 @@
   "nombre": "Salud",
   "menciones": 22000,
   "porcentaje": 11,
+  "cambio": 0,
+  "es_propio": false,
   "orden": 5,
-  "es_propio": false
+  "detalle": {
+   "canales": [
+    {
+     "canal": "X",
+     "porcentaje": 38
+    },
+    {
+     "canal": "Facebook",
+     "porcentaje": 22
+    },
+    {
+     "canal": "TikTok",
+     "porcentaje": 14
+    },
+    {
+     "canal": "Instagram",
+     "porcentaje": 10
+    },
+    {
+     "canal": "Medios",
+     "porcentaje": 9
+    },
+    {
+     "canal": "YouTube",
+     "porcentaje": 7
+    }
+   ]
+  }
  },
  {
   "id": "pres-seguridad",
@@ -50,8 +195,37 @@
   "nombre": "Seguridad",
   "menciones": 12000,
   "porcentaje": 6,
+  "cambio": -6,
+  "es_propio": false,
   "orden": 6,
-  "es_propio": false
+  "detalle": {
+   "canales": [
+    {
+     "canal": "X",
+     "porcentaje": 38
+    },
+    {
+     "canal": "Facebook",
+     "porcentaje": 22
+    },
+    {
+     "canal": "TikTok",
+     "porcentaje": 14
+    },
+    {
+     "canal": "Instagram",
+     "porcentaje": 10
+    },
+    {
+     "canal": "Medios",
+     "porcentaje": 9
+    },
+    {
+     "canal": "YouTube",
+     "porcentaje": 7
+    }
+   ]
+  }
  },
  {
   "id": "pres-otros",
@@ -59,7 +233,167 @@
   "nombre": "Otros",
   "menciones": 16000,
   "porcentaje": 8,
+  "cambio": null,
+  "es_propio": false,
   "orden": 7,
-  "es_propio": false
+  "detalle": {
+   "canales": [
+    {
+     "canal": "X",
+     "porcentaje": 38
+    },
+    {
+     "canal": "Facebook",
+     "porcentaje": 22
+    },
+    {
+     "canal": "TikTok",
+     "porcentaje": 14
+    },
+    {
+     "canal": "Instagram",
+     "porcentaje": 10
+    },
+    {
+     "canal": "Medios",
+     "porcentaje": 9
+    },
+    {
+     "canal": "YouTube",
+     "porcentaje": 7
+    }
+   ],
+   "otros": true
+  }
+ },
+ {
+  "id": "zulia-electricidad",
+  "campana_id": "zulia",
+  "nombre": "Servicio eléctrico",
+  "menciones": 7440,
+  "porcentaje": 31,
+  "tendencia": "En aumento",
+  "es_propio": false,
+  "orden": 1,
+  "cambio": 38,
+  "detalle": {
+   "cambio_ventana": "48 h"
+  }
+ },
+ {
+  "id": "zulia-agua",
+  "campana_id": "zulia",
+  "nombre": "Agua",
+  "menciones": 4560,
+  "porcentaje": 19,
+  "tendencia": "Estable",
+  "es_propio": false,
+  "orden": 2
+ },
+ {
+  "id": "zulia-combustible",
+  "campana_id": "zulia",
+  "nombre": "Combustible",
+  "menciones": 3840,
+  "porcentaje": 16,
+  "tendencia": "Estable",
+  "es_propio": false,
+  "orden": 3
+ },
+ {
+  "id": "zulia-empleo-petrolero",
+  "campana_id": "zulia",
+  "nombre": "Empleo petrolero",
+  "menciones": 3360,
+  "porcentaje": 14,
+  "tendencia": "En aumento",
+  "es_propio": true,
+  "orden": 4
+ },
+ {
+  "id": "zulia-seguridad",
+  "campana_id": "zulia",
+  "nombre": "Seguridad",
+  "menciones": 2640,
+  "porcentaje": 11,
+  "tendencia": "A la baja",
+  "es_propio": false,
+  "orden": 5
+ },
+ {
+  "id": "zulia-otros",
+  "campana_id": "zulia",
+  "nombre": "Otros",
+  "menciones": 2160,
+  "porcentaje": 9,
+  "tendencia": "Estable",
+  "es_propio": false,
+  "orden": 6,
+  "detalle": {
+   "otros": true
+  }
+ },
+ {
+  "id": "chacao-movilidad",
+  "campana_id": "chacao",
+  "nombre": "Movilidad",
+  "menciones": 2800,
+  "porcentaje": 28,
+  "tendencia": "En aumento",
+  "es_propio": false,
+  "orden": 1
+ },
+ {
+  "id": "chacao-seguridad",
+  "campana_id": "chacao",
+  "nombre": "Seguridad",
+  "menciones": 2200,
+  "porcentaje": 22,
+  "tendencia": "Estable",
+  "es_propio": false,
+  "orden": 2
+ },
+ {
+  "id": "chacao-espacios-publicos",
+  "campana_id": "chacao",
+  "nombre": "Espacios públicos",
+  "menciones": 1900,
+  "porcentaje": 19,
+  "tendencia": "Estable",
+  "es_propio": false,
+  "orden": 3
+ },
+ {
+  "id": "chacao-recoleccion",
+  "campana_id": "chacao",
+  "nombre": "Recolección",
+  "menciones": 1300,
+  "porcentaje": 13,
+  "tendencia": "A la baja",
+  "es_propio": false,
+  "orden": 4
+ },
+ {
+  "id": "chacao-comercio",
+  "campana_id": "chacao",
+  "nombre": "Comercio",
+  "menciones": 1000,
+  "porcentaje": 10,
+  "tendencia": "Estable",
+  "es_propio": false,
+  "orden": 5
+ },
+ {
+  "id": "chacao-otros",
+  "campana_id": "chacao",
+  "nombre": "Otros",
+  "menciones": 800,
+  "porcentaje": 8,
+  "tendencia": "Estable",
+  "es_propio": false,
+  "orden": 6,
+  "detalle": {
+   "otros": true
+  }
  }
 ]

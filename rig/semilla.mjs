@@ -6,13 +6,13 @@ import path from 'node:path';
 const DIR = path.resolve('supabase/seed');
 // Orden de carga: primero lo que otras tablas referencian.
 export const ORDEN = [
-  'organizaciones', 'personas', 'campanas', 'miembros_campana', 'campana_fases',
+  'organizaciones', 'personas', 'borradores', 'campanas', 'miembros_campana', 'campana_fases',
   'figuras', 'campana_figuras', 'figura_metricas',
   'temas', 'tema_figuras', 'narrativas',
   'eventos', 'evento_participantes', 'evento_mensajes', 'terminos',
   'menciones', 'mencion_figuras',
   'reglas_alerta', 'alertas', 'alerta_actividad',
-  'reportes', 'reporte_envios', 'notas_internas', 'series_diarias',
+  'reporte_plantillas', 'reportes', 'reporte_envios', 'notas_internas', 'series_diarias',
 ];
 
 const archivos = fs.readdirSync(DIR).filter((f) => f.endsWith('.json')).map((f) => f.replace(/\.json$/, ''));

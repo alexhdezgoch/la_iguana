@@ -1,0 +1,872 @@
+[
+ {
+  "id": "pres-envio-cliente-0503",
+  "campana_id": "presidenciales",
+  "reporte_id": "pres-rep-cliente",
+  "titulo": "Resumen para el cliente · 3 a 9 may",
+  "periodo_inicio": "2027-05-03T00:00:00-04:00",
+  "periodo_fin": "2027-05-09T23:59:59-04:00",
+  "generado_en": "2027-05-10T08:05:00-04:00",
+  "enviado_en": null,
+  "estado": "En revisión",
+  "destinatarios": 2,
+  "entregados": 0,
+  "extra": {
+   "nota": "Espera aprobación",
+   "cierra_en": "2027-05-13T12:00:00-04:00"
+  },
+  "contenido": {
+   "tipo_doc": "Corte diario · n.º 40",
+   "titulo": "Corte diario del jueves 13 de mayo de 2027",
+   "meta": "María Corina Machado · Presidenciales Venezuela 2027 · día 40 de 60, faltan 24 días · cubre del miércoles 12, 7:00, al jueves 13, 7:00",
+   "marca": "Cliente",
+   "secciones": [
+    {
+     "id": "esencial",
+     "pagina": 1,
+     "titulo": "Lo esencial",
+     "ia": true,
+     "nota": "3 puntos",
+     "puntos": [
+      {
+       "texto": "La narrativa \"Fuera del diálogo\" creció 62% en 24 horas y llegó a 9,600 menciones.",
+       "por_que": "Es la narrativa en contra de mayor volumen. En el mismo corte el sentimiento neto bajó 1 punto y el riesgo subió 3.",
+       "que_hacer": "Responder hoy con el mensaje \"Fecha electoral en 2027\" y medir el efecto en el corte de mañana."
+      },
+      {
+       "texto": "\"Que vuelvan a casa\" sigue en aumento: 14,300 menciones, con la gira por los Andes en su día 4.",
+       "por_que": "Es la narrativa a favor más grande y sostiene el tema Migración y retorno, 19% de la conversación.",
+       "que_hacer": "Mantener el ritmo de publicaciones propias en Mérida y San Cristóbal hasta el cierre de la gira."
+      },
+      {
+       "texto": "Delcy Rodríguez publicó sobre migración y tiene 27.0% de participación, frente a 31.0% de Machado.",
+       "por_que": "Una rival entra en un tema propio de la campaña con 4 puntos de distancia en participación.",
+       "que_hacer": "Vigilar la participación por tema en Migración y retorno durante las próximas 48 horas."
+      }
+     ]
+    },
+    {
+     "id": "cifras",
+     "pagina": 1,
+     "titulo": "Cifras del día",
+     "nota": "Frente al día anterior",
+     "cifras": [
+      {
+       "etiqueta": "Menciones en 24 h",
+       "valor": "2,640",
+       "detalle": "+9% · 62,000 en 30 días"
+      },
+      {
+       "etiqueta": "Participación",
+       "valor": "31.0%",
+       "detalle": "+0.4 puntos · primer lugar"
+      },
+      {
+       "etiqueta": "Sentimiento neto",
+       "valor": "+17",
+       "detalle": "1 punto menos"
+      },
+      {
+       "etiqueta": "Índice de riesgo",
+       "valor": "42",
+       "detalle": "Medio · 3 puntos más"
+      }
+     ]
+    },
+    {
+     "id": "narr",
+     "pagina": 2,
+     "titulo": "Narrativas en movimiento",
+     "nota": "Sobre María Corina Machado",
+     "items": [
+      {
+       "texto": "Fuera del diálogo",
+       "detalle": "En aumento · +62% en 24 horas",
+       "chip": "En contra",
+       "chip_tono": "unf",
+       "valor": "9,600",
+       "barra": 67,
+       "tono": "unf"
+      },
+      {
+       "texto": "Que vuelvan a casa",
+       "detalle": "En aumento",
+       "chip": "A favor",
+       "chip_tono": "fav",
+       "valor": "14,300",
+       "barra": 100,
+       "tono": "fav"
+      },
+      {
+       "texto": "Primera presidenta",
+       "detalle": "Estable",
+       "chip": "A favor",
+       "chip_tono": "fav",
+       "valor": "8,100",
+       "barra": 57,
+       "tono": "fav"
+      },
+      {
+       "texto": "Línea dura, sin acuerdos",
+       "detalle": "A la baja",
+       "chip": "En contra",
+       "chip_tono": "unf",
+       "valor": "4,200",
+       "barra": 29,
+       "tono": "unf"
+      }
+     ]
+    },
+    {
+     "id": "medios",
+     "pagina": 2,
+     "titulo": "Medios",
+     "nota": "18 notas en 24 horas · 6 favorables, 9 neutrales, 3 desfavorables",
+     "items": [
+      {
+       "texto": "Efecto Cocuyo",
+       "enlace": "Nota sobre la cuarta ronda del diálogo",
+       "valor": "5 notas",
+       "valor2": "1 favorable · 2 neutrales · 2 desfavorables"
+      },
+      {
+       "texto": "El Pitazo",
+       "enlace": "Nota sobre la gira por los Andes",
+       "valor": "4 notas",
+       "valor2": "2 favorables · 2 neutrales"
+      },
+      {
+       "texto": "Tal Cual",
+       "enlace": "Nota sobre las propuestas de salario",
+       "valor": "3 notas",
+       "valor2": "1 favorable · 1 neutral · 1 desfavorable"
+      },
+      {
+       "texto": "Unión Radio",
+       "enlace": "Segmento sobre el plan de retorno",
+       "valor": "3 notas",
+       "valor2": "1 favorable · 2 neutrales"
+      },
+      {
+       "texto": "Venevisión",
+       "enlace": "Reporte sobre la agenda de campaña",
+       "valor": "2 notas",
+       "valor2": "1 favorable · 1 neutral"
+      },
+      {
+       "texto": "Runrunes",
+       "detalle": "Sin titular destacado",
+       "valor": "1 nota",
+       "valor2": "1 neutral"
+      }
+     ]
+    },
+    {
+     "id": "agenda",
+     "pagina": 2,
+     "titulo": "Agenda de hoy y próximos eventos",
+     "items": [
+      {
+       "texto": "Gira \"Que vuelvan a casa\" por los Andes",
+       "detalle": "Mérida y San Cristóbal · día 4 de 5",
+       "chip": "Hoy",
+       "chip_tono": "live"
+      },
+      {
+       "texto": "Segundo debate presidencial",
+       "detalle": "Teatro Baralt, Maracaibo",
+       "valor": "Dom 23 may",
+       "valor2": "En 10 días"
+      },
+      {
+       "texto": "Cierre de campaña",
+       "detalle": "Avenida Bolívar, Caracas",
+       "valor": "Mié 2 jun"
+      },
+      {
+       "texto": "Veda electoral y jornada",
+       "detalle": "Veda del 3 al 5 de junio · jornada el domingo 6",
+       "valor": "En 24 días"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "pres-envio-diario-0513",
+  "campana_id": "presidenciales",
+  "reporte_id": "pres-rep-diario",
+  "titulo": "Corte diario · jue 13 may",
+  "periodo_inicio": "2027-05-12T07:00:00-04:00",
+  "periodo_fin": "2027-05-13T07:00:00-04:00",
+  "generado_en": "2027-05-13T06:48:00-04:00",
+  "enviado_en": "2027-05-13T07:02:00-04:00",
+  "estado": "Entregado",
+  "destinatarios": 12,
+  "entregados": 12,
+  "contenido": {
+   "tipo_doc": "Corte diario · n.º 40",
+   "titulo": "Corte diario del jueves 13 de mayo de 2027",
+   "meta": "María Corina Machado · Presidenciales Venezuela 2027 · día 40 de 60, faltan 24 días · cubre del miércoles 12, 7:00, al jueves 13, 7:00",
+   "marca": "Consultora",
+   "secciones": [
+    {
+     "id": "esencial",
+     "pagina": 1,
+     "titulo": "Lo esencial",
+     "ia": true,
+     "nota": "3 puntos",
+     "puntos": [
+      {
+       "texto": "La narrativa \"Fuera del diálogo\" creció 62% en 24 horas y llegó a 9,600 menciones.",
+       "por_que": "Es la narrativa en contra de mayor volumen. En el mismo corte el sentimiento neto bajó 1 punto y el riesgo subió 3.",
+       "que_hacer": "Responder hoy con el mensaje \"Fecha electoral en 2027\" y medir el efecto en el corte de mañana."
+      },
+      {
+       "texto": "\"Que vuelvan a casa\" sigue en aumento: 14,300 menciones, con la gira por los Andes en su día 4.",
+       "por_que": "Es la narrativa a favor más grande y sostiene el tema Migración y retorno, 19% de la conversación.",
+       "que_hacer": "Mantener el ritmo de publicaciones propias en Mérida y San Cristóbal hasta el cierre de la gira."
+      },
+      {
+       "texto": "Delcy Rodríguez publicó sobre migración y tiene 27.0% de participación, frente a 31.0% de Machado.",
+       "por_que": "Una rival entra en un tema propio de la campaña con 4 puntos de distancia en participación.",
+       "que_hacer": "Vigilar la participación por tema en Migración y retorno durante las próximas 48 horas."
+      }
+     ]
+    },
+    {
+     "id": "cifras",
+     "pagina": 1,
+     "titulo": "Cifras del día",
+     "nota": "Frente al día anterior",
+     "cifras": [
+      {
+       "etiqueta": "Menciones en 24 h",
+       "valor": "2,640",
+       "detalle": "+9% · 62,000 en 30 días"
+      },
+      {
+       "etiqueta": "Participación",
+       "valor": "31.0%",
+       "detalle": "+0.4 puntos · primer lugar"
+      },
+      {
+       "etiqueta": "Sentimiento neto",
+       "valor": "+17",
+       "detalle": "1 punto menos"
+      },
+      {
+       "etiqueta": "Índice de riesgo",
+       "valor": "42",
+       "detalle": "Medio · 3 puntos más"
+      }
+     ]
+    },
+    {
+     "id": "alertas",
+     "pagina": 1,
+     "titulo": "Alertas de las últimas 24 horas",
+     "nota": "5 abiertas",
+     "items": [
+      {
+       "texto": "La narrativa \"Fuera del diálogo\" creció 62% en 24 horas.",
+       "chip": "Alta",
+       "chip_tono": "unf",
+       "valor": "Abierta"
+      },
+      {
+       "texto": "El índice de riesgo de Jorge Rodríguez pasó de 71 a 78.",
+       "chip": "Alta",
+       "chip_tono": "unf",
+       "valor": "Abierta"
+      },
+      {
+       "texto": "Delcy Rodríguez publicó sobre migración, tema propio de la campaña.",
+       "chip": "Media",
+       "chip_tono": "warn",
+       "valor": "Abierta"
+      },
+      {
+       "texto": "El sentimiento neto de Juan Pablo Guanipa bajó 6 puntos en 7 días.",
+       "chip": "Media",
+       "chip_tono": "warn",
+       "valor": "Abierta"
+      },
+      {
+       "texto": "Nota de El Pitazo sobre la gira por los Andes.",
+       "chip": "Baja",
+       "chip_tono": "watch",
+       "valor": "Abierta"
+      }
+     ]
+    },
+    {
+     "id": "narr",
+     "pagina": 2,
+     "titulo": "Narrativas en movimiento",
+     "nota": "Sobre María Corina Machado",
+     "items": [
+      {
+       "texto": "Fuera del diálogo",
+       "detalle": "En aumento · +62% en 24 horas",
+       "chip": "En contra",
+       "chip_tono": "unf",
+       "valor": "9,600",
+       "barra": 67,
+       "tono": "unf"
+      },
+      {
+       "texto": "Que vuelvan a casa",
+       "detalle": "En aumento",
+       "chip": "A favor",
+       "chip_tono": "fav",
+       "valor": "14,300",
+       "barra": 100,
+       "tono": "fav"
+      },
+      {
+       "texto": "Primera presidenta",
+       "detalle": "Estable",
+       "chip": "A favor",
+       "chip_tono": "fav",
+       "valor": "8,100",
+       "barra": 57,
+       "tono": "fav"
+      },
+      {
+       "texto": "Línea dura, sin acuerdos",
+       "detalle": "A la baja",
+       "chip": "En contra",
+       "chip_tono": "unf",
+       "valor": "4,200",
+       "barra": 29,
+       "tono": "unf"
+      }
+     ]
+    },
+    {
+     "id": "medios",
+     "pagina": 2,
+     "titulo": "Medios",
+     "nota": "18 notas en 24 horas · 6 favorables, 9 neutrales, 3 desfavorables",
+     "items": [
+      {
+       "texto": "Efecto Cocuyo",
+       "enlace": "Nota sobre la cuarta ronda del diálogo",
+       "valor": "5 notas",
+       "valor2": "1 favorable · 2 neutrales · 2 desfavorables"
+      },
+      {
+       "texto": "El Pitazo",
+       "enlace": "Nota sobre la gira por los Andes",
+       "valor": "4 notas",
+       "valor2": "2 favorables · 2 neutrales"
+      },
+      {
+       "texto": "Tal Cual",
+       "enlace": "Nota sobre las propuestas de salario",
+       "valor": "3 notas",
+       "valor2": "1 favorable · 1 neutral · 1 desfavorable"
+      },
+      {
+       "texto": "Unión Radio",
+       "enlace": "Segmento sobre el plan de retorno",
+       "valor": "3 notas",
+       "valor2": "1 favorable · 2 neutrales"
+      },
+      {
+       "texto": "Venevisión",
+       "enlace": "Reporte sobre la agenda de campaña",
+       "valor": "2 notas",
+       "valor2": "1 favorable · 1 neutral"
+      },
+      {
+       "texto": "Runrunes",
+       "detalle": "Sin titular destacado",
+       "valor": "1 nota",
+       "valor2": "1 neutral"
+      }
+     ]
+    },
+    {
+     "id": "rivales",
+     "pagina": 2,
+     "titulo": "Rivales",
+     "nota": "Publicaciones propias por tema",
+     "items": [
+      {
+       "texto": "Delcy Rodríguez",
+       "detalle": "Migración y retorno (2) · Economía y salarios (2)",
+       "valor": "4 publicaciones"
+      },
+      {
+       "texto": "Henrique Capriles",
+       "detalle": "Servicios públicos (2) · Salud (1)",
+       "valor": "3 publicaciones"
+      },
+      {
+       "texto": "Jorge Rodríguez",
+       "detalle": "Fecha electoral (2)",
+       "valor": "2 publicaciones"
+      }
+     ]
+    },
+    {
+     "id": "agenda",
+     "pagina": 2,
+     "titulo": "Agenda de hoy y próximos eventos",
+     "items": [
+      {
+       "texto": "Gira \"Que vuelvan a casa\" por los Andes",
+       "detalle": "Mérida y San Cristóbal · día 4 de 5",
+       "chip": "Hoy",
+       "chip_tono": "live"
+      },
+      {
+       "texto": "Segundo debate presidencial",
+       "detalle": "Teatro Baralt, Maracaibo",
+       "valor": "Dom 23 may",
+       "valor2": "En 10 días"
+      },
+      {
+       "texto": "Cierre de campaña",
+       "detalle": "Avenida Bolívar, Caracas",
+       "valor": "Mié 2 jun"
+      },
+      {
+       "texto": "Veda electoral y jornada",
+       "detalle": "Veda del 3 al 5 de junio · jornada el domingo 6",
+       "valor": "En 24 días"
+      }
+     ]
+    },
+    {
+     "id": "reco",
+     "pagina": 2,
+     "titulo": "Recomendación",
+     "ia": true,
+     "texto": "Priorizar la respuesta a \"Fuera del diálogo\" antes del Segundo debate presidencial del 23 de mayo y cerrar la gira con el mensaje de retorno, que es el que más crece. Revisar en el corte de mañana si el sentimiento neto vuelve a +18."
+    }
+   ]
+  }
+ },
+ {
+  "id": "pres-envio-diario-0512",
+  "campana_id": "presidenciales",
+  "reporte_id": "pres-rep-diario",
+  "titulo": "Corte diario · mié 12 may",
+  "periodo_inicio": "2027-05-11T07:00:00-04:00",
+  "periodo_fin": "2027-05-12T07:00:00-04:00",
+  "generado_en": "2027-05-12T06:47:00-04:00",
+  "enviado_en": "2027-05-12T07:01:00-04:00",
+  "estado": "Envío parcial",
+  "destinatarios": 12,
+  "entregados": 11,
+  "extra": {
+   "nota": "Falló 1 envío por WhatsApp"
+  }
+ },
+ {
+  "id": "pres-envio-diario-0511",
+  "campana_id": "presidenciales",
+  "reporte_id": "pres-rep-diario",
+  "titulo": "Corte diario · mar 11 may",
+  "periodo_inicio": "2027-05-10T07:00:00-04:00",
+  "periodo_fin": "2027-05-11T07:00:00-04:00",
+  "generado_en": "2027-05-11T06:49:00-04:00",
+  "enviado_en": "2027-05-11T07:00:00-04:00",
+  "estado": "Entregado",
+  "destinatarios": 12,
+  "entregados": 12
+ },
+ {
+  "id": "pres-envio-semanal-0503",
+  "campana_id": "presidenciales",
+  "reporte_id": "pres-rep-semanal",
+  "titulo": "Semanal de narrativas · 3 a 9 may",
+  "periodo_inicio": "2027-05-03T00:00:00-04:00",
+  "periodo_fin": "2027-05-09T23:59:59-04:00",
+  "generado_en": "2027-05-10T07:30:00-04:00",
+  "enviado_en": "2027-05-10T08:01:00-04:00",
+  "estado": "Entregado",
+  "destinatarios": 6,
+  "entregados": 6
+ },
+ {
+  "id": "pres-envio-semanal-0426",
+  "campana_id": "presidenciales",
+  "reporte_id": "pres-rep-semanal",
+  "titulo": "Semanal de narrativas · 26 abr a 2 may",
+  "periodo_inicio": "2027-04-26T00:00:00-04:00",
+  "periodo_fin": "2027-05-02T23:59:59-04:00",
+  "generado_en": "2027-05-03T07:31:00-04:00",
+  "enviado_en": "2027-05-03T08:00:00-04:00",
+  "estado": "Fallido",
+  "destinatarios": 6,
+  "entregados": 0,
+  "extra": {
+   "nota": "El servidor de correo rechazó el envío"
+  }
+ },
+ {
+  "id": "pres-envio-post-primer-debate",
+  "campana_id": "presidenciales",
+  "reporte_id": "pres-rep-post",
+  "titulo": "Post-evento · Primer debate presidencial",
+  "periodo_inicio": "2027-04-22T00:00:00-04:00",
+  "periodo_fin": "2027-04-28T23:59:59-04:00",
+  "generado_en": "2027-04-28T21:10:00-04:00",
+  "enviado_en": "2027-04-28T21:40:00-04:00",
+  "estado": "Entregado",
+  "destinatarios": 9,
+  "entregados": 9,
+  "extra": {
+   "evento_id": "pres-primer-debate"
+  },
+  "contenido": {
+   "tipo_doc": "Reporte post-evento",
+   "titulo": "Primer debate presidencial",
+   "meta": "Domingo 25 de abril de 2027 · Aula Magna de la UCV, Caracas · ventana de 72 horas antes y después · enviado el 28 de abril",
+   "marca": "Consultora",
+   "secciones": [
+    {
+     "id": "balance",
+     "pagina": 1,
+     "titulo": "Balance",
+     "ia": true,
+     "texto": "Machado ganó la conversación y mejoró 9 puntos, de +14 a +23. El mensaje de salario no aterrizó."
+    },
+    {
+     "id": "cifras",
+     "pagina": 1,
+     "titulo": "Cifras del evento",
+     "cifras": [
+      {
+       "etiqueta": "Menciones",
+       "valor": "46,000",
+       "detalle": "En la ventana"
+      },
+      {
+       "etiqueta": "Alcance",
+       "valor": "3.2 M",
+       "detalle": "Cuentas únicas estimadas"
+      },
+      {
+       "etiqueta": "Neto de Machado",
+       "valor": "+23",
+       "detalle": "9 puntos más"
+      },
+      {
+       "etiqueta": "Notas en medios",
+       "valor": "64",
+       "detalle": "Digital, radio y TV"
+      }
+     ]
+    },
+    {
+     "id": "curva",
+     "pagina": 1,
+     "titulo": "Antes, durante y después",
+     "nota": "Pico de 410 menciones por minuto a las 20:47",
+     "items": [
+      {
+       "texto": "Antes",
+       "detalle": "72 horas previas",
+       "valor": "6,400",
+       "barra": 30,
+       "tono": "neutro"
+      },
+      {
+       "texto": "Durante",
+       "detalle": "Transmisión del debate",
+       "valor": "18,200",
+       "barra": 85,
+       "tono": "own"
+      },
+      {
+       "texto": "Después",
+       "detalle": "72 horas posteriores",
+       "valor": "21,400",
+       "barra": 100
+      }
+     ]
+    },
+    {
+     "id": "gano",
+     "pagina": 1,
+     "titulo": "Quién ganó la conversación",
+     "items": [
+      {
+       "texto": "María Corina Machado",
+       "detalle": "Neto +23",
+       "valor": "40%",
+       "valor2": "18,400",
+       "barra": 100,
+       "tono": "own"
+      },
+      {
+       "texto": "Delcy Rodríguez",
+       "detalle": "Neto -10",
+       "valor": "35%",
+       "valor2": "16,100",
+       "barra": 87.5,
+       "tono": "rival"
+      },
+      {
+       "texto": "Henrique Capriles",
+       "detalle": "Neto +18",
+       "valor": "18%",
+       "valor2": "8,280",
+       "barra": 45,
+       "tono": "rival"
+      }
+     ]
+    },
+    {
+     "id": "mensajes",
+     "pagina": 1,
+     "titulo": "Mensajes clave",
+     "nota": "Parte de las 18,400 menciones de Machado",
+     "items": [
+      {
+       "texto": "Plan de retorno de migrantes",
+       "detalle": "30% · 5,520 menciones",
+       "chip": "Aterrizó",
+       "chip_tono": "fav"
+      },
+      {
+       "texto": "Fecha electoral en 2027",
+       "detalle": "15% · 2,760 menciones",
+       "chip": "Parcial",
+       "chip_tono": "warn"
+      },
+      {
+       "texto": "Recuperar el salario",
+       "detalle": "6% · 1,104 menciones",
+       "chip": "No aterrizó",
+       "chip_tono": "unf"
+      }
+     ]
+    },
+    {
+     "id": "medios",
+     "pagina": 1,
+     "titulo": "Cobertura en medios",
+     "nota": "64 notas",
+     "items": [
+      {
+       "texto": "Por tipo de medio",
+       "detalle": "38 digitales · 14 de radio · 12 de televisión"
+      },
+      {
+       "texto": "Por tono",
+       "detalle": "25 favorables · 27 neutrales · 12 desfavorables"
+      }
+     ]
+    },
+    {
+     "id": "rivales",
+     "pagina": 1,
+     "titulo": "Reacciones de rivales",
+     "items": [
+      {
+       "texto": "Delcy Rodríguez",
+       "detalle": "Contra-narrativa \"Fuera del diálogo\": 6,900 menciones en la ventana",
+       "valor": "9 publicaciones"
+      },
+      {
+       "texto": "Jorge Rodríguez",
+       "detalle": "Sin contra-narrativa detectada",
+       "valor": "2 publicaciones"
+      }
+     ]
+    },
+    {
+     "id": "aprend",
+     "pagina": 1,
+     "titulo": "Aprendizajes",
+     "texto": "El equipo no marcó ningún aprendizaje como publicable. Las notas internas del evento no se incluyen en este reporte."
+    }
+   ]
+  }
+ },
+ {
+  "id": "pres-envio-post-arranque",
+  "campana_id": "presidenciales",
+  "reporte_id": "pres-rep-post",
+  "titulo": "Post-evento · Arranque de campaña",
+  "periodo_inicio": "2027-04-01T00:00:00-04:00",
+  "periodo_fin": "2027-04-07T23:59:59-04:00",
+  "generado_en": "2027-04-07T20:15:00-04:00",
+  "enviado_en": "2027-04-07T20:30:00-04:00",
+  "estado": "Entregado",
+  "destinatarios": 9,
+  "entregados": 9,
+  "extra": {
+   "evento_id": "pres-arranque"
+  }
+ },
+ {
+  "id": "pres-envio-semanal-0510",
+  "campana_id": "presidenciales",
+  "reporte_id": "pres-rep-semanal",
+  "titulo": "Semanal de narrativas · 10 a 16 may",
+  "periodo_inicio": "2027-05-10T00:00:00-04:00",
+  "periodo_fin": "2027-05-16T23:59:59-04:00",
+  "generado_en": "2027-05-13T07:00:00-04:00",
+  "enviado_en": null,
+  "estado": "Borrador",
+  "destinatarios": 6,
+  "entregados": 0,
+  "extra": {
+   "nota": "Borrador en curso"
+  },
+  "contenido": {
+   "tipo_doc": "Semanal de narrativas · borrador",
+   "titulo": "Narrativas de la semana del 10 al 16 de mayo",
+   "meta": "María Corina Machado · Presidenciales Venezuela 2027 · datos al jueves 13 de mayo · se envía el lunes 17 a las 8:00",
+   "marca": "Consultora",
+   "secciones": [
+    {
+     "id": "resumen",
+     "pagina": 1,
+     "titulo": "Resumen ejecutivo",
+     "ia": true,
+     "texto": "Las dos narrativas más grandes crecen a la vez: \"Que vuelvan a casa\", a favor, y \"Fuera del diálogo\", en contra, que es la que más rápido sube. Migración y retorno se mantiene como segundo tema de la conversación."
+    },
+    {
+     "id": "narr",
+     "pagina": 1,
+     "titulo": "Narrativas",
+     "nota": "Menciones del periodo y cambio frente a la semana anterior",
+     "items": [
+      {
+       "texto": "Que vuelvan a casa",
+       "detalle": "+18% · en aumento",
+       "chip": "A favor",
+       "chip_tono": "fav",
+       "valor": "14,300",
+       "barra": 100,
+       "tono": "fav"
+      },
+      {
+       "texto": "Fuera del diálogo",
+       "detalle": "+41% · en aumento",
+       "chip": "En contra",
+       "chip_tono": "unf",
+       "valor": "9,600",
+       "barra": 67,
+       "tono": "unf"
+      },
+      {
+       "texto": "Primera presidenta",
+       "detalle": "+2% · estable",
+       "chip": "A favor",
+       "chip_tono": "fav",
+       "valor": "8,100",
+       "barra": 57,
+       "tono": "fav"
+      },
+      {
+       "texto": "Línea dura, sin acuerdos",
+       "detalle": "-12% · a la baja",
+       "chip": "En contra",
+       "chip_tono": "unf",
+       "valor": "4,200",
+       "barra": 29,
+       "tono": "unf"
+      }
+     ]
+    },
+    {
+     "id": "temas",
+     "pagina": 1,
+     "titulo": "Temas",
+     "nota": "Parte de la conversación",
+     "items": [
+      {
+       "texto": "Economía y salarios",
+       "valor": "26%",
+       "barra": 100
+      },
+      {
+       "texto": "Migración y retorno",
+       "valor": "19%",
+       "barra": 73
+      },
+      {
+       "texto": "Fecha electoral",
+       "valor": "17%",
+       "barra": 65
+      },
+      {
+       "texto": "Servicios públicos",
+       "valor": "13%",
+       "barra": 50
+      },
+      {
+       "texto": "Salud",
+       "valor": "11%",
+       "barra": 42
+      }
+     ]
+    },
+    {
+     "id": "part",
+     "pagina": 1,
+     "titulo": "Participación por figura",
+     "items": [
+      {
+       "texto": "María Corina Machado",
+       "detalle": "Propia",
+       "valor": "31.0%",
+       "barra": 100,
+       "tono": "own"
+      },
+      {
+       "texto": "Delcy Rodríguez",
+       "detalle": "Rival",
+       "valor": "27.0%",
+       "barra": 87,
+       "tono": "rival"
+      },
+      {
+       "texto": "Jorge Rodríguez",
+       "detalle": "Rival",
+       "valor": "12.0%",
+       "barra": 39,
+       "tono": "rival"
+      },
+      {
+       "texto": "Henrique Capriles",
+       "detalle": "Rival",
+       "valor": "11.0%",
+       "barra": 35,
+       "tono": "rival"
+      }
+     ]
+    },
+    {
+     "id": "vigilar",
+     "pagina": 1,
+     "titulo": "Para vigilar",
+     "items": [
+      {
+       "texto": "\"Fuera del diálogo\" antes del segundo debate",
+       "detalle": "Si mantiene el ritmo, supera las 12,000 menciones antes del 23 de mayo."
+      },
+      {
+       "texto": "Participación de Delcy Rodríguez en Migración y retorno",
+       "detalle": "Publicó sobre el tema esta semana."
+      },
+      {
+       "texto": "Sentimiento neto de Juan Pablo Guanipa",
+       "detalle": "Bajó 6 puntos en 7 días."
+      }
+     ]
+    }
+   ]
+  }
+ }
+]

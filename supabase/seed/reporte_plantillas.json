@@ -1,0 +1,181 @@
+[
+ {
+  "id": "pres-plantilla-diario",
+  "campana_id": "presidenciales",
+  "nombre": "Corte diario",
+  "etiqueta": "Base",
+  "descripcion": "Para el comando, antes de la primera reunión. Dos páginas como máximo.",
+  "tipo": "Corte diario",
+  "secciones": [
+   {
+    "id": "esencial",
+    "titulo": "Lo esencial",
+    "ia": true
+   },
+   {
+    "id": "cifras",
+    "titulo": "Cifras del día",
+    "ia": false
+   },
+   {
+    "id": "alertas",
+    "titulo": "Alertas de las últimas 24 horas",
+    "ia": false
+   },
+   {
+    "id": "narr",
+    "titulo": "Narrativas en movimiento",
+    "ia": false
+   },
+   {
+    "id": "medios",
+    "titulo": "Medios",
+    "ia": false
+   },
+   {
+    "id": "rivales",
+    "titulo": "Rivales",
+    "ia": false
+   },
+   {
+    "id": "agenda",
+    "titulo": "Agenda de hoy y próximos eventos",
+    "ia": false
+   },
+   {
+    "id": "reco",
+    "titulo": "Recomendación",
+    "ia": true
+   }
+  ],
+  "marca": "Consultora",
+  "orden": 1
+ },
+ {
+  "id": "pres-plantilla-post",
+  "campana_id": "presidenciales",
+  "nombre": "Reporte post-evento",
+  "etiqueta": "Base",
+  "descripcion": "Resultados de un evento con su ventana de 72 horas antes y después.",
+  "tipo": "Post-evento",
+  "secciones": [
+   {
+    "id": "balance",
+    "titulo": "Balance",
+    "ia": true
+   },
+   {
+    "id": "cifras",
+    "titulo": "Cifras del evento",
+    "ia": false
+   },
+   {
+    "id": "curva",
+    "titulo": "Antes, durante y después",
+    "ia": false
+   },
+   {
+    "id": "gano",
+    "titulo": "Quién ganó la conversación",
+    "ia": false
+   },
+   {
+    "id": "mensajes",
+    "titulo": "Mensajes clave",
+    "ia": false
+   },
+   {
+    "id": "medios",
+    "titulo": "Cobertura en medios",
+    "ia": false
+   },
+   {
+    "id": "rivales",
+    "titulo": "Reacciones de rivales",
+    "ia": false
+   },
+   {
+    "id": "aprend",
+    "titulo": "Aprendizajes",
+    "ia": false
+   }
+  ],
+  "marca": "Consultora",
+  "orden": 2
+ },
+ {
+  "id": "pres-plantilla-semanal",
+  "campana_id": "presidenciales",
+  "nombre": "Semanal de narrativas",
+  "etiqueta": "Base",
+  "descripcion": "Qué historias crecen o se apagan, comparadas con la semana anterior.",
+  "tipo": "Semanal de narrativas",
+  "secciones": [
+   {
+    "id": "resumen",
+    "titulo": "Resumen ejecutivo",
+    "ia": true
+   },
+   {
+    "id": "narr",
+    "titulo": "Narrativas",
+    "ia": false
+   },
+   {
+    "id": "temas",
+    "titulo": "Temas",
+    "ia": false
+   },
+   {
+    "id": "part",
+    "titulo": "Participación por figura",
+    "ia": false
+   },
+   {
+    "id": "vigilar",
+    "titulo": "Para vigilar",
+    "ia": false
+   }
+  ],
+  "marca": "Consultora",
+  "orden": 3
+ },
+ {
+  "id": "pres-plantilla-cliente",
+  "campana_id": "presidenciales",
+  "nombre": "Resumen para el cliente",
+  "etiqueta": "Marca del cliente",
+  "descripcion": "Versión corta del corte diario con el logo del cliente, sin alertas ni rivales.",
+  "tipo": "Corte diario",
+  "secciones": [
+   {
+    "id": "esencial",
+    "titulo": "Lo esencial",
+    "ia": true
+   },
+   {
+    "id": "cifras",
+    "titulo": "Cifras del día",
+    "ia": false
+   },
+   {
+    "id": "narr",
+    "titulo": "Narrativas en movimiento",
+    "ia": false
+   },
+   {
+    "id": "medios",
+    "titulo": "Medios",
+    "ia": false
+   },
+   {
+    "id": "agenda",
+    "titulo": "Agenda de hoy y próximos eventos",
+    "ia": false
+   }
+  ],
+  "marca": "Cliente",
+  "orden": 4,
+  "usos": 5
+ }
+]

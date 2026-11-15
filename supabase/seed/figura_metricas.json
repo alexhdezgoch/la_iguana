@@ -10,10 +10,79 @@
   "neutral": 41,
   "desfavorable": 21,
   "neto": 17,
+  "riesgo": 42,
+  "riesgo_nivel": "Medio",
   "alcance": 4800000,
   "interaccion": 4.6,
-  "riesgo": 42,
-  "riesgo_nivel": "Medio"
+  "seguidores": 6400000,
+  "notas_medios": 200,
+  "detalle": {
+   "canales": [
+    {
+     "canal": "X",
+     "menciones": 21700
+    },
+    {
+     "canal": "Facebook",
+     "menciones": 13640
+    },
+    {
+     "canal": "Instagram",
+     "menciones": 8060
+    },
+    {
+     "canal": "Medio digital",
+     "menciones": 7440
+    },
+    {
+     "canal": "TikTok",
+     "menciones": 6200
+    },
+    {
+     "canal": "Radio",
+     "menciones": 2480
+    },
+    {
+     "canal": "Televisión",
+     "menciones": 1860
+    },
+    {
+     "canal": "YouTube",
+     "menciones": 620
+    }
+   ],
+   "cobertura": {
+    "favorables": 74,
+    "neutrales": 88,
+    "desfavorables": 38,
+    "por_medio": [
+     {
+      "medio": "Efecto Cocuyo",
+      "notas": 52
+     },
+     {
+      "medio": "El Pitazo",
+      "notas": 46
+     },
+     {
+      "medio": "Tal Cual",
+      "notas": 38
+     },
+     {
+      "medio": "Unión Radio",
+      "notas": 31
+     },
+     {
+      "medio": "Venevisión",
+      "notas": 27
+     },
+     {
+      "medio": "Runrunes",
+      "notas": 6
+     }
+    ]
+   }
+  }
  },
  {
   "id": "pres-delcy-rodriguez-30d",
@@ -26,10 +95,10 @@
   "neutral": 40,
   "desfavorable": 31,
   "neto": -2,
-  "alcance": 4100000,
-  "interaccion": 3.1,
   "riesgo": 55,
-  "riesgo_nivel": "Medio"
+  "riesgo_nivel": "Medio",
+  "alcance": 4100000,
+  "interaccion": 3.1
  },
  {
   "id": "pres-jorge-rodriguez-30d",
@@ -42,10 +111,10 @@
   "neutral": 39,
   "desfavorable": 43,
   "neto": -25,
-  "alcance": 2200000,
-  "interaccion": 1.4,
   "riesgo": 78,
-  "riesgo_nivel": "Alto"
+  "riesgo_nivel": "Alto",
+  "alcance": 2200000,
+  "interaccion": 1.4
  },
  {
   "id": "pres-capriles-30d",
@@ -58,10 +127,10 @@
   "neutral": 49,
   "desfavorable": 18,
   "neto": 15,
-  "alcance": 1600000,
-  "interaccion": 5.2,
   "riesgo": 18,
-  "riesgo_nivel": "Bajo"
+  "riesgo_nivel": "Bajo",
+  "alcance": 1600000,
+  "interaccion": 5.2
  },
  {
   "id": "pres-gonzalez-urrutia-30d",
@@ -74,10 +143,10 @@
   "neutral": 48,
   "desfavorable": 18,
   "neto": 16,
-  "alcance": 900000,
-  "interaccion": 3.8,
   "riesgo": 24,
-  "riesgo_nivel": "Bajo"
+  "riesgo_nivel": "Bajo",
+  "alcance": 900000,
+  "interaccion": 3.8
  },
  {
   "id": "pres-rosales-30d",
@@ -90,10 +159,10 @@
   "neutral": 44,
   "desfavorable": 15,
   "neto": 26,
-  "alcance": 1300000,
-  "interaccion": 6.1,
   "riesgo": 12,
-  "riesgo_nivel": "Bajo"
+  "riesgo_nivel": "Bajo",
+  "alcance": 1300000,
+  "interaccion": 6.1
  },
  {
   "id": "pres-guanipa-30d",
@@ -106,10 +175,10 @@
   "neutral": 51,
   "desfavorable": 22,
   "neto": 5,
-  "alcance": 700000,
-  "interaccion": 2.2,
   "riesgo": 47,
-  "riesgo_nivel": "Medio"
+  "riesgo_nivel": "Medio",
+  "alcance": 700000,
+  "interaccion": 2.2
  },
  {
   "id": "pres-ecarri-30d",
@@ -122,10 +191,10 @@
   "neutral": 58,
   "desfavorable": 18,
   "neto": 6,
-  "alcance": 400000,
-  "interaccion": 1.9,
   "riesgo": 29,
-  "riesgo_nivel": "Bajo"
+  "riesgo_nivel": "Bajo",
+  "alcance": 400000,
+  "interaccion": 1.9
  },
  {
   "id": "zulia-rosales-30d",
@@ -134,16 +203,12 @@
   "periodo": "30d",
   "menciones": 10560,
   "participacion": 44.0,
+  "favorable": 34,
+  "neutral": 41,
+  "desfavorable": 25,
   "neto": 9,
   "riesgo": 31,
   "riesgo_nivel": "Bajo"
- },
- {
-  "id": "zulia-guanipa-30d",
-  "campana_id": "zulia",
-  "figura_id": "guanipa",
-  "periodo": "30d",
-  "menciones": 4640
  },
  {
   "id": "zulia-caldera-30d",
@@ -151,8 +216,26 @@
   "figura_id": "caldera",
   "periodo": "30d",
   "menciones": 8800,
+  "participacion": 36.7,
+  "favorable": 24,
+  "neutral": 46,
+  "desfavorable": 30,
   "neto": -6,
   "riesgo": 38,
+  "riesgo_nivel": "Medio"
+ },
+ {
+  "id": "zulia-guanipa-30d",
+  "campana_id": "zulia",
+  "figura_id": "guanipa",
+  "periodo": "30d",
+  "menciones": 4640,
+  "participacion": 19.3,
+  "favorable": 30,
+  "neutral": 44,
+  "desfavorable": 26,
+  "neto": 4,
+  "riesgo": 47,
   "riesgo_nivel": "Medio"
  },
  {
@@ -162,6 +245,9 @@
   "periodo": "30d",
   "menciones": 5200,
   "participacion": 52.0,
+  "favorable": 39,
+  "neutral": 43,
+  "desfavorable": 18,
   "neto": 21,
   "riesgo": 15,
   "riesgo_nivel": "Bajo"

@@ -67,11 +67,16 @@ export interface Tema {
   id: string; campana_id: string; nombre: string; menciones: number; porcentaje: N<number>; cambio: N<number>; tendencia: N<string>;
   es_propio: boolean; orden: number; detalle: Json;
 }
-export interface TemaFigura { id: string; campana_id: string; tema_id: string; figura_id: string; menciones: number; porcentaje: N<number>; neto: N<number> }
+export interface TemaFigura { id: string; campana_id: string; tema_id: string; figura_id: string; menciones: number; porcentaje: N<number>;
+  porcentaje_propias: N<number>; porcentaje_hace_7d: N<number>; porcentaje_propias_hace_7d: N<number>;
+  favorable: N<number>; neutral: N<number>; desfavorable: N<number>; neto: N<number>;
+}
 export type Direccion = 'Favorable' | 'Desfavorable' | 'Sin dirección' | 'Posicionamiento';
 export interface Narrativa {
   id: string; campana_id: string; figura_id: N<string>; tema_id: N<string>; nombre: string; direccion: Direccion; menciones: number;
-  tendencia: N<string>; cambio_24h: N<number>; estado: string; seguida: boolean; descripcion: N<string>; orden: number; detalle: Json;
+  menciones_24h: N<number>; tendencia: N<string>; cambio_24h: N<number>; cambio_7d: N<number>; veces_promedio: N<number>;
+  detectada_el: N<string>; alcance: N<number>; cuentas_unicas: N<number>; neto: N<number>;
+  estado: string; seguida: boolean; descripcion: N<string>; resumen: N<string>; resumen_aprobado: boolean; orden: number; detalle: Json;
 }
 
 export type EstadoEvento = 'Borrador' | 'Programado' | 'En curso' | 'En análisis' | 'Cerrado' | 'Cancelado';
@@ -105,7 +110,8 @@ export interface MencionFigura {
 
 export interface ReglaAlerta {
   id: string; campana_id: string; nombre: string; tipo: N<string>; descripcion: N<string>; condicion: Json; severidad: string;
-  canales: string[]; destinatarios: Json[]; activa: boolean; narrativa_id: N<string>; figura_id: N<string>; orden: number; extra: Json;
+  canales: string[]; destinatarios: Json[]; activa: boolean; narrativa_id: N<string>; figura_id: N<string>;
+  disparos_30d: number; ultimo_disparo: N<string>; orden: number; extra: Json;
 }
 export type EstadoAlerta = 'Nueva' | 'En revisión' | 'Pospuesta' | 'Resuelta' | 'Descartada';
 /** Abiertas = las que siguen en la bandeja. */
@@ -118,14 +124,18 @@ export interface Alerta {
 }
 export interface AlertaActividad { id: string; campana_id: string; alerta_id: string; persona_id: N<string>; texto: string; creada_en: string }
 
+export interface ReportePlantilla {
+  id: string; campana_id: string; nombre: string; etiqueta: N<string>; descripcion: N<string>; tipo: string; secciones: Json[];
+  marca: 'Consultora' | 'Cliente'; usos: number; orden: number; extra: Json; creada_en: string;
+}
 export interface Reporte {
   id: string; campana_id: string; nombre: string; tipo: string; frecuencia: N<string>; hora: N<string>; destinatarios: Json[];
-  secciones: Json[]; formato: N<string>; evento_id: N<string>; estado: string; requiere_aprobacion: boolean; ultimo_envio: N<string>;
+  secciones: Json[]; formato: N<string>; evento_id: N<string>; plantilla_id: N<string>; estado: string; requiere_aprobacion: boolean; ultimo_envio: N<string>;
   proximo_envio: N<string>; orden: number; extra: Json;
 }
 export interface ReporteEnvio {
-  id: string; campana_id: string; reporte_id: string; titulo: N<string>; generado_en: string; enviado_en: N<string>; estado: string;
-  destinatarios: N<number>; aprobado_por: N<string>; contenido: Json; extra: Json;
+  id: string; campana_id: string; reporte_id: string; titulo: N<string>; periodo_inicio: N<string>; periodo_fin: N<string>; generado_en: string; enviado_en: N<string>; estado: string;
+  destinatarios: N<number>; entregados: N<number>; aprobado_por: N<string>; contenido: Json; extra: Json;
 }
 export interface NotaInterna {
   id: string; campana_id: string; entidad: 'campana' | 'figura' | 'evento' | 'mencion' | 'narrativa' | 'alerta'; entidad_id: string;

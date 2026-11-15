@@ -1,0 +1,323 @@
+[
+ {
+  "id": "pres-regla-narrativa",
+  "campana_id": "presidenciales",
+  "nombre": "Narrativa en contra crece",
+  "tipo": "Narrativa crece",
+  "severidad": "Alta",
+  "condicion": {
+   "texto": "Sube más de 40% en 24 h",
+   "umbral": 40,
+   "unidad": "%",
+   "ventana": "24 h",
+   "alcance": {
+    "relaciones": [
+     "Propia"
+    ],
+    "direccion": "Desfavorable"
+   },
+   "alcance_texto": "Figura propia · narrativas en contra"
+  },
+  "canales": [
+   "WhatsApp",
+   "En la app"
+  ],
+  "destinatarios": [
+   {
+    "persona_id": "andrea"
+   },
+   {
+    "persona_id": "daniela"
+   },
+   {
+    "persona_id": "lucia"
+   }
+  ],
+  "activa": true,
+  "figura_id": null,
+  "orden": 1,
+  "disparos_30d": 4,
+  "ultimo_disparo": "2027-05-13T07:12:00-04:00"
+ },
+ {
+  "id": "pres-regla-riesgo-rivales",
+  "campana_id": "presidenciales",
+  "nombre": "Riesgo alto en rivales",
+  "tipo": "Índice de riesgo sube",
+  "severidad": "Alta",
+  "condicion": {
+   "texto": "Llega a 75 (Alto)",
+   "umbral": 75,
+   "unidad": "índice",
+   "ventana": "24 h",
+   "alcance": {
+    "relaciones": [
+     "Rival"
+    ]
+   },
+   "alcance_texto": "Rivales"
+  },
+  "canales": [
+   "Email",
+   "En la app"
+  ],
+  "destinatarios": [
+   {
+    "persona_id": "daniela"
+   },
+   {
+    "persona_id": "lucia"
+   }
+  ],
+  "activa": true,
+  "figura_id": null,
+  "orden": 2,
+  "disparos_30d": 3,
+  "ultimo_disparo": "2027-05-13T04:20:00-04:00"
+ },
+ {
+  "id": "pres-regla-rival-tema",
+  "campana_id": "presidenciales",
+  "nombre": "Rival en tema propio",
+  "tipo": "Rival publica en tema propio",
+  "severidad": "Media",
+  "condicion": {
+   "texto": "3 publicaciones en 24 h",
+   "umbral": 3,
+   "unidad": "publicaciones",
+   "ventana": "24 h",
+   "alcance": {
+    "relaciones": [
+     "Rival"
+    ],
+    "tema_ids": [
+     "pres-migracion",
+     "pres-fecha-electoral"
+    ]
+   },
+   "alcance_texto": "Rivales · Migración y retorno, Fecha electoral"
+  },
+  "canales": [
+   "En la app",
+   "Slack"
+  ],
+  "destinatarios": [
+   {
+    "persona_id": "andrea"
+   },
+   {
+    "persona_id": "daniela"
+   },
+   {
+    "persona_id": "andres"
+   },
+   {
+    "persona_id": "lucia"
+   }
+  ],
+  "activa": true,
+  "figura_id": null,
+  "orden": 3,
+  "disparos_30d": 9,
+  "ultimo_disparo": "2027-05-13T06:25:00-04:00"
+ },
+ {
+  "id": "pres-regla-sentimiento-aliadas",
+  "campana_id": "presidenciales",
+  "nombre": "Sentimiento de aliadas",
+  "tipo": "Sentimiento neto baja",
+  "severidad": "Media",
+  "condicion": {
+   "texto": "Baja 5 puntos en 7 días",
+   "umbral": 5,
+   "unidad": "puntos",
+   "ventana": "7 días",
+   "alcance": {
+    "relaciones": [
+     "Aliada"
+    ]
+   },
+   "alcance_texto": "Aliadas"
+  },
+  "canales": [
+   "Email"
+  ],
+  "destinatarios": [
+   {
+    "persona_id": "andres"
+   },
+   {
+    "persona_id": "lucia"
+   }
+  ],
+  "activa": true,
+  "figura_id": null,
+  "orden": 4,
+  "disparos_30d": 2,
+  "ultimo_disparo": "2027-05-12T18:40:00-04:00"
+ },
+ {
+  "id": "pres-regla-nota-medio",
+  "campana_id": "presidenciales",
+  "nombre": "Nota en medio destacado",
+  "tipo": "Nota en medio destacado",
+  "severidad": "Baja",
+  "condicion": {
+   "texto": "Alcance mayor a 100,000",
+   "umbral": 100000,
+   "unidad": "alcance",
+   "ventana": "Por nota",
+   "alcance": {
+    "relaciones": [
+     "Propia"
+    ],
+    "medios": [
+     "Efecto Cocuyo",
+     "El Pitazo",
+     "Tal Cual",
+     "Unión Radio",
+     "Venevisión",
+     "Runrunes",
+     "Globovisión",
+     "El Nacional"
+    ]
+   },
+   "alcance_texto": "Figura propia · 8 medios"
+  },
+  "canales": [
+   "En la app"
+  ],
+  "destinatarios": [
+   {
+    "persona_id": "andrea"
+   },
+   {
+    "persona_id": "carla"
+   },
+   {
+    "persona_id": "lucia"
+   }
+  ],
+  "activa": true,
+  "figura_id": null,
+  "orden": 5,
+  "disparos_30d": 14,
+  "ultimo_disparo": "2027-05-12T17:20:00-04:00"
+ },
+ {
+  "id": "pres-regla-pico",
+  "campana_id": "presidenciales",
+  "nombre": "Pico de menciones",
+  "tipo": "Pico de menciones",
+  "severidad": "Según tamaño",
+  "condicion": {
+   "texto": "2 veces lo habitual en 1 h",
+   "umbral": 2,
+   "unidad": "veces lo habitual",
+   "ventana": "1 h",
+   "alcance": {},
+   "alcance_texto": "Todas las figuras"
+  },
+  "canales": [
+   "WhatsApp",
+   "Email"
+  ],
+  "destinatarios": [
+   {
+    "persona_id": "andrea"
+   },
+   {
+    "persona_id": "daniela"
+   },
+   {
+    "persona_id": "andres"
+   },
+   {
+    "persona_id": "carla"
+   },
+   {
+    "persona_id": "lucia"
+   }
+  ],
+  "activa": true,
+  "figura_id": null,
+  "orden": 6,
+  "disparos_30d": 2,
+  "ultimo_disparo": "2027-05-09T16:00:00-04:00"
+ },
+ {
+  "id": "pres-regla-riesgo-propia",
+  "campana_id": "presidenciales",
+  "nombre": "Riesgo de la figura propia",
+  "tipo": "Índice de riesgo sube",
+  "severidad": "Alta",
+  "condicion": {
+   "texto": "Llega a 50 (Medio)",
+   "umbral": 50,
+   "unidad": "índice",
+   "ventana": "24 h",
+   "alcance": {
+    "figura_ids": [
+     "machado"
+    ]
+   },
+   "alcance_texto": "María Corina Machado"
+  },
+  "canales": [
+   "WhatsApp",
+   "Telegram",
+   "En la app"
+  ],
+  "destinatarios": [
+   {
+    "persona_id": "andrea"
+   },
+   {
+    "persona_id": "daniela"
+   },
+   {
+    "persona_id": "lucia"
+   }
+  ],
+  "activa": true,
+  "figura_id": "machado",
+  "orden": 7,
+  "disparos_30d": 0,
+  "ultimo_disparo": null
+ },
+ {
+  "id": "pres-regla-coordinacion",
+  "campana_id": "presidenciales",
+  "nombre": "Posible actividad coordinada",
+  "tipo": "Posible actividad coordinada",
+  "severidad": "Media",
+  "condicion": {
+   "texto": "Sensibilidad equilibrada",
+   "umbral": "equilibrada",
+   "unidad": "sensibilidad",
+   "ventana": "24 h",
+   "alcance": {
+    "relaciones": [
+     "Propia"
+    ]
+   },
+   "alcance_texto": "Figura propia"
+  },
+  "canales": [
+   "En la app"
+  ],
+  "destinatarios": [
+   {
+    "persona_id": "daniela"
+   },
+   {
+    "persona_id": "lucia"
+   }
+  ],
+  "activa": false,
+  "figura_id": null,
+  "orden": 8,
+  "disparos_30d": 1,
+  "ultimo_disparo": "2027-05-02T12:00:00-04:00"
+ }
+]

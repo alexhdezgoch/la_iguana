@@ -21,7 +21,34 @@
   "jornada": "2027-06-06",
   "figura_propia_id": "machado",
   "vista": "completa",
-  "orden": 1
+  "orden": 1,
+  "extra": {
+   "nota_temas": "El primer debate movió Economía y salarios. Desde el 4 de mayo crece Fecha electoral, por la mesa de diálogo.",
+   "listas_destinatarios": [
+    {
+     "id": "comando",
+     "nombre": "Comando",
+     "descripcion": "7 personas del comando de campaña",
+     "personas": 7
+    },
+    {
+     "id": "candidata",
+     "nombre": "Candidata",
+     "descripcion": "Candidata y jefa de despacho",
+     "personas": 2
+    },
+    {
+     "id": "cliente",
+     "nombre": "Cliente",
+     "descripcion": "2 contactos de la dirección de campaña",
+     "personas": 2
+    }
+   ],
+   "marca_cliente": {
+    "nombre": "Comando de campaña · Machado 2027",
+    "iniciales": "MM"
+   }
+  }
  },
  {
   "org_id": "brujula",
@@ -40,7 +67,11 @@
   "fase": "Precampaña",
   "figura_propia_id": "rosales",
   "vista": "compacta",
-  "orden": 2
+  "orden": 2,
+  "extra": {
+   "nota_temas": "El servicio eléctrico concentra casi un tercio de la conversación y es el tema que más crece: 38% en 48 horas en Maracaibo.",
+   "avance_fase": 18
+  }
  },
  {
   "org_id": "brujula",
@@ -59,6 +90,10 @@
   "fase": "Precampaña",
   "figura_propia_id": "duque",
   "vista": "compacta",
-  "orden": 3
+  "orden": 3,
+  "extra": {
+   "nota_temas": "Movilidad es el tema con más volumen del periodo y el de la única alerta abierta de la campaña.",
+   "avance_fase": 10
+  }
  }
 ]
