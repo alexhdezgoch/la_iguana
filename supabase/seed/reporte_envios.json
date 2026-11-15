@@ -3,10 +3,10 @@
   "id": "pres-envio-cliente-0503",
   "campana_id": "presidenciales",
   "reporte_id": "pres-rep-cliente",
-  "titulo": "Resumen para el cliente · 3 a 9 may",
-  "periodo_inicio": "2027-05-03T00:00:00-04:00",
-  "periodo_fin": "2027-05-09T23:59:59-04:00",
-  "generado_en": "2027-05-10T08:05:00-04:00",
+  "titulo": "Resumen para el cliente · jue 13 may",
+  "periodo_inicio": "2027-05-12T07:00:00-04:00",
+  "periodo_fin": "2027-05-13T07:00:00-04:00",
+  "generado_en": "2027-05-13T07:05:00-04:00",
   "enviado_en": null,
   "estado": "En revisión",
   "destinatarios": 2,
@@ -29,7 +29,7 @@
      "nota": "3 puntos",
      "puntos": [
       {
-       "texto": "La narrativa \"Fuera del diálogo\" creció 62% en 24 horas y llegó a 9,600 menciones.",
+       "texto": "La narrativa \"Diálogo y fecha electoral\" creció 62% en 24 horas y llegó a 9,600 menciones.",
        "por_que": "Es la narrativa en contra de mayor volumen. En el mismo corte el sentimiento neto bajó 1 punto y el riesgo subió 3.",
        "que_hacer": "Responder hoy con el mensaje \"Fecha electoral en 2027\" y medir el efecto en el corte de mañana."
       },
@@ -39,8 +39,8 @@
        "que_hacer": "Mantener el ritmo de publicaciones propias en Mérida y San Cristóbal hasta el cierre de la gira."
       },
       {
-       "texto": "Delcy Rodríguez publicó sobre migración y tiene 27.0% de participación, frente a 31.0% de Machado.",
-       "por_que": "Una rival entra en un tema propio de la campaña con 4 puntos de distancia en participación.",
+       "texto": "La cuenta oficial de una figura rival publicó 3 veces sobre migración, tema propio de la campaña.",
+       "por_que": "Migración y retorno es 19% de la conversación, y la segunda figura en participación está a 4 puntos: 27.0% frente a 31.0% de Machado.",
        "que_hacer": "Vigilar la participación por tema en Migración y retorno durante las próximas 48 horas."
       }
      ]
@@ -53,8 +53,8 @@
      "cifras": [
       {
        "etiqueta": "Menciones en 24 h",
-       "valor": "2,640",
-       "detalle": "+9% · 62,000 en 30 días"
+       "valor": "3,051",
+       "detalle": "+3% · 62,000 en 30 días"
       },
       {
        "etiqueta": "Participación",
@@ -80,7 +80,7 @@
      "nota": "Sobre María Corina Machado",
      "items": [
       {
-       "texto": "Fuera del diálogo",
+       "texto": "Diálogo y fecha electoral",
        "detalle": "En aumento · +62% en 24 horas",
        "chip": "En contra",
        "chip_tono": "unf",
@@ -107,7 +107,7 @@
        "tono": "fav"
       },
       {
-       "texto": "Línea dura, sin acuerdos",
+       "texto": "Negociación y acuerdos",
        "detalle": "A la baja",
        "chip": "En contra",
        "chip_tono": "unf",
@@ -124,37 +124,37 @@
      "nota": "18 notas en 24 horas · 6 favorables, 9 neutrales, 3 desfavorables",
      "items": [
       {
-       "texto": "Efecto Cocuyo",
-       "enlace": "Nota sobre la cuarta ronda del diálogo",
+       "texto": "Medio digital nacional",
+       "enlace": "Nota de ejemplo sobre la cuarta ronda del diálogo",
        "valor": "5 notas",
        "valor2": "1 favorable · 2 neutrales · 2 desfavorables"
       },
       {
-       "texto": "El Pitazo",
-       "enlace": "Nota sobre la gira por los Andes",
+       "texto": "Portal de noticias",
+       "enlace": "Nota de ejemplo sobre la gira por los Andes",
        "valor": "4 notas",
        "valor2": "2 favorables · 2 neutrales"
       },
       {
-       "texto": "Tal Cual",
-       "enlace": "Nota sobre las propuestas de salario",
+       "texto": "Diario nacional",
+       "enlace": "Nota de ejemplo sobre las propuestas de salario",
        "valor": "3 notas",
        "valor2": "1 favorable · 1 neutral · 1 desfavorable"
       },
       {
-       "texto": "Unión Radio",
-       "enlace": "Segmento sobre el plan de retorno",
+       "texto": "Emisora de radio",
+       "enlace": "Segmento de ejemplo sobre el plan de retorno",
        "valor": "3 notas",
        "valor2": "1 favorable · 2 neutrales"
       },
       {
-       "texto": "Venevisión",
-       "enlace": "Reporte sobre la agenda de campaña",
+       "texto": "Canal de TV",
+       "enlace": "Reporte de ejemplo sobre la agenda de campaña",
        "valor": "2 notas",
        "valor2": "1 favorable · 1 neutral"
       },
       {
-       "texto": "Runrunes",
+       "texto": "Medio regional",
        "detalle": "Sin titular destacado",
        "valor": "1 nota",
        "valor2": "1 neutral"
@@ -219,7 +219,7 @@
      "nota": "3 puntos",
      "puntos": [
       {
-       "texto": "La narrativa \"Fuera del diálogo\" creció 62% en 24 horas y llegó a 9,600 menciones.",
+       "texto": "La narrativa \"Diálogo y fecha electoral\" creció 62% en 24 horas y llegó a 9,600 menciones.",
        "por_que": "Es la narrativa en contra de mayor volumen. En el mismo corte el sentimiento neto bajó 1 punto y el riesgo subió 3.",
        "que_hacer": "Responder hoy con el mensaje \"Fecha electoral en 2027\" y medir el efecto en el corte de mañana."
       },
@@ -229,8 +229,8 @@
        "que_hacer": "Mantener el ritmo de publicaciones propias en Mérida y San Cristóbal hasta el cierre de la gira."
       },
       {
-       "texto": "Delcy Rodríguez publicó sobre migración y tiene 27.0% de participación, frente a 31.0% de Machado.",
-       "por_que": "Una rival entra en un tema propio de la campaña con 4 puntos de distancia en participación.",
+       "texto": "La cuenta oficial de una figura rival publicó 3 veces sobre migración, tema propio de la campaña.",
+       "por_que": "Migración y retorno es 19% de la conversación, y la segunda figura en participación está a 4 puntos: 27.0% frente a 31.0% de Machado.",
        "que_hacer": "Vigilar la participación por tema en Migración y retorno durante las próximas 48 horas."
       }
      ]
@@ -243,8 +243,8 @@
      "cifras": [
       {
        "etiqueta": "Menciones en 24 h",
-       "valor": "2,640",
-       "detalle": "+9% · 62,000 en 30 días"
+       "valor": "3,051",
+       "detalle": "+3% · 62,000 en 30 días"
       },
       {
        "etiqueta": "Participación",
@@ -270,7 +270,7 @@
      "nota": "5 abiertas",
      "items": [
       {
-       "texto": "La narrativa \"Fuera del diálogo\" creció 62% en 24 horas.",
+       "texto": "La narrativa \"Diálogo y fecha electoral\" creció 62% en 24 horas.",
        "chip": "Alta",
        "chip_tono": "unf",
        "valor": "Abierta"
@@ -282,7 +282,7 @@
        "valor": "Abierta"
       },
       {
-       "texto": "Delcy Rodríguez publicó sobre migración, tema propio de la campaña.",
+       "texto": "Una cuenta oficial de una figura rival publicó sobre migración, tema propio de la campaña.",
        "chip": "Media",
        "chip_tono": "warn",
        "valor": "Abierta"
@@ -294,7 +294,7 @@
        "valor": "Abierta"
       },
       {
-       "texto": "Nota de El Pitazo sobre la gira por los Andes.",
+       "texto": "Nota de un portal de noticias sobre la gira por los Andes.",
        "chip": "Baja",
        "chip_tono": "watch",
        "valor": "Abierta"
@@ -308,7 +308,7 @@
      "nota": "Sobre María Corina Machado",
      "items": [
       {
-       "texto": "Fuera del diálogo",
+       "texto": "Diálogo y fecha electoral",
        "detalle": "En aumento · +62% en 24 horas",
        "chip": "En contra",
        "chip_tono": "unf",
@@ -335,7 +335,7 @@
        "tono": "fav"
       },
       {
-       "texto": "Línea dura, sin acuerdos",
+       "texto": "Negociación y acuerdos",
        "detalle": "A la baja",
        "chip": "En contra",
        "chip_tono": "unf",
@@ -352,37 +352,37 @@
      "nota": "18 notas en 24 horas · 6 favorables, 9 neutrales, 3 desfavorables",
      "items": [
       {
-       "texto": "Efecto Cocuyo",
-       "enlace": "Nota sobre la cuarta ronda del diálogo",
+       "texto": "Medio digital nacional",
+       "enlace": "Nota de ejemplo sobre la cuarta ronda del diálogo",
        "valor": "5 notas",
        "valor2": "1 favorable · 2 neutrales · 2 desfavorables"
       },
       {
-       "texto": "El Pitazo",
-       "enlace": "Nota sobre la gira por los Andes",
+       "texto": "Portal de noticias",
+       "enlace": "Nota de ejemplo sobre la gira por los Andes",
        "valor": "4 notas",
        "valor2": "2 favorables · 2 neutrales"
       },
       {
-       "texto": "Tal Cual",
-       "enlace": "Nota sobre las propuestas de salario",
+       "texto": "Diario nacional",
+       "enlace": "Nota de ejemplo sobre las propuestas de salario",
        "valor": "3 notas",
        "valor2": "1 favorable · 1 neutral · 1 desfavorable"
       },
       {
-       "texto": "Unión Radio",
-       "enlace": "Segmento sobre el plan de retorno",
+       "texto": "Emisora de radio",
+       "enlace": "Segmento de ejemplo sobre el plan de retorno",
        "valor": "3 notas",
        "valor2": "1 favorable · 2 neutrales"
       },
       {
-       "texto": "Venevisión",
-       "enlace": "Reporte sobre la agenda de campaña",
+       "texto": "Canal de TV",
+       "enlace": "Reporte de ejemplo sobre la agenda de campaña",
        "valor": "2 notas",
        "valor2": "1 favorable · 1 neutral"
       },
       {
-       "texto": "Runrunes",
+       "texto": "Medio regional",
        "detalle": "Sin titular destacado",
        "valor": "1 nota",
        "valor2": "1 neutral"
@@ -393,22 +393,28 @@
      "id": "rivales",
      "pagina": 2,
      "titulo": "Rivales",
-     "nota": "Publicaciones propias por tema",
+     "nota": "Publicaciones de cuentas oficiales rivales por tema",
      "items": [
       {
-       "texto": "Delcy Rodríguez",
-       "detalle": "Migración y retorno (2) · Economía y salarios (2)",
-       "valor": "4 publicaciones"
-      },
-      {
-       "texto": "Henrique Capriles",
-       "detalle": "Servicios públicos (2) · Salud (1)",
+       "texto": "Migración y retorno",
+       "detalle": "Tema propio de la campaña",
        "valor": "3 publicaciones"
       },
       {
-       "texto": "Jorge Rodríguez",
-       "detalle": "Fecha electoral (2)",
+       "texto": "Economía y salarios",
        "valor": "2 publicaciones"
+      },
+      {
+       "texto": "Servicios públicos",
+       "valor": "2 publicaciones"
+      },
+      {
+       "texto": "Fecha electoral",
+       "valor": "2 publicaciones"
+      },
+      {
+       "texto": "Salud",
+       "valor": "1 publicación"
       }
      ]
     },
@@ -446,7 +452,7 @@
      "pagina": 2,
      "titulo": "Recomendación",
      "ia": true,
-     "texto": "Priorizar la respuesta a \"Fuera del diálogo\" antes del Segundo debate presidencial del 23 de mayo y cerrar la gira con el mensaje de retorno, que es el que más crece. Revisar en el corte de mañana si el sentimiento neto vuelve a +18."
+     "texto": "Priorizar la respuesta a \"Diálogo y fecha electoral\" antes del Segundo debate presidencial del 23 de mayo y cerrar la gira con el mensaje de retorno, que es el que más crece. Revisar en el corte de mañana si el sentimiento neto vuelve a +18."
     }
    ]
   }
@@ -464,7 +470,7 @@
   "destinatarios": 12,
   "entregados": 11,
   "extra": {
-   "nota": "Falló 1 envío por WhatsApp"
+   "nota": "Ejemplo: 1 destinatario sin entregar"
   }
  },
  {
@@ -506,7 +512,7 @@
   "destinatarios": 6,
   "entregados": 0,
   "extra": {
-   "nota": "El servidor de correo rechazó el envío"
+   "nota": "Ejemplo: envío fallido"
   }
  },
  {
@@ -672,7 +678,7 @@
      "items": [
       {
        "texto": "Delcy Rodríguez",
-       "detalle": "Contra-narrativa \"Fuera del diálogo\": 6,900 menciones en la ventana",
+       "detalle": "Sin contra-narrativa detectada",
        "valor": "9 publicaciones"
       },
       {
@@ -733,7 +739,7 @@
      "pagina": 1,
      "titulo": "Resumen ejecutivo",
      "ia": true,
-     "texto": "Las dos narrativas más grandes crecen a la vez: \"Que vuelvan a casa\", a favor, y \"Fuera del diálogo\", en contra, que es la que más rápido sube. Migración y retorno se mantiene como segundo tema de la conversación."
+     "texto": "Las dos narrativas más grandes crecen a la vez: \"Que vuelvan a casa\", a favor, y \"Diálogo y fecha electoral\", en contra, que es la que más rápido sube. Migración y retorno se mantiene como segundo tema de la conversación."
     },
     {
      "id": "narr",
@@ -751,8 +757,8 @@
        "tono": "fav"
       },
       {
-       "texto": "Fuera del diálogo",
-       "detalle": "+41% · en aumento",
+       "texto": "Diálogo y fecha electoral",
+       "detalle": "+405% · en aumento",
        "chip": "En contra",
        "chip_tono": "unf",
        "valor": "9,600",
@@ -761,7 +767,7 @@
       },
       {
        "texto": "Primera presidenta",
-       "detalle": "+2% · estable",
+       "detalle": "+3% · estable",
        "chip": "A favor",
        "chip_tono": "fav",
        "valor": "8,100",
@@ -769,8 +775,8 @@
        "tono": "fav"
       },
       {
-       "texto": "Línea dura, sin acuerdos",
-       "detalle": "-12% · a la baja",
+       "texto": "Negociación y acuerdos",
+       "detalle": "-22% · a la baja",
        "chip": "En contra",
        "chip_tono": "unf",
        "valor": "4,200",
@@ -853,12 +859,12 @@
      "titulo": "Para vigilar",
      "items": [
       {
-       "texto": "\"Fuera del diálogo\" antes del segundo debate",
-       "detalle": "Si mantiene el ritmo, supera las 12,000 menciones antes del 23 de mayo."
+       "texto": "\"Diálogo y fecha electoral\" antes del segundo debate",
+       "detalle": "Si mantiene el ritmo de los últimos 7 días, supera las 21,000 menciones antes del 23 de mayo."
       },
       {
-       "texto": "Participación de Delcy Rodríguez en Migración y retorno",
-       "detalle": "Publicó sobre el tema esta semana."
+       "texto": "Publicaciones de cuentas rivales en Migración y retorno",
+       "detalle": "Hubo 3 en 24 horas el 13 de mayo."
       },
       {
        "texto": "Sentimiento neto de Juan Pablo Guanipa",

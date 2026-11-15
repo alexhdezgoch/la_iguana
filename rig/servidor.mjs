@@ -40,8 +40,10 @@ async function auth(req, url, cuerpo) {
   if (ruta === '/token' && req.method === 'POST') {
     const tipo = url.searchParams.get('grant_type');
     if (tipo === 'password') {
-      const { rows } = await pool.query('select id, email, created_at from auth.users where lower(email) = lower($1) and clave = $2', [cuerpo.email ?? '', cuerpo.password ?? '']);
+      const { rows } = await pool.query('select id, email, created_at, email_confirmed_at from auth.users where lower(email) = lower($1) and clave = $2', [cuerpo.email ?? '', cuerpo.password ?? '']);
       if (!rows.length) return [400, { error: 'invalid_grant', error_description: 'Invalid login credentials', msg: 'Invalid login credentials', message: 'Invalid login credentials' }];
+      // Como Supabase con confirmación de correo activa: sin confirmar no hay sesión.
+      if (!rows[0].email_confirmed_at) return [400, { error: 'invalid_grant', error_code: 'email_not_confirmed', error_description: 'Email not confirmed', msg: 'Email not confirmed', message: 'Email not confirmed' }];
       return [200, sesionDe(rows[0])];
     }
     if (tipo === 'refresh_token') {
@@ -93,6 +95,12 @@ function donde(url, params) {
   }
   return partes.length ? ' where ' + partes.join(' and ') : '';
 }
+// select=col1,col2 como PostgREST (sin relaciones anidadas). Con privilegios por columna (personas.user_id), select=* falla igual que en Supabase.
+function columnas(url) {
+  const s = (url.searchParams.get('select') ?? '*').replace(/\s/g, '');
+  if (s === '' || s === '*') return '*';
+  return s.split(',').map(ident).join(', ');
+}
 function orden(url) {
   const o = url.searchParams.get('order');
   if (!o) return '';
@@ -131,28 +139,28 @@ async function rest(req, url, cuerpo, cli) {
   if (req.method === 'GET' || req.method === 'HEAD') {
     const w = donde(url, params);
     if (prefer.includes('count=exact')) {
-      const c = await cli.query(`select count(*)::int as n from ${tabla}${w}`, params);
+      const c = await cli.query(`select count(*)::int as n from (select ${columnas(url)} from ${tabla}${w}) q`, params);
       extra['Content-Range'] = `*/${c.rows[0].n}`;
     }
     if (req.method === 'HEAD') return [200, null, extra];
     const lim = Math.min(Number(url.searchParams.get('limit') ?? MAX_FILAS), MAX_FILAS);
     const off = Number(url.searchParams.get('offset') ?? 0);
-    filas = await json(cli, `select * from ${tabla}${w}${orden(url)} limit ${lim} offset ${off}`, params);
+    filas = await json(cli, `select ${columnas(url)} from ${tabla}${w}${orden(url)} limit ${lim} offset ${off}`, params);
   } else if (req.method === 'POST') {
     const lista = Array.isArray(cuerpo) ? cuerpo : [cuerpo];
     const cols = [...new Set(lista.flatMap((f) => Object.keys(f)))].map(ident).join(', ');
     if (!cols) throw err(400, 'PGRST102', 'Cuerpo vacío');
-    filas = await json(cli, `insert into ${tabla} (${cols}) select ${cols} from jsonb_populate_recordset(null::${tabla}, $1::jsonb) returning *`, [JSON.stringify(lista)]);
+    filas = await json(cli, `insert into ${tabla} (${cols}) select ${cols} from jsonb_populate_recordset(null::${tabla}, $1::jsonb) returning ${columnas(url)}`, [JSON.stringify(lista)]);
   } else if (req.method === 'PATCH') {
     const cols = Object.keys(cuerpo ?? {}).map(ident).join(', ');
     if (!cols) throw err(400, 'PGRST102', 'Cuerpo vacío');
     params.push(JSON.stringify(cuerpo));
     const w = donde(url, params);
-    filas = await json(cli, `update ${tabla} set (${cols}) = (select ${cols} from jsonb_populate_record(null::${tabla}, $1::jsonb))${w} returning *`, params);
+    filas = await json(cli, `update ${tabla} set (${cols}) = (select ${cols} from jsonb_populate_record(null::${tabla}, $1::jsonb))${w} returning ${columnas(url)}`, params);
   } else if (req.method === 'DELETE') {
     const w = donde(url, params);
     if (!w) throw err(400, '21000', 'DELETE requiere un filtro');
-    filas = await json(cli, `delete from ${tabla}${w} returning *`, params);
+    filas = await json(cli, `delete from ${tabla}${w} returning ${columnas(url)}`, params);
   } else throw err(405, 'PGRST000', 'Método no soportado');
 
   if (quiereObjeto) {

@@ -22,7 +22,7 @@ export function VistaPrevia({ d, hoy, cal, bad, directorio, otras }: Ctx & { otr
     [figs.some((f) => f.relacion === 'Propia'), 'Figura propia elegida'],
     [d.confirmo_personas_publicas && figs.length > 0, 'Personas públicas confirmadas'],
     [!bad[3] && figs.length > 0, 'Términos para cada figura'],
-    [!bad[4], 'Equipo con correo en cada invitación'],
+    [!bad[4], 'Equipo con correo en cada persona agregada'],
   ];
   const faltan = todo.filter(([ok]) => !ok).length;
 

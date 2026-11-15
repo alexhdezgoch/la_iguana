@@ -5,13 +5,13 @@
   "severidad": "Alta",
   "estado": "Nueva",
   "tipo": "Narrativa",
-  "texto": "La narrativa \"Fuera del diálogo\" creció 62% en 24 horas.",
+  "texto": "La narrativa \"Diálogo y fecha electoral\" creció 62% en 24 horas.",
   "figura_id": "machado",
   "narrativa_id": "pres-fuera-del-dialogo",
   "evento_id": "pres-respuesta-dialogo",
   "detectada_en": "2027-05-13T07:12:00-04:00",
   "disparos": 3,
-  "explicacion": "La regla \"Narrativa en contra crece\" detectó que \"Fuera del diálogo\" pasó de unas 1,240 a unas 2,010 menciones por día: +62% en 24 horas, sobre el umbral de +40%.",
+  "explicacion": "La regla \"Narrativa en contra crece\" detectó que \"Diálogo y fecha electoral\" pasó de unas 1,240 a unas 2,010 menciones por día: +62% en 24 horas, sobre el umbral de +40%.",
   "valor": "2,010 menciones (+62%)",
   "umbral": "+40% en 24 h",
   "ventana": "Últimas 24 h",
@@ -19,14 +19,14 @@
    "grafica": {
     "metrica": "Menciones de la narrativa en 24 h",
     "serie": [
-     1180,
-     1210,
-     1190,
-     1230,
-     1250,
-     1220,
+     960,
+     990,
+     1020,
+     1060,
+     1100,
+     1150,
+     1200,
      1240,
-     1260,
      1310,
      1480,
      1790,
@@ -34,8 +34,8 @@
     ],
     "umbral": 1736,
     "rango": [
-     1100,
-     1350
+     950,
+     1250
     ],
     "indice_disparo": 10,
     "desde": "2027-05-10T00:00:00-04:00",
@@ -43,10 +43,10 @@
    },
    "evidencia": [
     {
-     "fuente": "Efecto Cocuyo",
+     "fuente": "Medio digital nacional",
      "canal": "Medio digital",
      "publicada_en": "2027-05-13T06:50:00-04:00",
-     "descripcion": "Nota sobre la cuarta ronda del diálogo y la respuesta de la campaña",
+     "descripcion": "Nota de ejemplo sobre la cuarta ronda del diálogo",
      "alcance": 310000,
      "sentimiento": "Desfavorable"
     },
@@ -54,15 +54,15 @@
      "fuente": "Cuenta pública",
      "canal": "Facebook",
      "publicada_en": "2027-05-13T06:15:00-04:00",
-     "descripcion": "Publicación ciudadana que repite la narrativa junto al tema fecha electoral",
+     "descripcion": "Publicación ciudadana de ejemplo que repite la narrativa junto al tema fecha electoral",
      "alcance": 84000,
      "sentimiento": "Desfavorable"
     },
     {
-     "fuente": "Globovisión",
+     "fuente": "Canal de noticias de TV",
      "canal": "Televisión",
      "publicada_en": "2027-05-12T21:00:00-04:00",
-     "descripcion": "Segmento de análisis sobre la mesa de diálogo",
+     "descripcion": "Segmento de análisis de ejemplo sobre la mesa de diálogo",
      "alcance": 260000,
      "sentimiento": "Neutral"
     },
@@ -70,12 +70,11 @@
      "fuente": "Cuenta pública",
      "canal": "X",
      "publicada_en": "2027-05-12T19:40:00-04:00",
-     "descripcion": "Hilo ciudadano sobre quiénes participan en el diálogo",
+     "descripcion": "Hilo ciudadano de ejemplo sobre la mesa de diálogo",
      "alcance": 52000,
      "sentimiento": "Desfavorable"
     }
    ],
-   "menciones_relacionadas": 1240,
    "contexto": {
     "texto": null,
     "enlace": "evento"
@@ -83,7 +82,8 @@
    "pasos": [
     "Crear evento de crisis",
     "Avisar a vocería"
-   ]
+   ],
+   "menciones_relacionadas": 2
   },
   "orden": 1,
   "campana_id": "presidenciales"
@@ -127,10 +127,10 @@
    },
    "evidencia": [
     {
-     "fuente": "El Nacional",
+     "fuente": "Diario digital",
      "canal": "Medio digital",
      "publicada_en": "2027-05-12T20:10:00-04:00",
-     "descripcion": "Nota sobre la cuarta ronda del diálogo",
+     "descripcion": "Nota de ejemplo sobre la cuarta ronda del diálogo",
      "alcance": 220000,
      "sentimiento": "Desfavorable"
     },
@@ -138,12 +138,11 @@
      "fuente": "Cuenta pública",
      "canal": "X",
      "publicada_en": "2027-05-12T22:30:00-04:00",
-     "descripcion": "Publicaciones ciudadanas críticas sobre la fecha electoral",
+     "descripcion": "Publicaciones ciudadanas de ejemplo, desfavorables, sobre la fecha electoral",
      "alcance": 96000,
      "sentimiento": "Desfavorable"
     }
    ],
-   "menciones_relacionadas": 3480,
    "contexto": {
     "texto": "El volumen desfavorable sobre la figura creció más rápido que su alcance.",
     "enlace": "figura"
@@ -151,7 +150,8 @@
    "pasos": [
     "Agregar al corte diario",
     "Seguir la figura cada hora"
-   ]
+   ],
+   "menciones_relacionadas": 2
   },
   "orden": 2,
   "campana_id": "presidenciales"
@@ -162,18 +162,17 @@
   "severidad": "Media",
   "estado": "Nueva",
   "tipo": "Rival en tema propio",
-  "texto": "Delcy Rodríguez publicó sobre migración, tema propio de la campaña.",
-  "figura_id": "delcy-rodriguez",
+  "texto": "Una cuenta oficial de una figura rival publicó sobre migración, tema propio de la campaña.",
   "tema_id": "pres-migracion",
   "narrativa_id": "pres-que-vuelvan-a-casa",
   "detectada_en": "2027-05-13T06:25:00-04:00",
-  "explicacion": "La regla \"Rival en tema propio\" detectó 3 publicaciones de Delcy Rodríguez sobre \"Migración y retorno\" en 24 horas. Es un tema propio de la campaña (19% de la conversación).",
+  "explicacion": "La regla \"Rival en tema propio\" detectó 3 publicaciones de la cuenta oficial de una figura rival sobre \"Migración y retorno\" en 24 horas. Es un tema propio de la campaña (19% de la conversación).",
   "valor": "3 publicaciones",
   "umbral": "3 en 24 h",
   "ventana": "Últimas 24 h",
   "detalle": {
    "grafica": {
-    "metrica": "Publicaciones de la figura sobre el tema, por día",
+    "metrica": "Publicaciones de cuentas rivales sobre el tema, por día",
     "serie": [
      0,
      1,
@@ -198,7 +197,7 @@
      "fuente": "Cuenta oficial",
      "canal": "X",
      "publicada_en": "2027-05-13T06:20:00-04:00",
-     "descripcion": "Publicación de la figura sobre programas de retorno",
+     "descripcion": "Publicación de ejemplo de una cuenta rival sobre programas de retorno",
      "alcance": 180000,
      "sentimiento": "Neutral"
     },
@@ -206,12 +205,11 @@
      "fuente": "Cuenta oficial",
      "canal": "Instagram",
      "publicada_en": "2027-05-13T05:45:00-04:00",
-     "descripcion": "Video de la figura sobre migración",
+     "descripcion": "Video de ejemplo de una cuenta rival sobre migración",
      "alcance": 120000,
      "sentimiento": "Neutral"
     }
    ],
-   "menciones_relacionadas": 860,
    "contexto": {
     "texto": null,
     "enlace": "temas"
@@ -219,7 +217,8 @@
    "pasos": [
     "Agregar al corte diario",
     "Avisar a vocería"
-   ]
+   ],
+   "menciones_relacionadas": 2
   },
   "orden": 3,
   "campana_id": "presidenciales"
@@ -263,10 +262,10 @@
    },
    "evidencia": [
     {
-     "fuente": "Tal Cual",
+     "fuente": "Diario nacional",
      "canal": "Medio digital",
      "publicada_en": "2027-05-12T15:20:00-04:00",
-     "descripcion": "Nota sobre posiciones de la oposición frente al diálogo",
+     "descripcion": "Nota de ejemplo sobre la oposición y la mesa de diálogo",
      "alcance": 90000,
      "sentimiento": "Neutral"
     },
@@ -274,12 +273,11 @@
      "fuente": "Cuenta pública",
      "canal": "X",
      "publicada_en": "2027-05-12T13:05:00-04:00",
-     "descripcion": "Publicaciones ciudadanas críticas sobre la estrategia opositora",
+     "descripcion": "Publicaciones ciudadanas de ejemplo, desfavorables, sobre la oposición",
      "alcance": 48000,
      "sentimiento": "Desfavorable"
     }
    ],
-   "menciones_relacionadas": 1120,
    "contexto": {
     "texto": "Figura aliada. La baja coincide con la conversación sobre la cuarta ronda del diálogo.",
     "enlace": "figura"
@@ -287,7 +285,8 @@
    "pasos": [
     "Agregar al corte diario",
     "Avisar al enlace con la figura aliada"
-   ]
+   ],
+   "menciones_relacionadas": 0
   },
   "orden": 4,
   "campana_id": "presidenciales"
@@ -298,14 +297,14 @@
   "severidad": "Baja",
   "estado": "Pospuesta",
   "tipo": "Medios",
-  "texto": "Nota de El Pitazo sobre la gira por los Andes.",
+  "texto": "Nota de un portal de noticias sobre la gira por los Andes.",
   "figura_id": "machado",
   "tema_id": "pres-migracion",
   "evento_id": "pres-gira-andes",
   "detectada_en": "2027-05-12T17:20:00-04:00",
   "responsable_id": "carla",
   "pospuesta_hasta": "2027-05-14T07:00:00-04:00",
-  "explicacion": "La regla \"Nota en medio destacado\" detectó una nota de El Pitazo sobre la gira \"Que vuelvan a casa\" por los Andes con alcance estimado de 180,000, sobre el umbral de 100,000. Tono neutral.",
+  "explicacion": "La regla \"Nota en medio destacado\" detectó una nota de un portal de noticias sobre la gira \"Que vuelvan a casa\" por los Andes con alcance estimado de 180,000, sobre el umbral de 100,000. Tono neutral.",
   "valor": "180,000 de alcance",
   "umbral": "Alcance mayor a 100,000",
   "ventana": "Por nota",
@@ -333,10 +332,10 @@
    },
    "evidencia": [
     {
-     "fuente": "El Pitazo",
+     "fuente": "Portal de noticias",
      "canal": "Medio digital",
      "publicada_en": "2027-05-12T17:15:00-04:00",
-     "descripcion": "Crónica de la gira por Mérida y San Cristóbal",
+     "descripcion": "Crónica de ejemplo sobre la gira por Mérida y San Cristóbal",
      "alcance": 180000,
      "sentimiento": "Neutral"
     },
@@ -344,12 +343,11 @@
      "fuente": "Cuenta pública",
      "canal": "X",
      "publicada_en": "2027-05-12T18:05:00-04:00",
-     "descripcion": "Publicaciones ciudadanas que comparten la nota",
+     "descripcion": "Publicaciones ciudadanas de ejemplo que comparten la nota",
      "alcance": 36000,
      "sentimiento": "Favorable"
     }
    ],
-   "menciones_relacionadas": 640,
    "contexto": {
     "texto": null,
     "enlace": "evento"
@@ -358,7 +356,8 @@
    "pasos": [
     "Agregar al reporte semanal",
     "Compartir con el equipo de prensa"
-   ]
+   ],
+   "menciones_relacionadas": 2
   },
   "orden": 5,
   "campana_id": "presidenciales"
@@ -409,10 +408,10 @@
    },
    "evidencia": [
     {
-     "fuente": "Venevisión",
+     "fuente": "Canal de TV",
      "canal": "Televisión",
      "publicada_en": "2027-04-25T20:00:00-04:00",
-     "descripcion": "Transmisión del Primer debate presidencial",
+     "descripcion": "Transmisión de ejemplo del Primer debate presidencial",
      "alcance": 1200000,
      "sentimiento": "Neutral"
     },
@@ -420,12 +419,11 @@
      "fuente": "Cuenta pública",
      "canal": "TikTok",
      "publicada_en": "2027-04-25T21:10:00-04:00",
-     "descripcion": "Videos ciudadanos con fragmentos del debate",
+     "descripcion": "Videos ciudadanos de ejemplo con fragmentos del debate",
      "alcance": 310000,
      "sentimiento": "Favorable"
     }
    ],
-   "menciones_relacionadas": 18400,
    "contexto": {
     "texto": null,
     "enlace": "evento"
@@ -433,7 +431,8 @@
    "pasos": [
     "Agregar al reporte del evento",
     "Comparar con el evento anterior"
-   ]
+   ],
+   "menciones_relacionadas": 0
   },
   "orden": 6,
   "campana_id": "presidenciales"
@@ -478,10 +477,10 @@
    },
    "evidencia": [
     {
-     "fuente": "Globovisión",
+     "fuente": "Canal de noticias de TV",
      "canal": "Televisión",
      "publicada_en": "2027-05-09T15:30:00-04:00",
-     "descripcion": "Entrevista sobre la gestión regional",
+     "descripcion": "Segmento de TV de ejemplo sobre la gestión regional",
      "alcance": 210000,
      "sentimiento": "Neutral"
     },
@@ -489,12 +488,11 @@
      "fuente": "Cuenta pública",
      "canal": "X",
      "publicada_en": "2027-05-09T15:50:00-04:00",
-     "descripcion": "Publicaciones ciudadanas que comentan la entrevista",
+     "descripcion": "Publicaciones ciudadanas de ejemplo que comentan el segmento",
      "alcance": 44000,
      "sentimiento": "Neutral"
     }
    ],
-   "menciones_relacionadas": 1260,
    "contexto": {
     "texto": "Figura a observar. El pico no tocó temas propios de la campaña.",
     "enlace": "figura"
@@ -502,7 +500,8 @@
    "pasos": [
     "Agregar al reporte del evento",
     "Comparar con el evento anterior"
-   ]
+   ],
+   "menciones_relacionadas": 0
   },
   "orden": 7,
   "campana_id": "presidenciales"
@@ -525,7 +524,10 @@
   "estado": "En revisión",
   "tipo": "Sentimiento",
   "texto": "El sentimiento neto de Juan Pablo Guanipa bajó 6 puntos en 7 días.",
-  "explicacion": "Figura aliada, vinculada también a Presidenciales 2027.",
+  "explicacion": "Figura aliada, vinculada también a Presidenciales 2027. En esta campaña su neto bajó de +10 a +4 en 7 días.",
+  "valor": "+4 (6 puntos menos)",
+  "umbral": "Baja 5 puntos en 7 días",
+  "ventana": "Últimos 7 días",
   "figura_id": "guanipa",
   "detectada_en": "2027-05-12T18:40:00-04:00",
   "responsable_id": "andres",
@@ -537,9 +539,8 @@
   "severidad": "Baja",
   "estado": "Nueva",
   "tipo": "Rival en tema propio",
-  "texto": "Luis Caldera publicó sobre empleo petrolero, tema propio de la campaña.",
-  "explicacion": "Un rival entra en un tema que la campaña trabaja.",
-  "figura_id": "caldera",
+  "texto": "Una cuenta oficial de una figura rival publicó sobre empleo petrolero, tema propio de la campaña.",
+  "explicacion": "Una cuenta rival entra en un tema que la campaña trabaja.",
   "tema_id": "zulia-empleo-petrolero",
   "detectada_en": "2027-05-11T10:00:00-04:00",
   "orden": 3,
@@ -550,7 +551,7 @@
   "severidad": "Baja",
   "estado": "Resuelta",
   "tipo": "Medios",
-  "texto": "Nota de Unión Radio sobre la rueda de prensa del 6 de mayo.",
+  "texto": "Nota de una emisora de radio sobre la rueda de prensa del 6 de mayo.",
   "explicacion": "Cobertura de un evento propio.",
   "evento_id": "zulia-rueda-electrico",
   "figura_id": "rosales",
@@ -564,7 +565,7 @@
   "severidad": "Baja",
   "estado": "Nueva",
   "tipo": "Medios",
-  "texto": "Nota de El Pitazo sobre movilidad en Chacao.",
+  "texto": "Nota de un portal de noticias sobre movilidad en Chacao.",
   "explicacion": "Cobertura del tema con más volumen del periodo.",
   "tema_id": "chacao-movilidad",
   "figura_id": "duque",

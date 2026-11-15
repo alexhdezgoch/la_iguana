@@ -122,8 +122,8 @@
     {
      "figura_id": "delcy-rodriguez",
      "publicaciones": 9,
-     "narrativa_id": "pres-fuera-del-dialogo",
-     "menciones": 6900
+     "narrativa_id": null,
+     "menciones": null
     },
     {
      "figura_id": "jorge-rodriguez",
@@ -147,7 +147,7 @@
      "hashtag": "#VenezuelaEnPaz",
      "menciones": 5600,
      "lado": "Rival",
-     "nota": "Hashtag del PSUV"
+     "nota": "Hashtag de cuentas rivales"
     },
     {
      "hashtag": "#HastaElFinal",
@@ -157,21 +157,21 @@
    ],
    "publicaciones": [
     {
-     "titulo": "Clip de Machado sobre el retorno",
+     "titulo": "Clip de ejemplo de la campaña sobre el plan de retorno",
      "canal": "TikTok",
      "origen": "Propia",
      "metrica": "reproducciones",
      "valor": 1100000
     },
     {
-     "titulo": "Hilo de análisis sobre lo que dejó el debate",
+     "titulo": "Hilo de análisis de ejemplo sobre el debate",
      "canal": "X",
      "origen": "Tercero",
      "metrica": "interacciones",
      "valor": 18400
     },
     {
-     "titulo": "Video de Delcy Rodríguez sobre el diálogo",
+     "titulo": "Video de ejemplo de una cuenta rival sobre el diálogo",
      "canal": "Facebook",
      "origen": "Rival",
      "metrica": "reproducciones",
@@ -206,7 +206,7 @@
   "nombre": "Recorrido por Maracaibo y Cabimas",
   "tipo": "Gira",
   "origen": "Propio",
-  "estado": "Borrador",
+  "estado": "Programado",
   "fecha_inicio": "2027-05-18",
   "fecha_fin": "2027-05-18",
   "sede": "Maracaibo y Cabimas",

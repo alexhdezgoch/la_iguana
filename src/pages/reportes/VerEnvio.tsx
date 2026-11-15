@@ -46,9 +46,9 @@ export function VerEnvio({ envio, reporte, volver, editar, aprobar, reenviar, oc
   if (envio.extra?.nota) facts.push(['Nota', envio.extra.nota]);
   const accion = !puedeEditar ? null
     : envio.estado === 'En revisión' ? { t: 'Aprobar', f: () => aprobar(envio) }
-      : envio.estado === 'Borrador' ? { t: 'Enviar', f: () => aprobar(envio) }
+      : envio.estado === 'Borrador' ? { t: 'Poner en cola', f: () => aprobar(envio) }
         : envio.estado === 'Pendiente de envío' ? null
-          : { t: 'Reenviar', f: () => reenviar(envio) };
+          : { t: 'Volver a poner en cola', f: () => reenviar(envio) };
 
   return (
     <main className="page pg-reportes">
@@ -82,7 +82,7 @@ export function VerEnvio({ envio, reporte, volver, editar, aprobar, reenviar, oc
           ) : null}
           {reporte ? <div><button type="button" className="btn bg" onClick={() => editar(reporte.id)}>{puedeEditar ? 'Editar el reporte' : 'Ver el reporte'}</button></div> : null}
         </section>
-        <section className="card pv" aria-label="Documento enviado" style={{ flex: '3 1 400px', minWidth: 0 }}>
+        <section className="card pv" aria-label={envio.enviado_en ? "Documento enviado" : "Copia guardada del documento"} style={{ flex: '3 1 400px', minWidth: 0 }}>
           {conDoc ? <Documento contenido={contenido} marca={marca} pie={pie} /> : (
             <p className="mu" style={{ padding: '40px 0', maxWidth: 420, textAlign: 'center' }}>Este envío no guardó una copia del documento. Los envíos que se pongan en cola desde aquí guardan su copia.</p>
           )}

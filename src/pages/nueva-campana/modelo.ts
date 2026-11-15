@@ -185,7 +185,7 @@ export function problemas(d: DatosB, hoy: string, nombreDe: (f: FiguraB) => stri
     cal.ok ? '' : 'Corrige el calendario para continuar',
     !propia ? 'Elige la figura propia' : !d.confirmo_personas_publicas ? 'Confirma que son personas públicas en un rol público' : '',
     sinTerm ? `Agrega al menos un término a ${nombreDe(sinTerm)}` : '',
-    sinCorreo ? `Agrega el correo de ${sinCorreo.nombre ?? 'la invitación'} o quítala` : '',
+    sinCorreo ? `Agrega el correo de ${sinCorreo.nombre ?? 'la persona'} o quítala` : '',
   ];
   bad.push(bad.find(Boolean) ?? '');
   return bad;

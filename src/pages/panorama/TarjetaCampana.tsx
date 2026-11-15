@@ -4,7 +4,7 @@ import { neto, pct } from '../../lib/formato';
 import { contienda, reloj, type CampanaPanorama } from './derivar';
 
 /** Tarjeta de una campaña: fase, cifras de la figura propia y pendientes. */
-export function TarjetaCampana({ x, severidadMax, puedeEditar }: { x: CampanaPanorama; severidadMax: string | null; puedeEditar: boolean }) {
+export function TarjetaCampana({ x, severidadMax, puedeEditar, marcarDemo = false }: { x: CampanaPanorama; severidadMax: string | null; puedeEditar: boolean; marcarDemo?: boolean }) {
   const { c, r } = x;
   const base = `/c/${c.id}`;
   const { avance, texto } = reloj(c, hoyDe(c));
@@ -23,6 +23,9 @@ export function TarjetaCampana({ x, severidadMax, puedeEditar }: { x: CampanaPan
         </div>
         <span className={c.fase === 'Campaña' ? 'chip live' : 'chip ring'}>{c.fase}</span>
       </div>
+      {marcarDemo ? (
+        <span className="chip warn" style={{ alignSelf: 'flex-start' }} title="Personas y partidos reales. Cifras, menciones y eventos inventados para la demostración.">Demo · escenario hipotético</span>
+      ) : null}
       <div className="bar" style={{ flex: 'none', height: 6 }}>
         <i style={{ width: `${(avance ?? 0).toFixed(1)}%`, background: '#285A32' }} />
       </div>

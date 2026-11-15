@@ -24,7 +24,8 @@ function FormMensaje({ inicial, guardar, cerrar }: { inicial?: EventoMensaje; gu
         e.preventDefault();
         if (!texto.trim()) return;
         setOcupado(true);
-        try { await guardar(texto.trim(), terminosDe(terminos)); cerrar(); } finally { setOcupado(false); }
+        // Si falla, guardar() ya mostró el aviso: el formulario queda abierto con lo escrito.
+        try { await guardar(texto.trim(), terminosDe(terminos)); cerrar(); } catch { /* aviso ya mostrado */ } finally { setOcupado(false); }
       }}
     >
       <label className="campo"><span>Mensaje</span><input className="entrada" name="mensaje" value={texto} onChange={(e) => setTexto(e.target.value)} placeholder="Qué queremos que se repita" autoFocus /></label>

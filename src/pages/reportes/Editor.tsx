@@ -5,7 +5,7 @@ import { hoyDe, useCampana, useRol } from '../../shell/Campana';
 import { useSesion } from '../../shell/Sesion';
 import { useAcciones } from '../../shell/Acciones';
 import { useConsulta } from '../../lib/hooks';
-import { db } from '../../lib/db';
+import { avisar, db } from '../../lib/db';
 import { fecha, rango } from '../../lib/formato';
 import type { Evento, Persona, Reporte, ReportePlantilla } from '../../lib/tipos';
 import { Documento, imprimir, paginas } from '../../lib/reportes/Documento';
@@ -154,7 +154,8 @@ export function Editor({ reporte, plantilla, plantillas, reportes, previo, perso
           ...fila, campana_id: cid, formato: 'PDF', estado: 'Activo', plantilla_id: plantilla?.id ?? null,
           orden: Math.max(0, ...reportes.map((x) => x.orden)) + 1,
         });
-        if (plantilla) await db.cambiar('reporte_plantillas', plantilla.id, { usos: (plantilla.usos ?? 0) + 1 }).catch(() => {});
+        // Contador de usos: suma atómica en la base (usar_plantilla), sin leer y reescribir. Si falla, el reporte ya quedó creado.
+        if (plantilla) await db.rpc<number>('usar_plantilla', { p_plantilla: plantilla.id }).then(() => avisar('reporte_plantillas')).catch(() => {});
         aviso(`Reporte "${r.nombre}" creado.`);
         abrir(r.id);
       }
@@ -203,7 +204,7 @@ export function Editor({ reporte, plantilla, plantillas, reportes, previo, perso
           </button>
           {!ro && reporte ? (
             <button type="button" className="btn bg" disabled={sucio || !!ocupado} title={sucio ? 'Guarda los cambios antes de enviar' : undefined} onClick={() => enviarAhora(reporte)}>
-              {ocupado === `env-${reporte.id}` ? 'Poniendo en cola…' : 'Enviar ahora'}
+              {ocupado === `env-${reporte.id}` ? 'Poniendo en cola…' : 'Poner en cola'}
             </button>
           ) : null}
           {!ro ? <button type="button" className="btn bp" disabled={guardando || (!nuevo && !sucio)} onClick={guardar}>{guardando ? 'Guardando…' : nuevo ? 'Crear reporte' : 'Guardar cambios'}</button> : null}
@@ -302,7 +303,7 @@ export function Editor({ reporte, plantilla, plantillas, reportes, previo, perso
                 {opcionesDest.map((o) => <option key={o.v} value={o.v}>{o.t}</option>)}
               </select>
             ) : null}
-            <p className="mu">Toca el formato para cambiarlo: correo con PDF, enlace con acceso o resumen por WhatsApp.</p>
+            <p className="mu">Toca el formato para cambiarlo: correo con PDF, enlace con acceso o resumen por WhatsApp. El envío por correo y por WhatsApp todavía no está conectado: el formato queda guardado para cuando lo esté.</p>
           </section>
 
           <section className="card">

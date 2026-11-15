@@ -8,7 +8,7 @@ import { Carga, Vacio } from '../shell/Estados';
 import { Icono } from '../shell/Iconos';
 import { useAcciones } from '../shell/Acciones';
 import { useNombres, useTabla } from '../lib/hooks';
-import { cuando, num, pct, rango } from '../lib/formato';
+import { corto, cuando, num, pct, rango } from '../lib/formato';
 import type { Evento, FiguraCampana, Mencion, MencionFigura, Narrativa, NotaInterna, Persona, Sentimiento, Tema } from '../lib/tipos';
 import { CHIP_IMP, CHIP_SENT, PUNTO, SENTIMIENTOS, SIN, TEXTO_IMP, VISTAS, enVista, estadoDe, lista, momento, pendiente, sentimientoDe, type Vista } from './menciones/comun';
 import { Filtro, type Opcion } from './menciones/Filtro';
@@ -134,22 +134,22 @@ export default function Menciones() {
         </div>
 
         {!todas.length ? (
-          <Vacio titulo="Todavía no hay menciones en esta campaña">
-            <p>Las menciones llegan cuando la ingesta procesa las fuentes de la campaña.{puedeEditar ? ' Mientras tanto puedes sumar una nota o publicación a mano.' : ''}</p>
-            {puedeEditar ? <p style={{ paddingTop: 8 }}><button type="button" className="btn bg" onClick={abrirAgregarUrl}><Icono n="mas" g={2} />Agregar URL</button></p> : null}
+          <Vacio titulo="Todavía no hay menciones en esta campaña"
+            accion={puedeEditar ? <button type="button" className="btn bg" onClick={abrirAgregarUrl}><Icono n="mas" g={2} />Agregar URL</button> : null}>
+            Las menciones llegan cuando la ingesta procesa las fuentes de la campaña.{puedeEditar ? ' Mientras tanto puedes sumar una nota o publicación a mano.' : ''}
           </Vacio>
         ) : (
           <>
             <section className="kpis" aria-label="Totales">
               {propia ? (
                 <>
-                  <div className="kpi" style={{ flexBasis: 150 }}><span className="kl">Total</span><span className="kv s">{num(propia.menciones)}</span><span className="mu">Menciones de {propia.nombre}</span></div>
+                  <div className="kpi" style={{ flexBasis: 150 }}><span className="kl">Total</span><span className="kv s">{num(propia.menciones)}</span><span className="mu" title={`Menciones de ${propia.nombre}`}>Menciones de {corto(propia)}</span></div>
                   <div className="kpi" style={{ flexBasis: 150 }}><span className="kl">Favorables</span><span className="kv s tf">{parte(propia.favorable)}</span><span className="mu">{pct(propia.favorable, 0)}</span></div>
                   <div className="kpi" style={{ flexBasis: 150 }}><span className="kl">Neutrales</span><span className="kv s">{parte(propia.neutral)}</span><span className="mu">{pct(propia.neutral, 0)}</span></div>
                   <div className="kpi" style={{ flexBasis: 150 }}><span className="kl">Desfavorables</span><span className="kv s tu">{parte(propia.desfavorable)}</span><span className="mu">{pct(propia.desfavorable, 0)}</span></div>
                 </>
               ) : null}
-              <div className="kpi" style={{ flexBasis: 150 }}><span className="kl">Pendientes</span><span className="kv s">{num(pendientes)}</span><span className="mu">Importantes sin revisar</span></div>
+              <div className="kpi" style={{ flexBasis: 150 }}><span className="kl">Pendientes</span><span className="kv s">{num(pendientes)}</span><span className="mu">Marcadas para revisión</span></div>
             </section>
 
             <div className="barra">

@@ -13,7 +13,11 @@ import { fecha, rango } from '../../lib/formato';
 import type { RolCampana } from '../../lib/tipos';
 import { TABLAS_DOC, aCsv, cargarDatos, construir, descargar, nombreArchivo, type SeccionCfg } from '../../lib/reportes/documento';
 import { documentoHtml, imprimir } from '../../lib/reportes/Documento';
-import { marcaDe, pieDe } from '../../lib/reportes/marca';
+import { AVISO_DEMO, marcaDe, pieDe } from '../../lib/reportes/marca';
+
+/** Celda CSV entre comillas (el aviso lleva comas y dos puntos). */
+const csvCelda = (t: string) => `"${t.replace(/"/g, '""')}"`;
+import { useTrampaFoco } from './foco';
 import './Descarga.css';
 
 type Tipo = 'Corte diario' | 'Post-evento' | 'Semanal' | 'Perfil de figura';
@@ -73,6 +77,8 @@ export function Descarga({ panel, cerrar }: { panel: Panel; cerrar: () => void }
     [campana?.id, hoy, tipo, figuraId, eventoId, conNotas], null, TABLAS_DOC,
   );
 
+  // Tab queda dentro del panel y, al cerrar, el foco vuelve al botón que lo abrió.
+  useTrampaFoco(caja);
   useEffect(() => {
     const k = (e: KeyboardEvent) => { if (e.key === 'Escape') cerrar(); };
     document.addEventListener('keydown', k);
@@ -116,7 +122,9 @@ export function Descarga({ panel, cerrar }: { panel: Panel; cerrar: () => void }
         setListo(`Se descargó "${n}" con ${secs.length} ${secs.length === 1 ? 'sección' : 'secciones'}${conNotas ? '' : ', sin notas internas'}.`);
       } else {
         const n = nombreArchivo(base, hoy, 'csv');
-        descargar(n, aCsv(contenido), 'text/csv;charset=utf-8');
+        // Campaña demo: la primera línea del CSV avisa que es un escenario hipotético.
+        const csv = aCsv(contenido);
+        descargar(n, campana.es_demo ? `\uFEFF${csvCelda(AVISO_DEMO)}\r\n${csv.replace(/^\uFEFF/, '')}` : csv, 'text/csv;charset=utf-8');
         setListo(`Se descargó "${n}" con las cifras de ${secs.length} ${secs.length === 1 ? 'sección' : 'secciones'}.`);
       }
     } catch (e) {

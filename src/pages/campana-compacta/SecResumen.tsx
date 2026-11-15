@@ -4,6 +4,7 @@ import { useTabla } from '../../lib/hooks';
 import { ESTADO_EVENTO, REL, SEVERIDAD, diasEntre, fecha, neto, num, pct } from '../../lib/formato';
 import { ALERTAS_ABIERTAS, type Alerta, type Evento, type Narrativa, type Relacion, type SerieDiaria, type Tema } from '../../lib/tipos';
 import { CargaSeccion, DIRECCION, Tendencia, plural, totalConversacion, type Ctx } from './comun';
+import { narrativasDe } from '../figura/comun';
 
 const SIN_FIGURA = '#B5BCB6';
 
@@ -13,9 +14,11 @@ export default function SecResumen({ c }: { c: Ctx }) {
   const propiaId = campana.figura_propia_id;
 
   const alertas = useTabla<Alerta>('alertas', { eq: { campana_id: cid, estado: ALERTAS_ABIERTAS }, orden: 'orden' });
-  const eventos = useTabla<Evento>('eventos', { eq: { campana_id: cid, estado: ['Programado', 'Borrador'] }, desde: { fecha_inicio: hoy }, orden: 'fecha_inicio', limite: 1 });
+  const eventos = useTabla<Evento>('eventos', { eq: { campana_id: cid, estado: ['Programado', 'Borrador'] }, desde: { fecha_inicio: hoy }, orden: 'fecha_inicio', limite: 20 });
   const temas = useTabla<Tema>('temas', { eq: { campana_id: cid }, orden: 'orden' });
-  const narrativas = useTabla<Narrativa>('narrativas', { eq: { campana_id: cid, figura_id: propiaId ?? '' }, orden: [['menciones', 'desc'], ['orden', 'asc']] }, !!propiaId);
+  // Narrativas sobre la figura propia: misma regla que Figura y Temas (figura_id o detalle.figura_ids), por menciones.
+  const narrativas = useTabla<Narrativa>('narrativas', { eq: { campana_id: cid }, orden: 'orden' }, !!propiaId);
+  const sobrePropia = propiaId ? narrativasDe(narrativas.datos, propiaId) : [];
   const serie = useTabla<SerieDiaria>('series_diarias', { eq: { campana_id: cid, entidad: 'figura', entidad_id: propiaId ?? '' }, orden: 'fecha' }, !!propiaId);
 
   const porPart = [...figuras].sort((a, b) => (b.participacion ?? 0) - (a.participacion ?? 0));
@@ -30,7 +33,9 @@ export default function SecResumen({ c }: { c: Ctx }) {
   const maxPart = Math.max(1, resto, ...figuras.map((f) => f.participacion ?? 0));
   const relaciones = (Object.keys(REL) as Relacion[]).filter((r) => figuras.some((f) => f.relacion === r));
   const maxTema = Math.max(1, ...temas.datos.map((t) => t.porcentaje ?? 0));
-  const proximo = eventos.datos[0] ?? null;
+  // Un borrador no es un evento confirmado: el "próximo evento" es el primer Programado. Si solo hay borradores, se avisa aparte.
+  const proximo = eventos.datos.find((e) => e.estado === 'Programado') ?? null;
+  const borrador = proximo ? null : eventos.datos.find((e) => e.estado === 'Borrador') ?? null;
   const enDias = proximo ? diasEntre(hoy, proximo.fecha_inicio) : null;
   const faltan = campana.jornada ? diasEntre(hoy, campana.jornada) : null;
   const lugarTexto = (e: Evento) => {
@@ -179,7 +184,8 @@ export default function SecResumen({ c }: { c: Ctx }) {
               ) : (
                 <>
                   <span className="kl">Próximo evento</span>
-                  <h2>Sin eventos por venir</h2>
+                  <h2>{borrador ? 'Sin eventos programados' : 'Sin eventos por venir'}</h2>
+                  {borrador ? <span className="sm">Hay un borrador por completar: <Link className="tl" to={`${base}/eventos/${borrador.id}`}>{borrador.nombre}</Link></span> : null}
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 16px', paddingTop: 6 }}>
                     {puedeEditar ? <Link className="lk" to={`${base}/eventos/nuevo`}>Crear evento</Link> : null}
                     <Link className="lk" to={`${base}/eventos`}>Ver eventos</Link>
@@ -208,9 +214,9 @@ export default function SecResumen({ c }: { c: Ctx }) {
 
           <section className="card c1">
             <h2>{propia ? `Narrativas sobre ${propia.nombre}` : 'Narrativas'}</h2>
-            {narrativas.datos.length ? (
+            {sobrePropia.length ? (
               <div className="list">
-                {narrativas.datos.map((n) => {
+                {sobrePropia.map((n) => {
                   const d = DIRECCION[n.direccion] ?? DIRECCION['Sin dirección'];
                   return (
                     <div className="li" key={n.id}>

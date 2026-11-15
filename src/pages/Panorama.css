@@ -6,3 +6,12 @@
 .pg-panorama .pn-fecha{width:44px;height:44px;flex-direction:column;gap:2px;line-height:1}
 .pg-panorama .pn-mes{font-size:10px;text-transform:uppercase;letter-spacing:.04em}
 .pg-panorama .pn-dia{font-size:15px;color:#1B211D}
+/* Tarjetas de campaña en rejilla: la cuarta conserva el ancho de las demás en lugar de ocupar toda la fila. */
+.pg-panorama .pn-tarjetas{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;align-items:stretch}
+/* Filtro por campaña: en móvil se desplaza en horizontal en lugar de partirse en varias líneas. */
+@media (max-width:640px){
+  .pg-panorama .pn-cab-t{flex-wrap:nowrap;flex-direction:column;align-items:flex-start;min-width:0;max-width:100%}
+  .pg-panorama .pn-cab-t .seg{flex-wrap:nowrap;max-width:100%;overflow-x:auto;scrollbar-width:thin}
+  .pg-panorama .pn-cab-t .pill{flex:none}
+  .pg-panorama .pn-cab{display:grid;grid-template-columns:minmax(0,1fr)}
+}

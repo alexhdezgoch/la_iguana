@@ -6,8 +6,11 @@ import { useSesion } from '../../shell/Sesion';
 import { db } from '../../lib/db';
 import { useTabla } from '../../lib/hooks';
 import { cuando, num } from '../../lib/formato';
+import { ahoraEn } from '../alertas/comun';
 import type { Mencion, Tema } from '../../lib/tipos';
 import { CargaSeccion, plural, type Ctx } from './comun';
+import { Icono } from '../../shell/Iconos';
+import { urlSegura } from '../../lib/url';
 
 const SENT: Record<string, [string, string]> = { Favorable: ['chip fav', 'd df'], Neutral: ['chip', 'd'], Desfavorable: ['chip unf', 'd du'] };
 const VISTAS = [
@@ -48,7 +51,7 @@ export default function SecMenciones({ c }: { c: Ctx }) {
   async function revisar(m: Mencion) {
     setGuardando(m.id);
     try {
-      await db.cambiar<Mencion>('menciones', m.id, { revisada: true, revisada_por: persona?.id ?? null, revisada_en: new Date().toISOString() });
+      await db.cambiar<Mencion>('menciones', m.id, { revisada: true, revisada_por: persona?.id ?? null, revisada_en: ahoraEn(campana) });
       aviso('Mención marcada como revisada');
     } catch (e) {
       aviso(e instanceof Error ? e.message : String(e));
@@ -83,7 +86,7 @@ export default function SecMenciones({ c }: { c: Ctx }) {
                         <span className="b" style={{ color: '#454E48' }}>{m.fuente ?? 'Sin fuente'}</span>
                         <span>{m.canal}</span>
                         <span>{cuando(m.publicada_en, hoy, campana.zona_horaria)}</span>
-                        {m.url ? <a className="lk" href={m.url} target="_blank" rel="noreferrer">Abrir publicación</a> : null}
+                        {urlSegura(m.url) ? <a className="lk" href={urlSegura(m.url)!} target="_blank" rel="noopener noreferrer">Abrir publicación</a> : null}
                       </span>
                       <span className="b" style={{ fontSize: 15, lineHeight: '21px' }}>{m.titulo ?? m.resumen ?? 'Sin título'}</span>
                       <span className="mm">
@@ -120,8 +123,9 @@ export default function SecMenciones({ c }: { c: Ctx }) {
             </section>
           </>
         ) : (
-          <Vacio titulo="Todavía no hay menciones">
-            Las menciones llegan con la ingesta de fuentes.{puedeEditar ? <> También puedes <button type="button" className="enlace-btn" onClick={abrirAgregarUrl}>agregar una URL</button> a mano.</> : null}
+          <Vacio titulo="Todavía no hay menciones en esta campaña"
+            accion={puedeEditar ? <button type="button" className="btn bg" onClick={abrirAgregarUrl}><Icono n="mas" g={2} />Agregar URL</button> : null}>
+            Las menciones llegan con la ingesta de fuentes.{puedeEditar ? ' Mientras tanto puedes sumar una nota o publicación a mano.' : ''}
           </Vacio>
         )}
       </div>

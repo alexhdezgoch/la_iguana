@@ -1,8 +1,9 @@
 // Panel de detalle de una alerta: acciones de estado, por qué se disparó, evidencia, pasos sugeridos, notas y actividad.
-// Cada cambio de estado escribe en `alertas` y deja una fila en `alerta_actividad` con la persona de la sesión.
+// Cada cambio de estado pasa por la función cambiar_alerta (850_funciones.sql): cambia `alertas` y deja la fila de
+// `alerta_actividad` (y la nota interna, si la hay) en una sola transacción, firmada por la persona de la sesión.
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { db } from '../../lib/db';
+import { avisar, db } from '../../lib/db';
 import { useTabla } from '../../lib/hooks';
 import { SEVERIDAD, compacto, fecha, num, pct } from '../../lib/formato';
 import type { Alerta, AlertaActividad, Campana, EstadoAlerta, Evento, FiguraCampana, Narrativa, NotaInterna, Persona, ReglaAlerta, Tema } from '../../lib/tipos';
@@ -77,7 +78,6 @@ export function Detalle({ alerta: a, campana, cx, responsables, yo, puedeEditar,
   const respTxt = a.responsable_id ? (resp?.nombre ?? 'equipo de la campaña') : 'sin asignar';
   const g = a.detalle?.grafica;
   const evidencia: Array<Record<string, unknown>> = Array.isArray(a.detalle?.evidencia) ? a.detalle.evidencia : [];
-  const relacionadas: number | null = typeof a.detalle?.menciones_relacionadas === 'number' ? a.detalle.menciones_relacionadas : null;
   const pasos: string[] = Array.isArray(a.detalle?.pasos) ? a.detalle.pasos : [];
   const hechos = new Set(actividad.datos.filter((l) => l.texto.startsWith(PREFIJO_PASO)).map((l) => l.texto.slice(PREFIJO_PASO.length)));
   const ctx = contextoDe(a, cx);
@@ -88,10 +88,9 @@ export function Detalle({ alerta: a, campana, cx, responsables, yo, puedeEditar,
     if (ocupado) return;
     setOcupado(true);
     try {
-      const ahora = ahoraEn(campana);
-      if (Object.keys(cambios).length) await db.cambiar<Alerta>('alertas', a.id, cambios);
-      const fila = await db.crear<AlertaActividad>('alerta_actividad', { campana_id: campana.id, alerta_id: a.id, persona_id: yo?.id ?? null, texto, creada_en: ahora });
-      setNuevas((l) => [...l, fila.id]);
+      const id = await db.rpc<string>('cambiar_alerta', { p_alerta: a.id, p_cambios: cambios, p_texto: texto, p_en: ahoraEn(campana) });
+      avisar('alertas', 'alerta_actividad');
+      setNuevas((l) => [...l, id]);
       setMenu(null); setMotivo('');
       alCambiar(a.id);
       aviso(ok);
@@ -120,10 +119,9 @@ export function Detalle({ alerta: a, campana, cx, responsables, yo, puedeEditar,
     if (!t || ocupado) return;
     setOcupado(true);
     try {
-      const ahora = ahoraEn(campana);
-      await db.crear<NotaInterna>('notas_internas', { campana_id: campana.id, entidad: 'alerta', entidad_id: a.id, texto: t, autor_id: yo?.id ?? null, creada_en: ahora, actualizada_en: ahora });
-      const fila = await db.crear<AlertaActividad>('alerta_actividad', { campana_id: campana.id, alerta_id: a.id, persona_id: yo?.id ?? null, texto: 'agregó una nota interna', creada_en: ahora });
-      setNuevas((l) => [...l, fila.id]);
+      const id = await db.rpc<string>('cambiar_alerta', { p_alerta: a.id, p_cambios: {}, p_texto: 'agregó una nota interna', p_nota: t, p_en: ahoraEn(campana) });
+      avisar('alerta_actividad', 'notas_internas');
+      setNuevas((l) => [...l, id]);
       setNota('');
       aviso('Nota guardada');
     } catch (e) { aviso(e instanceof Error ? e.message : String(e)); } finally { setOcupado(false); }
@@ -235,7 +233,7 @@ export function Detalle({ alerta: a, campana, cx, responsables, yo, puedeEditar,
       <section className="card">
         <div className="ch">
           <h2>Evidencia</h2>
-          <Link className="lk" to={`${base}/menciones${filtroMenciones(a)}`}>{relacionadas != null ? `Ver las ${num(relacionadas)} en Menciones` : 'Ver Menciones'}</Link>
+          <Link className="lk" to={`${base}/menciones${filtroMenciones(a)}`}>Ver en Menciones</Link>
         </div>
         {evidencia.length ? (
           <div className="list">
@@ -260,16 +258,22 @@ export function Detalle({ alerta: a, campana, cx, responsables, yo, puedeEditar,
           <div className="ch"><h2>Siguiente paso sugerido</h2><span className="chip warn">Sugerencia, decide el equipo</span></div>
           <div className="al-acts">
             {pasos.map((p) => {
+              // Crear el evento de crisis no se hace desde aquí: lleva al formulario, con el tipo ya elegido.
+              if (/^crear evento de crisis$/i.test(p.trim())) {
+                return puedeEditar
+                  ? <Link key={p} className="btn bg" to={`${base}/eventos/nuevo?tipo=Crisis`}>{p}</Link>
+                  : <button key={p} type="button" className="btn bg" disabled>{p}</button>;
+              }
               const hecho = hechos.has(p);
               return (
                 <button key={p} type="button" className="btn bg" aria-pressed={hecho} disabled={!puedeEditar || hecho || ocupado}
                   onClick={() => registrar({}, PREFIJO_PASO + p, 'Paso anotado en la actividad')}>
-                  {hecho ? 'Hecho: ' + p.charAt(0).toLowerCase() + p.slice(1) : p}
+                  {(hecho ? 'Hecho: ' : 'Marcar como hecho: ') + p.charAt(0).toLowerCase() + p.slice(1)}
                 </button>
               );
             })}
           </div>
-          <p className="mu">Sugerencias según el tipo de alerta. Nada se publica desde aquí; cada paso queda en la actividad.</p>
+          <p className="mu">Sugerencias según el tipo de alerta. Nada se publica ni se envía desde aquí: marcar un paso solo deja constancia en la actividad de que el equipo lo hizo.</p>
         </section>
       ) : null}
 

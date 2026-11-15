@@ -85,10 +85,14 @@ export default function Panorama() {
     { kl: 'Menciones por revisar', kv: num(totalPendientes), mu: totalPendientes ? conPendientes.map((x) => `${x.r!.menciones_por_revisar} en ${corto(x)}`).join(' · ') : 'Nada por revisar' },
   ];
 
-  const paraHoy = alertasParaHoy(alertas.datos, ordenCampana);
+  // La lista junta las alertas repetidas en varias campañas: se cuentan las distintas, no la suma por campaña.
+  const distintas = alertasParaHoy(alertas.datos, ordenCampana, Infinity);
+  const paraHoy = distintas.slice(0, 5);
+  // Un borrador no es un evento confirmado: no se presenta como próximo.
   const proximos = eventos.datos
-    .filter((e) => e.fecha_inicio && porId.has(e.campana_id) && e.fecha_inicio >= hoyDe(porId.get(e.campana_id)!.c))
+    .filter((e) => e.estado !== 'Borrador' && e.fecha_inicio && porId.has(e.campana_id) && e.fecha_inicio >= hoyDe(porId.get(e.campana_id)!.c))
     .slice(0, 3);
+  const demos = lista.filter((x) => x.c.es_demo).length;
   const primera = lista[0] ?? null;
   const conAlertas = lista.find((x) => (x.r?.alertas_abiertas ?? 0) > 0) ?? primera;
   // Misma regla que crear_campana y que el asistente: cualquier persona activa del equipo que no sea externa.
@@ -125,8 +129,8 @@ export default function Panorama() {
               ))}
             </section>
 
-            <div className="row" style={{ alignItems: 'stretch' }}>
-              {lista.map((x) => <TarjetaCampana key={x.c.id} x={x} severidadMax={severidadMax.get(x.c.id) ?? null} puedeEditar={editable(x.c.id)} />)}
+            <div className="pn-tarjetas">
+              {lista.map((x) => <TarjetaCampana key={x.c.id} x={x} severidadMax={severidadMax.get(x.c.id) ?? null} puedeEditar={editable(x.c.id)} marcarDemo={x.c.es_demo && demos < lista.length} />)}
             </div>
 
             <div className="pn-cab">
@@ -155,8 +159,8 @@ export default function Panorama() {
             <div className="row">
               <section className="card c1">
                 <div className="ch">
-                  <h2>Alertas abiertas · {totalAbiertas}</h2>
-                  {conAlertas ? <Link className="lk" to={`/c/${conAlertas.c.id}/alertas`}>Ver alertas de {corto(conAlertas)}</Link> : null}
+                  <h2>Alertas abiertas · {distintas.length}</h2>
+                  {conAlertas ? <Link className="lk" to={`/c/${conAlertas.c.id}/alertas`} title={`Abre las alertas de ${etiqueta(conAlertas)}`}>Ver alertas</Link> : null}
                 </div>
                 {paraHoy.length ? (
                   <div className="list">
@@ -168,12 +172,18 @@ export default function Panorama() {
                     ))}
                   </div>
                 ) : <p className="mu">Nada que atender por ahora.</p>}
+                {distintas.length > paraHoy.length || distintas.length !== totalAbiertas ? (
+                  <p className="mu sm">
+                    {distintas.length > paraHoy.length ? `Las ${paraHoy.length} más urgentes de ${distintas.length}. ` : ''}
+                    {distintas.length !== totalAbiertas ? 'Una alerta repetida en varias campañas se cuenta una vez.' : ''}
+                  </p>
+                ) : null}
               </section>
 
               <section className="card c1">
                 <div className="ch">
                   <h2>Próximos eventos</h2>
-                  {primera ? <Link className="lk" to={`/c/${primera.c.id}/eventos`}>Ver eventos de {corto(primera)}</Link> : null}
+                  {primera ? <Link className="lk" to={`/c/${(proximos[0] ? porId.get(proximos[0].campana_id) ?? primera : primera).c.id}/eventos`} title={`Abre los eventos de ${etiqueta(proximos[0] ? porId.get(proximos[0].campana_id) ?? primera : primera)}`}>Ver eventos</Link> : null}
                 </div>
                 {proximos.length ? (
                   <div className="list">
@@ -195,7 +205,7 @@ export default function Panorama() {
             </div>
 
             <p className="mu note">
-              Cada figura se guarda una sola vez y se enlaza a cada campaña con su propia relación. Las cifras de esta pantalla suman {lasCampanas(lista.length)}. Dentro de una campaña, todo se calcula solo con sus figuras.
+              Cada figura se guarda una sola vez y se enlaza a cada campaña con su propia relación. Las cifras de esta pantalla suman {lasCampanas(lista.length)}{demos && demos < lista.length ? `, incluidas ${demos === 1 ? 'la de demostración (escenario hipotético)' : `las ${demos} de demostración (escenario hipotético)`}` : ''}. Dentro de una campaña, todo se calcula solo con sus figuras.
             </p>
           </>
         )}

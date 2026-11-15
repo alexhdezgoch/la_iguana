@@ -504,8 +504,8 @@
   "campana_id": "presidenciales",
   "tema_id": "pres-otros",
   "figura_id": "machado",
-  "menciones": 6309,
-  "porcentaje": 39.4,
+  "menciones": 6380,
+  "porcentaje": 39.9,
   "porcentaje_propias": 7,
   "favorable": 48,
   "neutral": 38,
@@ -517,7 +517,7 @@
   "campana_id": "presidenciales",
   "tema_id": "pres-otros",
   "figura_id": "gonzalez-urrutia",
-  "menciones": 1009,
+  "menciones": 1001,
   "porcentaje": 6.3,
   "porcentaje_propias": 10
  },
@@ -526,7 +526,7 @@
   "campana_id": "presidenciales",
   "tema_id": "pres-otros",
   "figura_id": "guanipa",
-  "menciones": 455,
+  "menciones": 452,
   "porcentaje": 2.8,
   "porcentaje_propias": 10
  },
@@ -535,8 +535,8 @@
   "campana_id": "presidenciales",
   "tema_id": "pres-otros",
   "figura_id": "delcy-rodriguez",
-  "menciones": 3599,
-  "porcentaje": 22.5,
+  "menciones": 3573,
+  "porcentaje": 22.3,
   "porcentaje_propias": 6
  },
  {
@@ -544,8 +544,8 @@
   "campana_id": "presidenciales",
   "tema_id": "pres-otros",
   "figura_id": "jorge-rodriguez",
-  "menciones": 2314,
-  "porcentaje": 14.5,
+  "menciones": 2297,
+  "porcentaje": 14.4,
   "porcentaje_propias": 12
  },
  {
@@ -553,8 +553,8 @@
   "campana_id": "presidenciales",
   "tema_id": "pres-otros",
   "figura_id": "capriles",
-  "menciones": 1701,
-  "porcentaje": 10.6,
+  "menciones": 1688,
+  "porcentaje": 10.5,
   "porcentaje_propias": 8
  },
  {
@@ -562,7 +562,7 @@
   "campana_id": "presidenciales",
   "tema_id": "pres-otros",
   "figura_id": "rosales",
-  "menciones": 613,
+  "menciones": 609,
   "porcentaje": 3.8,
   "porcentaje_propias": 10
  },

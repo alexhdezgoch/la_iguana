@@ -26,8 +26,9 @@ export default function SecFiguras({ c }: { c: Ctx }) {
   if (!figuras.length) {
     return (
       <div className="col fade" style={{ gap: 20 }}>
-        <Vacio titulo="Esta campaña todavía no sigue a ninguna figura">
-          {puedeEditar ? <><Link to={`${base}/figuras/nueva`}>Agregar una figura</Link> para medir su conversación.</> : 'Cuando el equipo agregue figuras, aparecen aquí con sus cifras.'}
+        <Vacio titulo="Todavía no hay figuras en esta campaña"
+          accion={puedeEditar ? <Link className="btn bg" to={`${base}/figuras/nueva`}><Icono n="mas" g={2} />Agregar figura</Link> : null}>
+          {puedeEditar ? 'Agrega una figura para medir su conversación.' : 'Cuando el equipo agregue figuras, aparecen aquí con sus cifras.'}
         </Vacio>
       </div>
     );

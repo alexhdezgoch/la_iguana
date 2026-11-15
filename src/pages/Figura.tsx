@@ -83,8 +83,8 @@ export default function Figura() {
   const comparacion = useMemo(() => {
     if (!f) return { titulo: '', filas: [] as FiguraCampana[] };
     const cand = figuras.datos.filter((x) => x.extra_campana?.candidatura === true || x.figura_id === f.figura_id);
-    if (cand.length >= 2 && f.extra_campana?.candidatura === true) return { titulo: 'Frente a las otras candidaturas', filas: cand };
-    if (cand.length >= 2) return { titulo: 'Frente a las candidaturas', filas: cand };
+    if (cand.length >= 2 && f.extra_campana?.candidatura === true) return { titulo: 'Frente a las otras figuras', filas: cand };
+    if (cand.length >= 2) return { titulo: 'Frente a las figuras principales', filas: cand };
     const top = figuras.datos.slice(0, 4);
     return { titulo: 'Frente a las otras figuras', filas: top.some((x) => x.figura_id === f.figura_id) ? top : [...top.slice(0, 3), f] };
   }, [figuras.datos, f]);

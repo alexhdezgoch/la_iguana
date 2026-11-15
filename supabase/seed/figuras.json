@@ -5,11 +5,11 @@
   "iniciales": "MM",
   "nombre": "María Corina Machado",
   "nombre_corto": "Machado",
-  "cargo": "Líder opositora",
+  "cargo": "Dirigente opositora",
   "partido": "Vente Venezuela",
   "coalicion": "Plataforma Unitaria Democrática",
   "extra": {
-   "subtitulo": "precandidata presidencial · Nobel de la Paz 2025"
+   "subtitulo": "Nobel de la Paz 2025"
   }
  },
  {
@@ -18,7 +18,7 @@
   "iniciales": "DR",
   "nombre": "Delcy Rodríguez",
   "nombre_corto": "D. Rodríguez",
-  "cargo": "Presidenta encargada",
+  "cargo": "Dirigente del PSUV",
   "partido": "PSUV",
   "coalicion": "Gran Polo Patriótico"
  },
@@ -28,7 +28,7 @@
   "iniciales": "JR",
   "nombre": "Jorge Rodríguez",
   "nombre_corto": "J. Rodríguez",
-  "cargo": "Presidente de la AN",
+  "cargo": "Dirigente del PSUV",
   "partido": "PSUV"
  },
  {
@@ -37,7 +37,7 @@
   "iniciales": "HC",
   "nombre": "Henrique Capriles",
   "nombre_corto": "Capriles",
-  "cargo": "Diputado opositor",
+  "cargo": "Dirigente opositor",
   "partido": "Unión y Cambio"
  },
  {
@@ -46,7 +46,7 @@
   "iniciales": "EG",
   "nombre": "Edmundo González Urrutia",
   "nombre_corto": "González U.",
-  "cargo": "Excandidato presidencial",
+  "cargo": "Dirigente opositor",
   "partido": "PUD"
  },
  {
@@ -55,7 +55,7 @@
   "iniciales": "MR",
   "nombre": "Manuel Rosales",
   "nombre_corto": "Rosales",
-  "cargo": "Dirigente zuliano",
+  "cargo": "Dirigente de Un Nuevo Tiempo",
   "partido": "UNT"
  },
  {
@@ -82,7 +82,7 @@
   "iniciales": "LC",
   "nombre": "Luis Caldera",
   "nombre_corto": "Caldera",
-  "cargo": "Precandidato a gobernador",
+  "cargo": "Dirigente regional",
   "partido": "PSUV"
  },
  {
@@ -91,7 +91,7 @@
   "iniciales": "GD",
   "nombre": "Gustavo Duque",
   "nombre_corto": "Duque",
-  "cargo": "Alcalde de Chacao",
+  "cargo": "Dirigente municipal",
   "partido": "Fuerza Vecinal"
  }
 ]

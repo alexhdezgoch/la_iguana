@@ -4,6 +4,7 @@ import { useTabla } from '../../lib/hooks';
 import { ESTADO_EVENTO, aFecha, corto, diasEntre, fecha, neto, num } from '../../lib/formato';
 import type { Evento } from '../../lib/tipos';
 import { CargaSeccion, enLista, plural, type Ctx } from './comun';
+import { Icono } from '../../shell/Iconos';
 
 const MES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
 
@@ -87,8 +88,9 @@ export default function SecEventos({ c }: { c: Ctx }) {
             </div></div>
           </>
         ) : (
-          <Vacio titulo="Todavía no hay eventos">
-            {puedeEditar ? <><Link to={`${base}/eventos/nuevo`}>Crear un evento</Link> para medir la conversación antes, durante y después.</> : 'Cuando el equipo registre eventos, aparecen aquí con sus cifras.'}
+          <Vacio titulo="Todavía no hay eventos en esta campaña"
+            accion={puedeEditar ? <Link className="btn bg" to={`${base}/eventos/nuevo`}><Icono n="mas" g={2} />Crear evento</Link> : null}>
+            {puedeEditar ? 'Crea un evento para medir la conversación antes, durante y después.' : 'Cuando el equipo registre eventos, aparecen aquí con sus cifras.'}
           </Vacio>
         )}
         <p className="mu note">

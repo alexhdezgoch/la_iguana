@@ -69,10 +69,7 @@
   "campana_id": "zulia",
   "figura_id": "rosales",
   "relacion": "Propia",
-  "orden": 1,
-  "extra": {
-   "cargo": "Precandidato a gobernador"
-  }
+  "orden": 1
  },
  {
   "id": "zulia-caldera",

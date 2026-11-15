@@ -3,6 +3,7 @@
 import { Link, useSearchParams } from 'react-router-dom';
 import { useCampana, usePagina, useRol } from '../shell/Campana';
 import { Carga, Vacio } from '../shell/Estados';
+import { Icono } from '../shell/Iconos';
 import { useNombres, useTabla } from '../lib/hooks';
 import { responsableDe } from './figura/comun';
 import { REL, RIESGO_PUNTO, compacto, iniciales, neto, num, pct, rango } from '../lib/formato';
@@ -86,9 +87,10 @@ export default function Figuras() {
         </div>
 
         {todas.length === 0 ? (
-          <Vacio titulo="Esta campaña todavía no sigue a ninguna figura">
+          <Vacio titulo="Todavía no hay figuras en esta campaña"
+            accion={puedeEditar ? <Link className="btn bg" to={`${base}/figuras/nueva`}><Icono n="mas" g={2} />Agregar figura</Link> : null}>
             {puedeEditar
-              ? <><Link to={`${base}/figuras/nueva`}>Agregar una figura</Link>: la propia, sus aliadas, rivales y a observar. Las cifras aparecen cuando lleguen las primeras menciones.</>
+              ? 'Agrega la figura propia, sus aliadas, rivales y a observar. Las cifras aparecen cuando lleguen las primeras menciones.'
               : 'Cuando el equipo agregue figuras, aparecerán aquí con sus cifras.'}
           </Vacio>
         ) : (
@@ -176,7 +178,7 @@ export default function Figuras() {
                           <td style={{ whiteSpace: 'nowrap' }}>{f.partido ?? <span className="mu">Sin partido</span>}</td>
                           <td><span className={`chip ${rel.cls}`}>{f.relacion}</span></td>
                           {vacia ? (
-                            <td colSpan={6}><span className="mu">Recopilando. Las cifras aparecen con las primeras menciones.</span></td>
+                            <td colSpan={6}><span className="mu">Todavía sin corte de 30 días. Las cifras aparecen cuando la ingesta procese sus menciones.</span></td>
                           ) : (
                             <>
                               <td className="r">{num(f.menciones)}</td>

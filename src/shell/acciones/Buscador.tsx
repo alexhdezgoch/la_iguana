@@ -10,6 +10,7 @@ import { db } from '../../lib/db';
 import { useConsulta, useTabla } from '../../lib/hooks';
 import { fecha, num, pct } from '../../lib/formato';
 import type { Campana, Direccion, Evento, FiguraCampana, Narrativa, RolCampana, Tema } from '../../lib/tipos';
+import { useTrampaFoco } from './foco';
 import './Buscador.css';
 
 const I_CAL = 'M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z';
@@ -149,11 +150,14 @@ export function Buscador({ cerrar }: { panel: Panel; cerrar: () => void }) {
       }
       add({ clave: 'ac:descarga', grupo: 'Acciones', peso: 0, titulo: 'Descargar reporte', sub: 'Exportar esta vista', icono: <Icono d={I_BOLT} t={14} />, accion: () => abrirDescarga(), palabras: 'exportar informe pdf' });
     }
-    const boton = document.querySelector<HTMLElement>('.app .top [data-periodo], .app .top button.btn.bg:not(.bi)');
-    add({
-      clave: 'ac:periodo', grupo: 'Acciones', peso: 0, titulo: 'Cambiar periodo', sub: periodo, icono: <Icono d={I_BOLT} t={14} />,
-      accion: () => abrirPeriodo(boton), palabras: 'fechas rango',
-    });
+    // Sin campañas no hay periodo que cambiar.
+    if (campanas.length) {
+      const boton = document.querySelector<HTMLElement>('.app .top [data-periodo], .app .top button.btn.bg:not(.bi)');
+      add({
+        clave: 'ac:periodo', grupo: 'Acciones', peso: 0, titulo: 'Cambiar periodo', sub: periodo, icono: <Icono d={I_BOLT} t={14} />,
+        accion: () => abrirPeriodo(boton), palabras: 'fechas rango',
+      });
+    }
 
     // Campañas
     for (const c of campanas) {
@@ -200,12 +204,9 @@ export function Buscador({ cerrar }: { panel: Panel; cerrar: () => void }) {
   useEffect(() => { setIdx(0); if (lista.current) lista.current.scrollTop = 0; }, [texto]);
   useEffect(() => { if (idx >= mostrados.length && mostrados.length) setIdx(0); }, [idx, mostrados.length]);
 
-  // Foco: entra al campo y vuelve a donde estaba al cerrar.
-  useEffect(() => {
-    const previo = document.activeElement as HTMLElement | null;
-    entrada.current?.focus({ preventScroll: true });
-    return () => { if (previo && previo.isConnected) { try { previo.focus({ preventScroll: true }); } catch { /* nada */ } } };
-  }, []);
+  // Foco: Tab gira dentro del panel, entra al campo y vuelve a donde estaba al cerrar.
+  useTrampaFoco(caja);
+  useEffect(() => { entrada.current?.focus({ preventScroll: true }); }, []);
 
   function abrir(it: Item | undefined) {
     if (!it) return;
@@ -214,18 +215,11 @@ export function Buscador({ cerrar }: { panel: Panel; cerrar: () => void }) {
     if (it.a) navegar(it.a);
   }
 
-  // Teclas: Esc y Ctrl K cierran (antes que el atajo del Layout, que lo volvería a abrir); Tab queda dentro.
+  // Teclas: Esc y Ctrl K cierran (antes que el atajo del Layout, que lo volvería a abrir). Tab lo maneja useTrampaFoco.
   useEffect(() => {
     const tecla = (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && !e.altKey && !e.shiftKey && e.key.toLowerCase() === 'k') { e.preventDefault(); e.stopPropagation(); cerrar(); return; }
       if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); cerrar(); return; }
-      if (e.key === 'Tab' && caja.current) {
-        const f = Array.from(caja.current.querySelectorAll<HTMLElement>('a[href],button:not([disabled]),input'));
-        if (!f.length) return;
-        const primero = f[0], ultimo = f[f.length - 1], dentro = caja.current.contains(document.activeElement);
-        if (e.shiftKey && (document.activeElement === primero || !dentro)) { e.preventDefault(); ultimo.focus(); }
-        else if (!e.shiftKey && (document.activeElement === ultimo || !dentro)) { e.preventDefault(); primero.focus(); }
-      }
     };
     window.addEventListener('keydown', tecla, true);
     return () => window.removeEventListener('keydown', tecla, true);
@@ -260,7 +254,7 @@ export function Buscador({ cerrar }: { panel: Panel; cerrar: () => void }) {
           />
           <button type="button" className="bu-kb bu-esc" onClick={cerrar} aria-label="Cerrar">Esc</button>
         </div>
-        <div className="bu-pr" id="bu-pr" role="listbox" ref={lista} aria-busy={cargando}>
+        <div className="bu-pr" id="bu-pr" role="listbox" ref={lista} aria-busy={cargando} tabIndex={-1}>
           {error ? (
             <div className="bu-pe"><span className="bu-b">No se pudo buscar</span><span className="bu-mu">{error}</span></div>
           ) : !mostrados.length ? (
@@ -275,16 +269,30 @@ export function Buscador({ cerrar }: { panel: Panel; cerrar: () => void }) {
             return (
               <div key={it.clave} style={{ display: 'contents' }}>
                 {cab ? <div className="bu-gh" role="presentation">{cab}</div> : null}
-                <a
-                  id={`bu-o-${i}`} data-i={i} role="option" aria-selected={i === idx}
-                  className={'bu-it' + (i === idx ? ' on' : '')} href={it.a ?? '#'} tabIndex={-1}
-                  onMouseMove={() => { if (i !== idx) setIdx(i); }}
-                  onClick={(e) => { if (e.metaKey || e.ctrlKey || e.shiftKey) return; e.preventDefault(); abrir(it); }}
-                >
-                  <i>{it.icono}</i>
-                  <span><span className="bu-b bu-t">{it.titulo}</span><span className="bu-mu">{it.sub}</span></span>
-                  <span className="bu-kb">↵</span>
-                </a>
+                {it.a ? (
+                  <a
+                    id={`bu-o-${i}`} data-i={i} role="option" aria-selected={i === idx}
+                    className={'bu-it' + (i === idx ? ' on' : '')} href={it.a} tabIndex={-1}
+                    onMouseMove={() => { if (i !== idx) setIdx(i); }}
+                    onClick={(e) => { if (e.metaKey || e.ctrlKey || e.shiftKey) return; e.preventDefault(); abrir(it); }}
+                  >
+                    <i>{it.icono}</i>
+                    <span><span className="bu-b bu-t">{it.titulo}</span><span className="bu-mu">{it.sub}</span></span>
+                    <span className="bu-kb">↵</span>
+                  </a>
+                ) : (
+                  // Las acciones abren un panel, no una dirección: son botones.
+                  <button
+                    type="button" id={`bu-o-${i}`} data-i={i} role="option" aria-selected={i === idx}
+                    className={'bu-it bu-btn' + (i === idx ? ' on' : '')} tabIndex={-1}
+                    onMouseMove={() => { if (i !== idx) setIdx(i); }}
+                    onClick={() => abrir(it)}
+                  >
+                    <i>{it.icono}</i>
+                    <span><span className="bu-b bu-t">{it.titulo}</span><span className="bu-mu">{it.sub}</span></span>
+                    <span className="bu-kb">↵</span>
+                  </button>
+                )}
               </div>
             );
           })}

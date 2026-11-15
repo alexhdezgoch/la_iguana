@@ -6,7 +6,10 @@ import { cuando } from '../../lib/formato';
 import type { Mencion, MencionFigura, NotaInterna, Persona, PersonaVisible, Sentimiento } from '../../lib/tipos';
 import { useAcciones } from '../../shell/Acciones';
 import { useSesion } from '../../shell/Sesion';
+import { useCampana } from '../../shell/Campana';
+import { ahoraEn } from '../alertas/comun';
 import { CHIP_IMP, IMPORTANCIAS, PUNTO, SENTIMIENTOS, TEXTO_IMP, estadoDe, type Importancia } from './comun';
+import { urlSegura } from '../../lib/url';
 
 export interface Borrador { sent?: Sentimiento | null; imp?: Importancia | null; nota?: string }
 
@@ -46,6 +49,9 @@ export function Revision({ m, borrador, setBorrador, figuras, nombres, tema, nar
 
   const b = borrador ?? {};
   const sent = b.sent !== undefined ? b.sent : (m.sentimiento_manual ?? m.sentimiento);
+  const campana = useCampana();
+  // Solo enlaces http(s): la fuente viene de los datos.
+  const href = urlSegura(m.url);
   const imp = b.imp !== undefined ? b.imp : m.importancia;
   const textoNota = b.nota !== undefined ? b.nota : (nota?.texto ?? '');
   const cambios = hayCambios(m, borrador, nota);
@@ -64,6 +70,8 @@ export function Revision({ m, borrador, setBorrador, figuras, nombres, tema, nar
 
   async function guardar() {
     setGuardando(true);
+    // Reloj de la campaña (como las alertas): en la demo, "hoy" es la fecha de corte, no la fecha real.
+    const ahora = ahoraEn(campana);
     try {
       const manual = sent && sent !== m.sentimiento ? sent : null;
       await db.cambiar('menciones', m.id, {
@@ -71,14 +79,14 @@ export function Revision({ m, borrador, setBorrador, figuras, nombres, tema, nar
         importancia: imp ?? null,
         revisada: true,
         revisada_por: persona?.id ?? null,
-        revisada_en: new Date().toISOString(),
+        revisada_en: ahora,
       });
       // La figura principal lleva la misma corrección en mencion_figuras.
       const principal = figuras.find((f) => f.figura_id === m.figura_id);
       if (principal && principal.sentimiento_manual !== manual) await db.cambiar('mencion_figuras', principal.id, { sentimiento_manual: manual });
       if (verNotas) {
         const t = textoNota.trim();
-        if (nota && t && t !== nota.texto) await db.cambiar('notas_internas', nota.id, { texto: t, actualizada_en: new Date().toISOString() });
+        if (nota && t && t !== nota.texto) await db.cambiar('notas_internas', nota.id, { texto: t, actualizada_en: ahora });
         else if (nota && !t) await db.borrar('notas_internas', nota.id);
         else if (!nota && t) await db.crear('notas_internas', { campana_id: m.campana_id, entidad: 'mencion', entidad_id: m.id, texto: t, autor_id: persona?.id ?? null });
       }
@@ -187,10 +195,10 @@ export function Revision({ m, borrador, setBorrador, figuras, nombres, tema, nar
               <button type="button" className="btn bg" disabled={guardando} onClick={() => void descartar()}>Descartar</button>
             </>
           )}
-          {m.url ? <a className="btn bg" href={m.url} target="_blank" rel="noopener noreferrer">Abrir fuente</a> : null}
+          {href ? <a className="btn bg" href={href} target="_blank" rel="noopener noreferrer">Abrir fuente</a> : null}
         </div>
-      ) : m.url ? (
-        <div><a className="btn bg" href={m.url} target="_blank" rel="noopener noreferrer">Abrir fuente</a></div>
+      ) : href ? (
+        <div><a className="btn bg" href={href} target="_blank" rel="noopener noreferrer">Abrir fuente</a></div>
       ) : null}
 
       <p className="mu">

@@ -4,9 +4,16 @@ import { flushSync } from 'react-dom';
 import { createRoot } from 'react-dom/client';
 import type { Contenido, ItemDoc, SeccionDoc } from './documento';
 
+/** Estilo en línea: la vista previa de la app y el documento autónomo usan hojas de estilo distintas. */
+const AVISO = { margin: 0, padding: '6px 10px', borderRadius: 6, background: '#FBF3D9', color: '#7A5A00', fontSize: 12, lineHeight: '16px', fontWeight: 600, textAlign: 'center' } as const;
 const TONO: Record<string, string> = { fav: '#3A76C4', unf: '#D07A2D', own: '#285A32', watch: '#8A928C' };
 
-export interface Marca { iniciales: string; nombre: string }
+export interface Marca {
+  iniciales: string;
+  nombre: string;
+  /** Línea visible arriba de cada página (campañas de demo: "Escenario hipotético…"). La pone marcaDe. */
+  aviso?: string;
+}
 export interface PropsDoc {
   contenido: Contenido;
   marca: Marca;
@@ -73,6 +80,7 @@ export function Documento({ contenido, marca, pie, apagadas }: PropsDoc) {
     <>
       {pags.map((secs, i) => (
         <article className="pg" key={i}>
+          {marca.aviso ? <p className="pga" role="note" style={AVISO}>{marca.aviso}</p> : null}
           {i === 0 ? (
             <header className="pgh">
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>

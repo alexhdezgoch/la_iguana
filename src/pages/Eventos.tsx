@@ -156,9 +156,10 @@ export default function Eventos() {
             <p className="mu note">El estado lo decide el equipo y no se deduce de las fechas. Un evento sin medición muestra "Sin datos", nunca cero.</p>
           </>
         ) : (
-          <Vacio titulo="Esta campaña todavía no tiene eventos">
+          <Vacio titulo="Todavía no hay eventos en esta campaña"
+            accion={puedeEditar ? <Link className="btn bg" to={`${base}/eventos/nuevo`}><Icono n="mas" g={2} />Crear evento</Link> : null}>
             {puedeEditar
-              ? <><Link to={`${base}/eventos/nuevo`}>Crear un evento</Link> para medir la conversación antes, durante y después.</>
+              ? 'Crea un evento para medir la conversación antes, durante y después.'
               : 'Cuando el equipo cree eventos, aparecerán aquí con su medición.'}
           </Vacio>
         )}

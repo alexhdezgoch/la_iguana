@@ -88,18 +88,18 @@ export function descripcionDe(r: Pick<Reporte, 'frecuencia' | 'hora' | 'extra'>)
 }
 export { DIAS_SEMANA };
 
-/** "Hoy, 7:02" · "Ayer, 18:40" · "Vie 14 may, 7:00" · "15 nov 2026, 10:42". */
+/** "hoy, 7:02" · "ayer, 18:40" · "vie 14 may, 7:00" · "15 nov 2026, 10:42". En minúscula, como cuando() en el resto de la app. */
 export function momento(ts: string | null | undefined, hoy: string, zona: string): string {
   if (!ts) return '';
   const dia = diaEn(ts, zona)!;
   const h = horaEn(ts, zona);
   const dif = diasEntre(hoy, dia) ?? 0;
-  if (dif === 0) return `Hoy, ${h}`;
-  if (dif === -1) return `Ayer, ${h}`;
+  if (dif === 0) return `hoy, ${h}`;
+  if (dif === -1) return `ayer, ${h}`;
   const [y, m, d] = dia.split('-').map(Number);
   const corto = fecha(dia, 'corto');
   if (y !== Number(hoy.slice(0, 4))) return `${corto} ${y}, ${h}`;
-  if (Math.abs(dif) < 7) return `${may(DIAS[new Date(y, m - 1, d).getDay()].slice(0, 3))} ${corto}, ${h}`;
+  if (Math.abs(dif) < 7) return `${DIAS[new Date(y, m - 1, d).getDay()].slice(0, 3).toLowerCase()} ${corto}, ${h}`;
   return `${corto}, ${h}`;
 }
 /** "Se cierra hoy a las 12:00": momento en minúscula, para dentro de una frase. */

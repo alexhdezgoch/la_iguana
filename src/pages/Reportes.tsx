@@ -1,5 +1,5 @@
 // Reportes de una campaña: programados, historial de envíos y plantillas, más el editor y la vista de un envío.
-// El envío por correo es de la fase 2: "Enviar ahora", "Aprobar" y "Reenviar" dejan la fila en reporte_envios
+// El envío por correo es de la fase 2: "Poner en cola", "Aprobar" y "Volver a poner en cola" dejan la fila en reporte_envios
 // con estado 'Pendiente de envío' y la interfaz lo dice así. Nunca se marca nada como enviado.
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
@@ -7,6 +7,7 @@ import { hoyDe, useCampana, usePagina, useRol } from '../shell/Campana';
 import { useSesion } from '../shell/Sesion';
 import { useAcciones } from '../shell/Acciones';
 import { Carga, Vacio } from '../shell/Estados';
+import { Icono } from '../shell/Iconos';
 import { useTabla } from '../lib/hooks';
 import { db } from '../lib/db';
 import { diaEn, fecha, rango } from '../lib/formato';
@@ -152,7 +153,7 @@ export default function Reportes() {
             <p className="mu">{sub}</p>
           </div>
           <div className="acts">
-            <button type="button" className="btn bg" onClick={() => abrirDescarga()}>Descargar reporte</button>
+            {vacia ? null : <button type="button" className="btn bg" onClick={() => abrirDescarga()}>Descargar reporte</button>}
             {puedeEditar ? (
               <button type="button" className="btn bp" onClick={() => ir({ ver: 'nuevo' })}>
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>Nuevo reporte
@@ -170,10 +171,12 @@ export default function Reportes() {
         {tab === 'prog' ? (
           <div className="col fade" style={{ gap: 20 }}>
             {vacia ? (
-              <Vacio titulo="Todavía no hay reportes programados">
-                {puedeEditar
-                  ? <><button type="button" className="lkb" onClick={() => ir({ ver: 'nuevo' })}>Crear un reporte</button>{plantillas.datos.length ? <> o <button type="button" className="lkb" onClick={() => ir({ tab: 'plant' })}>partir de una plantilla</button></> : null}.</>
-                  : 'Cuando el equipo programe un reporte aparecerá aquí.'}
+              <Vacio titulo="Todavía no hay reportes programados"
+                accion={puedeEditar ? <>
+                  <button type="button" className="btn bg" onClick={() => ir({ ver: 'nuevo' })}><Icono n="mas" g={2} />Crear reporte</button>
+                  {plantillas.datos.length ? <button type="button" className="btn bg" onClick={() => ir({ tab: 'plant' })}>Partir de una plantilla</button> : null}
+                </> : null}>
+                {puedeEditar ? 'Programa un reporte para el equipo o el cliente: queda armado y en cola en cada fecha.' : 'Cuando el equipo programe un reporte aparecerá aquí.'}
               </Vacio>
             ) : (
               <div className="row" style={{ alignItems: 'stretch' }}>
@@ -210,7 +213,7 @@ export default function Reportes() {
                         <button type="button" className="btn bg" onClick={() => ir({ ver: r.id })}>Vista previa</button>
                         {puedeEditar ? (
                           <>
-                            <button type="button" className="btn bg" disabled={!!ocupado} onClick={() => enviarAhora(r)}>{ocupado === `env-${r.id}` ? 'Poniendo en cola…' : 'Enviar ahora'}</button>
+                            <button type="button" className="btn bg" disabled={!!ocupado} onClick={() => enviarAhora(r)}>{ocupado === `env-${r.id}` ? 'Poniendo en cola…' : 'Poner en cola'}</button>
                             <button type="button" className="btn bg" disabled={!!ocupado} aria-pressed={pausado} onClick={() => pausar(r)}>{pausado ? 'Activar' : 'Pausar'}</button>
                           </>
                         ) : null}
@@ -244,7 +247,7 @@ export default function Reportes() {
                         {r.requiere_aprobacion ? <span className="chip ring">Requiere aprobación</span> : null}
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                           <button type="button" className="btn bg" onClick={() => ir({ ver: r.id })}>Vista previa</button>
-                          {puedeEditar ? <button type="button" className="btn bg" disabled={!!ocupado} onClick={() => enviarAhora(r)}>{ocupado === `env-${r.id}` ? 'Poniendo en cola…' : 'Enviar ahora'}</button> : null}
+                          {puedeEditar ? <button type="button" className="btn bg" disabled={!!ocupado} onClick={() => enviarAhora(r)}>{ocupado === `env-${r.id}` ? 'Poniendo en cola…' : 'Poner en cola'}</button> : null}
                         </div>
                       </div>
                     );
@@ -318,7 +321,7 @@ export default function Reportes() {
                         const accion = e.estado === 'En revisión' ? ['Aprobar', () => aprobar(e)] as const
                           : e.estado === 'Borrador' ? ['Enviar', () => aprobar(e)] as const
                             : e.estado === 'Pendiente de envío' ? ['Sacar de la cola', () => sacarDeCola(e)] as const
-                              : ['Reenviar', () => reenviar(e)] as const;
+                              : ['Volver a poner en cola', () => reenviar(e)] as const;
                         return (
                           <tr key={e.id}>
                             <td><div className="gr"><button type="button" className="lkb tl" style={{ textAlign: 'left' }} onClick={() => ir({ envio: e.id })}>{e.titulo ?? 'Reporte sin título'}</button><span className="mu">{tipoDe(e)}</span></div></td>
@@ -341,7 +344,7 @@ export default function Reportes() {
                 </div>
                   {!hist.length ? <p className="mu" style={{ padding: '20px 16px' }}>Ningún reporte coincide con estos filtros.</p> : null}
                 </div>
-                <p className="mu note">"Entregados" cuenta destinatarios que recibieron el reporte, no aperturas. Los envíos pendientes esperan en cola: el envío por correo todavía no está conectado. En un envío parcial o fallido, "Reenviar" pone en cola solo a quienes no lo recibieron.</p>
+                <p className="mu note">"Entregados" cuenta destinatarios que recibieron el reporte, no aperturas. Los envíos pendientes esperan en cola: el envío por correo todavía no está conectado. En un envío parcial o fallido, "Volver a poner en cola" incluye solo a quienes no lo recibieron.</p>
               </>
             ) : (
               <Vacio titulo="Todavía no hay envíos">Cada vez que un reporte se genere o se ponga en cola aparecerá aquí.</Vacio>

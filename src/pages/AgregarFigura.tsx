@@ -1,15 +1,14 @@
 // Agregar figura: elegir una figura del directorio del equipo y vincularla, o crear una nueva.
-// Lee figuras, campana_figuras, v_figuras_campana. Escribe figuras, campana_figuras, terminos, notas_internas
-// y, si la campaña aún no tiene figura propia, campanas.figura_propia_id.
+// Lee figuras, campana_figuras, v_figuras_campana. Escribe con la función agregar_figura (850_funciones.sql), en una sola
+// transacción: figuras, campana_figuras, terminos, notas_internas y, si la campaña aún no tiene figura propia, campanas.figura_propia_id.
 import { useMemo, useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import './AgregarFigura.css';
-import { db } from '../lib/db';
+import { avisar, db } from '../lib/db';
 import { useTabla } from '../lib/hooks';
 import { REL, iniciales, num, sugerirNombreCorto } from '../lib/formato';
 import type { CampanaFigura, Cuenta, Figura, FiguraCampana, Relacion } from '../lib/tipos';
 import { useCampana, useCampanas, usePagina } from '../shell/Campana';
-import { useSesion } from '../shell/Sesion';
 import { useAcciones } from '../shell/Acciones';
 import { Carga } from '../shell/Estados';
 import { SinPermiso, normal, usePermiso } from './agregar-figura/acceso';
@@ -48,7 +47,6 @@ export default function AgregarFigura() {
   const base = `/c/${cid}`;
   usePagina('Agregar figura', [{ texto: 'Figuras', a: `${base}/figuras` }]);
   const navegar = useNavigate();
-  const { persona } = useSesion();
   const { aviso } = useAcciones();
   const { campanas } = useCampanas();
   const permiso = usePermiso(cid);
@@ -102,15 +100,18 @@ export default function AgregarFigura() {
   const misApellidos = modo === 'nueva' ? apellidos(f.nombre) : [];
   const dups = misApellidos.length ? filas.filter((r) => apellidos(r.fig.nombre).some((a) => misApellidos.includes(a))) : [];
 
-  const ordenSiguiente = Math.max(0, ...vinculos.datos.filter((v) => v.campana_id === cid).map((v) => v.orden)) + 1;
-
   // ---------- acciones del formulario ----------
+  /** El término tal como se guardaría (hashtags con # y sin espacios), o '' si no hay. */
+  const terminoListo = (() => {
+    const v = borradorTermino.trim();
+    if (!v) return '';
+    return clase === 'Hashtag' && v[0] !== '#' ? '#' + v.replace(/\s+/g, '') : v;
+  })();
+  const terminoRepetido = !!terminoListo && terminos.some((t) => normal(t.texto) === normal(terminoListo));
+  const puedeAgregarTermino = !!terminoListo && !terminoRepetido && terminos.length < MAX_TERMINOS;
   const agregarTermino = () => {
-    let v = borradorTermino.trim();
-    if (!v || terminos.length >= MAX_TERMINOS) return;
-    if (clase === 'Hashtag' && v[0] !== '#') v = '#' + v.replace(/\s+/g, '');
-    if (terminos.some((t) => normal(t.texto) === normal(v))) { setBorradorTermino(''); return; }
-    setTerminos([...terminos, { tipo: clase, texto: v }]);
+    if (!puedeAgregarTermino) return;
+    setTerminos([...terminos, { tipo: clase, texto: terminoListo }]);
     setBorradorTermino('');
   };
   const agregarCuenta = () => {
@@ -132,19 +133,14 @@ export default function AgregarFigura() {
     fijar({ modo: 'nueva', figura: null });
   };
 
-  /** Después de vincular: la campaña sin figura propia toma esta como propia (solo Administración puede). */
-  const fijarPropia = async (figuraId: string, relacion: Relacion) => {
-    if (relacion !== 'Propia' || campana.figura_propia_id || !permiso.puedeAdministrar) return;
-    try { await db.cambiar('campanas', cid, { figura_propia_id: figuraId }); } catch { /* el vínculo ya quedó; la figura propia se fija después */ }
-  };
-
+  /** Guarda todo en una sola llamada. Si la campaña no tiene figura propia y quien guarda la administra, la base la fija. */
+  const TABLAS = ['figuras', 'campana_figuras', 'terminos', 'notas_internas', 'campanas'];
   const vincular = async () => {
     if (!elegida || !rel || guardando) return;
     setGuardando(true);
     try {
-      await db.crear<CampanaFigura>('campana_figuras', { campana_id: cid, figura_id: elegida.fig.id, relacion: rel, orden: ordenSiguiente, extra: { responsable_equipo: resp } });
-      await db.crear('terminos', { campana_id: cid, figura_id: elegida.fig.id, texto: elegida.fig.nombre, tipo: 'Nombre', orden: 1 });
-      await fijarPropia(elegida.fig.id, rel);
+      await db.rpc<string>('agregar_figura', { p: { campana_id: cid, figura_id: elegida.fig.id, relacion: rel, responsable_equipo: resp } });
+      avisar(...TABLAS);
       aviso(`${elegida.fig.nombre} se vinculó como ${rel}`, { texto: 'Ver figuras', a: `${base}/figuras` });
       navegar(`${base}/figuras/${elegida.fig.id}`);
     } catch (e) {
@@ -164,19 +160,17 @@ export default function AgregarFigura() {
     setGuardando(true);
     try {
       const nombre = f.nombre.trim();
-      const limpio = (s: string) => s.trim() || null;
-      const fig = await db.crear<Figura>('figuras', {
-        org_id: campana.org_id, nombre, nombre_corto: sugerirNombreCorto(nombre, figuras.datos), iniciales: iniciales(nombre) || null,
-        cargo: limpio(f.cargo), partido: limpio(f.partido), coalicion: limpio(f.coalicion), territorio: limpio(f.territorio), tipo: f.tipo,
-        cuentas, extra: { persona_publica: { confirmada_por: persona?.id ?? null, en: new Date().toISOString() } },
-      });
-      await db.crear<CampanaFigura>('campana_figuras', { campana_id: cid, figura_id: fig.id, relacion: rel, orden: ordenSiguiente, extra: { responsable_equipo: resp } });
-      const ts = terminos.length ? terminos : [{ tipo: 'Nombre' as const, texto: nombre }];
-      await db.crearVarias('terminos', ts.map((t, i) => ({ campana_id: cid, figura_id: fig.id, texto: t.texto, tipo: t.tipo, orden: i + 1 })));
-      if (f.notas.trim()) await db.crear('notas_internas', { campana_id: cid, entidad: 'figura', entidad_id: fig.id, texto: f.notas.trim(), autor_id: persona?.id ?? null });
-      await fijarPropia(fig.id, rel);
+      const figuraId = await db.rpc<string>('agregar_figura', { p: {
+        campana_id: cid, relacion: rel, responsable_equipo: resp, persona_publica: confirmo, notas: f.notas.trim() || null,
+        nueva: {
+          nombre, nombre_corto: sugerirNombreCorto(nombre, figuras.datos), iniciales: iniciales(nombre) || null,
+          cargo: f.cargo, partido: f.partido, coalicion: f.coalicion, territorio: f.territorio, tipo: f.tipo, cuentas,
+        },
+        terminos: terminos.length ? terminos : [{ tipo: 'Nombre', texto: nombre }],
+      } });
+      avisar(...TABLAS);
       aviso(`Figura agregada como ${rel}`, { texto: 'Ver figuras', a: `${base}/figuras` });
-      navegar(`${base}/figuras/${fig.id}`);
+      navegar(`${base}/figuras/${figuraId}`);
     } catch (e) {
       aviso(e instanceof Error ? e.message : String(e));
       setGuardando(false);
@@ -347,9 +341,9 @@ export default function AgregarFigura() {
                       <input className="in" id="termino" type="text" aria-label="Nuevo término" style={{ flex: '1 1 200px', width: 'auto' }} value={borradorTermino}
                         placeholder={clase === 'Hashtag' ? '#Etiqueta' : clase === 'Error de escritura' ? 'Como suele escribirse mal' : clase === 'Apodo' ? 'Apodo de uso público' : 'Nombre y apellido'}
                         onChange={(e) => setBorradorTermino(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); agregarTermino(); } }} />
-                      <button type="button" className={terminos.length >= MAX_TERMINOS ? 'btn bg dis' : 'btn bg'} onClick={agregarTermino}>Agregar término</button>
+                      <button type="button" className={puedeAgregarTermino ? 'btn bg' : 'btn bg dis'} disabled={!puedeAgregarTermino} onClick={agregarTermino}>Agregar término</button>
                     </div>
-                    <span className="mu">Nombres, apodos de uso público, hashtags y errores de escritura frecuentes. Sin términos, se busca por el nombre completo.</span>
+                    <span className="mu">{terminoRepetido ? `«${terminoListo}» ya está en la lista.` : terminos.length >= MAX_TERMINOS ? `Llegaste al máximo de ${MAX_TERMINOS} términos.` : 'Nombres, apodos de uso público, hashtags y errores de escritura frecuentes. Sin términos, se busca por el nombre completo.'}</span>
                   </div>
                 </section>
 

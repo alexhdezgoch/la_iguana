@@ -5,4 +5,4 @@
 .pg-eventos .ev-filtros{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
 .pg-eventos .ev-nota{padding-top:2px;white-space:nowrap}
 .pg-eventos td.nw{white-space:nowrap}
-.pg-eventos .ev-sub{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pg-eventos .ev-sub{overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2}

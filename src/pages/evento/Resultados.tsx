@@ -283,7 +283,7 @@ export function Resultados({ evento, participantes, mensajes, figuras, narrativa
                   </div>
                 ))}
               </div>
-              {hashtags.filter((h) => h.nota).map((h) => <p className="mu" key={h.hashtag}>{h.hashtag}: {h.nota}.</p>)}
+              {hashtags.filter((h) => h.nota).map((h) => <p className="mu" key={h.hashtag}>{h.hashtag}: {String(h.nota).replace(/^\p{Lu}(?!\p{Lu})/u, (c) => c.toLowerCase()).replace(/\.\s*$/, '')}.</p>)}
               <div className="ev-ley">
                 <span><span className="d" style={{ background: COLOR_LADO.propio }} />Propio</span>
                 <span><span className="d" style={{ background: COLOR_LADO.rival }} />Rival</span>
@@ -332,7 +332,9 @@ function Relacionado({ alertas, menciones, base, hoy, zona }: { alertas: Alerta[
             {alertas.map((a) => (
               <div className="li" key={a.id} style={{ alignItems: 'flex-start' }}>
                 <span className={SEVERIDAD[a.severidad]} style={{ flex: '0 0 54px', justifyContent: 'center' }}>{a.severidad}</span>
-                <div className="gr"><span className="sm">{a.texto}</span><span className="mu">{a.estado} · {cuando(a.detectada_en, hoy, zona)}</span></div>
+                <div className="gr"><span className="sm">{a.texto}</span><span className="mu">{(a.estado === 'Resuelta' || a.estado === 'Descartada') && a.resuelta_en
+                  ? `${a.estado} · ${cuando(a.resuelta_en, hoy, zona)}`
+                  : `${a.estado} · detectada ${cuando(a.detectada_en, hoy, zona)}`}</span></div>
               </div>
             ))}
           </div>

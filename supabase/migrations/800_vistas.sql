@@ -1,7 +1,7 @@
 -- Vistas de lectura. security_invoker: aplican las reglas de acceso de quien consulta.
 
 -- Figuras de una campaña con su relación y su corte de 30 días (el único periodo con datos en esta fase).
-create view public.v_figuras_campana with (security_invoker = true) as
+create or replace view public.v_figuras_campana with (security_invoker = true) as
 select
   cf.id, cf.campana_id, cf.figura_id, cf.relacion, cf.orden, cf.responsable_id, cf.extra as extra_campana,
   f.org_id, f.nombre, f.nombre_corto, f.iniciales, f.cargo, f.partido, f.coalicion, f.territorio, f.tipo, f.cuentas, f.trayectoria, f.extra,
@@ -12,7 +12,7 @@ join public.figuras f on f.id = cf.figura_id
 left join public.figura_metricas m on m.campana_id = cf.campana_id and m.figura_id = cf.figura_id and m.periodo = '30d';
 
 -- Una fila por campaña con lo que muestran Panorama y la barra lateral.
-create view public.v_campanas_resumen with (security_invoker = true) as
+create or replace view public.v_campanas_resumen with (security_invoker = true) as
 select
   c.id, c.id as campana_id, c.org_id, c.nombre, c.nombre_corto, c.contienda, c.titulo_largo, c.iniciales, c.ambito, c.fase, c.vista, c.es_demo, c.orden,
   c.inicio_campana, c.fin_campana, c.veda_inicio, c.veda_fin, c.jornada, c.fecha_corte, c.zona_horaria, c.figura_propia_id,

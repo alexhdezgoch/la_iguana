@@ -7,6 +7,7 @@ import { useSesion } from '../../shell/Sesion';
 import { db } from '../../lib/db';
 import { useTabla } from '../../lib/hooks';
 import { SEVERIDAD, cuando } from '../../lib/formato';
+import { ahoraEn } from '../alertas/comun';
 import { ALERTAS_ABIERTAS, type Alerta, type AlertaActividad, type EstadoAlerta, type Evento, type Narrativa, type Tema } from '../../lib/tipos';
 import { CargaSeccion, enLista, type Ctx } from './comun';
 
@@ -83,11 +84,13 @@ export default function SecAlertas({ c }: { c: Ctx }) {
     setGuardando(a.id);
     try {
       const cerrar = p.estado === 'Resuelta' || p.estado === 'Descartada';
-      const cambios: Partial<Alerta> = { estado: p.estado, resuelta_en: cerrar ? new Date().toISOString() : null, pospuesta_hasta: null };
+      // Reloj de la campaña, igual que la pantalla Alertas: en la demo "ahora" cae en la fecha de corte.
+      const ahora = ahoraEn(campana);
+      const cambios: Partial<Alerta> = { estado: p.estado, resuelta_en: cerrar ? ahora : null, pospuesta_hasta: null };
       if (p.estado === 'En revisión' && persona && !a.responsable_id) cambios.responsable_id = persona.id;
       if (!cerrar) cambios.motivo_cierre = null;
       await db.cambiar<Alerta>('alertas', a.id, cambios);
-      await db.crear<AlertaActividad>('alerta_actividad', { campana_id: cid, alerta_id: a.id, persona_id: persona?.id ?? null, texto: p.bitacora });
+      await db.crear<AlertaActividad>('alerta_actividad', { campana_id: cid, alerta_id: a.id, persona_id: persona?.id ?? null, texto: p.bitacora, creada_en: ahora });
       aviso(cerrar ? `Alerta ${p.estado === 'Resuelta' ? 'resuelta' : 'descartada'}` : 'Alerta en revisión');
     } catch (e) {
       aviso(e instanceof Error ? e.message : String(e));
@@ -151,7 +154,7 @@ export default function SecAlertas({ c }: { c: Ctx }) {
             </div></div>
           </>
         ) : (
-          <Vacio titulo="Todavía no hay alertas">
+          <Vacio titulo="Todavía no hay alertas en esta campaña">
             Las alertas aparecen cuando una regla detecta un cambio brusco en la conversación de esta campaña.
           </Vacio>
         )}

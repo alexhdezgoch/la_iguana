@@ -8,6 +8,7 @@ import { useAcciones } from '../../shell/Acciones';
 import { Vacio } from '../../shell/Estados';
 import { momento, plural } from './comun';
 import { Constructor } from './Constructor';
+import { Icono } from '../../shell/Iconos';
 
 export function Reglas({ reglas, campana, temas, figuras, personas, internos, yo, puedeEditar }: {
   reglas: ReglaAlerta[]; campana: Campana; temas: Tema[]; figuras: FiguraCampana[];
@@ -102,8 +103,9 @@ export function Reglas({ reglas, campana, temas, figuras, personas, internos, yo
           </div>
         </section>
       ) : !construyendo ? (
-        <Vacio titulo="Esta campaña todavía no tiene reglas de alerta">
-          {puedeEditar ? <button type="button" className="enlace-btn" onClick={() => abrir('nueva')}>Crear la primera regla</button> : 'Quien administra la campaña puede crearlas.'}
+        <Vacio titulo="Todavía no hay reglas de alerta"
+          accion={puedeEditar ? <button type="button" className="btn bg" onClick={() => abrir('nueva')}><Icono n="mas" g={2} />Crear regla</button> : null}>
+          {puedeEditar ? 'Una regla avisa cuando la conversación cambia de forma brusca.' : 'Quien administra la campaña puede crearlas.'}
         </Vacio>
       ) : null}
 

@@ -1,7 +1,7 @@
 // Crear evento: datos básicos, participantes, plan (objetivos, mensajes, narrativa, hashtags) y ventana de medición.
 // Lee v_figuras_campana, eventos, narrativas, campana_fases. Escribe eventos, evento_participantes, evento_mensajes y terminos (evento_id).
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import './CrearEvento.css';
 import { db } from '../lib/db';
 import { useTabla } from '../lib/hooks';
@@ -56,7 +56,9 @@ export default function CrearEvento() {
   const fases = useTabla<CampanaFase>('campana_fases', { eq: { campana_id: cid }, orden: 'orden' });
   const narrativas = useTabla<Narrativa>('narrativas', { eq: { campana_id: cid, figura_id: propiaId ?? '', direccion: 'Favorable' }, orden: [['menciones', 'desc']] }, !!propiaId);
 
-  const [tipo, setTipo] = useState<Tipo>('Mitin');
+  // ?tipo=Crisis (desde el paso sugerido de una alerta) preselecciona el tipo.
+  const [params] = useSearchParams();
+  const [tipo, setTipo] = useState<Tipo>(() => (TIPOS as readonly string[]).includes(params.get('tipo') ?? '') ? params.get('tipo') as Tipo : 'Mitin');
   const [origen, setOrigen] = useState<Origen>('Propio');
   const [nombre, setNombre] = useState('');
   const [fecha, setFecha] = useState('');
@@ -147,10 +149,16 @@ export default function CrearEvento() {
     if (!v) return;
     cambiarMensaje(i, { terminos: m.terminos.some((x) => normal(x) === normal(v)) ? m.terminos : [...m.terminos, v], borrador: '' });
   };
+  /** Un término se puede agregar si no está vacío y no está ya en la lista. */
+  const terminoNuevo = (m: { terminos: string[]; borrador: string }) => {
+    const v = m.borrador.trim();
+    return !!v && !m.terminos.some((x) => normal(x) === normal(v));
+  };
+  const tagNormal = (t: string) => { const v = t.trim().replace(/\s+/g, ''); return !v || v === '#' ? '' : v[0] === '#' ? v : '#' + v; };
+  const tagNuevo = !!tagNormal(tagBorrador) && !tags.some((x) => normal(x) === normal(tagNormal(tagBorrador)));
   const agregarTag = () => {
-    let v = tagBorrador.trim().replace(/\s+/g, '');
+    const v = tagNormal(tagBorrador);
     if (!v) return;
-    if (v[0] !== '#') v = '#' + v;
     if (!tags.some((x) => normal(x) === normal(v))) setTags([...tags, v]);
     setTagBorrador('');
   };
@@ -306,7 +314,7 @@ export default function CrearEvento() {
                         ))}
                         <input className="in" type="text" aria-label="Nuevo término del mensaje" placeholder="Agregar término y Enter" style={{ flex: '1 1 160px', width: 'auto', height: 28 }} value={m.borrador}
                           onChange={(e) => cambiarMensaje(i, { borrador: e.target.value })} onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); agregarTerminoMensaje(i); } }} />
-                        <button type="button" className="btn bg sm2" style={{ height: 28 }} onClick={() => agregarTerminoMensaje(i)}>Agregar</button>
+                        <button type="button" className="btn bg sm2" style={{ height: 28 }} disabled={!terminoNuevo(m)} title={m.borrador.trim() && !terminoNuevo(m) ? 'Ese término ya está en la lista' : undefined} onClick={() => agregarTerminoMensaje(i)}>Agregar</button>
                       </div>
                       {m.terminos.length === 0 ? <div className="wn" style={{ padding: '6px 10px' }}><span>Sin términos no podremos medir si el mensaje aterrizó.</span></div> : null}
                     </div>
@@ -339,7 +347,7 @@ export default function CrearEvento() {
                     {tags.map((h, i) => <Etiqueta key={h} quitar="Quitar hashtag" alQuitar={() => setTags(tags.filter((_, j) => j !== i))}>{h}</Etiqueta>)}
                     <input className="in" type="text" aria-label="Nuevo hashtag" placeholder="#Etiqueta y Enter" style={{ flex: '1 1 160px', width: 'auto', height: 28 }} value={tagBorrador}
                       onChange={(e) => setTagBorrador(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); agregarTag(); } }} />
-                    <button type="button" className="btn bg sm2" style={{ height: 28 }} onClick={agregarTag}>Agregar</button>
+                    <button type="button" className="btn bg sm2" style={{ height: 28 }} disabled={!tagNuevo} title={tagNormal(tagBorrador) && !tagNuevo ? 'Ese hashtag ya está en la lista' : undefined} onClick={agregarTag}>Agregar</button>
                   </div>
                 </div>
               </section>
@@ -423,8 +431,12 @@ export default function CrearEvento() {
               <div className="ch"><h2>Así aparecerá en Eventos</h2><span className={ESTADO_EVENTO[estadoFinal]}>{estadoFinal}</span></div>
               <div className="who" style={{ alignItems: 'flex-start' }}>
                 <span className="ini" aria-hidden="true" style={{ width: 44, height: 44, flexDirection: 'column', gap: 2, lineHeight: 1 }}>
-                  <span style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: '.04em' }}>{okFecha ? mesCorto(dT) : '··'}</span>
-                  <span style={{ fontSize: 15, color: '#1B211D' }}>{okFecha ? new Date(dT).getUTCDate() : '··'}</span>
+                  {okFecha ? (
+                    <>
+                      <span style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: '.04em' }}>{mesCorto(dT)}</span>
+                      <span style={{ fontSize: 15, color: '#1B211D' }}>{new Date(dT).getUTCDate()}</span>
+                    </>
+                  ) : <span style={{ fontSize: 10, lineHeight: 1.15, textAlign: 'center' }}>Sin fecha</span>}
                 </span>
                 <span className="gr">
                   <span className="b">{nombre.trim() || 'Nombre del evento'}</span>

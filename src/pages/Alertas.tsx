@@ -6,6 +6,7 @@ import { useSearchParams } from 'react-router-dom';
 import { hoyDe, useCampana, usePagina, useRol } from '../shell/Campana';
 import { useSesion } from '../shell/Sesion';
 import { Carga, Vacio } from '../shell/Estados';
+import { Icono } from '../shell/Iconos';
 import { useNombres, useTabla } from '../lib/hooks';
 import { fecha } from '../lib/formato';
 import type { Alerta, Evento, FiguraCampana, MiembroCampana, Narrativa, Persona, PersonaVisible, ReglaAlerta, Tema } from '../lib/tipos';
@@ -97,9 +98,9 @@ export default function Alertas() {
           alertas.datos.length ? (
             <Bandeja alertas={alertas.datos} campana={campana} cx={cx} responsables={responsables} yo={yo} puedeEditar={puedeEditar} esCliente={esCliente} />
           ) : (
-            <Vacio titulo="Todavía no hay alertas en esta campaña">
-              Las alertas aparecen cuando una regla detecta un cambio; la detección automática llega con la ingesta.{' '}
-              {puedeEditar ? <button type="button" className="enlace-btn" onClick={() => irA('reglas', { regla: 'nueva' })}>Crear una regla</button> : null}
+            <Vacio titulo="Todavía no hay alertas en esta campaña"
+              accion={puedeEditar ? <button type="button" className="btn bg" onClick={() => irA('reglas', { regla: 'nueva' })}><Icono n="mas" g={2} />Crear regla</button> : null}>
+              Las alertas aparecen cuando una regla detecta un cambio; la detección automática llega con la ingesta.
             </Vacio>
           )
         ) : (

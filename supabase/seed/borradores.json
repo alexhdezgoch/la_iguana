@@ -4,7 +4,7 @@
   "org_id": "brujula",
   "persona_id": "valentina",
   "tipo": "nueva-campana",
-  "actualizado_en": "2027-05-13T09:00:00-04:00",
+  "actualizado_en": "2026-11-10T18:30:00-04:00",
   "datos": {
    "paso": 0,
    "campana": {
@@ -54,10 +54,6 @@
       },
       {
        "texto": "Guanipa",
-       "tipo": "Nombre"
-      },
-      {
-       "texto": "Guanipa alcaldía",
        "tipo": "Nombre"
       }
      ]

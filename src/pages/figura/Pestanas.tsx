@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ESTADO_EVENTO, compacto, cuando, fecha, num, pct, neto } from '../../lib/formato';
 import type { FiguraCampana, Mencion, MencionFigura, Narrativa, SerieDiaria, Tema, TemaFigura } from '../../lib/tipos';
 import { DIRECCION, SENTIMIENTO, SerieDia, cargoDe, fechaCorta, type EventoFigura } from './comun';
+import { urlSegura } from '../../lib/url';
 
 const COLOR_SENT = { fav: '#3A76C4', neu: '#C5CAC4', unf: '#D07A2D' };
 
@@ -211,7 +212,7 @@ export function Publicaciones({ menciones, enlaces, figuraId, hoy, zona, base }:
               <div className="li fg-mencion" key={m.id}>
                 <div className="gr">
                   <span className="mu">{[m.canal, m.fuente, cuando(m.publicada_en, hoy, zona)].filter(Boolean).join(' · ')}</span>
-                  {m.url ? <a className="tl" href={m.url} target="_blank" rel="noreferrer">{m.titulo ?? m.resumen ?? 'Publicación'}</a> : <span className="b">{m.titulo ?? m.resumen ?? 'Publicación'}</span>}
+                  {urlSegura(m.url) ? <a className="tl" href={urlSegura(m.url)!} target="_blank" rel="noopener noreferrer">{m.titulo ?? m.resumen ?? 'Publicación'}</a> : <span className="b">{m.titulo ?? m.resumen ?? 'Publicación'}</span>}
                   {m.titulo && m.resumen ? <span className="sm fg-gris">{m.resumen}</span> : null}
                 </div>
                 <div className="fg-lado">

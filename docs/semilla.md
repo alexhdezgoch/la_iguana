@@ -13,7 +13,20 @@ Los datos están en `supabase/seed/<tabla>.json`. `rig/semilla.mjs` los carga en
 - **Alertas abiertas**: `estado in ('Nueva','En revisión','Pospuesta')`. Hoy hay 5 / 3 / 1 en `v_campanas_resumen.alertas_abiertas`. `ALERTAS_ABIERTAS` está en `tipos`.
 - **Personas**: siempre por `persona_id`. El nombre visible es `personas.nombre`. Las iniciales son derivadas. Para mostrar autores y responsables a cualquier rol (también Cliente, que no lee `personas`) está la vista `v_personas_campana` (`id`, `nombre_corto`, `iniciales`) y el hook `useNombres()`.
 - **Nombres cortos**: `figuras.nombre_corto` ("Machado", "González U.", "D. Rodríguez", "J. Rodríguez") para encabezados como "Neto de Machado"; `campanas.nombre_corto` ("Presidenciales", "Zulia", "Chacao") para filtros y chips. Pueden ser null: se usa `nombre` (helper `corto()` de `formato.ts`).
-- Las citas de publicaciones ciudadanas se guardan como descripciones neutras en tercera persona. La fuente es el medio, o `Cuenta pública` / `Cuenta oficial`. La cobertura se cuenta en notas y nunca se valora en dinero. La coordinación siempre es "posible".
+- Las citas de publicaciones ciudadanas se guardan como descripciones neutras en tercera persona. La cobertura se cuenta en notas y nunca se valora en dinero. La coordinación siempre es "posible".
+
+### Contenido sobre personas reales (escenario hipotético)
+
+La demo usa figuras públicas reales con cifras y hechos inventados. Toda la semilla sale de `rig/generar-semilla.py` (`python3 rig/generar-semilla.py` y después `node rig/semilla.mjs`); los JSON y `seed.sql` no se editan a mano.
+
+- **Fuentes genéricas, nunca un medio real.** `menciones.fuente`, `alertas.detalle.evidencia[].fuente`, `narrativas.detalle.publicaciones[].fuente` e `impulsores[].medio`, `figura_metricas.detalle.cobertura.por_medio[].medio`, `reglas_alerta.condicion.alcance.medios` y los ítems de medios de los reportes usan solo estas etiquetas: `Medio digital nacional`, `Portal de noticias`, `Diario nacional`, `Diario digital`, `Medio regional`, `Emisora de radio`, `Canal de TV`, `Canal de noticias de TV`, o `Cuenta pública`, `Cuenta oficial`, `Cuenta oficial de una figura en seguimiento`, `Cuentas sin afiliación pública`. El tipo (`fuente_tipo`, `canal`) sigue los vocabularios de abajo.
+- **Títulos descriptivos "de ejemplo".** "Nota de ejemplo sobre…", "Segmento de radio de ejemplo sobre…", "Publicación ciudadana de ejemplo…". No hay citas, entrevistas ni declaraciones atribuidas a personas reales.
+- **Sin acciones atribuidas a personas reales.** Las alertas y reportes dicen "Una cuenta oficial de una figura rival publicó sobre…" y no llevan `figura_id` de la persona (`pres-alerta-3`, `zulia-alerta-3`). La sección "Rivales" del corte diario cuenta publicaciones de cuentas rivales por tema. Las reacciones de rivales al debate no se vinculan a narrativas en contra (`narrativa_id` y `menciones` null).
+- **Narrativas en contra sin figuras como impulsoras.** En las narrativas `Desfavorable`, `detalle.impulsores` solo tiene `{medio}` (medios genéricos o `Cuentas sin afiliación pública`); el generador lo comprueba.
+- **Nombres de narrativa = temas neutros.** No describen ni valoran a la persona ("Diálogo y fecha electoral", "Negociación y acuerdos", "Renovación política", "Resultados en movilidad"). Las descripciones de posicionamiento dicen "Menciones sobre … asociadas a la figura", sin afirmar que la figura promueve un mensaje. Los ids no cambian (`pres-fuera-del-dialogo`, `pres-linea-dura`, `zulia-mas-de-lo-mismo`, `chacao-trafico`…).
+- **Cargos neutros.** `figuras.cargo` es un rol descriptivo ("Dirigente opositora", "Dirigente del PSUV", "Dirigente de Un Nuevo Tiempo", "Dirigente regional", "Dirigente municipal") que no afirma un cargo público vigente ni una candidatura. `machado.extra.subtitulo` = "Nobel de la Paz 2025" (hecho). Las relaciones de campaña (Propia, Rival…) y `extra_campana.candidatura` son del escenario.
+- **Nada se envió.** La actividad de alertas no dice que se notificó por WhatsApp, email o Slack. Las notas de envíos fallidos o parciales empiezan con "Ejemplo:".
+- **Marca del cliente de ejemplo.** `marca_cliente` = "Cliente de ejemplo · escenario hipotético" (CE) y las listas de destinatarios dicen "(ejemplo)". Todo documento de una campaña `es_demo` (vista previa, impresión, PDF y HTML) lleva arriba de cada página la línea "Escenario hipotético: personas reales, cifras y hechos inventados." (`marcaDe` en `src/lib/reportes/marca.ts` la pone en `Marca.aviso` y `Documento.tsx` la muestra).
 
 ## Vocabularios
 
@@ -24,7 +37,7 @@ Los datos están en `supabase/seed/<tabla>.json`. `rig/semilla.mjs` los carga en
 | `campana_fases.nombre` | Precampaña, Intercampaña, Campaña, Veda, Jornada electoral, Post-electoral |
 | `narrativas.direccion` | Favorable (chip "A favor"), Desfavorable ("En contra"), Sin dirección, Posicionamiento |
 | `narrativas.tendencia`, `temas.tendencia` | En aumento, Estable, A la baja, Emergente |
-| `narrativas.detalle.relacionadas[].tipo` | Responde a, Comparte términos, Se alimenta de |
+| `narrativas.detalle.relacionadas[].tipo` | Contranarrativa, Relacionada |
 | `eventos.tipo` | Mitin, Debate, Gira, Conferencia de prensa, Encuentro ciudadano, Informe, Entrevista, Crisis |
 | `eventos.origen` | Propio, De rival, Institucional |
 | `eventos.estado` | Borrador, Programado, En curso, En análisis, Cerrado, Cancelado |
@@ -71,9 +84,9 @@ Las listas de tipos de evento, roles, tipos de figura, redes, tipos de término 
 | Sparkline | `series_diarias` con entidad `figura` y entidad_id de la figura propia (30 filas, suman 62000) |
 | Participación en la conversación | `v_figuras_campana` ordenada por `participacion` desc: `relacion`, `neto` |
 | Alertas abiertas | `alertas` abiertas, ordenadas por severidad y luego `orden`: `severidad`, `texto` |
-| Próximo evento | primer `eventos` con `fecha_inicio >= hoy` y estado distinto de Cancelado o Borrador: `pres-segundo-debate`. "En 10 días" es derivado. |
+| Próximo evento | primer `eventos` con `fecha_inicio >= hoy` y estado distinto de Cancelado o Borrador: `pres-segundo-debate`. "En 10 días" es derivado. En Zulia es `zulia-recorrido` (Programado, en 5 días); en Chacao, `chacao-asamblea-altamira` (en 7 días). |
 | Temas del periodo | `temas` por `orden`: `nombre`, `porcentaje`, `menciones` |
-| Narrativas sobre la figura | `narrativas` con `figura_id` igual a la figura propia, ordenadas por `menciones` desc: `nombre`, `menciones`, `tendencia`, `direccion`. Son **5** (ver discrepancias). |
+| Narrativas sobre la figura | `narrativas` con `figura_id` igual a la figura propia o con la figura en `detalle.figura_ids`, ordenadas por `menciones` desc: `nombre`, `menciones`, `tendencia`, `direccion`. Son **6** (5 con `figura_id` = machado más `pres-fecha-cierta`, que la lista en `figura_ids`), igual en Resumen, Temas y Figura. |
 
 ## 2. Panorama — `/`
 
@@ -100,7 +113,7 @@ Las listas de tipos de evento, roles, tipos de figura, redes, tipos de término 
 - Por canal: `figura_metricas.detalle.canales [{canal, menciones}]`.
 - Cobertura en medios: `figura_metricas.detalle.cobertura {favorables, neutrales, desfavorables, por_medio:[{medio, notas}]}`. Son conteos, nunca montos.
 - Temas de la figura: `tema_figuras` con `figura_id`: `porcentaje`, `porcentaje_propias`, `favorable/neutral/desfavorable`, `neto`.
-- Narrativas: `narrativas` con `figura_id`, o la figura dentro de `detalle.figura_ids`.
+- Narrativas: `narrativas` con `figura_id`, o la figura dentro de `detalle.figura_ids` (Machado: 6).
 - Menciones recientes: `menciones` ⋈ `mencion_figuras`.
 - Pestañas sin diseño (Audiencia, Comparar): **no sembradas**.
 
@@ -144,11 +157,12 @@ Formulario sobre `eventos`, `evento_participantes`, `evento_mensajes` y `termino
 
 ## 10. Temas y narrativas — `/c/:id/temas`
 
-- Temas: `temas` (nombre, menciones, porcentaje, cambio, tendencia, es_propio). Por canal: `detalle.canales [{canal, porcentaje}]`. "Otros" lleva `detalle.otros = true`. `detalle.cambio_ventana` aparece cuando el cambio no es de 7 días ("48 h").
+- Temas: `temas` (nombre, menciones, porcentaje, cambio, tendencia, es_propio). Por canal: `detalle.canales [{canal, porcentaje}]`. "Otros" lleva `detalle.otros = true`.
+  - `temas.cambio` es el cambio del periodo guardado frente a los 30 días previos (la leyenda dice "Cambio vs. 30 días previos"). No se puede derivar de la serie, que solo cubre el periodo. `detalle.cambio_ventana` aparece cuando el cambio es de otra ventana ("48 h" en `zulia-electricidad`). Con la ventana de 24 h o 7 días, el cambio sí se deriva de la serie.
 - Nota del encabezado: `campanas.extra.nota_temas`.
 - Series de temas: `series_diarias` con entidad `tema` (7 × 30, cada una suma `temas.menciones`).
 - Mapa de calor tema × figura: `tema_figuras`.
-  - `porcentaje` = % del tema que corresponde a la figura.
+  - `porcentaje` = % del tema que corresponde a la figura. Las menciones de la figura propia en los 7 temas suman exactamente su total (62,000).
   - `porcentaje_propias` = % de las publicaciones propias de la figura.
   - `neto`, y `favorable/neutral/desfavorable` solo para la figura propia.
   - "Rival en tema propio": `porcentaje_hace_7d` y `porcentaje_propias_hace_7d`.
@@ -162,7 +176,11 @@ Formulario sobre `eventos`, `evento_participantes`, `evento_mensajes` y `termino
     - `relacionadas [{narrativa_id, tipo}]`
     - `coordinacion {nivel, senales[]}`, solo en `pres-fuera-del-dialogo` y siempre como "posible"
     - `figura_ids` cuando la narrativa toca a varias figuras
-- Serie de narrativas: `series_diarias` con entidad `narrativa` (11 × 30). El último día es igual a `menciones_24h`.
+- Serie de narrativas: `series_diarias` con entidad `narrativa` (11 × 30). Cada serie es 0 antes de `detectada_el`, suma `menciones` y reproduce lo guardado:
+  - último día = `menciones_24h`; `cambio_24h` = último día frente al anterior;
+  - `cambio_7d` = días 24-30 frente a 17-23 (null en las emergentes, que la tabla muestra como "nueva");
+  - `veces_promedio` (solo emergentes) = último día / promedio de los 7 días anteriores, contando como 0 los días previos a la detección.
+  - El generador comprueba las tres cosas. En `pres-fuera-del-dialogo` ("Diálogo y fecha electoral") el día anterior es 1,240 y el último 2,010, igual que la gráfica de `pres-alerta-1`.
 
 ## 11. Alertas — `/c/:id/alertas`
 
@@ -174,11 +192,11 @@ Formulario sobre `eventos`, `evento_participantes`, `evento_mensajes` y `termino
   - `explicacion`, `valor`, `umbral`, `ventana`
   - `detalle.grafica {metrica, serie[], umbral, rango[min,max], indice_disparo, desde, hasta, signo?}`
   - `detalle.evidencia [{fuente, canal, publicada_en, descripcion, alcance, sentimiento}]`
-  - `detalle.menciones_relacionadas` (número)
+  - `detalle.menciones_relacionadas` (número): cuántas menciones sembradas abre "Ver las N en Menciones" (mismo filtro que la pantalla: narrativa, evento, tema o figura)
   - `detalle.contexto {texto, enlace}`
   - `detalle.pasos [str]`: los pasos sugeridos se guardan en cada alerta; el mapa STEPS de la demo no se usa
   - `detalle.nota_estado?`
-- Actividad: `alerta_actividad` (texto sin el nombre al inicio, persona_id cuando la acción la hizo una persona, creada_en).
+- Actividad: `alerta_actividad` (texto sin el nombre al inicio, persona_id cuando la acción la hizo una persona, creada_en). Las fechas de los textos son absolutas ("hasta el 14 may, 7:00"), no relativas. No hay filas de notificación enviada.
 - Reglas: `reglas_alerta`:
   - `tipo` = disparador, más severidad, canales, activa y figura_id.
   - `condicion {texto, umbral, unidad, ventana, alcance:{relaciones?, direccion?, tema_ids?, figura_ids?, medios?}, alcance_texto}`.
@@ -208,12 +226,13 @@ Formulario sobre `eventos`, `evento_participantes`, `evento_mensajes` y `termino
 ```
 
   Tiene contenido en: cliente-0503, diario-0513, post-primer-debate y semanal-0510 (el borrador). En los demás envíos `contenido` es `{}`.
-- Marca del cliente: `campanas.extra.marca_cliente {nombre, iniciales}`.
+  `pres-envio-cliente-0503` conserva su id, pero es la versión para el cliente del corte del jueves 13 de mayo (periodo 12 may 7:00 a 13 may 7:00, generado el 13 a las 7:05), igual que su contenido. "Menciones en 24 h" del corte es el último día de la serie de Machado (3,051, +3%). Los cambios del semanal son los `cambio_7d` de las narrativas.
+- Marca del cliente: `campanas.extra.marca_cliente {nombre, iniciales}` ("Cliente de ejemplo · escenario hipotético", CE).
 - Las secciones de "Descargar reporte" son **texto fijo de la interfaz y se quedan en el componente**.
 
 ## 13. Nueva campaña (asistente) — `/nueva`
 
-- Borrador: `borradores` (`borrador-maracaibo`, persona valentina, tipo `nueva-campana`). `datos {paso, campana{…}, fases[], figuras[{figura_id, relacion, terminos[]}], confirmo_personas_publicas, terminos[], temas[], equipo[{persona_id, rol}]}`.
+- Borrador: `borradores` (`borrador-maracaibo`, persona valentina, tipo `nueva-campana`). El asistente usa el reloj real, así que `actualizado_en` (2026-11-10) es anterior a hoy y no a la fecha de la demo. `datos {paso, campana{…}, fases[], figuras[{figura_id, relacion, terminos[]}], confirmo_personas_publicas, terminos[], temas[], equipo[{persona_id, rol}]}`.
 - Al terminar, el asistente llama a `crear_campana` (850).
 - Las figuras existentes para elegir están en `figuras` del equipo. Las personas del equipo están en `personas` del mismo `org_id`.
 - Las estimaciones de volumen por término son **no sembradas** (fase 2).
@@ -226,7 +245,7 @@ Formulario sobre `eventos`, `evento_participantes`, `evento_mensajes` y `termino
   - cargo: `extra_campana.cargo` cuando existe, si no `figuras.cargo`.
 - Serie de la figura propia: `series_diarias` con entidad `figura` y entidad_id `rosales` (pico el día 22).
 - Temas: `temas` con `tendencia` (6). Narrativas: `narrativas` con figura rosales (4) y `descripcion`.
-- Eventos: `eventos` (3). Menciones: `menciones` (6, de ellas 4 por revisar). Alertas: `alertas` (4, de ellas 3 abiertas).
+- Eventos: `eventos` (3). `zulia-recorrido` es Programado: es el próximo evento (en 5 días). Menciones: `menciones` (6, de ellas 4 por revisar). Alertas: `alertas` (4, de ellas 3 abiertas). `zulia-alerta-2` tiene el mismo texto que `pres-alerta-4` (Panorama las cuenta una vez), con los valores de Zulia (neto +4).
 
 ## 15. Chacao (vista compacta) — `/c/chacao`
 

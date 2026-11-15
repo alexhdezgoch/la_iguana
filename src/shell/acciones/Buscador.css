@@ -28,5 +28,7 @@
 .pg-buscador .bu-fin{margin-left:auto}
 @keyframes bu-fade{from{opacity:0}}
 @keyframes bu-rise{from{opacity:0;transform:translateY(8px) scale(.985)}}
-@media (max-width:600px){.pg-buscador{padding:12px}.pg-buscador .bu-pf>span:not(.bu-fin){display:none}.pg-buscador .bu-fin{margin-left:0}}
+@media (max-width:600px){.pg-buscador{padding:12px}.pg-buscador .bu-pf{gap:6px 12px}.pg-buscador .bu-fin{margin-left:0}}
 @media (prefers-reduced-motion:reduce){.pg-buscador,.pg-buscador *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+.pg-buscador button.bu-it{width:100%;border:0;background:transparent;font:inherit;text-align:left}
+.pg-buscador button.bu-it.on{background:var(--soft)}

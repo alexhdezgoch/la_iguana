@@ -7,6 +7,7 @@ import { Carga, Vacio } from '../shell/Estados';
 import { useTabla } from '../lib/hooks';
 import { REL, SEVERIDAD, diasEntre, fecha, neto, num, pct, rango } from '../lib/formato';
 import { ALERTAS_ABIERTAS, type Alerta, type Evento, type FiguraCampana, type Narrativa, type SerieDiaria, type Tema } from '../lib/tipos';
+import { narrativasDe } from './figura/comun';
 
 const DIRECCION: Record<string, { texto: string; cls: string }> = {
   Favorable: { texto: 'A favor', cls: 'chip fav' },
@@ -40,10 +41,12 @@ export default function Resumen() {
 
   const figuras = useTabla<FiguraCampana>('v_figuras_campana', { eq: { campana_id: cid }, orden: [['participacion', 'desc'], ['orden', 'asc']] });
   const alertas = useTabla<Alerta>('alertas', { eq: { campana_id: cid, estado: ALERTAS_ABIERTAS }, orden: 'orden' });
-  const eventos = useTabla<Evento>('eventos', { eq: { campana_id: cid, estado: ['Programado', 'Borrador'] }, desde: { fecha_inicio: hoy }, orden: 'fecha_inicio', limite: 1 });
+  const eventos = useTabla<Evento>('eventos', { eq: { campana_id: cid, estado: ['Programado', 'Borrador'] }, desde: { fecha_inicio: hoy }, orden: 'fecha_inicio', limite: 20 });
   const temas = useTabla<Tema>('temas', { eq: { campana_id: cid }, orden: 'orden' });
   const propiaId = campana.figura_propia_id;
-  const narrativas = useTabla<Narrativa>('narrativas', { eq: { campana_id: cid, figura_id: propiaId ?? '' }, orden: 'orden' }, !!propiaId);
+  // Narrativas sobre la figura propia: misma regla que Figura y Temas (figura_id o detalle.figura_ids), por menciones.
+  const narrativas = useTabla<Narrativa>('narrativas', { eq: { campana_id: cid }, orden: 'orden' }, !!propiaId);
+  const sobrePropia = propiaId ? narrativasDe(narrativas.datos, propiaId) : [];
   const serie = useTabla<SerieDiaria>('series_diarias', { eq: { campana_id: cid, entidad: 'figura', entidad_id: propiaId ?? '' }, orden: 'fecha' }, !!propiaId);
 
   const propia = figuras.datos.find((f) => f.figura_id === propiaId) ?? null;
@@ -56,7 +59,9 @@ export default function Resumen() {
   const rival = conCorte ? conPart.find((f) => f.figura_id !== propiaId) ?? null : null;
   const conMetricas = figuras.datos.filter((f) => f.periodo != null).length;
   const maxTema = Math.max(1, ...temas.datos.map((t) => t.porcentaje ?? 0));
-  const proximo = eventos.datos[0] ?? null;
+  // Un borrador no es un evento confirmado: el "próximo evento" es el primer Programado. Si solo hay borradores, se avisa aparte.
+  const proximo = eventos.datos.find((e) => e.estado === 'Programado') ?? null;
+  const borrador = proximo ? null : eventos.datos.find((e) => e.estado === 'Borrador') ?? null;
   const enDias = proximo ? diasEntre(hoy, proximo.fecha_inicio) : null;
 
   // Fase electoral: día de campaña y cuenta regresiva, solo si la campaña tiene calendario.
@@ -194,7 +199,8 @@ export default function Resumen() {
               ) : (
                 <>
                   <span className="kl">Próximo evento</span>
-                  <h2>Sin eventos por venir</h2>
+                  <h2>{borrador ? 'Sin eventos programados' : 'Sin eventos por venir'}</h2>
+                  {borrador ? <span className="sm">Hay un borrador por completar: <Link className="tl" to={`${base}/eventos/${borrador.id}`}>{borrador.nombre}</Link></span> : null}
                   <div style={{ paddingTop: 6 }}>{puedeEditar ? <Link className="lk" to={`${base}/eventos/nuevo`}>Crear evento</Link> : <Link className="lk" to={`${base}/eventos`}>Ver eventos</Link>}</div>
                 </>
               )}
@@ -220,9 +226,9 @@ export default function Resumen() {
 
           <section className="card c1">
             <h2>{propia ? `Narrativas sobre ${propia.nombre}` : 'Narrativas'}</h2>
-            {narrativas.datos.length ? (
+            {sobrePropia.length ? (
               <div className="list">
-                {narrativas.datos.map((n) => {
+                {sobrePropia.map((n) => {
                   const d = DIRECCION[n.direccion] ?? DIRECCION['Sin dirección'];
                   return (
                     <div className="li" key={n.id}>

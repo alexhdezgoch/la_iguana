@@ -59,11 +59,11 @@
      "porcentaje": 5
     },
     {
-     "medio": "Unión Radio",
+     "medio": "Emisora de radio",
      "porcentaje": 3
     },
     {
-     "medio": "El Pitazo",
+     "medio": "Portal de noticias",
      "porcentaje": 2
     }
    ],
@@ -71,13 +71,13 @@
     {
      "canal": "X",
      "fuente": "Cuenta oficial de una figura en seguimiento",
-     "descripcion": "Publicación sobre el plan de retorno de migrantes",
+     "descripcion": "Publicación de ejemplo sobre el plan de retorno de migrantes",
      "alcance": 343000
     },
     {
      "canal": "Medio digital",
-     "fuente": "El Pitazo",
-     "descripcion": "Nota sobre el plan de retorno de migrantes",
+     "fuente": "Portal de noticias",
+     "descripcion": "Nota de ejemplo sobre el plan de retorno de migrantes",
      "alcance": 243000
     },
     {
@@ -88,8 +88,8 @@
     },
     {
      "canal": "Radio",
-     "fuente": "Unión Radio",
-     "descripcion": "Segmento sobre el plan de retorno de migrantes",
+     "fuente": "Emisora de radio",
+     "descripcion": "Segmento de ejemplo sobre el plan de retorno de migrantes",
      "alcance": 114000
     },
     {
@@ -122,12 +122,12 @@
   "campana_id": "presidenciales",
   "figura_id": "machado",
   "tema_id": "pres-fecha-electoral",
-  "nombre": "Fuera del diálogo",
+  "nombre": "Diálogo y fecha electoral",
   "direccion": "Desfavorable",
   "menciones": 9600,
-  "menciones_24h": 2300,
+  "menciones_24h": 2010,
   "cambio_24h": 62,
-  "cambio_7d": 140,
+  "cambio_7d": 405,
   "tendencia": "En aumento",
   "detectada_el": "2027-05-04",
   "veces_promedio": null,
@@ -136,8 +136,8 @@
   "neto": -64,
   "estado": "Activa",
   "seguida": true,
-  "descripcion": "Su ausencia en la mesa de diálogo como argumento contra la exigencia de fecha electoral.",
-  "resumen": "Agrupa las menciones que cuestionan que la figura exija una fecha electoral sin participar en la mesa de diálogo. Apareció el 4 de mayo y se aceleró tras la cuarta ronda y la conferencia de prensa del 11 de mayo. Creció 62% en las últimas 24 horas.",
+  "descripcion": "Menciones que vinculan la exigencia de fecha electoral con la mesa de diálogo.",
+  "resumen": "Agrupa las menciones que vinculan la exigencia de una fecha electoral con la mesa de diálogo. Apareció el 4 de mayo y creció tras la cuarta ronda del diálogo y la conferencia de prensa del 11 de mayo. Creció 62% en las últimas 24 horas.",
   "resumen_aprobado": false,
   "orden": 2,
   "detalle": {
@@ -169,33 +169,29 @@
    ],
    "impulsores": [
     {
-     "figura_id": "jorge-rodriguez",
-     "porcentaje": 12
+     "medio": "Cuentas sin afiliación pública",
+     "porcentaje": 21
     },
     {
-     "figura_id": "delcy-rodriguez",
-     "porcentaje": 9
-    },
-    {
-     "medio": "Efecto Cocuyo",
+     "medio": "Medio digital nacional",
      "porcentaje": 5
     },
     {
-     "medio": "El Pitazo",
+     "medio": "Portal de noticias",
      "porcentaje": 3
     }
    ],
    "publicaciones": [
     {
      "canal": "X",
-     "fuente": "Cuenta oficial de una figura rival",
-     "descripcion": "Publicación sobre la cuarta ronda del diálogo",
+     "fuente": "Cuenta pública",
+     "descripcion": "Publicación ciudadana de ejemplo sobre la cuarta ronda del diálogo",
      "alcance": 230000
     },
     {
      "canal": "Medio digital",
-     "fuente": "Efecto Cocuyo",
-     "descripcion": "Nota sobre la cuarta ronda del diálogo",
+     "fuente": "Medio digital nacional",
+     "descripcion": "Nota de ejemplo sobre la cuarta ronda del diálogo",
      "alcance": 163000
     },
     {
@@ -206,8 +202,8 @@
     },
     {
      "canal": "Televisión",
-     "fuente": "Globovisión",
-     "descripcion": "Segmento sobre la cuarta ronda del diálogo",
+     "fuente": "Canal de noticias de TV",
+     "descripcion": "Segmento de ejemplo sobre la cuarta ronda del diálogo",
      "alcance": 77000
     },
     {
@@ -306,7 +302,7 @@
      "porcentaje": 3
     },
     {
-     "medio": "Tal Cual",
+     "medio": "Diario nacional",
      "porcentaje": 2
     }
    ],
@@ -314,13 +310,13 @@
     {
      "canal": "TikTok",
      "fuente": "Cuenta oficial de una figura en seguimiento",
-     "descripcion": "Publicación sobre la candidatura y el primer debate",
+     "descripcion": "Publicación de ejemplo sobre la candidatura y el primer debate",
      "alcance": 194000
     },
     {
      "canal": "Medio digital",
-     "fuente": "Tal Cual",
-     "descripcion": "Nota sobre la candidatura y el primer debate",
+     "fuente": "Diario nacional",
+     "descripcion": "Nota de ejemplo sobre la candidatura y el primer debate",
      "alcance": 138000
     },
     {
@@ -331,8 +327,8 @@
     },
     {
      "canal": "Televisión",
-     "fuente": "Venevisión",
-     "descripcion": "Segmento sobre la candidatura y el primer debate",
+     "fuente": "Canal de TV",
+     "descripcion": "Segmento de ejemplo sobre la candidatura y el primer debate",
      "alcance": 65000
     },
     {
@@ -360,7 +356,7 @@
   "campana_id": "presidenciales",
   "figura_id": "machado",
   "tema_id": "pres-fecha-electoral",
-  "nombre": "Línea dura, sin acuerdos",
+  "nombre": "Negociación y acuerdos",
   "direccion": "Desfavorable",
   "menciones": 4200,
   "menciones_24h": 80,
@@ -374,8 +370,8 @@
   "neto": -52,
   "estado": "Activa",
   "seguida": false,
-  "descripcion": "Su postura descrita como poco dispuesta a negociar.",
-  "resumen": "Agrupa las menciones que describen la postura de la figura como inflexible frente a acuerdos políticos. Viene a la baja desde el primer debate. Parte de su conversación se trasladó a \"Fuera del diálogo\".",
+  "descripcion": "Menciones sobre la disposición a negociar y los acuerdos políticos.",
+  "resumen": "Agrupa las menciones sobre negociación y acuerdos políticos asociadas a la figura. Viene a la baja desde el primer debate. Parte de su conversación se trasladó a \"Diálogo y fecha electoral\".",
   "resumen_aprobado": true,
   "orden": 4,
   "detalle": {
@@ -407,50 +403,46 @@
    ],
    "impulsores": [
     {
-     "figura_id": "capriles",
-     "porcentaje": 7
-    },
-    {
-     "figura_id": "jorge-rodriguez",
-     "porcentaje": 5
+     "medio": "Cuentas sin afiliación pública",
+     "porcentaje": 12
     }
    ],
    "publicaciones": [
     {
      "canal": "X",
-     "fuente": "Cuenta oficial de una figura rival",
-     "descripcion": "Publicación sobre la disposición a negociar",
+     "fuente": "Cuenta pública",
+     "descripcion": "Publicación ciudadana de ejemplo sobre negociación y acuerdos políticos",
      "alcance": 101000
     },
     {
      "canal": "Medio digital",
-     "fuente": "El Nacional",
-     "descripcion": "Nota sobre la disposición a negociar",
+     "fuente": "Diario digital",
+     "descripcion": "Nota de ejemplo sobre negociación y acuerdos políticos",
      "alcance": 71000
     },
     {
      "canal": "Facebook",
      "fuente": "Cuenta pública",
-     "descripcion": "Publicación ciudadana de ejemplo sobre la disposición a negociar",
+     "descripcion": "Publicación ciudadana de ejemplo sobre negociación y acuerdos políticos",
      "alcance": 50000
     },
     {
      "canal": "Radio",
-     "fuente": "Unión Radio",
-     "descripcion": "Segmento sobre la disposición a negociar",
+     "fuente": "Emisora de radio",
+     "descripcion": "Segmento de ejemplo sobre negociación y acuerdos políticos",
      "alcance": 34000
     },
     {
      "canal": "Medios",
      "fuente": "Cuenta pública",
-     "descripcion": "Video o publicación de ejemplo sobre la disposición a negociar",
+     "descripcion": "Video o publicación de ejemplo sobre negociación y acuerdos políticos",
      "alcance": 21000
     }
    ],
    "terminos": [
-    "línea dura",
-    "sin acuerdos",
-    "negociación"
+    "negociación",
+    "acuerdos políticos",
+    "disposición a negociar"
    ],
    "relacionadas": [
     {
@@ -477,14 +469,14 @@
   "cambio_7d": null,
   "tendencia": "Emergente",
   "detectada_el": "2027-05-09",
-  "veces_promedio": 3.1,
+  "veces_promedio": 8.2,
   "alcance": 800000,
   "cuentas_unicas": 2900,
   "neto": 49,
   "estado": "Activa",
   "seguida": false,
   "descripcion": "El derecho a votar de los venezolanos que viven fuera del país.",
-  "resumen": "Agrupa las menciones sobre el registro y el voto de los venezolanos en el exterior, asociadas a la propuesta de la figura. Se detectó el 9 de mayo, un día antes de la gira, y hoy triplica su promedio de 7 días.",
+  "resumen": "Agrupa las menciones sobre el registro y el voto de los venezolanos en el exterior, asociadas a la propuesta de la figura. Se detectó el 9 de mayo, un día antes de la gira, y hoy tiene 8.2 veces su promedio de 7 días.",
   "resumen_aprobado": false,
   "orden": 5,
   "detalle": {
@@ -524,7 +516,7 @@
      "porcentaje": 4
     },
     {
-     "medio": "Efecto Cocuyo",
+     "medio": "Medio digital nacional",
      "porcentaje": 3
     }
    ],
@@ -532,13 +524,13 @@
     {
      "canal": "X",
      "fuente": "Cuenta oficial de una figura en seguimiento",
-     "descripcion": "Publicación sobre voto en el exterior",
+     "descripcion": "Publicación de ejemplo sobre voto en el exterior",
      "alcance": 94000
     },
     {
      "canal": "Medio digital",
-     "fuente": "Efecto Cocuyo",
-     "descripcion": "Nota sobre voto en el exterior",
+     "fuente": "Medio digital nacional",
+     "descripcion": "Nota de ejemplo sobre voto en el exterior",
      "alcance": 66000
     },
     {
@@ -549,8 +541,8 @@
     },
     {
      "canal": "Radio",
-     "fuente": "Unión Radio",
-     "descripcion": "Segmento sobre voto en el exterior",
+     "fuente": "Emisora de radio",
+     "descripcion": "Segmento de ejemplo sobre voto en el exterior",
      "alcance": 31000
     },
     {
@@ -590,7 +582,7 @@
   "cambio_7d": null,
   "tendencia": "Emergente",
   "detectada_el": "2027-05-08",
-  "veces_promedio": 2.4,
+  "veces_promedio": 8.5,
   "alcance": 700000,
   "cuentas_unicas": 2500,
   "neto": null,
@@ -637,7 +629,7 @@
      "porcentaje": 4
     },
     {
-     "medio": "Unión Radio",
+     "medio": "Emisora de radio",
      "porcentaje": 3
     }
    ],
@@ -645,13 +637,13 @@
     {
      "canal": "Facebook",
      "fuente": "Cuenta pública",
-     "descripcion": "Publicación sobre salario en bolívares",
+     "descripcion": "Publicación ciudadana de ejemplo sobre salario en bolívares",
      "alcance": 74000
     },
     {
      "canal": "Medio digital",
-     "fuente": "Tal Cual",
-     "descripcion": "Nota sobre salario en bolívares",
+     "fuente": "Diario nacional",
+     "descripcion": "Nota de ejemplo sobre salario en bolívares",
      "alcance": 53000
     },
     {
@@ -662,8 +654,8 @@
     },
     {
      "canal": "Radio",
-     "fuente": "Unión Radio",
-     "descripcion": "Segmento sobre salario en bolívares",
+     "fuente": "Emisora de radio",
+     "descripcion": "Segmento de ejemplo sobre salario en bolívares",
      "alcance": 25000
     },
     {
@@ -699,14 +691,14 @@
   "cambio_7d": null,
   "tendencia": "Emergente",
   "detectada_el": "2027-05-10",
-  "veces_promedio": 2.2,
+  "veces_promedio": 8.2,
   "alcance": 600000,
   "cuentas_unicas": 2100,
   "neto": null,
   "estado": "Activa",
   "seguida": false,
   "descripcion": "La exigencia de una fecha electoral definida y sin cambios.",
-  "resumen": "Agrupa las menciones que piden confirmar la fecha de la elección sin nuevos cambios. La usan varias figuras, entre ellas la propia, y funciona como respuesta a \"Fuera del diálogo\". Se detectó el 10 de mayo.",
+  "resumen": "Agrupa las menciones que piden confirmar la fecha de la elección sin nuevos cambios. Toca a varias figuras, entre ellas la propia, y funciona como respuesta a \"Diálogo y fecha electoral\". Se detectó el 10 de mayo.",
   "resumen_aprobado": false,
   "orden": 7,
   "detalle": {
@@ -750,7 +742,7 @@
      "porcentaje": 5
     },
     {
-     "medio": "Runrunes",
+     "medio": "Medio regional",
      "porcentaje": 2
     }
    ],
@@ -758,13 +750,13 @@
     {
      "canal": "X",
      "fuente": "Cuenta oficial de una figura en seguimiento",
-     "descripcion": "Publicación sobre la fecha de la elección",
+     "descripcion": "Publicación de ejemplo sobre la fecha de la elección",
      "alcance": 62000
     },
     {
      "canal": "Medio digital",
-     "fuente": "Runrunes",
-     "descripcion": "Nota sobre la fecha de la elección",
+     "fuente": "Medio regional",
+     "descripcion": "Nota de ejemplo sobre la fecha de la elección",
      "alcance": 44000
     },
     {
@@ -775,8 +767,8 @@
     },
     {
      "canal": "Radio",
-     "fuente": "Unión Radio",
-     "descripcion": "Segmento sobre la fecha de la elección",
+     "fuente": "Emisora de radio",
+     "descripcion": "Segmento de ejemplo sobre la fecha de la elección",
      "alcance": 21000
     },
     {
@@ -827,8 +819,8 @@
   "neto": 12,
   "estado": "Activa",
   "seguida": false,
-  "descripcion": "Posicionamiento en torno a la continuidad de la gestión.",
-  "resumen": "Posicionamiento en torno a la continuidad de la gestión. La etiqueta es neutral: describe el mensaje que promueve la figura, sin valorarlo. Agrupa publicaciones propias de la figura y menciones de terceros que lo repiten.",
+  "descripcion": "Menciones sobre continuidad y estabilidad asociadas a la figura.",
+  "resumen": "Menciones sobre continuidad y estabilidad asociadas a la figura. La etiqueta es neutral: resume el tema de las menciones, sin valorarlo ni atribuir una postura a la figura.",
   "resumen_aprobado": false,
   "orden": 8,
   "detalle": {
@@ -868,7 +860,7 @@
      "porcentaje": 6
     },
     {
-     "medio": "Globovisión",
+     "medio": "Canal de noticias de TV",
      "porcentaje": 4
     }
    ],
@@ -876,31 +868,31 @@
     {
      "canal": "X",
      "fuente": "Cuenta oficial de una figura en seguimiento",
-     "descripcion": "Publicación sobre la continuidad de la gestión",
+     "descripcion": "Publicación de ejemplo sobre continuidad y estabilidad",
      "alcance": 130000
     },
     {
      "canal": "Medio digital",
-     "fuente": "Globovisión",
-     "descripcion": "Nota sobre la continuidad de la gestión",
+     "fuente": "Canal de noticias de TV",
+     "descripcion": "Nota de ejemplo sobre continuidad y estabilidad",
      "alcance": 92000
     },
     {
      "canal": "Facebook",
      "fuente": "Cuenta pública",
-     "descripcion": "Publicación ciudadana de ejemplo sobre la continuidad de la gestión",
+     "descripcion": "Publicación ciudadana de ejemplo sobre continuidad y estabilidad",
      "alcance": 65000
     },
     {
      "canal": "Televisión",
-     "fuente": "Venevisión",
-     "descripcion": "Segmento sobre la continuidad de la gestión",
+     "fuente": "Canal de TV",
+     "descripcion": "Segmento de ejemplo sobre continuidad y estabilidad",
      "alcance": 43000
     },
     {
      "canal": "Medios",
      "fuente": "Cuenta pública",
-     "descripcion": "Video o publicación de ejemplo sobre la continuidad de la gestión",
+     "descripcion": "Video o publicación de ejemplo sobre continuidad y estabilidad",
      "alcance": 27000
     }
    ],
@@ -936,8 +928,8 @@
   "neto": 21,
   "estado": "Activa",
   "seguida": false,
-  "descripcion": "Posicionamiento a favor de participar en la elección.",
-  "resumen": "Posicionamiento a favor de participar en la elección. La etiqueta es neutral: describe el mensaje que promueve la figura, sin valorarlo. Agrupa publicaciones propias de la figura y menciones de terceros que lo repiten.",
+  "descripcion": "Menciones sobre la participación en la elección asociadas a la figura.",
+  "resumen": "Menciones sobre la participación en la elección asociadas a la figura. La etiqueta es neutral: resume el tema de las menciones, sin valorarlo ni atribuir una postura a la figura.",
   "resumen_aprobado": false,
   "orden": 9,
   "detalle": {
@@ -973,7 +965,7 @@
      "porcentaje": 13
     },
     {
-     "medio": "Tal Cual",
+     "medio": "Diario nacional",
      "porcentaje": 3
     }
    ],
@@ -981,13 +973,13 @@
     {
      "canal": "X",
      "fuente": "Cuenta oficial de una figura en seguimiento",
-     "descripcion": "Publicación sobre la participación en la elección",
+     "descripcion": "Publicación de ejemplo sobre la participación en la elección",
      "alcance": 77000
     },
     {
      "canal": "Medio digital",
-     "fuente": "Tal Cual",
-     "descripcion": "Nota sobre la participación en la elección",
+     "fuente": "Diario nacional",
+     "descripcion": "Nota de ejemplo sobre la participación en la elección",
      "alcance": 54000
     },
     {
@@ -998,8 +990,8 @@
     },
     {
      "canal": "Radio",
-     "fuente": "Unión Radio",
-     "descripcion": "Segmento sobre la participación en la elección",
+     "fuente": "Emisora de radio",
+     "descripcion": "Segmento de ejemplo sobre la participación en la elección",
      "alcance": 26000
     },
     {
@@ -1034,9 +1026,9 @@
   "nombre": "Diálogo con resultados",
   "direccion": "Posicionamiento",
   "menciones": 2300,
-  "menciones_24h": 150,
+  "menciones_24h": 277,
   "cambio_24h": 12,
-  "cambio_7d": 31,
+  "cambio_7d": 113,
   "tendencia": "En aumento",
   "detectada_el": "2027-05-02",
   "veces_promedio": null,
@@ -1045,8 +1037,8 @@
   "neto": 4,
   "estado": "Activa",
   "seguida": false,
-  "descripcion": "Posicionamiento que presenta la mesa de diálogo como vía de acuerdos.",
-  "resumen": "Posicionamiento que presenta la mesa de diálogo como vía de acuerdos. La etiqueta es neutral: describe el mensaje que promueve la figura, sin valorarlo. Agrupa publicaciones propias de la figura y menciones de terceros que lo repiten.",
+  "descripcion": "Menciones sobre la mesa de diálogo y sus acuerdos asociadas a la figura.",
+  "resumen": "Menciones sobre la mesa de diálogo y sus acuerdos asociadas a la figura. La etiqueta es neutral: resume el tema de las menciones, sin valorarlo ni atribuir una postura a la figura.",
   "resumen_aprobado": false,
   "orden": 10,
   "detalle": {
@@ -1086,7 +1078,7 @@
      "porcentaje": 7
     },
     {
-     "medio": "Globovisión",
+     "medio": "Canal de noticias de TV",
      "porcentaje": 4
     }
    ],
@@ -1094,31 +1086,31 @@
     {
      "canal": "X",
      "fuente": "Cuenta oficial de una figura en seguimiento",
-     "descripcion": "Publicación sobre los acuerdos de la mesa de diálogo",
+     "descripcion": "Publicación de ejemplo sobre la mesa de diálogo y sus acuerdos",
      "alcance": 55000
     },
     {
      "canal": "Medio digital",
-     "fuente": "Globovisión",
-     "descripcion": "Nota sobre los acuerdos de la mesa de diálogo",
+     "fuente": "Canal de noticias de TV",
+     "descripcion": "Nota de ejemplo sobre la mesa de diálogo y sus acuerdos",
      "alcance": 39000
     },
     {
      "canal": "Facebook",
      "fuente": "Cuenta pública",
-     "descripcion": "Publicación ciudadana de ejemplo sobre los acuerdos de la mesa de diálogo",
+     "descripcion": "Publicación ciudadana de ejemplo sobre la mesa de diálogo y sus acuerdos",
      "alcance": 28000
     },
     {
      "canal": "Televisión",
-     "fuente": "Venevisión",
-     "descripcion": "Segmento sobre los acuerdos de la mesa de diálogo",
+     "fuente": "Canal de TV",
+     "descripcion": "Segmento de ejemplo sobre la mesa de diálogo y sus acuerdos",
      "alcance": 18000
     },
     {
      "canal": "Medios",
      "fuente": "Cuenta pública",
-     "descripcion": "Video o publicación de ejemplo sobre los acuerdos de la mesa de diálogo",
+     "descripcion": "Video o publicación de ejemplo sobre la mesa de diálogo y sus acuerdos",
      "alcance": 12000
     }
    ],
@@ -1147,9 +1139,9 @@
   "nombre": "Unidad para ganar",
   "direccion": "Posicionamiento",
   "menciones": 1700,
-  "menciones_24h": 60,
+  "menciones_24h": 71,
   "cambio_24h": 0,
-  "cambio_7d": 4,
+  "cambio_7d": -1,
   "tendencia": "Estable",
   "detectada_el": "2027-04-20",
   "veces_promedio": null,
@@ -1158,8 +1150,8 @@
   "neto": 33,
   "estado": "Activa",
   "seguida": false,
-  "descripcion": "Posicionamiento sobre la unidad de la oposición en torno a una candidatura.",
-  "resumen": "Posicionamiento sobre la unidad de la oposición en torno a una candidatura. La etiqueta es neutral: describe el mensaje que promueve la figura, sin valorarlo. Agrupa publicaciones propias de la figura y menciones de terceros que lo repiten.",
+  "descripcion": "Menciones sobre la unidad de la oposición asociadas a la figura.",
+  "resumen": "Menciones sobre la unidad de la oposición asociadas a la figura. La etiqueta es neutral: resume el tema de las menciones, sin valorarlo ni atribuir una postura a la figura.",
   "resumen_aprobado": false,
   "orden": 11,
   "detalle": {
@@ -1199,7 +1191,7 @@
      "porcentaje": 6
     },
     {
-     "medio": "El Nacional",
+     "medio": "Diario digital",
      "porcentaje": 2
     }
    ],
@@ -1207,13 +1199,13 @@
     {
      "canal": "X",
      "fuente": "Cuenta oficial de una figura en seguimiento",
-     "descripcion": "Publicación sobre la unidad de la oposición",
+     "descripcion": "Publicación de ejemplo sobre la unidad de la oposición",
      "alcance": 41000
     },
     {
      "canal": "Medio digital",
-     "fuente": "El Nacional",
-     "descripcion": "Nota sobre la unidad de la oposición",
+     "fuente": "Diario digital",
+     "descripcion": "Nota de ejemplo sobre la unidad de la oposición",
      "alcance": 29000
     },
     {
@@ -1224,8 +1216,8 @@
     },
     {
      "canal": "Radio",
-     "fuente": "Unión Radio",
-     "descripcion": "Segmento sobre la unidad de la oposición",
+     "fuente": "Emisora de radio",
+     "descripcion": "Segmento de ejemplo sobre la unidad de la oposición",
      "alcance": 14000
     },
     {
@@ -1255,7 +1247,7 @@
   "direccion": "Favorable",
   "menciones": 2900,
   "tendencia": "Estable",
-  "descripcion": "Lo presenta como una figura con trayectoria en el gobierno regional.",
+  "descripcion": "Menciones sobre su trayectoria en la gestión regional.",
   "orden": 1
  },
  {
@@ -1273,22 +1265,22 @@
   "id": "zulia-mas-de-lo-mismo",
   "campana_id": "zulia",
   "figura_id": "rosales",
-  "nombre": "Más de lo mismo",
+  "nombre": "Renovación política",
   "direccion": "Desfavorable",
   "menciones": 1600,
   "tendencia": "Estable",
-  "descripcion": "Cuestiona que represente una renovación para el estado.",
+  "descripcion": "Menciones sobre renovación política en el estado.",
   "orden": 3
  },
  {
   "id": "zulia-sin-plan-electrico",
   "campana_id": "zulia",
   "figura_id": "rosales",
-  "nombre": "Sin plan para el servicio eléctrico",
+  "nombre": "Propuestas sobre el servicio eléctrico",
   "direccion": "Desfavorable",
   "menciones": 1300,
   "tendencia": "En aumento",
-  "descripcion": "Reclama propuestas más concretas sobre las fallas eléctricas.",
+  "descripcion": "Menciones que piden propuestas concretas sobre las fallas eléctricas.",
   "orden": 4
  },
  {
@@ -1317,11 +1309,11 @@
   "id": "chacao-trafico",
   "campana_id": "chacao",
   "figura_id": "duque",
-  "nombre": "El tráfico sigue igual",
+  "nombre": "Resultados en movilidad",
   "direccion": "Desfavorable",
   "menciones": 600,
   "tendencia": "Estable",
-  "descripcion": "Reclama más resultados en movilidad y estacionamiento.",
+  "descripcion": "Menciones sobre resultados en movilidad y estacionamiento.",
   "orden": 3
  }
 ]

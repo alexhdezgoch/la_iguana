@@ -7,8 +7,7 @@
 .pg-campanacompacta .tabs{scroll-margin-top:16px}
 .pg-campanacompacta .acciones-alerta{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
 .pg-campanacompacta .acciones-alerta .mm{gap:4px 12px;flex-wrap:nowrap;white-space:nowrap}
+/* En móvil las pestañas pasan a otra línea, como en la demo (antes se recortaban con scroll oculto). */
 @media (max-width:640px){
-  .pg-campanacompacta .tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
-  .pg-campanacompacta .tabs::-webkit-scrollbar{display:none}
-  .pg-campanacompacta a.tab{flex:none}
+  .pg-campanacompacta .tabs{gap:0 18px}
 }

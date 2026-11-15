@@ -53,7 +53,16 @@ export function Detalle(p: PropsDetalle) {
     document.addEventListener('keydown', tecla);
     return () => document.removeEventListener('keydown', tecla);
   }, [p]);
-  useEffect(() => { ref.current?.focus(); }, []);
+  // Al abrir, el foco entra al panel; al cerrar vuelve al control que lo abrió (la fila o la tarjeta de la narrativa).
+  useEffect(() => {
+    const previo = document.activeElement as HTMLElement | null;
+    ref.current?.focus();
+    return () => {
+      if (previo && previo !== document.body && previo.isConnected && !ref.current?.contains(previo)) {
+        try { previo.focus({ preventScroll: true }); } catch { /* nada */ }
+      }
+    };
+  }, []);
 
   const notas = useTabla<NotaInterna>('notas_internas', { eq: { campana_id: p.campanaId, entidad: 'narrativa', entidad_id: n.id }, orden: [['creada_en', 'desc']] }, !p.esCliente);
   const autores = [...new Set(notas.datos.map((x) => x.autor_id).filter(Boolean) as string[])];

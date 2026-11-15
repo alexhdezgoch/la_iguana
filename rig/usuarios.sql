@@ -26,10 +26,10 @@ on conflict do nothing;
 insert into public.borradores (id, org_id, persona_id, tipo, datos, actualizado_en)
 select 'borrador-rig-admin', b.org_id, 'rig-admin', b.tipo, b.datos, b.actualizado_en from public.borradores b where b.id = 'borrador-maracaibo'
 on conflict do nothing;
-insert into auth.users (id, email, clave) values
-  ('00000000-0000-4000-8000-000000000001', 'admin@rig.test', 'iguana-rig'),
-  ('00000000-0000-4000-8000-000000000002', 'analista@rig.test', 'iguana-rig'),
-  ('00000000-0000-4000-8000-000000000003', 'lector@rig.test', 'iguana-rig'),
-  ('00000000-0000-4000-8000-000000000004', 'cliente@rig.test', 'iguana-rig'),
-  ('00000000-0000-4000-8000-000000000005', 'ajeno@rig.test', 'iguana-rig')
+insert into auth.users (id, email, clave, email_confirmed_at) values
+  ('00000000-0000-4000-8000-000000000001', 'admin@rig.test', 'iguana-rig', now()),
+  ('00000000-0000-4000-8000-000000000002', 'analista@rig.test', 'iguana-rig', now()),
+  ('00000000-0000-4000-8000-000000000003', 'lector@rig.test', 'iguana-rig', now()),
+  ('00000000-0000-4000-8000-000000000004', 'cliente@rig.test', 'iguana-rig', now()),
+  ('00000000-0000-4000-8000-000000000005', 'ajeno@rig.test', 'iguana-rig', now())
 on conflict do nothing;

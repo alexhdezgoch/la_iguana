@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { hoyDe, useCampana, usePagina, useRol } from '../shell/Campana';
 import { Carga, Vacio } from '../shell/Estados';
+import { Icono } from '../shell/Iconos';
 import { useAcciones } from '../shell/Acciones';
 import { useTabla } from '../lib/hooks';
 import { REL, fecha, num } from '../lib/formato';
@@ -198,7 +199,7 @@ export default function Temas() {
   };
   let bandera: { t: Tema; x: TemaFigura; f: FiguraCampana } | null = null;
   for (const t of temasMapa) for (const x of tfPorTema.get(t.id) ?? []) if (!bandera && marcada(t, x) && figs.get(x.figura_id)) bandera = { t, x, f: figs.get(x.figura_id)! };
-  const alertaBandera = bandera ? alQ.datos.find((a) => a.tema_id === bandera!.t.id && a.figura_id === bandera!.f.figura_id) : undefined;
+  const alertaBandera = bandera ? alQ.datos.find((a) => a.tema_id === bandera!.t.id && (a.figura_id === bandera!.f.figura_id || (a.figura_id == null && a.tipo === 'Rival en tema propio'))) : undefined;
 
   // ---------- detalle ----------
   const sel = st.n ? d.narrativas.get(st.n) : undefined;
@@ -214,9 +215,9 @@ export default function Temas() {
     return (
       <main className="page pg-temas">
         <div className="ph"><div><h1>Temas y narrativas</h1><p className="mu">Sin menciones clasificadas todavía.</p></div></div>
-        <Vacio titulo="Todavía no hay temas ni narrativas">
-          Los temas y narrativas aparecen cuando hay menciones clasificadas de las figuras en seguimiento.{' '}
-          {figQ.datos.length ? <Link to={`${base}/menciones`}>Ver menciones</Link> : puedeEditar ? <Link to={`${base}/figuras/nueva`}>Agregar una figura</Link> : null}
+        <Vacio titulo="Todavía no hay temas ni narrativas"
+          accion={figQ.datos.length ? <Link className="btn bg" to={`${base}/menciones`}>Ver menciones</Link> : puedeEditar ? <Link className="btn bg" to={`${base}/figuras/nueva`}><Icono n="mas" g={2} />Agregar figura</Link> : null}>
+          Los temas y narrativas aparecen cuando hay menciones clasificadas de las figuras en seguimiento.
         </Vacio>
       </main>
     );

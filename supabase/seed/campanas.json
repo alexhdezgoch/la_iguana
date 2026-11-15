@@ -28,26 +28,26 @@
    "listas_destinatarios": [
     {
      "id": "comando",
-     "nombre": "Comando",
-     "descripcion": "7 personas del comando de campaña",
+     "nombre": "Comando (ejemplo)",
+     "descripcion": "7 contactos de ejemplo del equipo de campaña",
      "personas": 7
     },
     {
      "id": "candidata",
-     "nombre": "Candidata",
-     "descripcion": "Candidata y jefa de despacho",
+     "nombre": "Figura propia (ejemplo)",
+     "descripcion": "2 contactos de ejemplo de la figura propia",
      "personas": 2
     },
     {
      "id": "cliente",
-     "nombre": "Cliente",
-     "descripcion": "2 contactos de la dirección de campaña",
+     "nombre": "Cliente (ejemplo)",
+     "descripcion": "Contactos del cliente (ejemplo)",
      "personas": 2
     }
    ],
    "marca_cliente": {
-    "nombre": "Comando de campaña · Machado 2027",
-    "iniciales": "MM"
+    "nombre": "Cliente de ejemplo · escenario hipotético",
+    "iniciales": "CE"
    }
   }
  },

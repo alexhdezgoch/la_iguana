@@ -98,7 +98,10 @@ export function Layout() {
   const res = resumenes.find((r) => r.id === destino?.id);
   const abiertas = res?.alertas_abiertas ?? 0;
   const porRevisar = res?.menciones_por_revisar ?? 0;
-  const esDemo = actual ? actual.es_demo : campanas.some((c) => c.es_demo);
+  // Dentro de una campaña, el aviso de demo depende de esa campaña. En las vistas del equipo (/, /nueva-campana)
+  // solo se muestra si todas las campañas visibles son de demostración: si hay campañas reales, cada tarjeta demo lleva su marca.
+  const todasDemo = campanas.length > 0 && campanas.every((c) => c.es_demo);
+  const esDemo = actual ? actual.es_demo : todasDemo;
 
   useEffect(() => {
     const tecla = (e: KeyboardEvent) => {
@@ -132,8 +135,8 @@ export function Layout() {
         <div className="user">
           <span className="av" aria-hidden="true">{org?.iniciales ?? '··'}</span>
           <span className="sw-t">
-            <span className="sm b">{org?.nombre ?? 'La Iguana'}</span>
-            <span className="mu">{esDemo ? 'Escenario hipotético, cifras ilustrativas' : usuario?.email}</span>
+            <span className="sm b" title={org?.nombre ?? undefined}>{org?.nombre ?? 'La Iguana'}</span>
+            <span className="mu">{todasDemo ? 'Escenario hipotético, cifras ilustrativas' : usuario?.email}</span>
           </span>
           <button type="button" className="btn bg bi salir" onClick={() => void salir()} aria-label="Cerrar sesión" title={`Cerrar sesión (${usuario?.email ?? ''})`}><Icono n="salir" /></button>
         </div>

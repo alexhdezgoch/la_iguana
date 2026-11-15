@@ -11,6 +11,7 @@ import { useSesion } from '../Sesion';
 import { Icono } from '../Iconos';
 import { db } from '../../lib/db';
 import { useConsulta, useTabla } from '../../lib/hooks';
+import { ahoraEn } from '../../pages/alertas/comun';
 import type { Evento, FiguraCampana, Mencion, MencionFigura, RolCampana, Sentimiento, Tema } from '../../lib/tipos';
 
 const CANALES = ['Medio digital', 'X', 'Facebook', 'Instagram', 'TikTok', 'YouTube', 'Radio', 'Televisión'];
@@ -123,7 +124,8 @@ export function AgregarUrl({ cerrar }: { panel: Panel; cerrar: () => void }) {
     if (falta || !campana) { if (!valida && limpia) setError(falta); return; }
     setGuardando(true);
     try {
-      const ahora = new Date().toISOString();
+      // Reloj de la campaña (como las alertas): en la demo, "ahora" cae en la fecha de corte.
+      const ahora = ahoraEn(campana);
       // La figura principal: la propia si está elegida, si no la primera de la lista.
       const principal = propiaId && elegidas[propiaId] ? propiaId : figIds[0];
       const m = await db.crear<Mencion>('menciones', {

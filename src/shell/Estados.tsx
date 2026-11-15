@@ -7,9 +7,18 @@ export function Cargando() {
 export function ErrorDatos({ error }: { error: string }) {
   return <div className="card"><h2>No se pudieron cargar los datos</h2><p className="mu">{error}</p></div>;
 }
-/** Tarjeta para listas sin datos (campañas nuevas, filtros sin resultados). */
-export function Vacio({ titulo, children }: { titulo: string; children?: ReactNode }) {
-  return <div className="card vacio"><h2>{titulo}</h2>{children ? <div className="mu">{children}</div> : null}</div>;
+/**
+ * Tarjeta para listas sin datos (campañas nuevas, filtros sin resultados).
+ * Patrón común: título "Todavía no hay …", una frase de contexto y, si aplica, un botón (`accion`, clase .btn bg).
+ */
+export function Vacio({ titulo, children, accion }: { titulo: string; children?: ReactNode; accion?: ReactNode }) {
+  return (
+    <div className="card vacio">
+      <h2>{titulo}</h2>
+      {children ? <div className="mu">{children}</div> : null}
+      {accion ? <div className="vacio-accion">{accion}</div> : null}
+    </div>
+  );
 }
 /** Envuelve una pantalla: muestra cargando o error antes que el contenido. */
 export function Carga({ estados, children }: { estados: Array<{ cargando: boolean; error: string | null }>; children: ReactNode }) {

@@ -31,6 +31,15 @@ export interface Opciones {
 }
 type Fila = Record<string, unknown>;
 
+/**
+ * Tablas que no se leen con select=*: la base solo concede algunas columnas (personas.user_id no sale a la app,
+ * ver supabase/migrations/900_acceso.sql). El resto de las tablas y vistas se piden completas.
+ */
+const COLUMNAS: Record<string, string> = {
+  personas: 'id,org_id,nombre,nombre_corto,iniciales,email,puesto,rol_org,activa,extra,creada_en',
+};
+const cols = (tabla: string) => COLUMNAS[tabla] ?? '*';
+
 // ---------- avisos de cambio (para recargar hooks) ----------
 const oyentes = new Map<string, Set<() => void>>();
 export function alCambiar(tabla: string, fn: () => void): () => void {
@@ -56,8 +65,10 @@ function ordenes(o?: Orden): Array<[string, 'asc' | 'desc']> {
   return typeof o === 'string' ? [[o, 'asc']] : o;
 }
 function falla(donde: string, e: { message: string; code?: string }): never {
-  const sinPermiso = e.code === '42501' || /row-level security|permission denied/i.test(e.message);
-  throw new Error(sinPermiso ? 'Tu rol en esta campaña no permite hacer este cambio.' : `${donde}: ${e.message}`);
+  // Los rechazos propios de Postgres son genéricos; los de las funciones y reglas de 850/900 ya traen un motivo legible.
+  if (/row-level security|permission denied/i.test(e.message)) throw new Error('Tu rol en esta campaña no permite hacer este cambio.');
+  if (e.code === '42501' || e.code === '22023') throw new Error(e.message);
+  throw new Error(`${donde}: ${e.message}`);
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -78,7 +89,7 @@ function filtrar(q: any, o: Opciones) {
 export const db = {
   /** Filas de una tabla o vista. */
   async listar<T = Fila>(tabla: string, o: Opciones = {}): Promise<T[]> {
-    let q = filtrar(supabase.from(tabla).select('*'), o);
+    let q = filtrar(supabase.from(tabla).select(cols(tabla)), o);
     for (const [col, dir] of ordenes(o.orden)) q = q.order(col, { ascending: dir !== 'desc', nullsFirst: false });
     if (o.limite != null) q = q.limit(o.limite);
     const { data, error } = await q;
@@ -87,18 +98,18 @@ export const db = {
   },
   /** Cuántas filas cumplen el filtro, sin traerlas. */
   async contar(tabla: string, o: Opciones = {}): Promise<number> {
-    const { count, error } = await filtrar(supabase.from(tabla).select('*', { count: 'exact', head: true }), o);
+    const { count, error } = await filtrar(supabase.from(tabla).select(cols(tabla), { count: 'exact', head: true }), o);
     if (error) falla(tabla, error);
     return count ?? 0;
   },
   /** Una fila por id, o null. */
   async uno<T = Fila>(tabla: string, id: string): Promise<T | null> {
-    const { data, error } = await supabase.from(tabla).select('*').eq('id', id).limit(1);
+    const { data, error } = await supabase.from(tabla).select(cols(tabla)).eq('id', id).limit(1);
     if (error) falla(tabla, error);
     return ((data ?? [])[0] as T | undefined) ?? null;
   },
   async crear<T = Fila>(tabla: string, fila: Partial<T>): Promise<T> {
-    const { data, error } = await supabase.from(tabla).insert(fila as Fila).select('*').single();
+    const { data, error } = await supabase.from(tabla).insert(fila as Fila).select(cols(tabla)).single();
     if (error) falla(tabla, error);
     avisar(tabla);
     return data as T;
@@ -106,13 +117,13 @@ export const db = {
   /** Crea varias filas de la misma tabla en una sola llamada (todas o ninguna). */
   async crearVarias<T = Fila>(tabla: string, filas: Partial<T>[]): Promise<T[]> {
     if (!filas.length) return [];
-    const { data, error } = await supabase.from(tabla).insert(filas as Fila[]).select('*');
+    const { data, error } = await supabase.from(tabla).insert(filas as Fila[]).select(cols(tabla));
     if (error) falla(tabla, error);
     avisar(tabla);
     return (data ?? []) as T[];
   },
   async cambiar<T = Fila>(tabla: string, id: string, cambios: Partial<T>): Promise<T> {
-    const { data, error } = await supabase.from(tabla).update(cambios as Fila).eq('id', id).select('*');
+    const { data, error } = await supabase.from(tabla).update(cambios as Fila).eq('id', id).select(cols(tabla));
     if (error) falla(tabla, error);
     // Sin filas: el id no existe o las reglas de acceso no dejan cambiarlo.
     if (!data || !data.length) throw new Error('Tu rol en esta campaña no permite hacer este cambio.');
