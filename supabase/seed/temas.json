@@ -1,0 +1,65 @@
+[
+ {
+  "id": "pres-economia",
+  "campana_id": "presidenciales",
+  "nombre": "Economía y salarios",
+  "menciones": 52000,
+  "porcentaje": 26,
+  "orden": 1,
+  "es_propio": false
+ },
+ {
+  "id": "pres-migracion",
+  "campana_id": "presidenciales",
+  "nombre": "Migración y retorno",
+  "menciones": 38000,
+  "porcentaje": 19,
+  "orden": 2,
+  "es_propio": true
+ },
+ {
+  "id": "pres-fecha-electoral",
+  "campana_id": "presidenciales",
+  "nombre": "Fecha electoral",
+  "menciones": 34000,
+  "porcentaje": 17,
+  "orden": 3,
+  "es_propio": false
+ },
+ {
+  "id": "pres-servicios",
+  "campana_id": "presidenciales",
+  "nombre": "Servicios públicos",
+  "menciones": 26000,
+  "porcentaje": 13,
+  "orden": 4,
+  "es_propio": false
+ },
+ {
+  "id": "pres-salud",
+  "campana_id": "presidenciales",
+  "nombre": "Salud",
+  "menciones": 22000,
+  "porcentaje": 11,
+  "orden": 5,
+  "es_propio": false
+ },
+ {
+  "id": "pres-seguridad",
+  "campana_id": "presidenciales",
+  "nombre": "Seguridad",
+  "menciones": 12000,
+  "porcentaje": 6,
+  "orden": 6,
+  "es_propio": false
+ },
+ {
+  "id": "pres-otros",
+  "campana_id": "presidenciales",
+  "nombre": "Otros",
+  "menciones": 16000,
+  "porcentaje": 8,
+  "orden": 7,
+  "es_propio": false
+ }
+]

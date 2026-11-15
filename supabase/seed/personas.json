@@ -1,0 +1,34 @@
+[
+ {
+  "id": "lucia",
+  "org_id": "brujula",
+  "nombre": "Lucía G.",
+  "nombre_corto": "Lucía G.",
+  "iniciales": "LG",
+  "rol_org": "admin"
+ },
+ {
+  "id": "daniela",
+  "org_id": "brujula",
+  "nombre": "Daniela P.",
+  "nombre_corto": "Daniela P.",
+  "iniciales": "DP",
+  "rol_org": "miembro"
+ },
+ {
+  "id": "andres",
+  "org_id": "brujula",
+  "nombre": "Andrés M.",
+  "nombre_corto": "Andrés M.",
+  "iniciales": "AM",
+  "rol_org": "miembro"
+ },
+ {
+  "id": "carla",
+  "org_id": "brujula",
+  "nombre": "Carla R.",
+  "nombre_corto": "Carla R.",
+  "iniciales": "CR",
+  "rol_org": "miembro"
+ }
+]

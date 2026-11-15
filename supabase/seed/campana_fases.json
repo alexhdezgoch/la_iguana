@@ -1,0 +1,26 @@
+[
+ {
+  "id": "pres-fase-campana",
+  "campana_id": "presidenciales",
+  "nombre": "Campaña",
+  "inicio": "2027-04-04",
+  "fin": "2027-06-02",
+  "orden": 1
+ },
+ {
+  "id": "pres-fase-veda",
+  "campana_id": "presidenciales",
+  "nombre": "Veda",
+  "inicio": "2027-06-03",
+  "fin": "2027-06-05",
+  "orden": 2
+ },
+ {
+  "id": "pres-fase-jornada",
+  "campana_id": "presidenciales",
+  "nombre": "Jornada electoral",
+  "inicio": "2027-06-06",
+  "fin": "2027-06-06",
+  "orden": 3
+ }
+]

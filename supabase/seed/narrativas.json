@@ -1,0 +1,50 @@
+[
+ {
+  "id": "pres-que-vuelvan-a-casa",
+  "campana_id": "presidenciales",
+  "figura_id": "machado",
+  "tema_id": "pres-migracion",
+  "nombre": "Que vuelvan a casa",
+  "direccion": "Favorable",
+  "menciones": 14300,
+  "tendencia": "En aumento",
+  "cambio_24h": null,
+  "orden": 1
+ },
+ {
+  "id": "pres-fuera-del-dialogo",
+  "campana_id": "presidenciales",
+  "figura_id": "machado",
+  "tema_id": "pres-fecha-electoral",
+  "nombre": "Fuera del diálogo",
+  "direccion": "Desfavorable",
+  "menciones": 9600,
+  "tendencia": "En aumento",
+  "cambio_24h": 62,
+  "orden": 2
+ },
+ {
+  "id": "pres-primera-presidenta",
+  "campana_id": "presidenciales",
+  "figura_id": "machado",
+  "tema_id": "pres-otros",
+  "nombre": "Primera presidenta",
+  "direccion": "Favorable",
+  "menciones": 8100,
+  "tendencia": "Estable",
+  "cambio_24h": null,
+  "orden": 3
+ },
+ {
+  "id": "pres-linea-dura",
+  "campana_id": "presidenciales",
+  "figura_id": "machado",
+  "tema_id": "pres-otros",
+  "nombre": "Línea dura, sin acuerdos",
+  "direccion": "Desfavorable",
+  "menciones": 4200,
+  "tendencia": "A la baja",
+  "cambio_24h": null,
+  "orden": 4
+ }
+]

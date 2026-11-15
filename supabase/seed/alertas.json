@@ -1,0 +1,62 @@
+[
+ {
+  "id": "pres-alerta-1",
+  "campana_id": "presidenciales",
+  "severidad": "Alta",
+  "estado": "Nueva",
+  "texto": "La narrativa \"Fuera del diálogo\" creció 62% en 24 horas.",
+  "tipo": "Narrativa",
+  "figura_id": "machado",
+  "detectada_en": "2027-05-13T07:12:00-04:00",
+  "responsable_id": null,
+  "orden": 1
+ },
+ {
+  "id": "pres-alerta-2",
+  "campana_id": "presidenciales",
+  "severidad": "Alta",
+  "estado": "En revisión",
+  "texto": "El índice de riesgo de Jorge Rodríguez pasó de 71 a 78.",
+  "tipo": "Riesgo",
+  "figura_id": "jorge-rodriguez",
+  "detectada_en": "2027-05-13T04:20:00-04:00",
+  "responsable_id": "daniela",
+  "orden": 2
+ },
+ {
+  "id": "pres-alerta-3",
+  "campana_id": "presidenciales",
+  "severidad": "Media",
+  "estado": "Nueva",
+  "texto": "Delcy Rodríguez publicó sobre migración, tema propio de la campaña.",
+  "tipo": "Rival en tema propio",
+  "figura_id": "delcy-rodriguez",
+  "detectada_en": "2027-05-13T06:25:00-04:00",
+  "responsable_id": null,
+  "orden": 3
+ },
+ {
+  "id": "pres-alerta-4",
+  "campana_id": "presidenciales",
+  "severidad": "Media",
+  "estado": "En revisión",
+  "texto": "El sentimiento neto de Juan Pablo Guanipa bajó 6 puntos en 7 días.",
+  "tipo": "Sentimiento",
+  "figura_id": "guanipa",
+  "detectada_en": "2027-05-12T18:40:00-04:00",
+  "responsable_id": "andres",
+  "orden": 4
+ },
+ {
+  "id": "pres-alerta-5",
+  "campana_id": "presidenciales",
+  "severidad": "Baja",
+  "estado": "Pospuesta",
+  "texto": "Nota de El Pitazo sobre la gira por los Andes.",
+  "tipo": "Medios",
+  "figura_id": "machado",
+  "detectada_en": "2027-05-12T17:20:00-04:00",
+  "responsable_id": "carla",
+  "orden": 5
+ }
+]

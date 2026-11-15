@@ -1,0 +1,9 @@
+node_modules
+dist
+.env
+.env.local
+.vercel
+.pgdata
+shots
+*.log
+rig/.run

@@ -1,0 +1,86 @@
+[
+ {
+  "id": "pres-machado",
+  "campana_id": "presidenciales",
+  "figura_id": "machado",
+  "relacion": "Propia",
+  "orden": 1
+ },
+ {
+  "id": "pres-delcy-rodriguez",
+  "campana_id": "presidenciales",
+  "figura_id": "delcy-rodriguez",
+  "relacion": "Rival",
+  "orden": 2
+ },
+ {
+  "id": "pres-jorge-rodriguez",
+  "campana_id": "presidenciales",
+  "figura_id": "jorge-rodriguez",
+  "relacion": "Rival",
+  "orden": 3
+ },
+ {
+  "id": "pres-capriles",
+  "campana_id": "presidenciales",
+  "figura_id": "capriles",
+  "relacion": "Rival",
+  "orden": 4
+ },
+ {
+  "id": "pres-gonzalez-urrutia",
+  "campana_id": "presidenciales",
+  "figura_id": "gonzalez-urrutia",
+  "relacion": "Aliada",
+  "orden": 5
+ },
+ {
+  "id": "pres-rosales",
+  "campana_id": "presidenciales",
+  "figura_id": "rosales",
+  "relacion": "A observar",
+  "orden": 6
+ },
+ {
+  "id": "pres-guanipa",
+  "campana_id": "presidenciales",
+  "figura_id": "guanipa",
+  "relacion": "Aliada",
+  "orden": 7
+ },
+ {
+  "id": "pres-ecarri",
+  "campana_id": "presidenciales",
+  "figura_id": "ecarri",
+  "relacion": "A observar",
+  "orden": 8
+ },
+ {
+  "id": "zulia-rosales",
+  "campana_id": "zulia",
+  "figura_id": "rosales",
+  "relacion": "Propia",
+  "orden": 1
+ },
+ {
+  "id": "zulia-guanipa",
+  "campana_id": "zulia",
+  "figura_id": "guanipa",
+  "relacion": "Aliada",
+  "orden": 2
+ },
+ {
+  "id": "zulia-caldera",
+  "campana_id": "zulia",
+  "figura_id": "caldera",
+  "relacion": "Rival",
+  "orden": 3
+ },
+ {
+  "id": "chacao-duque",
+  "campana_id": "chacao",
+  "figura_id": "duque",
+  "relacion": "Propia",
+  "orden": 1
+ }
+]

@@ -1,0 +1,82 @@
+[
+ {
+  "id": "machado",
+  "org_id": "brujula",
+  "iniciales": "MM",
+  "nombre": "María Corina Machado",
+  "cargo": "Líder opositora",
+  "partido": "Vente Venezuela"
+ },
+ {
+  "id": "delcy-rodriguez",
+  "org_id": "brujula",
+  "iniciales": "DR",
+  "nombre": "Delcy Rodríguez",
+  "cargo": "Presidenta encargada",
+  "partido": "PSUV"
+ },
+ {
+  "id": "jorge-rodriguez",
+  "org_id": "brujula",
+  "iniciales": "JR",
+  "nombre": "Jorge Rodríguez",
+  "cargo": "Presidente de la AN",
+  "partido": "PSUV"
+ },
+ {
+  "id": "capriles",
+  "org_id": "brujula",
+  "iniciales": "HC",
+  "nombre": "Henrique Capriles",
+  "cargo": "Diputado opositor",
+  "partido": "Unión y Cambio"
+ },
+ {
+  "id": "gonzalez-urrutia",
+  "org_id": "brujula",
+  "iniciales": "EG",
+  "nombre": "Edmundo González Urrutia",
+  "cargo": "Excandidato presidencial",
+  "partido": "PUD"
+ },
+ {
+  "id": "rosales",
+  "org_id": "brujula",
+  "iniciales": "MR",
+  "nombre": "Manuel Rosales",
+  "cargo": "Dirigente zuliano",
+  "partido": "UNT"
+ },
+ {
+  "id": "guanipa",
+  "org_id": "brujula",
+  "iniciales": "JG",
+  "nombre": "Juan Pablo Guanipa",
+  "cargo": "Dirigente opositor",
+  "partido": "Primero Justicia"
+ },
+ {
+  "id": "ecarri",
+  "org_id": "brujula",
+  "iniciales": "AE",
+  "nombre": "Antonio Ecarri",
+  "cargo": "Dirigente político",
+  "partido": "Alianza Lápiz"
+ },
+ {
+  "id": "caldera",
+  "org_id": "brujula",
+  "iniciales": "LC",
+  "nombre": "Luis Caldera",
+  "cargo": null,
+  "partido": "PSUV"
+ },
+ {
+  "id": "duque",
+  "org_id": "brujula",
+  "iniciales": "GD",
+  "nombre": "Gustavo Duque",
+  "cargo": null,
+  "partido": "Fuerza Vecinal"
+ }
+]
