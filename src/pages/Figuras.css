@@ -1,0 +1,6 @@
+/* Figuras: la demo no trae reglas propias; estas solo reemplazan estilos en línea de la demo. */
+.pg-figuras .fg-filtros{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
+.pg-figuras .fg-lk{border:0;background:none;padding:0;font:inherit;font-size:inherit;color:var(--acc);font-weight:600;cursor:pointer}
+.pg-figuras .fg-lk:hover{text-decoration:underline}
+/* La demo colorea las iniciales por relación (.ini.own …); esa regla falta en src/styles/app.css. */
+.pg-figuras .ini.own{background:var(--soft);color:var(--acc)}.pg-figuras .ini.ally{background:#E8F0FA;color:#1D4F91}.pg-figuras .ini.rival{background:#FCEFE2;color:#8F4A0B}

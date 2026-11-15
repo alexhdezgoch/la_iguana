@@ -155,3 +155,6 @@ body{background:#F6F7F4}
 .enlace-btn:hover{text-decoration:underline}
 /* variables también fuera de .app (acceso, paneles flotantes) */
 :root{--ink:#1B211D;--ink2:#454E48;--ink3:#636C66;--line:rgb(22 32 25/.10);--div:rgb(22 32 25/.07);--hov:rgb(22 32 25/.05);--sunk:#F1F3EF;--acc:#285A32;--soft:#E7F0E8;--sh1:0 0 0 1px rgb(22 32 25/.06),0 1px 2px rgb(22 32 25/.05),0 2px 4px -2px rgb(22 32 25/.04);--sh2:0 0 0 1px rgb(22 32 25/.07),0 2px 4px rgb(22 32 25/.05),0 8px 16px -4px rgb(22 32 25/.08);--sh3:0 0 0 1px rgb(22 32 25/.08),0 4px 8px -2px rgb(22 32 25/.06),0 16px 32px -8px rgb(22 32 25/.12);--e:cubic-bezier(.2,0,0,1);--ein:cubic-bezier(.05,.7,.1,1);}
+
+/* Iniciales por relación (demo) */
+.ini.own{background:var(--soft);color:var(--acc)}.ini.ally{background:#E8F0FA;color:#1D4F91}.ini.rival{background:#FCEFE2;color:#8F4A0B}

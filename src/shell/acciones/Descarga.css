@@ -1,0 +1,54 @@
+/* Panel Descargar reporte (copiado de los estilos ax-* de la demo, acciones.js). Todo bajo .pg-descarga. */
+.pg-descarga,.pg-descarga *{box-sizing:border-box}
+.pg-descarga{--ink:#1B211D;--ink2:#454E48;--ink3:#636C66;--line:rgb(22 32 25/.10);--div:rgb(22 32 25/.07);--hov:rgb(22 32 25/.05);--sunk:#F1F3EF;--acc:#285A32;--soft:#E7F0E8;--sh1:0 0 0 1px rgb(22 32 25/.06),0 1px 2px rgb(22 32 25/.05),0 2px 4px -2px rgb(22 32 25/.04);--sh2:0 0 0 1px rgb(22 32 25/.07),0 2px 4px rgb(22 32 25/.05),0 8px 16px -4px rgb(22 32 25/.08);--sh3:0 0 0 1px rgb(22 32 25/.08),0 4px 8px -2px rgb(22 32 25/.06),0 16px 32px -8px rgb(22 32 25/.12);--e:cubic-bezier(.2,0,0,1);--ein:cubic-bezier(.05,.7,.1,1);color:var(--ink);font:400 15px/22px "Source Sans 3","Segoe UI",system-ui,sans-serif;font-variant-numeric:tabular-nums lining-nums;text-align:left}
+.pg-descarga :focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.pg-descarga svg{flex:none}
+.pg-descarga button,.pg-descarga input,.pg-descarga select{font:inherit;color:inherit}
+.pg-descarga h2{margin:0;font:600 17px/24px "Libre Franklin",system-ui,sans-serif;letter-spacing:-.01em}
+.pg-descarga p{margin:0}
+.pg-descarga .dl-mu{color:var(--ink3);font-size:13px;line-height:18px}
+.pg-descarga .dl-b{font-weight:600}
+@keyframes dl-fade{from{opacity:0}}
+@keyframes dl-rise{from{opacity:0;transform:translateY(8px) scale(.985)}}
+.pg-descarga.dl-back{position:fixed;inset:0;z-index:10000;display:flex;align-items:flex-start;justify-content:center;padding:max(16px,7vh) 16px 16px;background:rgb(22 32 25/.34);animation:dl-fade .16s var(--e) both}
+.pg-descarga .dl-modal{width:100%;max-width:560px;max-height:100%;margin:auto 0;background:#fff;border-radius:14px;box-shadow:var(--sh3),0 32px 64px -16px rgb(22 32 25/.28);display:flex;flex-direction:column;animation:dl-rise .22s var(--ein) both}
+.pg-descarga .dl-mh{flex:none;display:flex;align-items:flex-start;gap:12px;padding:18px 20px 0}
+.pg-descarga .dl-mh>div{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.pg-descarga .dl-x{flex:none;width:32px;height:32px;margin:-4px -6px 0 0;border:0;border-radius:8px;background:transparent;color:var(--ink3);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .1s var(--e)}
+.pg-descarga .dl-x:hover{background:var(--hov);color:var(--ink)}
+.pg-descarga .dl-mb{flex:1 1 auto;min-height:0;overflow:auto;overscroll-behavior:contain;padding:16px 20px 20px;display:flex;flex-direction:column;gap:16px}
+.pg-descarga .dl-mb>*{flex:none}
+.pg-descarga .dl-mf{flex:none;display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:8px 12px;padding:14px 20px;border-top:1px solid var(--div);background:#FAFBF9;border-radius:0 0 14px 14px}
+.pg-descarga .dl-mf .dl-err{margin-right:auto}
+.pg-descarga .dl-bt{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:36px;padding:0 14px;border:0;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;white-space:nowrap;transition:background .1s var(--e),box-shadow .1s var(--e),transform .1s var(--e),opacity .1s var(--e)}
+.pg-descarga .dl-bt:active{transform:scale(.98)}
+.pg-descarga .dl-bt[disabled]{opacity:.45;cursor:not-allowed;transform:none}
+.pg-descarga .dl-p{background:var(--acc);color:#fff;box-shadow:0 1px 2px rgb(22 32 25/.25),inset 0 1px 0 rgb(255 255 255/.14)}
+.pg-descarga .dl-p:hover{background:#1F4727;color:#fff}
+.pg-descarga .dl-g{background:#fff;color:var(--ink);box-shadow:var(--sh1)}
+.pg-descarga .dl-g:hover{box-shadow:var(--sh2)}
+.pg-descarga .dl-f{display:flex;flex-direction:column;gap:6px;min-width:0}
+.pg-descarga .dl-lb{font-size:13px;line-height:18px;font-weight:600;color:var(--ink2)}
+.pg-descarga .dl-in{width:100%;height:38px;padding:0 12px;border:0;border-radius:8px;background:#fff;box-shadow:inset 0 0 0 1px rgb(22 32 25/.16);font-size:15px;transition:box-shadow .1s var(--e)}
+.pg-descarga .dl-in:hover{box-shadow:inset 0 0 0 1px rgb(22 32 25/.28)}
+.pg-descarga .dl-in:focus{outline:0;box-shadow:inset 0 0 0 2px var(--acc)}
+.pg-descarga .dl-ro,.pg-descarga .dl-ro:hover{display:flex;align-items:center;background:var(--sunk);box-shadow:none;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pg-descarga .dl-row{display:flex;flex-wrap:wrap;gap:12px}
+.pg-descarga .dl-row>*{flex:1 1 150px}
+.pg-descarga .dl-ck{display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:20px;cursor:pointer}
+.pg-descarga .dl-ck input{flex:none;width:16px;height:16px;margin:2px 0 0;accent-color:#285A32}
+.pg-descarga .dl-ck input:disabled{cursor:not-allowed}
+.pg-descarga .dl-cks{display:flex;flex-wrap:wrap;gap:8px 16px}
+.pg-descarga .dl-cks .dl-ck{flex:1 1 200px}
+.pg-descarga .dl-sg{align-self:flex-start;display:inline-flex;flex-wrap:wrap;gap:2px;padding:3px;border-radius:10px;background:rgb(22 32 25/.06)}
+.pg-descarga .dl-sg button{height:30px;padding:0 12px;border:0;border-radius:8px;background:transparent;color:var(--ink2);font-size:14px;font-weight:500;cursor:pointer;transition:background .1s var(--e),box-shadow .1s var(--e)}
+.pg-descarga .dl-sg button:hover{color:var(--ink)}
+.pg-descarga .dl-sg button[aria-pressed="true"]{background:#fff;box-shadow:var(--sh1);color:var(--ink);font-weight:600}
+.pg-descarga .dl-well{background:var(--sunk);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.pg-descarga .dl-note{display:flex;align-items:flex-start;gap:8px;color:var(--ink3);font-size:13px;line-height:18px}
+.pg-descarga .dl-note svg{margin-top:2px}
+.pg-descarga .dl-err{color:#8F4A0B;font-size:13px;line-height:18px;font-weight:600}
+.pg-descarga .dl-done{display:flex;flex-direction:column;align-items:center;gap:10px;padding:12px 0 4px;text-align:center}
+.pg-descarga .dl-done>span{width:44px;height:44px;border-radius:50%;background:var(--soft);color:var(--acc);display:flex;align-items:center;justify-content:center}
+@media (max-width:600px){.pg-descarga.dl-back{padding:12px}.pg-descarga .dl-mf .dl-bt{flex:1 1 auto}}
+@media (prefers-reduced-motion:reduce){.pg-descarga,.pg-descarga *{animation-duration:.01ms!important;transition-duration:.01ms!important}}

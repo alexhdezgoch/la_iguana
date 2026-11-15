@@ -1,0 +1,58 @@
+/* Panel "Agregar URL" (acciones.js de la demo, clases ax-*), bajo su propia clase raíz. */
+.agregar-url,.agregar-url *{box-sizing:border-box}
+.agregar-url{position:fixed;inset:0;z-index:10000;display:flex;align-items:flex-start;justify-content:center;padding:max(16px,7vh) 16px 16px;background:rgb(22 32 25/.34);animation:au-fade .16s var(--e) both;color:var(--ink);font:400 15px/22px "Source Sans 3","Segoe UI",system-ui,sans-serif;font-variant-numeric:tabular-nums lining-nums;text-align:left}
+.agregar-url :focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.agregar-url svg{flex:none}
+:where(.agregar-url) button,:where(.agregar-url) input,:where(.agregar-url) select,:where(.agregar-url) textarea{font:inherit;color:inherit}
+.agregar-url h2{margin:0;font:600 17px/24px "Libre Franklin",system-ui,sans-serif;letter-spacing:-.01em}
+.agregar-url p{margin:0}
+.agregar-url .au-mu{color:var(--ink3);font-size:13px;line-height:18px}
+.agregar-url .au-b{font-weight:600}
+.agregar-url .au-modal{width:100%;max-width:560px;max-height:100%;margin:auto 0;background:#fff;border-radius:14px;box-shadow:var(--sh3),0 32px 64px -16px rgb(22 32 25/.28);display:flex;flex-direction:column;animation:au-rise .22s var(--ein) both}
+.agregar-url .au-mh{flex:none;display:flex;align-items:flex-start;gap:12px;padding:18px 20px 0}
+.agregar-url .au-mh>div{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.agregar-url .au-x{flex:none;width:32px;height:32px;margin:-4px -6px 0 0;border:0;border-radius:8px;background:transparent;color:var(--ink3);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .1s var(--e)}
+.agregar-url .au-x:hover{background:var(--hov);color:var(--ink)}
+.agregar-url .au-mb{flex:1 1 auto;min-height:0;overflow:auto;overscroll-behavior:contain;padding:16px 20px 20px;display:flex;flex-direction:column;gap:16px}
+.agregar-url .au-mb>*{flex:none}
+.agregar-url .au-mf{flex:none;display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:8px 12px;padding:14px 20px;border-top:1px solid var(--div);background:#FAFBF9;border-radius:0 0 14px 14px}
+.agregar-url .au-mf .au-mu{margin-right:auto}
+.agregar-url .au-bt{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:36px;padding:0 14px;border:0;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;white-space:nowrap;transition:background .1s var(--e),box-shadow .1s var(--e),transform .1s var(--e),opacity .1s var(--e)}
+.agregar-url .au-bt:active{transform:scale(.98)}
+.agregar-url .au-p{background:var(--acc);color:#fff;box-shadow:0 1px 2px rgb(22 32 25/.25),inset 0 1px 0 rgb(255 255 255/.14)}
+.agregar-url .au-p:hover{background:#1F4727;color:#fff}
+.agregar-url .au-g{background:#fff;color:var(--ink);box-shadow:var(--sh1)}
+.agregar-url .au-g:hover{box-shadow:var(--sh2)}
+.agregar-url .au-bt[disabled]{opacity:.45;cursor:not-allowed;transform:none}
+.agregar-url .au-f{display:flex;flex-direction:column;gap:6px;min-width:0}
+.agregar-url .au-lb{font-size:13px;line-height:18px;font-weight:600;color:var(--ink2)}
+.agregar-url .au-in{width:100%;height:38px;padding:0 12px;border:0;border-radius:8px;background:#fff;box-shadow:inset 0 0 0 1px rgb(22 32 25/.16);font-size:15px;transition:box-shadow .1s var(--e)}
+.agregar-url textarea.au-in{height:auto;min-height:60px;padding:8px 12px;resize:vertical;line-height:20px}
+.agregar-url .au-in:hover{box-shadow:inset 0 0 0 1px rgb(22 32 25/.28)}
+.agregar-url .au-in:focus{outline:0;box-shadow:inset 0 0 0 2px var(--acc)}
+.agregar-url .au-in::placeholder{color:#8A928C}
+.agregar-url .au-row{display:flex;flex-wrap:wrap;gap:12px}
+.agregar-url .au-row>*{flex:1 1 150px}
+.agregar-url .au-err{color:#8F4A0B;font-size:13px;line-height:18px;font-weight:600}
+.agregar-url .au-okl{display:flex;align-items:center;gap:8px;color:var(--acc);font-size:13px;line-height:18px;font-weight:600}
+.agregar-url .au-ck{display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:20px;cursor:pointer}
+.agregar-url .au-ck input{flex:none;width:16px;height:16px;margin:2px 0 0;accent-color:#285A32}
+.agregar-url .au-sg{align-self:flex-start;display:inline-flex;flex-wrap:wrap;gap:2px;padding:3px;border-radius:10px;background:rgb(22 32 25/.06)}
+.agregar-url .au-sg button{height:30px;padding:0 12px;border:0;border-radius:8px;background:transparent;color:var(--ink2);font-size:14px;font-weight:500;cursor:pointer;transition:background .1s var(--e),box-shadow .1s var(--e)}
+.agregar-url .au-sg button:hover{color:var(--ink)}
+.agregar-url .au-sg button[aria-pressed="true"]{background:#fff;box-shadow:var(--sh1);color:var(--ink);font-weight:600}
+.agregar-url .au-tgs{display:flex;flex-wrap:wrap;gap:6px}
+.agregar-url .au-tg{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 10px;border:0;border-radius:8px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);color:var(--ink2);font-size:13px;font-weight:500;cursor:pointer;transition:background .1s var(--e),box-shadow .1s var(--e)}
+.agregar-url .au-tg:hover{box-shadow:inset 0 0 0 1px rgb(22 32 25/.25)}
+.agregar-url .au-tg[aria-pressed="true"]{background:var(--soft);box-shadow:inset 0 0 0 1px rgb(40 90 50/.35);color:var(--acc);font-weight:600}
+.agregar-url .au-tg svg{display:none}
+.agregar-url .au-tg[aria-pressed="true"] svg{display:block}
+.agregar-url .au-well{background:var(--sunk);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.agregar-url .au-note{display:flex;align-items:flex-start;gap:8px;color:var(--ink2);font-size:13px;line-height:18px}
+.agregar-url .au-note svg{margin-top:2px}
+.agregar-url .au-sr{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 12px;padding:8px 0;border-top:1px solid var(--div)}
+.agregar-url .au-sr:first-child{border-top:0;padding-top:0}
+@keyframes au-rise{from{opacity:0;transform:translateY(8px) scale(.985)}}
+@keyframes au-fade{from{opacity:0}}
+@media (max-width:600px){.agregar-url{padding:12px}.agregar-url .au-mf .au-bt{flex:1 1 auto}}
+@media (prefers-reduced-motion:reduce){.agregar-url,.agregar-url *{animation-duration:.01ms!important;transition-duration:.01ms!important}}

@@ -1,0 +1,8 @@
+/* Eventos. La demo no trae reglas propias: aquí solo van los estilos que en la demo eran atributos style. */
+.pg-eventos .ev-fecha{width:44px;height:44px;flex-direction:column;gap:2px;line-height:1}
+.pg-eventos .ev-fecha .ev-mes{font-size:10px;text-transform:uppercase;letter-spacing:.04em}
+.pg-eventos .ev-fecha .ev-dia{font-size:15px;color:#1B211D}
+.pg-eventos .ev-filtros{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
+.pg-eventos .ev-nota{padding-top:2px;white-space:nowrap}
+.pg-eventos td.nw{white-space:nowrap}
+.pg-eventos .ev-sub{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}

@@ -1,0 +1,32 @@
+/* Buscador (Ctrl K). Copiado de design/demo/acciones.js (.ax-back, .ax-modal, .ax-pal, .ax-ph…), bajo .pg-buscador. */
+.pg-buscador,.pg-buscador *{box-sizing:border-box}
+.pg-buscador{position:fixed;inset:0;z-index:10000;display:flex;align-items:flex-start;justify-content:center;padding:max(16px,7vh) 16px 16px;background:rgb(22 32 25/.34);animation:bu-fade .16s var(--e) both;color:var(--ink);font:400 15px/22px "Source Sans 3","Segoe UI",system-ui,sans-serif;font-variant-numeric:tabular-nums lining-nums;text-align:left}
+.pg-buscador :focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.pg-buscador svg{flex:none}
+.pg-buscador .bu-modal{width:100%;max-width:620px;max-height:100%;margin:0;background:#fff;border-radius:14px;box-shadow:var(--sh3),0 32px 64px -16px rgb(22 32 25/.28);display:flex;flex-direction:column;overflow:hidden;animation:bu-rise .22s var(--ein) both}
+.pg-buscador .bu-mu{color:var(--ink3);font-size:13px;line-height:18px}
+.pg-buscador .bu-b{font-weight:600}
+.pg-buscador .bu-ph{flex:none;display:flex;align-items:center;gap:10px;padding:0 16px;border-bottom:1px solid var(--div);color:var(--ink3)}
+.pg-buscador .bu-pin{flex:1;min-width:0;height:52px;border:0;background:none;font:inherit;font-size:16px;color:var(--ink);outline:0}
+.pg-buscador .bu-pin::placeholder{color:#8A928C}
+.pg-buscador .bu-kb{padding:0 6px;border-radius:5px;background:#fff;box-shadow:var(--sh1);font-size:12px;line-height:18px;color:var(--ink3);white-space:nowrap}
+.pg-buscador .bu-esc{border:0;font:inherit;font-size:12px;line-height:18px;cursor:pointer}
+.pg-buscador .bu-pr{flex:1 1 auto;min-height:0;max-height:min(56vh,440px);overflow:auto;overscroll-behavior:contain;padding:6px;scroll-padding:36px 0 8px}
+.pg-buscador .bu-gh{padding:10px 10px 4px;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.01em;color:var(--ink3)}
+.pg-buscador .bu-it{display:flex;align-items:center;gap:10px;min-height:40px;padding:6px 10px;border-radius:8px;color:var(--ink);text-decoration:none;cursor:pointer}
+.pg-buscador .bu-it>i{flex:none;width:28px;height:28px;border-radius:8px;background:#EEF0EC;color:var(--ink2);display:flex;align-items:center;justify-content:center;font-style:normal;font-size:11px;font-weight:600}
+.pg-buscador .bu-it>span{flex:1;min-width:0;display:flex;flex-direction:column}
+.pg-buscador .bu-it>span>span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pg-buscador .bu-t{font-size:14px;line-height:20px}
+.pg-buscador .bu-it>.bu-kb{flex:none;visibility:hidden}
+.pg-buscador .bu-it.on{background:var(--soft)}
+.pg-buscador .bu-it.on>i{background:#fff;color:var(--acc);box-shadow:var(--sh1)}
+.pg-buscador .bu-it.on>.bu-kb{visibility:visible}
+.pg-buscador .bu-pe{padding:28px 16px 32px;text-align:center;display:flex;flex-direction:column;gap:4px}
+.pg-buscador .bu-pf{flex:none;display:flex;flex-wrap:wrap;gap:6px 16px;padding:10px 16px;border-top:1px solid var(--div);background:#FAFBF9;color:var(--ink3);font-size:12px;line-height:18px}
+.pg-buscador .bu-pf>span{display:inline-flex;align-items:center;gap:6px}
+.pg-buscador .bu-fin{margin-left:auto}
+@keyframes bu-fade{from{opacity:0}}
+@keyframes bu-rise{from{opacity:0;transform:translateY(8px) scale(.985)}}
+@media (max-width:600px){.pg-buscador{padding:12px}.pg-buscador .bu-pf>span:not(.bu-fin){display:none}.pg-buscador .bu-fin{margin-left:0}}
+@media (prefers-reduced-motion:reduce){.pg-buscador,.pg-buscador *{animation-duration:.01ms!important;transition-duration:.01ms!important}}

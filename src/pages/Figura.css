@@ -1,0 +1,32 @@
+/* Ficha de figura. La demo no trae reglas propias: estas cubren lo que la demo tenía en estilos en línea y lo nuevo (notas, serie, relación). */
+.pg-figura .fg-cab{flex-direction:row;flex-wrap:wrap;align-items:center;gap:20px}
+.pg-figura .fg-av{flex:none;width:72px;height:72px;border-radius:18px;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font:700 24px/1 'Libre Franklin',system-ui,sans-serif;box-shadow:inset 0 1px 0 rgb(255 255 255 / .18),0 4px 10px -4px rgb(40 90 50 / .5)}
+.pg-figura .fg-id{flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:4px}
+.pg-figura .fg-nom{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.pg-figura .fg-acc{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.pg-figura .fg-rel{display:flex;align-items:center;gap:8px}
+.pg-figura .fg-rel .entrada{width:auto;height:38px;padding:0 8px;cursor:pointer}
+.pg-figura .fg-kpi{flex-basis:150px}
+.pg-figura .fg-medio{flex:0 0 160px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pg-figura .fg-actual td{background:var(--sunk)}
+.pg-figura .fg-plano{box-shadow:none;border-radius:0}
+.pg-figura .fg-serie{display:flex;flex-direction:column;gap:6px}
+.pg-figura .fg-serie svg{display:block;width:100%;height:160px}
+.pg-figura .fg-eje{display:flex;justify-content:space-between;gap:12px;font-size:13px}
+.pg-figura .fg-dl{display:flex;flex-wrap:wrap;gap:12px 24px}
+.pg-figura .fg-dl>div{display:flex;flex-direction:column;gap:2px;min-width:120px}
+.pg-figura .fg-txt{white-space:pre-wrap;overflow-wrap:anywhere}
+.pg-figura .fg-gris{color:#454E48}
+.pg-figura .fg-mencion{align-items:flex-start}
+.pg-figura .fg-lado{flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.pg-figura .fg-nueva{display:flex;flex-direction:column;gap:10px}
+.pg-figura .fg-ta{height:auto;min-height:76px;padding:10px 12px;resize:vertical;line-height:20px}
+.pg-figura .fg-nota{align-items:flex-start}
+.pg-figura .fg-nota .gr{gap:6px}
+@media (max-width:560px){
+  .pg-figura .fg-medio{flex-basis:110px}
+  .pg-figura .fg-mencion{flex-direction:column}
+  .pg-figura .fg-lado{flex-direction:row;align-items:center}
+  .pg-figura .fg-eje span:nth-child(2){display:none}
+}
+.pg-figura .fg-sd{color:var(--ink3);font-size:20px;line-height:36px;font-weight:600}

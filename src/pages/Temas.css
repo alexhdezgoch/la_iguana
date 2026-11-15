@@ -1,0 +1,41 @@
+/* Reglas propias de la demo Temas.dc.html, con prefijo de pantalla. El panel de detalle se monta fuera de <main> con .pg-temas-panel. */
+:is(.pg-temas,.pg-temas-panel) .ta{width:100%;padding:10px 12px;border:0;border-radius:8px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);font:inherit;font-size:14px;color:var(--ink);resize:vertical;transition:box-shadow .12s var(--e)}
+:is(.pg-temas,.pg-temas-panel) .ta:focus{outline:0;box-shadow:inset 0 0 0 2px var(--acc)}
+:is(.pg-temas,.pg-temas-panel) .dl{display:flex;flex-wrap:wrap;gap:12px 24px}
+:is(.pg-temas,.pg-temas-panel) .dl>div{display:flex;flex-direction:column;gap:2px;min-width:120px}
+:is(.pg-temas,.pg-temas-panel) .fbar{position:sticky;top:0;z-index:6;display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;margin:-6px -8px;padding:6px 8px;border-radius:12px;background:rgb(246 247 244/.92);backdrop-filter:blur(6px)}
+:is(.pg-temas,.pg-temas-panel) .dd{position:relative}
+:is(.pg-temas,.pg-temas-panel) .ddm{right:auto;min-width:240px}
+:is(.pg-temas,.pg-temas-panel) .kb{border:0;font:inherit;color:inherit;text-align:left;cursor:pointer}
+:is(.pg-temas,.pg-temas-panel) .card.kb{transition:box-shadow .15s var(--e),transform .15s var(--e)}
+:is(.pg-temas,.pg-temas-panel) .card.kb:hover{box-shadow:var(--sh2);transform:translateY(-1px)}
+:is(.pg-temas,.pg-temas-panel) .twh{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 12px;padding:16px 16px 12px}
+:is(.pg-temas,.pg-temas-panel) .nb{padding:0;border:0;background:none;font:inherit;cursor:pointer;text-align:left}
+:is(.pg-temas,.pg-temas-panel) tr.ck{cursor:pointer}
+:is(.pg-temas,.pg-temas-panel) tbody tr.on,:is(.pg-temas,.pg-temas-panel) tbody tr.on:hover{background:#EEF4EE}
+:is(.pg-temas,.pg-temas-panel) .hm th,:is(.pg-temas,.pg-temas-panel) .hm td{padding:4px;text-align:center}
+:is(.pg-temas,.pg-temas-panel) .hm th{padding:10px 4px}
+:is(.pg-temas,.pg-temas-panel) .hm th:first-child,:is(.pg-temas,.pg-temas-panel) .hm td:first-child{padding-left:20px;text-align:left;white-space:nowrap}
+:is(.pg-temas,.pg-temas-panel) .hm th:last-child,:is(.pg-temas,.pg-temas-panel) .hm td:last-child{padding-right:20px}
+:is(.pg-temas,.pg-temas-panel) .hc{display:block;min-width:60px;height:30px;border-radius:6px;font-size:13px;line-height:30px;font-weight:600}
+:is(.pg-temas,.pg-temas-panel) .hc.fl{box-shadow:0 0 0 2px #fff,0 0 0 4px #D07A2D}
+:is(.pg-temas,.pg-temas-panel) .ov{position:fixed;inset:0;z-index:40;border:0;padding:0;background:rgb(22 32 25/.3);animation:fade .2s var(--e) both;cursor:default}
+:is(.pg-temas,.pg-temas-panel) .so{position:fixed;top:0;right:0;bottom:0;z-index:41;width:min(540px,100vw);border-radius:0;padding:20px 24px 32px;gap:16px;overflow-y:auto;box-shadow:var(--sh3);animation:pg-temas-slide .28s var(--ein) both}
+@keyframes pg-temas-slide{from{transform:translateX(28px);opacity:0}}
+:is(.pg-temas,.pg-temas-panel) .sec{display:flex;flex-direction:column;gap:10px;padding-top:16px;border-top:1px solid var(--div)}
+:is(.pg-temas,.pg-temas-panel) .tg{flex:none;width:38px;height:22px;padding:2px;border:0;border-radius:999px;background:#C2C9C3;cursor:pointer;transition:background .15s var(--e)}
+:is(.pg-temas,.pg-temas-panel) .tg i{display:block;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgb(22 32 25/.3);transition:transform .15s var(--e)}
+:is(.pg-temas,.pg-temas-panel) .tg[aria-checked="true"]{background:var(--acc)}
+:is(.pg-temas,.pg-temas-panel) .tg[aria-checked="true"] i{transform:translateX(16px)}
+:is(.pg-temas,.pg-temas-panel) .chip.kb{font-size:12px;line-height:18px;font-weight:600}
+:is(.pg-temas,.pg-temas-panel) .lg{display:flex;align-items:center;gap:6px}
+:is(.pg-temas,.pg-temas-panel) .cv{position:relative;display:block;flex:none}
+:is(.pg-temas,.pg-temas-panel) .cv>i,:is(.pg-temas,.pg-temas-panel) .cv>svg{position:absolute;inset:0;width:100%;height:100%}
+:is(.pg-temas,.pg-temas-panel) .tt th,:is(.pg-temas,.pg-temas-panel) .tt td{padding-left:10px;padding-right:10px}
+:is(.pg-temas,.pg-temas-panel) .tt th:first-child,:is(.pg-temas,.pg-temas-panel) .tt td:first-child{padding-left:16px}
+@media (max-width:760px){:is(.pg-temas,.pg-temas-panel) .fbar{position:static}}
+:is(.pg-temas,.pg-temas-panel) .hmw{overflow-x:auto;margin:0 -20px}
+:is(.pg-temas,.pg-temas-panel) .ddv{display:inline-block;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:bottom}
+:is(.pg-temas,.pg-temas-panel) .tg:disabled{opacity:.55;cursor:not-allowed}
+:is(.pg-temas,.pg-temas-panel) .pill:disabled{opacity:.5;cursor:not-allowed}
+@media (max-width:760px){:is(.pg-temas,.pg-temas-panel) .hmw{margin:0 -16px}}

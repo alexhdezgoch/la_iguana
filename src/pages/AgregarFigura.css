@@ -1,0 +1,31 @@
+/* Reglas propias de la demo AgregarFigura.dc.html, con prefijo .pg-agregar-figura. */
+.pg-agregar-figura .ta,.pg-agregar-figura .in{width:100%;padding:10px 12px;border:0;border-radius:8px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);font:inherit;font-size:14px;color:var(--ink);transition:box-shadow .12s var(--e)}
+.pg-agregar-figura .ta{resize:vertical}
+.pg-agregar-figura .in{height:36px;padding:0 12px}
+.pg-agregar-figura .ta:focus,.pg-agregar-figura .in:focus{outline:0;box-shadow:inset 0 0 0 2px var(--acc)}
+.pg-agregar-figura .in::placeholder,.pg-agregar-figura .ta::placeholder{color:#8A928C}
+.pg-agregar-figura .fm{flex:3 1 460px;max-width:720px;min-width:0}
+.pg-agregar-figura .pv{flex:1 1 300px;min-width:0;position:sticky;top:16px}
+.pg-agregar-figura .fr{display:flex;flex-wrap:wrap;gap:14px 16px}
+.pg-agregar-figura .fld{min-width:0;display:flex;flex-direction:column;gap:6px}
+.pg-agregar-figura .fr>.fld{flex:1 1 200px}
+.pg-agregar-figura .fl{font-size:13px;line-height:18px;font-weight:600;color:var(--ink2)}
+.pg-agregar-figura .ops{display:flex;flex-wrap:wrap;gap:6px}
+.pg-agregar-figura .op{min-height:32px;padding:0 12px;border:0;border-radius:8px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);color:var(--ink2);font:inherit;font-size:14px;font-weight:500;cursor:pointer;transition:background .1s var(--e),box-shadow .1s var(--e),color .1s var(--e)}
+.pg-agregar-figura .op:hover{background:var(--hov);color:var(--ink)}
+.pg-agregar-figura .op[aria-pressed="true"]{background:var(--soft);box-shadow:inset 0 0 0 1.5px var(--acc);color:var(--acc);font-weight:600}
+.pg-agregar-figura .tg{display:inline-flex;align-items:center;gap:6px;min-height:28px;padding:2px 4px 2px 10px;border-radius:8px;background:#EEF0EC;color:var(--ink);font-size:13px;line-height:18px;font-weight:500}
+.pg-agregar-figura .x{flex:none;width:22px;height:22px;padding:0;border:0;border-radius:6px;background:transparent;color:var(--ink3);font:inherit;font-size:16px;line-height:1;cursor:pointer;transition:background .1s var(--e)}
+.pg-agregar-figura .x:hover{background:rgb(22 32 25/.1);color:var(--ink)}
+.pg-agregar-figura .ck{display:flex;gap:10px;align-items:flex-start;padding:0;border:0;background:none;font:inherit;font-size:14px;color:inherit;text-align:left;cursor:pointer}
+.pg-agregar-figura .bx{flex:none;width:18px;height:18px;margin-top:2px;border-radius:5px;box-shadow:inset 0 0 0 1.5px var(--ink3);display:flex;align-items:center;justify-content:center;color:#fff;transition:background .12s var(--e)}
+.pg-agregar-figura .ck[aria-checked="true"] .bx{background:var(--acc);box-shadow:none}
+.pg-agregar-figura .wn{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;padding:10px 12px;border-radius:10px;background:#FBF3D9;color:#5E4600;font-size:13px;line-height:18px}
+.pg-agregar-figura .btn.dis{opacity:.45;cursor:not-allowed}
+.pg-agregar-figura .btn.sm2{height:30px;padding:0 10px;font-size:13px}
+.pg-agregar-figura .dl{display:flex;flex-wrap:wrap;gap:12px 24px}
+.pg-agregar-figura .dl>div{display:flex;flex-direction:column;gap:2px;min-width:96px}
+.pg-agregar-figura .okc{flex:none;width:36px;height:36px;border-radius:50%;background:var(--soft);color:var(--acc);display:flex;align-items:center;justify-content:center}
+.pg-agregar-figura .dr{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:10px 12px;margin:0 -12px;border-top:1px solid var(--div);border-radius:0;transition:background .12s var(--e)}
+.pg-agregar-figura .dr:first-child{border-top:0}
+.pg-agregar-figura .dr.sel{background:#F3F7F3;border-radius:10px;border-top-color:transparent;box-shadow:inset 0 0 0 1.5px rgb(40 90 50/.35)}

@@ -1,0 +1,30 @@
+/* Ficha de evento. Reglas propias de la demo (.ta) más añadidos de la app, todo bajo .pg-evento. */
+.pg-evento .ta{width:100%;padding:10px 12px;border:0;border-radius:8px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);font:inherit;font-size:14px;color:var(--ink);resize:vertical;transition:box-shadow .12s var(--e)}
+.pg-evento .ta:focus{outline:0;box-shadow:inset 0 0 0 2px var(--acc)}
+
+.pg-evento .ev-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.pg-evento .ev-balance{background:#285A32;color:#fff;box-shadow:0 1px 2px rgb(22 32 25/.2),0 10px 24px -10px rgb(40 90 50/.55);gap:6px}
+.pg-evento .ev-bl{font-size:13px;line-height:18px;font-weight:500;color:#CFE3D2}
+.pg-evento .ev-bl-btn{color:#CFE3D2}
+.pg-evento .ev-bl-btn:hover{color:#fff}
+.pg-evento .ev-bt{margin:0;font:600 20px/28px 'Libre Franklin',system-ui,sans-serif;letter-spacing:-.01em;max-width:820px;white-space:pre-line}
+.pg-evento .ev-et{flex:0 0 150px;min-width:0;display:flex;flex-direction:column}
+.pg-evento .ev-hash{flex:0 0 160px;min-width:0;overflow-wrap:anywhere}
+.pg-evento .ev-cifras{display:flex;flex-wrap:wrap;gap:12px 28px}
+.pg-evento .ev-cifras>div{display:flex;flex-direction:column}
+.pg-evento .ev-ley{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;line-height:18px;color:var(--ink2)}
+.pg-evento .ev-ley>span{display:flex;align-items:center;gap:6px}
+.pg-evento .ev-aprend{flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.pg-evento .ev-pre{margin:0;white-space:pre-line;overflow-wrap:anywhere}
+.pg-evento .ev-form{display:flex;flex-direction:column;gap:10px;width:100%;margin-top:4px}
+.pg-evento .ev-campos{display:flex;flex-wrap:wrap;gap:12px}
+.pg-evento .ev-campos>.campo{flex:1 1 220px;min-width:0}
+.pg-evento .ev-mini{display:flex;gap:12px;flex:none}
+.pg-evento .ev-rol{height:32px;width:auto;min-width:150px}
+.pg-evento .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+@media (max-width:560px){
+  .pg-evento .ev-et{flex-basis:110px}
+  .pg-evento .ev-hash{flex-basis:120px}
+  .pg-evento .ev-bt{font-size:18px;line-height:26px}
+}

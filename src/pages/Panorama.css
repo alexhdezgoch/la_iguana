@@ -1,0 +1,8 @@
+/* Panorama. La demo no trae reglas propias: esto reemplaza los estilos en línea de la demo. */
+.pg-panorama .pn-cab{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
+.pg-panorama .pn-cab-t{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.pg-panorama .pn-li{color:inherit;text-decoration:none}
+.pg-panorama .pn-li:hover .sm,.pg-panorama .pn-li:hover .b{color:var(--acc);text-decoration:underline}
+.pg-panorama .pn-fecha{width:44px;height:44px;flex-direction:column;gap:2px;line-height:1}
+.pg-panorama .pn-mes{font-size:10px;text-transform:uppercase;letter-spacing:.04em}
+.pg-panorama .pn-dia{font-size:15px;color:#1B211D}

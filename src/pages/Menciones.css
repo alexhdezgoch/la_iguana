@@ -1,0 +1,44 @@
+/* Menciones: reglas propias de la demo (Menciones.dc.html), con el prefijo de la pantalla. */
+.pg-menciones .mi{display:flex;flex-direction:column;gap:6px;width:100%;padding:14px 16px;border:0;border-top:1px solid var(--div);border-radius:0;background:transparent;font:inherit;color:inherit;text-align:left;cursor:pointer;position:relative;transition:background .12s var(--e)}
+.pg-menciones .mi:first-child{border-top:0}
+.pg-menciones .mi:hover{background:rgb(22 32 25/.03)}
+.pg-menciones .mi::before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:3px;border-radius:0 3px 3px 0;background:var(--acc);transform:scaleY(0);transition:transform .18s var(--e)}
+.pg-menciones .mi[aria-pressed="true"]{background:#F3F7F3}
+.pg-menciones .mi[aria-pressed="true"]::before{transform:scaleY(1)}
+.pg-menciones .mm{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px}
+.pg-menciones .ta{width:100%;padding:10px 12px;border:0;border-radius:8px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);font:inherit;font-size:14px;color:var(--ink);resize:vertical;transition:box-shadow .12s var(--e)}
+.pg-menciones .ta:focus{outline:0;box-shadow:inset 0 0 0 2px var(--acc)}
+.pg-menciones .dl{display:flex;flex-wrap:wrap;gap:12px 24px}
+.pg-menciones .dl>div{display:flex;flex-direction:column;gap:2px;min-width:120px}
+
+/* añadidos de la app */
+.pg-menciones .barra{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
+.pg-menciones .filtros{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.pg-menciones .rev{position:sticky;top:16px;box-shadow:0 0 0 1px rgb(22 32 25/.07),0 2px 4px rgb(22 32 25/.05),0 8px 16px -4px rgb(22 32 25/.08)}
+.pg-menciones .nada{align-items:center;text-align:center;padding:48px 20px;gap:6px}
+.pg-menciones .seg.imp{align-self:flex-start;margin-top:2px}
+.pg-menciones .seg.imp .pill{height:28px;padding:0 10px;font-size:13px}
+.pg-menciones .pill[disabled]{cursor:default}
+.pg-menciones .pill[disabled]:not([aria-pressed="true"]){opacity:.55}
+.pg-menciones .mi .b{overflow-wrap:anywhere}
+@media (max-width:820px){.pg-menciones .rev{position:static}}
+
+/* menú de filtro, montado en <body> */
+.pg-menciones-pop{position:fixed;inset:0;z-index:10000;font:400 15px/22px "Source Sans 3","Segoe UI",system-ui,sans-serif;color:var(--ink);font-variant-numeric:tabular-nums lining-nums}
+.pg-menciones-pop *{box-sizing:border-box}
+.pg-menciones-pop .fp{position:fixed;max-width:calc(100vw - 16px);padding:6px;border-radius:12px;background:#fff;box-shadow:var(--sh3);display:flex;flex-direction:column;gap:2px;overflow:auto;overscroll-behavior:contain;animation:pg-menciones-pop .16s cubic-bezier(.05,.7,.1,1) both;transform-origin:top center}
+.pg-menciones-pop .fps{padding:8px 8px 4px;font-size:12px;line-height:16px;font-weight:600;color:var(--ink3)}
+.pg-menciones-pop .fo{display:flex;align-items:center;gap:10px;width:100%;min-height:34px;padding:5px 8px;border:0;border-radius:8px;background:transparent;font:inherit;font-size:14px;line-height:20px;color:inherit;text-align:left;cursor:pointer;transition:background .1s cubic-bezier(.2,0,0,1)}
+.pg-menciones-pop .fo:hover{background:var(--hov)}
+.pg-menciones-pop .fo:focus-visible{outline:2px solid var(--acc);outline-offset:-2px}
+.pg-menciones-pop .fo .ft{flex:1;min-width:0}
+.pg-menciones-pop .fo .mu{flex:none;white-space:nowrap;color:var(--ink3);font-size:13px;line-height:18px}
+.pg-menciones-pop .fo[aria-checked="true"]{font-weight:600}
+.pg-menciones-pop .fbx{flex:none;width:16px;height:16px;border-radius:4px;box-shadow:inset 0 0 0 1.5px rgb(22 32 25/.3);display:flex;align-items:center;justify-content:center;color:#fff}
+.pg-menciones-pop .fbx svg{display:none}
+.pg-menciones-pop .fo[aria-checked="true"]>.fbx{background:var(--acc);box-shadow:none}
+.pg-menciones-pop .fo[aria-checked="true"]>.fbx svg{display:block}
+.pg-menciones-pop .fvac{padding:8px;font-size:13px;color:var(--ink3)}
+.pg-menciones-pop .fpf{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 8px 4px;border-top:1px solid var(--div);margin-top:4px}
+@keyframes pg-menciones-pop{from{opacity:0;transform:translateY(-4px) scale(.98)}}
+@media (prefers-reduced-motion:reduce){.pg-menciones-pop *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
