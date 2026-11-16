@@ -116,7 +116,7 @@ export function Layout() {
   return (
     <div className="app">
       <nav className="side" aria-label="Navegación">
-        <Link className="logo" to="/"><Logo />La Iguana</Link>
+        <Link className="logo" to="/"><Logo />Wana</Link>
         <Selector actual={actual} campanas={campanas} resumenes={resumenes} puedeCrear={!!persona && persona.rol_org !== 'externo'} />
         <button type="button" className="find" onClick={abrirBuscador}><Icono n="buscar" />Buscar<span className="kbd">Ctrl K</span></button>
         {destino ? (
@@ -135,7 +135,7 @@ export function Layout() {
         <div className="user">
           <span className="av" aria-hidden="true">{org?.iniciales ?? '··'}</span>
           <span className="sw-t">
-            <span className="sm b" title={org?.nombre ?? undefined}>{org?.nombre ?? 'La Iguana'}</span>
+            <span className="sm b" title={org?.nombre ?? undefined}>{org?.nombre ?? 'Wana'}</span>
             <span className="mu">{todasDemo ? 'Escenario hipotético, cifras ilustrativas' : usuario?.email}</span>
           </span>
           <button type="button" className="btn bg bi salir" onClick={() => void salir()} aria-label="Cerrar sesión" title={`Cerrar sesión (${usuario?.email ?? ''})`}><Icono n="salir" /></button>

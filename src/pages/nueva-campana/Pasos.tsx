@@ -45,7 +45,7 @@ export function datosMiembro(m: MiembroB, personas: Persona[]): { ini: string; n
   return {
     ini: m.nombre?.trim() ? iniciales(m.nombre) : '@',
     nombre,
-    sub: [m.nota ?? 'Invitación', m.email && m.nombre ? m.email : '', 'la cuenta la crea quien administra La Iguana'].filter(Boolean).join(' · '),
+    sub: [m.nota ?? 'Invitación', m.email && m.nombre ? m.email : '', 'la cuenta la crea quien administra Wana'].filter(Boolean).join(' · '),
   };
 }
 
@@ -181,7 +181,7 @@ export function PasoFiguras({ d, upd, directorio, yaEn, orgNombre }: Ctx) {
           })}
         </div>
         {figs.length > 0 && !propia ? <span className="ck"><span className="d du" /><span className="tu b">Falta la figura propia: cambia la relación de una figura a "Propia".</span></span> : null}
-        <label className="ok well"><input type="checkbox" checked={d.confirmo_personas_publicas} onChange={() => upd({ confirmo_personas_publicas: !d.confirmo_personas_publicas })} /><span className="sm">Confirmo que todas son personas públicas en un rol público. La Iguana no crea perfiles de ciudadanos particulares.</span></label>
+        <label className="ok well"><input type="checkbox" checked={d.confirmo_personas_publicas} onChange={() => upd({ confirmo_personas_publicas: !d.confirmo_personas_publicas })} /><span className="sm">Confirmo que todas son personas públicas en un rol público. Wana no crea perfiles de ciudadanos particulares.</span></label>
       </section>
 
       <section className="card fade" aria-label="Directorio del equipo">
@@ -359,7 +359,7 @@ export function PasoEquipo({ d, upd, personas, yo, orgNombre }: Ctx) {
         </label>
         <button type="button" className="btn bg" aria-disabled={!okCorreo || yaEsta} onClick={invitar}>Agregar</button>
       </div>
-      <p className="mu">{yaEsta ? 'Ese correo ya está en el equipo de esta campaña.' : 'No se envía correo: la persona queda registrada al crear la campaña y la cuenta la crea quien administra La Iguana.'}</p>
+      <p className="mu">{yaEsta ? 'Ese correo ya está en el equipo de esta campaña.' : 'No se envía correo: la persona queda registrada al crear la campaña y la cuenta la crea quien administra Wana.'}</p>
       <div className="well" style={{ display: 'flex', gap: 12, alignItems: 'flex-start', flexWrap: 'wrap' }}>
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#285A32" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ marginTop: 2 }}><path d="M5 11h14v10H5zM8 11V7a4 4 0 0 1 8 0v4" /></svg>
         <div className="gr" style={{ flex: '1 1 220px' }}><span className="sm b">Esta campaña es un espacio aislado</span><span className="sm" style={{ color: '#454E48' }}>Nadie de otras campañas de {orgNombre} ve sus datos salvo que lo agregues aquí. La búsqueda, los reportes y las alertas nunca cruzan campañas.</span></div>
@@ -422,7 +422,7 @@ export function PasoRevisar(ctx: Ctx) {
       <section className="card fade" aria-label="Qué pasa al crear" style={{ gap: 8 }}>
         <h2>Al crear la campaña</h2>
         <p className="sm" style={{ color: '#454E48' }}>Se guardan la contienda, el calendario, {figs.length} {figs.length === 1 ? 'figura' : 'figuras'} con sus términos, los términos de la campaña y el equipo. Quedas en Administración.</p>
-        <p className="mu">El volumen de menciones no se estima aquí: el Resumen muestra cifras reales cuando haya menciones recolectadas para estos términos. Agregar a alguien no envía correo; la cuenta de cada persona la crea quien administra La Iguana.</p>
+        <p className="mu">El volumen de menciones no se estima aquí: el Resumen muestra cifras reales cuando haya menciones recolectadas para estos términos. Agregar a alguien no envía correo; la cuenta de cada persona la crea quien administra Wana.</p>
       </section>
     </>
   );

@@ -1,4 +1,4 @@
-# La Iguana
+# Wana
 
 Consola de monitoreo e inteligencia para campañas políticas: figuras, eventos, menciones, temas y narrativas, alertas y reportes.
 

@@ -31,9 +31,12 @@ export function Icono({ n, d, t = 16, g = 1.75 }: { n?: NombreIcono; d?: string;
 
 export function Logo({ t = 22 }: { t?: number }) {
   return (
-    <svg viewBox="0 0 24 24" width={t} height={t} fill="currentColor" aria-hidden="true">
-      <path fillRule="evenodd" d="M2 15 12 8h5a5 5 0 0 1 5 5v1a5 5 0 0 1-5 5H2zM16.5 11.5a1.75 1.75 0 1 0 0 3.5 1.75 1.75 0 0 0 0-3.5z" />
-      <path d="M11 6.5 12.75 2l1.75 4.5zM15.5 6.5 17.25 2 19 6.5z" />
+    <svg viewBox="0 0 24 24" width={t} height={t} fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" />
+      <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" />
+      <path d="M7 21h10" />
+      <path d="M12 3v18" />
+      <path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2" />
     </svg>
   );
 }

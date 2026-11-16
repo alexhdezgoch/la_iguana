@@ -3,7 +3,7 @@ import { Logo } from '../shell/Iconos';
 import { supabase } from '../lib/supabase';
 import { useSesion } from '../shell/Sesion';
 
-/** Entrada con correo y contraseña. Las cuentas las crea quien administra La Iguana: no hay registro abierto. */
+/** Entrada con correo y contraseña. Las cuentas las crea quien administra Wana: no hay registro abierto. */
 export default function Login() {
   const [email, setEmail] = useState('');
   const [clave, setClave] = useState('');
@@ -26,7 +26,7 @@ export default function Login() {
   return (
     <div className="acceso">
       <form className="card" onSubmit={enviar}>
-        <span className="logo"><Logo />La Iguana</span>
+        <span className="logo"><Logo />Wana</span>
         <div>
           <h1 style={{ margin: 0, font: "600 20px/26px 'Libre Franklin',system-ui,sans-serif", letterSpacing: '-.015em' }}>Entrar</h1>
           <p className="mu" style={{ margin: '4px 0 0' }}>Consola de monitoreo para campañas políticas.</p>
@@ -51,9 +51,9 @@ export function SinAcceso() {
   return (
     <div className="acceso">
       <div className="card">
-        <span className="logo"><Logo />La Iguana</span>
+        <span className="logo"><Logo />Wana</span>
         <h2 style={{ margin: 0, font: "600 17px/24px 'Libre Franklin',system-ui,sans-serif" }}>Tu cuenta todavía no tiene acceso</h2>
-        <p className="sm">{usuario?.email} no está en ningún equipo. Pide a quien administra La Iguana que te agregue con este correo.</p>
+        <p className="sm">{usuario?.email} no está en ningún equipo. Pide a quien administra Wana que te agregue con este correo.</p>
         <button type="button" className="btn bg" style={{ justifyContent: 'center' }} onClick={() => void salir()}>Cerrar sesión</button>
       </div>
     </div>

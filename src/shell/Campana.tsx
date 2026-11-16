@@ -71,7 +71,7 @@ export function usePagina(titulo: string, migas: Miga[] = []) {
   const clave = JSON.stringify(migas);
   useEffect(() => {
     fijar(titulo, migas);
-    document.title = titulo ? `La Iguana · ${titulo}` : 'La Iguana';
+    document.title = titulo ? `Wana · ${titulo}` : 'Wana';
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [titulo, clave, fijar]);
 }

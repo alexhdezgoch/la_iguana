@@ -358,7 +358,7 @@ export default function AgregarFigura() {
                   <p className="mu">Relación y notas son de esta campaña; el perfil se comparte en el directorio.</p>
                   <Casilla marcada={confirmo} alCambiar={() => setConfirmo(!confirmo)}>
                     <span className="b">Confirmo que es una persona pública en un rol público.</span><br />
-                    <span className="mu">La Iguana no crea perfiles de ciudadanos ni de personas privadas.</span>
+                    <span className="mu">Wana no crea perfiles de ciudadanos ni de personas privadas.</span>
                   </Casilla>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px 12px', alignItems: 'center', borderTop: '1px solid rgb(22 32 25 / .07)', paddingTop: 14 }}>
                     <button type="button" className={puedeGuardar ? 'btn bp' : 'btn bp dis'} aria-disabled={!puedeGuardar} onClick={guardar}>{guardando ? 'Guardando…' : 'Agregar figura'}</button>
