@@ -8,6 +8,10 @@ set client_min_messages = warning;
 --   Administración: todo, incluido el equipo de la campaña.   Análisis: lee y escribe datos.
 --   Solo lectura: lee todo, no escribe.                        Cliente: lee todo menos notas internas y las filas crudas del Informe
 --                                                              (autores, comentarios, codificaciones, recolecciones); no escribe.
+-- Qué protege el Informe: la salida de informe_datos (860) enmascara las cuentas personales (sin usuario, autor_id,
+-- mencion_id, url ni fuente; sus faltantes de recolección salen como "Cuenta personal"). Eso no oculta la tabla menciones:
+-- sus filas crudas (url, autor_id, fuente) siguen legibles para todo miembro de la campaña, Cliente incluido, como antes
+-- y como en la pantalla Menciones. Las urls de menciones no deben llevar el usuario de la cuenta (la semilla usa /p/<azar>).
 
 -- Cada función devuelve un conjunto sin parámetros: Postgres la evalúa una vez por consulta, no por fila.
 create or replace function public.mis_personas() returns setof text
@@ -385,7 +389,8 @@ drop policy if exists notas_baja on public.notas_internas;
 create policy notas_baja on public.notas_internas for delete to authenticated using (campana_id in (select public.campanas_editables()));
 
 -- ---------- filas crudas del Informe: el rol Cliente no las lee directo (solo agregadas por informe_datos) ----------
--- autores (usuarios de cuentas pequeñas), comentarios (texto de terceros), codificaciones y recolecciones.
+-- autores (usuarios de cuentas pequeñas), comentarios (texto de terceros), codificaciones y recolecciones (faltantes).
+-- menciones no está aquí: Cliente la sigue leyendo (ver el encabezado).
 do $$
 declare t text; accion text;
 begin

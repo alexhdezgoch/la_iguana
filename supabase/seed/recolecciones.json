@@ -5,7 +5,7 @@
   "canal": "Medio digital",
   "metodo": "RSS",
   "descripcion": "Agregador de noticias por RSS, edición Venezuela en español.",
-  "consulta": "Nombre de la figura propia, entrevista, emisora anfitriona y su programa (términos de ejemplo).",
+  "consulta": "Nombre de la figura propia, emisora anfitriona y su programa (términos de ejemplo).",
   "periodo_inicio": "2027-05-10T00:00:00-04:00",
   "periodo_fin": "2027-05-12T11:00:00-04:00",
   "ejecutada_en": "2027-05-12T11:20:00-04:00",
@@ -22,8 +22,8 @@
   "campana_id": "informe-ejemplo",
   "canal": "X",
   "metodo": "Búsqueda avanzada",
-  "descripcion": "Búsqueda en español sobre la figura propia, la entrevista y la emisora, sin reposts.",
-  "consulta": "(figura propia OR entrevista OR emisora anfitriona) lang:es -is:retweet",
+  "descripcion": "Búsqueda en español sobre la figura propia, el programa y la emisora, sin reposts.",
+  "consulta": "(figura propia OR programa de ejemplo OR emisora anfitriona) lang:es -is:retweet",
   "eje_id": "inf-eje-conversacion",
   "dia": "2027-05-10",
   "periodo_inicio": "2027-05-10T00:00:00-04:00",
@@ -45,8 +45,8 @@
   "campana_id": "informe-ejemplo",
   "canal": "X",
   "metodo": "Búsqueda avanzada",
-  "descripcion": "Búsqueda en español sobre la figura propia, la entrevista y la emisora, sin reposts.",
-  "consulta": "(figura propia OR entrevista OR emisora anfitriona) lang:es -is:retweet",
+  "descripcion": "Búsqueda en español sobre la figura propia, el programa y la emisora, sin reposts.",
+  "consulta": "(figura propia OR programa de ejemplo OR emisora anfitriona) lang:es -is:retweet",
   "eje_id": "inf-eje-conversacion",
   "dia": "2027-05-11",
   "periodo_inicio": "2027-05-11T00:00:00-04:00",
@@ -68,8 +68,8 @@
   "campana_id": "informe-ejemplo",
   "canal": "X",
   "metodo": "Búsqueda avanzada",
-  "descripcion": "Búsqueda en español sobre la figura propia, la entrevista y la emisora, sin reposts.",
-  "consulta": "(figura propia OR entrevista OR emisora anfitriona) lang:es -is:retweet",
+  "descripcion": "Búsqueda en español sobre la figura propia, el programa y la emisora, sin reposts.",
+  "consulta": "(figura propia OR programa de ejemplo OR emisora anfitriona) lang:es -is:retweet",
   "eje_id": "inf-eje-conversacion",
   "dia": "2027-05-12",
   "periodo_inicio": "2027-05-12T00:00:00-04:00",
@@ -91,8 +91,8 @@
   "campana_id": "informe-ejemplo",
   "canal": "X",
   "metodo": "Búsqueda avanzada",
-  "descripcion": "Búsqueda de la marca de la entrevista o de la emisora junto a la figura propia.",
-  "consulta": "(entrevista OR emisora anfitriona) figura propia lang:es -is:retweet",
+  "descripcion": "Búsqueda de la marca del programa o de la emisora junto a la figura propia.",
+  "consulta": "(programa de ejemplo OR emisora anfitriona) figura propia lang:es -is:retweet",
   "eje_id": "inf-eje-foco",
   "dia": "2027-05-11",
   "periodo_inicio": "2027-05-11T00:00:00-04:00",
@@ -104,7 +104,7 @@
   "pedidas": 1,
   "leidas": 1,
   "limites": [
-   "Puede incluir otras entrevistas o dejar fuera publicaciones que no nombran la entrevista."
+   "Puede incluir otros programas o dejar fuera publicaciones que no nombran el programa."
   ]
  },
  {
@@ -122,10 +122,12 @@
   "faltantes": [
    {
     "cuenta": "@portal_noticias_5",
+    "es_organizacion": true,
     "motivo": "La cuenta no devolvió datos."
    },
    {
     "cuenta": "@medio_regional_2",
+    "es_organizacion": true,
     "motivo": "Cuenta no encontrada."
    }
   ],
@@ -139,8 +141,8 @@
   "campana_id": "informe-ejemplo",
   "canal": "Instagram",
   "metodo": "Etiquetas",
-  "descripcion": "Cuatro etiquetas de ejemplo sobre la entrevista y la figura.",
-  "consulta": "#entrevista_ejemplo, #emisora_ejemplo, #figura_ejemplo, #programa_ejemplo",
+  "descripcion": "Cuatro etiquetas de ejemplo sobre el programa y la figura.",
+  "consulta": "#segmento_ejemplo, #emisora_ejemplo, #figura_ejemplo, #programa_ejemplo",
   "periodo_inicio": "2027-05-10T00:00:00-04:00",
   "periodo_fin": "2027-05-12T11:00:00-04:00",
   "ejecutada_en": "2027-05-12T11:42:00-04:00",
@@ -156,8 +158,8 @@
   "campana_id": "informe-ejemplo",
   "canal": "TikTok",
   "metodo": "Búsqueda por palabras",
-  "descripcion": "Búsqueda por palabras sobre la figura propia y la entrevista.",
-  "consulta": "figura propia entrevista; figura propia emisora; entrevista radial; programa de ejemplo",
+  "descripcion": "Búsqueda por palabras sobre la figura propia y el programa.",
+  "consulta": "figura propia programa; figura propia emisora; programa de radio; programa de ejemplo",
   "periodo_inicio": "2027-05-10T00:00:00-04:00",
   "periodo_fin": "2027-05-12T11:00:00-04:00",
   "ejecutada_en": "2027-05-12T11:45:00-04:00",
@@ -209,8 +211,8 @@
   "campana_id": "informe-ejemplo",
   "canal": "YouTube",
   "metodo": "Búsqueda por palabras",
-  "descripcion": "Búsqueda por palabras sobre la entrevista.",
-  "consulta": "entrevista radial figura propia",
+  "descripcion": "Búsqueda por palabras sobre el programa.",
+  "consulta": "programa de radio figura propia",
   "periodo_inicio": "2027-05-10T00:00:00-04:00",
   "periodo_fin": "2027-05-12T11:00:00-04:00",
   "ejecutada_en": "2027-05-12T11:52:00-04:00",
@@ -236,10 +238,12 @@
   "faltantes": [
    {
     "cuenta": "Página de la figura propia",
+    "es_organizacion": true,
     "motivo": "La página no devolvió datos."
    },
    {
     "cuenta": "Página de la emisora anfitriona",
+    "es_organizacion": true,
     "motivo": "No se encontró una página pública."
    }
   ],
@@ -319,7 +323,7 @@
   "campana_id": "informe-ejemplo",
   "canal": "Facebook",
   "metodo": "Páginas",
-  "descripcion": "Comentarios de cuatro publicaciones sobre la entrevista.",
+  "descripcion": "Comentarios de cuatro publicaciones sobre el programa.",
   "periodo_inicio": "2027-05-10T00:00:00-04:00",
   "periodo_fin": "2027-05-12T11:00:00-04:00",
   "ejecutada_en": "2027-05-12T12:10:00-04:00",
@@ -331,6 +335,7 @@
   "faltantes": [
    {
     "cuenta": "Video principal de la página del partido",
+    "es_organizacion": true,
     "motivo": "El proveedor devolvió 85 de 2.820 comentarios."
    }
   ],
@@ -770,10 +775,16 @@
   "faltantes": [
    {
     "cuenta": "@portal_noticias_7",
+    "es_organizacion": true,
     "motivo": "La cuenta no devolvió datos."
    },
    {
     "cuenta": "@organizacion_ejemplo_1",
+    "es_organizacion": true,
+    "motivo": "Cuenta privada."
+   },
+   {
+    "cuenta": "@cuenta_personal_ig_9",
     "motivo": "Cuenta privada."
    }
   ],
@@ -817,14 +828,17 @@
   "faltantes": [
    {
     "cuenta": "Página de la figura propia",
+    "es_organizacion": true,
     "motivo": "La página no devolvió datos."
    },
    {
     "cuenta": "Página de una organización de ejemplo",
+    "es_organizacion": true,
     "motivo": "La página no devolvió datos."
    },
    {
     "cuenta": "@portal_noticias_3",
+    "es_organizacion": true,
     "motivo": "Faltan los días más antiguos.",
     "desde": "2027-05-07T14:00:00-04:00"
    }

@@ -3,12 +3,11 @@
   "id": "inf-eje-conversacion",
   "campana_id": "informe-ejemplo",
   "nombre": "Sobre la figura o el evento",
-  "regla": "El texto o el titular nombra a la figura propia, la entrevista, la emisora anfitriona o su programa.",
+  "regla": "El texto o el titular nombra a la figura propia, la emisora anfitriona o su programa de ejemplo.",
   "terminos": [
    "figura propia (nombre y apellido)",
-   "entrevista",
-   "emisora anfitriona",
-   "programa de ejemplo"
+   "programa de ejemplo",
+   "emisora anfitriona"
   ],
   "orden": 1
  },
@@ -16,9 +15,9 @@
   "id": "inf-eje-foco",
   "campana_id": "informe-ejemplo",
   "nombre": "Sobre el evento",
-  "regla": "Trata la entrevista: en X, la marca de la emisora o la palabra entrevista junto a la figura; en Instagram, YouTube y noticias, lista revisada a mano.",
+  "regla": "Trata el programa de ejemplo: en X, la marca de la emisora o el nombre del programa junto a la figura; en Instagram, YouTube y noticias, lista revisada a mano.",
   "terminos": [
-   "entrevista",
+   "programa de ejemplo",
    "emisora anfitriona",
    "en vivo"
   ],
@@ -28,7 +27,7 @@
   "id": "inf-eje-anfitrion",
   "campana_id": "informe-ejemplo",
   "nombre": "Nombra al medio anfitrión",
-  "regla": "El texto nombra a la emisora anfitriona, su programa o su conductora.",
+  "regla": "El texto nombra a la emisora anfitriona o su programa de ejemplo.",
   "terminos": [
    "emisora anfitriona",
    "programa de ejemplo"

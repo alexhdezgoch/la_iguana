@@ -16,7 +16,8 @@ import { Editor } from './reportes/Editor';
 import { VerEnvio } from './reportes/VerEnvio';
 import type { Contenido, SeccionCfg } from '../lib/reportes/documento';
 import { COLA, ESTADO_ENVIO, aLas, contarDest, descripcionDe, enDias, gmt, listasDe, momento, nombreDest, periodoEnvio, ponerEnCola, resumenDest } from './reportes/util';
-import { crearInforme, esEdicionInforme, generarEdicion } from '../lib/informe/edicion';
+import { crearInforme, esDocInforme, generarEdicion } from '../lib/informe/edicion';
+import { LimiteInforme } from '../lib/informe/Limite';
 import './Reportes.css';
 
 const ORDEN_ESTADOS = ['Pendiente de envío', 'En revisión', 'Borrador', 'Entregado', 'Envío parcial', 'Fallido'];
@@ -116,13 +117,15 @@ export default function Reportes() {
   if (envioId) {
     return (
       <Carga estados={[reportes, envios]}>
-        <VerEnvio
-          envio={envios.datos.find((e) => e.id === envioId) ?? null}
-          reporte={repDe(envios.datos.find((e) => e.id === envioId)?.reporte_id ?? '')}
-          volver={() => ir({ envio: null })}
-          editar={(id) => ir({ envio: null, ver: id })}
-          aprobar={aprobar} reenviar={reenviar} ocupado={ocupado}
-        />
+        <LimiteInforme key={envioId} titulo="Este envío no se puede mostrar" detalle="La copia guardada tiene una forma que esta versión de la app no sabe leer. Vuelve al historial para ver los demás envíos.">
+          <VerEnvio
+            envio={envios.datos.find((e) => e.id === envioId) ?? null}
+            reporte={repDe(envios.datos.find((e) => e.id === envioId)?.reporte_id ?? '')}
+            volver={() => ir({ envio: null })}
+            editar={(id) => ir({ envio: null, ver: id })}
+            aprobar={aprobar} reenviar={reenviar} ocupado={ocupado}
+          />
+        </LimiteInforme>
       </Carga>
     );
   }
@@ -331,7 +334,7 @@ export default function Reportes() {
                     <thead><tr><th scope="col">Reporte</th><th scope="col">Periodo cubierto</th><th scope="col">Generado</th><th scope="col">Enviado</th><th scope="col">Entregados</th><th scope="col">Estado</th><th scope="col" className="r">Acciones</th></tr></thead>
                     <tbody>
                       {hist.map((e) => {
-                        const conDoc = !!e.contenido?.secciones?.length || esEdicionInforme(e.contenido);
+                        const conDoc = !!e.contenido?.secciones?.length || esDocInforme(e.contenido);
                         const accion = e.estado === 'En revisión' ? ['Aprobar', () => aprobar(e)] as const
                           : e.estado === 'Borrador' ? ['Enviar', () => aprobar(e)] as const
                             : e.estado === 'Pendiente de envío' ? ['Sacar de la cola', () => sacarDeCola(e)] as const

@@ -390,6 +390,48 @@ await espera('[inf] cliente recibe el Informe de ejemplo sin cuentas personales 
   const d = (await c.query(`select informe_datos('inf-rep-evento')::text as t`)).rows[0].t;
   return [JSON.parse(d).reporte.id, /cuenta_personal_|Comentario de ejemplo/.test(d)];
 }, (r) => r.ok && r.valor[0] === 'inf-rep-evento' && r.valor[1] === false);
+// Filas enmascaradas ("Cuenta personal"): sin mencion_id, url, autor_id ni fuente que identifique la cuenta, en los dos informes.
+function enmascaradas(d) {
+  const out = [];
+  const ver = (x) => {
+    if (Array.isArray(x)) return x.forEach(ver);
+    if (!x || typeof x !== 'object') return;
+    if (x.cuenta && typeof x.cuenta === 'object' && x.cuenta.visible === false) out.push(x);
+    Object.values(x).forEach(ver);
+  };
+  ver(d);
+  return out;
+}
+for (const rep of ['inf-rep-evento', 'inf-rep-tema']) {
+  await espera(`[inf] ${rep}: el cliente no recibe mencion_id, url ni autor_id de filas enmascaradas`, 'cliente', async (c) => {
+    const d = (await c.query(`select informe_datos($1) as d`, [rep])).rows[0].d;
+    const l = enmascaradas(d);
+    const malas = l.filter((x) => x.mencion_id != null || x.url != null || x.cuenta.autor_id != null || x.cuenta.handle != null || x.cuenta.url != null
+      || (x.fuente != null && x.fuente !== 'Cuenta personal') || 'id_externo' in x);
+    const faltantes = d.recolecciones.flatMap((r) => r.faltantes.map((f) => f.cuenta));
+    return { total: l.length, malas: malas.length, faltantes_personales: faltantes.filter((x) => /cuenta_personal/.test(x)).length,
+      faltantes_enmascarados: faltantes.filter((x) => x === 'Cuenta personal').length };
+  }, (r) => r.ok && r.valor.malas === 0 && r.valor.faltantes_personales === 0
+    // El de evento tiene filas enmascaradas en rankings y destacadas; el de tema, una cuenta personal en faltantes.
+    && (rep === 'inf-rep-evento' ? r.valor.total > 0 : r.valor.faltantes_enmascarados > 0));
+}
+await espera('[inf] las menciones de cuentas personales del Informe de ejemplo no salen por id ni url', 'base', async (c) => {
+  // Como el dueño: ids y urls de las menciones de cuentas no visibles; luego se buscan en la salida que recibe el cliente.
+  const ocultas = (await c.query(`select m.id, m.url from menciones m join autores a on a.id = m.autor_id
+    where m.campana_id = 'informe-ejemplo' and not public.informe_visible(a, m.canal)`)).rows;
+  await c.query('set local role authenticated');
+  await c.query(`select set_config('request.jwt.claims', $1, true)`, [JSON.stringify({ sub: U.cliente, role: 'authenticated' })]);
+  let fugas = 0;
+  for (const rep of ['inf-rep-evento', 'inf-rep-tema']) {
+    const t = (await c.query(`select informe_datos($1)::text as t`, [rep])).rows[0].t;
+    fugas += ocultas.filter((m) => t.includes(`"${m.id}"`) || (m.url && t.includes(m.url))).length;
+  }
+  return [ocultas.length > 0, fugas];
+}, (r) => r.ok && r.valor[0] === true && r.valor[1] === 0);
+await espera('[inf] autores del Informe de ejemplo con ids neutros (sin el usuario)', 'base', cuenta(`select 1 from autores where campana_id = 'informe-ejemplo'
+  and (id !~ '^inf-a-[0-9]{4}$' or position(ltrim(handle, '@') in id) > 0)`), n(0));
+await espera('[inf] urls de publicaciones del Informe de ejemplo sin el usuario de la cuenta', 'base', cuenta(`select 1 from menciones m join autores a on a.id = m.autor_id
+  where m.campana_id = 'informe-ejemplo' and position(ltrim(a.handle, '@') in m.url) > 0`), n(0));
 await espera('[inf] ajeno recibe null del Informe de ejemplo', 'ajeno', uno(`select informe_datos('inf-rep-tema')`), vale(null));
 await espera('[inf] cliente no lee comentarios crudos del Informe de ejemplo', 'cliente', cuenta(`select 1 from comentarios where campana_id = 'informe-ejemplo'`), n(0));
 await espera('[inf] lector no cambia el Informe de ejemplo', 'lector', afecta(`update reportes set nombre = 'x' where id = 'inf-rep-evento'`), n(0));

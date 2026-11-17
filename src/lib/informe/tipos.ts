@@ -12,7 +12,10 @@
 //   * Canales: el vocabulario de menciones.canal. 'Medio digital' se rotula "Noticias" en el Informe.
 //   * "En el tema": en_tema = true y otro_pais = false. Conversación, foco, comparación y ejes cuentan solo filas en el tema.
 //   * Regla de publicación (aplicada en SQL): el usuario de una cuenta solo sale si seguidores >= 100.000 o es una organización.
-//     Si no, la cuenta es "Cuenta personal" (visible = false) sin autor_id, usuario, nombre ni enlaces, y la publicación sale sin url.
+//     Si no, la cuenta es "Cuenta personal" (visible = false) sin autor_id, usuario, nombre ni enlaces, y la publicación sale sin
+//     mencion_id ni url y con fuente "Cuenta personal" (queda el fragmento de texto). config.destacadas y config.cuentas_propias
+//     salen sin los ids enmascarados. recolecciones[].faltantes[].cuenta sigue la misma regla.
+//   * Sentimiento: porcentajes y márgenes sobre los ítems con sentimiento (con_sentimiento), no sobre todos los codificados.
 //   * Sentimiento: Favorable, Neutral ("Neutral u otro" en el Informe), Desfavorable ("Crítico" en el Informe).
 
 /** Canal de una publicación o comentario (vocabulario de menciones.canal). */
@@ -111,9 +114,11 @@ export interface CuentaVisible {
 
 /** Una publicación con sus métricas (las cifras son las del momento de la recolección; null = la plataforma no la informa). */
 export interface PublicacionInforme {
-  mencion_id: string;
+  /** null si la cuenta está enmascarada. */
+  mencion_id: N<string>;
   canal: Canal;
   publicada_en: N<Instante>;
+  /** menciones.fuente; "Cuenta personal" si la cuenta está enmascarada. */
   fuente: N<string>;
   titulo: N<string>;
   /** Hasta 280 caracteres de menciones.texto (o resumen). */
@@ -195,13 +200,21 @@ export type MetricaSerie =
   | 'interaccion_conversacion' | 'interaccion_foco' | 'comentarios';
 export type SeriesInforme = Record<MetricaSerie, SerieCanal>;
 
-export interface PicoHora { hora: number; n: number; /** n ÷ promedio horario de la conversación del día base; null sin base. */ veces_base: N<number> }
+export interface PicoHora {
+  hora: number; n: number;
+  /** n ÷ promedio horario del día base de la misma métrica (conversación en `pico`, foco en `pico_foco`); null si esa base es 0. */
+  veces_base: N<number>;
+}
+/** Promedio horario del día base: n del día ÷ horas reales del día en la zona (23, 24 o 25), un decimal. */
+export interface PromedioBase { por_canal: Record<string, number>; total: number; n_por_canal: Record<string, number>; n_total: number; horas: number }
 export interface PorHoraInforme {
   dia: Fecha;
   conversacion: SerieCanal;
   foco: SerieCanal;
-  /** Promedio horario de la conversación del día base (n del día ÷ 24, un decimal). null sin dia_base. */
-  promedio_base: N<{ por_canal: Record<string, number>; total: number; n_por_canal: Record<string, number>; n_total: number }>;
+  /** Promedio horario de la conversación del día base. null sin dia_base. */
+  promedio_base: N<PromedioBase>;
+  /** Ídem con el foco (base de pico_foco). null sin dia_base. */
+  promedio_base_foco?: N<PromedioBase>;
   /** Hora con más publicaciones de conversación el día del evento (empate: la más temprana). total: null si no hay filas. */
   pico: { por_canal: Record<string, PicoHora>; total: N<PicoHora> };
   pico_foco: { por_canal: Record<string, PicoHora>; total: N<PicoHora> };
@@ -295,8 +308,10 @@ export interface EstratoMuestra extends SentimientoConteo {
   /** muestras.estratos[].universo; null si el canal no está en estratos. */
   universo: N<number>;
   n: number;
+  /** Ítems del estrato con sentimiento: base de los % y del margen. */
+  con_sentimiento?: number;
   margen_max: N<number>;
-  /** Peso en el ponderado (universo / universo de los estratos con ítems); null si la muestra no pondera. */
+  /** Peso en el ponderado de sentimiento (universo / universo de los estratos con ítems con sentimiento); null si la muestra no pondera. */
   peso: N<number>;
 }
 export interface TemaMuestra {
@@ -323,7 +338,7 @@ export interface MuestraInforme {
   /** Ítems codificados. */
   n: number;
   con_sentimiento: number;
-  /** ± puntos: round(1.96 · √(0.25 / n) · 100). null si n = 0. */
+  /** ± puntos: round(1.96 · √(0.25 / con_sentimiento) · 100). null si con_sentimiento = 0. */
   margen_max: N<number>;
   sentimiento: SentimientoConteo;
   /** Solo con ponderacion 'por volumen' y estratos: Σ (universo_s / Σ universo) × % del estrato. Sin margen. */
@@ -357,6 +372,7 @@ export interface RecoleccionInforme {
   estimado: N<number>;
   pedidas: N<number>;
   leidas: N<number>;
+  /** cuenta: el usuario o nombre solo si es visible (autor visible o es_organizacion en la entrada); si no, "Cuenta personal". */
   faltantes: { cuenta: string; motivo?: string; desde?: Instante }[];
   limites: string[];
   extra: Record<string, unknown>;

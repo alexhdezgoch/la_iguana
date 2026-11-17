@@ -5,6 +5,7 @@
 import type { ReactNode } from 'react';
 import { fecha, num } from '../formato';
 import { AVISO_DEMO } from '../reportes/marca';
+import { urlSegura } from '../url';
 import { hallazgos, textoAuto } from './hallazgos';
 import { Apiladas, Barras, BarrasH, BarrasPareadas, Leyenda, Multiples, PorHora } from './graficos';
 import { Tabla, type Celda, type TablaDatos } from './Tabla';
@@ -97,7 +98,7 @@ function tablaPublicaciones(d: InformeDatos, id: string, titulo: string, l: Publ
     columnas: [{ titulo: 'Cuenta', ancho: '24%' }, { titulo: 'Fecha y hora' }, { titulo: 'Texto (fragmento)', ancho: '38%' }, { titulo: 'Visualizaciones', num: true }, { titulo: 'Interacción', num: true }],
     filas: l.map((p) => [
       cuentaCelda(p.cuenta), momentoInf(p.publicada_en, d.zona),
-      { texto: fragmento(p.titulo ?? p.texto, demo, 110) || 'Sin texto', enlace: p.url, csv: [fragmento(p.titulo ?? p.texto, demo, 280), p.url].filter(Boolean).join(' · ') },
+      { texto: fragmento(p.titulo ?? p.texto, demo, 110) || 'Sin texto', enlace: urlSegura(p.url), csv: [fragmento(p.titulo ?? p.texto, demo, 280), urlSegura(p.url)].filter(Boolean).join(' · ') },
       p.vistas == null ? 'Sin datos' : p.vistas, p.interaccion == null ? 'Sin datos' : p.interaccion,
     ]),
   };
@@ -105,14 +106,14 @@ function tablaPublicaciones(d: InformeDatos, id: string, titulo: string, l: Publ
 function ejemplos(d: InformeDatos, l: Destacada[]): Bloque {
   const demo = d.campana.es_demo;
   return {
-    t: 'lista', items: l.map((x) => (
+    t: 'lista', items: l.map((x) => { const href = urlSegura(x.url); return (
       <>
         <b>{x.cuenta.etiqueta}, {canalTxt(x.canal)}, {momentoInf(x.publicada_en, d.zona)}:</b>{' '}
         {x.resumen ?? fragmento(x.titulo ?? x.texto, demo, 200)}
         {x.etiqueta ? <> <span className="inf-chip">{x.etiqueta}</span></> : null}
-        {x.url ? <> <a href={x.url} target="_blank" rel="noreferrer">ver publicación</a></> : null}
+        {href ? <> <a href={href} target="_blank" rel="noopener noreferrer">ver publicación</a></> : null}
       </>
-    )),
+    ); }),
   };
 }
 const fig = (titulo: string, nodo: ReactNode, fuente?: string): Bloque => ({ t: 'fig', titulo, nodo, fuente });
@@ -386,7 +387,7 @@ function sPublicaciones(d: InformeDatos, texto: string): Bloque[] {
     b.push({ t: 'tabla', tabla: {
       id: 'propias', titulo: `Publicaciones de las cuentas propias${nom ? ` (${nom})` : ''}`,
       columnas: [{ titulo: 'Publicación' }, { titulo: 'Qué es', ancho: '36%' }, { titulo: 'Visualizaciones', num: true }, { titulo: 'Me gusta', num: true }, { titulo: 'Comentarios', num: true }],
-      filas: cp.publicaciones.map((p) => [{ texto: `${p.cuenta.etiqueta}, ${momentoInf(p.publicada_en, d.zona)}`, canal: p.canal, enlace: p.url }, p.que_es ?? fragmento(p.titulo ?? p.texto, d.campana.es_demo, 90), p.vistas ?? 'Sin datos', p.me_gusta ?? 'Sin datos', p.respuestas ?? 'Sin datos']),
+      filas: cp.publicaciones.map((p) => [{ texto: `${p.cuenta.etiqueta}, ${momentoInf(p.publicada_en, d.zona)}`, canal: p.canal, enlace: urlSegura(p.url) }, p.que_es ?? fragmento(p.titulo ?? p.texto, d.campana.es_demo, 90), p.vistas ?? 'Sin datos', p.me_gusta ?? 'Sin datos', p.respuestas ?? 'Sin datos']),
     } });
     const conV = cp.publicaciones.filter((p) => (p.vistas ?? 0) > 0);
     if (conV.length) b.push(fig('Cuentas propias: visualizaciones de sus publicaciones', <BarrasH titulo="Visualizaciones de las publicaciones propias" izq={200} filas={conV.map((p) => ({ etiqueta: `${canalTxt(p.canal)}, ${momentoInf(p.publicada_en, d.zona)}`, valor: p.vistas ?? 0, color: colorCanal(p.canal) }))} ejeX="Visualizaciones" />, 'Fuente: tabla de esta sección.'));
@@ -427,7 +428,7 @@ function sPublicaciones(d: InformeDatos, texto: string): Bloque[] {
     if (top.length) b.push({ t: 'tabla', tabla: {
       id: 'coment-top', titulo: 'Publicaciones con más comentarios recolectados',
       columnas: [{ titulo: 'Publicación' }, { titulo: 'Texto (fragmento)', ancho: '40%' }, { titulo: 'Comentarios', num: true }, { titulo: '% de la plataforma', num: true }],
-      filas: top.map((t) => [{ texto: `${t.cuenta.etiqueta}, ${momentoInf(t.publicada_en, d.zona)}`, canal: t.c, enlace: t.url }, fragmento(t.titulo ?? t.texto, d.campana.es_demo, 100), t.comentarios, pc(t.pct)]),
+      filas: top.map((t) => [{ texto: `${t.cuenta.etiqueta}, ${momentoInf(t.publicada_en, d.zona)}`, canal: t.c, enlace: urlSegura(t.url) }, fragmento(t.titulo ?? t.texto, d.campana.es_demo, 100), t.comentarios, pc(t.pct)]),
     } });
   }
   return b;
@@ -442,7 +443,7 @@ function sMedios(d: InformeDatos, texto: string): Bloque[] {
     b.push({ t: 'tabla', tabla: {
       id: 'titulares', titulo: 'Titulares en orden de hora',
       columnas: [{ titulo: 'Medio', ancho: '22%' }, { titulo: 'Titular', ancho: '60%' }, { titulo: 'Fecha y hora' }],
-      filas: m.titulares.map((t) => [t.fuente ?? 'Sin fuente', { texto: fragmento(t.titulo, d.campana.es_demo, 140) || 'Sin titular', enlace: t.url, csv: [t.titulo, t.url].filter(Boolean).join(' · ') }, momentoInf(t.publicada_en, d.zona)]),
+      filas: m.titulares.map((t) => [t.fuente ?? 'Sin fuente', { texto: fragmento(t.titulo, d.campana.es_demo, 140) || 'Sin titular', enlace: urlSegura(t.url), csv: [t.titulo, urlSegura(t.url)].filter(Boolean).join(' · ') }, momentoInf(t.publicada_en, d.zona)]),
       nota: m.total_titulares > m.titulares.length ? `Se muestran ${m.titulares.length} de ${num(m.total_titulares)} artículos.` : 'La hora es la que informa el buscador de noticias.',
     } });
   }
@@ -506,7 +507,7 @@ function sMetodologia(d0: InformeDatos, texto: string, analista: boolean): Bloqu
   }
   const lim: ReactNode[] = [];
   for (const r of d.recolecciones.filter((x) => x.llego_al_tope)) lim.push(<>{canalTxt(r.canal)}{r.eje_nombre ? `, ${r.eje_nombre}` : ''}{r.dia ? `, ${fecha(r.dia, 'corto')}` : ''}: llegó al tope de {num(r.tope)} filas{r.estimado != null ? `; el proveedor estima ${num(r.estimado)}` : ''}. El conteo es un mínimo.</>);
-  for (const r of d.recolecciones) for (const f of r.faltantes ?? []) lim.push(<>{canalTxt(r.canal)}: no se pudo leer {f.cuenta}{f.motivo ? ` (${sinPunto(f.motivo)})` : ''}{f.desde ? `, desde ${momentoInf(f.desde, d.zona)}` : ''}.</>);
+  for (const r of d.recolecciones) for (const f of r.faltantes ?? []) lim.push(<>{canalTxt(r.canal)}: no se pudo leer {f.cuenta === 'Cuenta personal' ? 'una cuenta personal' : f.cuenta}{f.motivo ? ` (${sinPunto(f.motivo)})` : ''}{f.desde ? `, desde ${momentoInf(f.desde, d.zona)}` : ''}.</>);
   for (const r of d.recolecciones) if (r.cubre_desde && r.periodo_inicio && r.cubre_desde > r.periodo_inicio) lim.push(<>{canalTxt(r.canal)}{r.eje_nombre ? `, ${r.eje_nombre}` : ''}: la recolección cubre solo desde {momentoInf(r.cubre_desde, d.zona)}.</>);
   for (const l of [...new Set(d.recolecciones.flatMap((r) => r.limites ?? []))]) lim.push(<>{l.charAt(0).toUpperCase() + l.slice(1)}{/[.!?]$/.test(l) ? '' : '.'}</>);
   lim.push(<>Las visualizaciones e interacciones son las que informa cada plataforma al momento de la recolección; no son personas únicas y pueden cambiar después.</>);

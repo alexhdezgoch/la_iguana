@@ -287,10 +287,10 @@
   "menciones": 210
  },
  {
-  "id": "inf-entrevista-radial",
+  "id": "inf-programa-radio",
   "campana_id": "informe-ejemplo",
-  "nombre": "Entrevista radial (ejemplo)",
-  "tipo": "Entrevista",
+  "nombre": "Programa de radio de ejemplo",
+  "tipo": "Encuentro ciudadano",
   "origen": "Propio",
   "estado": "En análisis",
   "fecha_inicio": "2027-05-11",

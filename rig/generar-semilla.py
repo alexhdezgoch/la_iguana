@@ -1,5 +1,5 @@
 # Genera supabase/seed/*.json para La Iguana a partir de los datos de la demo.
-import json, math, os, copy, random
+import json, math, os, copy, random, re
 from datetime import date, timedelta
 
 OUT = '/home/user/la_iguana/supabase/seed'
@@ -973,7 +973,7 @@ add('borradores', {'id': 'borrador-maracaibo', 'org_id': 'brujula', 'persona_id'
 # Informe de ejemplo — campaña `informe-ejemplo` (filas crudas para reportes de tipo 'Informe')
 # ====================================================================
 # Corpus inventado y determinista (RNG con semilla fija) que reproduce la ESTRUCTURA de dos informes de muestra:
-#   - de impacto de un evento: entrevista radial del martes 11 de mayo (día base el 10, el 12 parcial hasta las 11:00);
+#   - de impacto de un evento: programa de radio de ejemplo del martes 11 de mayo (día base el 10, el 12 parcial hasta las 11:00);
 #   - de conversación sobre cuatro ejes del 6 al 10 de mayo.
 # Reglas de contenido (docs/semilla.md): fuentes y cuentas genéricas numeradas ("Portal de noticias 7", "@cuenta_opinion_2"),
 # textos "de ejemplo" sin citas ni hechos atribuidos a personas reales, cifras inventadas. Va al final para no mover
@@ -998,19 +998,19 @@ for i, f, rel, o, ex in [('inf-machado', 'machado', 'Propia', 1, {'candidatura':
     if ex: r['extra'] = ex
     add('campana_figuras', r)
 
-EV_INF = 'inf-entrevista-radial'
-add('eventos', {'id': EV_INF, 'campana_id': CI, 'nombre': 'Entrevista radial (ejemplo)', 'tipo': 'Entrevista', 'origen': 'Propio', 'estado': 'En análisis',
+EV_INF = 'inf-programa-radio'
+add('eventos', {'id': EV_INF, 'campana_id': CI, 'nombre': 'Programa de radio de ejemplo', 'tipo': 'Encuentro ciudadano', 'origen': 'Propio', 'estado': 'En análisis',
                 'fecha_inicio': DE_, 'fecha_fin': DE_, 'hora': '08:30', 'sede': 'Emisora de radio', 'ciudad': 'Caracas', 'nota_estado': 'Resultados preliminares',
                 'extra': {'hora_fin': '09:15', 'hora_estimada': True, 'estado_region': 'Distrito Capital'}})
 
 # ---------- ejes ----------
 EJ = {}
 for o, (k, nombre, regla, terminos, color) in enumerate([
-        ('conversacion', 'Sobre la figura o el evento', 'El texto o el titular nombra a la figura propia, la entrevista, la emisora anfitriona o su programa.',
-         ['figura propia (nombre y apellido)', 'entrevista', 'emisora anfitriona', 'programa de ejemplo'], None),
-        ('foco', 'Sobre el evento', 'Trata la entrevista: en X, la marca de la emisora o la palabra entrevista junto a la figura; en Instagram, YouTube y noticias, lista revisada a mano.',
-         ['entrevista', 'emisora anfitriona', 'en vivo'], None),
-        ('anfitrion', 'Nombra al medio anfitrión', 'El texto nombra a la emisora anfitriona, su programa o su conductora.', ['emisora anfitriona', 'programa de ejemplo'], None),
+        ('conversacion', 'Sobre la figura o el evento', 'El texto o el titular nombra a la figura propia, la emisora anfitriona o su programa de ejemplo.',
+         ['figura propia (nombre y apellido)', 'programa de ejemplo', 'emisora anfitriona'], None),
+        ('foco', 'Sobre el evento', 'Trata el programa de ejemplo: en X, la marca de la emisora o el nombre del programa junto a la figura; en Instagram, YouTube y noticias, lista revisada a mano.',
+         ['programa de ejemplo', 'emisora anfitriona', 'en vivo'], None),
+        ('anfitrion', 'Nombra al medio anfitrión', 'El texto nombra a la emisora anfitriona o su programa de ejemplo.', ['emisora anfitriona', 'programa de ejemplo'], None),
         ('figura', 'Figura propia', 'El texto o el titular nombra a la figura propia por su nombre o su apellido.', ['nombre de la figura propia', 'apellido de la figura propia'], '#2F6B4F'),
         ('servicios', 'Servicios públicos', 'Nombra luz, agua, gas o transporte junto a una palabra de falla, corte o servicio.', ['luz', 'agua', 'gas', 'transporte', 'corte', 'falla'], '#3B6EA8'),
         ('fecha', 'Fecha electoral', 'Nombra la fecha, el cronograma o la jornada de la elección.', ['fecha electoral', 'cronograma', 'jornada electoral', 'elecciones'], '#B8742A'),
@@ -1027,9 +1027,13 @@ SL = {'X': 'x', 'Instagram': 'ig', 'TikTok': 'tt', 'YouTube': 'yt', 'Facebook': 
 AUT = {}            # id -> fila (con _grupo)
 GRUPOS = {}         # (canal, grupo) -> [ids]
 FIG_TXT = 'Cuenta oficial de una figura en seguimiento'
+# Ids neutros (inf-a-0001…): no salen del usuario de la cuenta, para que un id que viaje en un enlace o una edición
+# no revele a quién pertenece. AID busca el id por canal y usuario.
+AID_DE = {}
 def autor(canal, handle, nombre, tipo, org, seg, grupo, figura=None, descriptor=None):
     clave = handle.lstrip('@')
-    aid = f'inf-a-{SL[canal]}-{clave.replace("_", "-")}'
+    aid = f'inf-a-{len(AID_DE) + 1:04d}'
+    AID_DE[(canal, clave)] = aid
     r = {'id': aid, 'campana_id': CI, 'canal': canal, 'handle': handle, 'tipo': tipo, 'es_organizacion': org, 'url': f'https://{DOM[canal]}/{clave}'}
     if nombre: r['nombre'] = nombre
     if seg is not None: r['seguidores'] = seg
@@ -1088,7 +1092,7 @@ A_PAR1['Facebook'] = autor('Facebook', '@partido_ejemplo_1', 'Partido de ejemplo
 for h, s in [('portal_noticias_1', 1500000), ('portal_noticias_3', 2800000), ('portal_noticias_4', 2400000), ('medio_digital_4', 404000),
              ('medio_regional_3', 210000), ('diario_digital_2', 95000)]:
     autor('Facebook', '@' + h, rotulo(h), 'Medio', True, s, 'medio', descriptor='página de Facebook')
-AID = lambda canal, h: f'inf-a-{SL[canal]}-{h.replace("_", "-")}'
+AID = lambda canal, h: AID_DE[(canal, h)]
 
 # ---------- recolecciones (ids primero: las filas se arman al final con los conteos reales) ----------
 REC = {}
@@ -1098,6 +1102,9 @@ def rid(*partes):
 # ---------- menciones ----------
 MI = {}        # id -> fila (para comentarios, muestras y recolecciones)
 EXT = {c: 0 for c in SL}
+# Urls de publicaciones: https://<red>.example/p/<azar>, sin el usuario de la cuenta. RNG aparte para no mover el corpus.
+RU = random.Random(20270513)
+PUB_URL = lambda canal: f'https://{DOM[canal]}/p/{RU.getrandbits(48):012x}'
 NOTICIA_URL = lambda f, n: f'https://noticias.example/{f.lower().replace(" ", "-").replace("ó", "o").replace("í", "i")}/{n}'
 def inst(dia, h, m, s=0):
     return f'{dia}T{h:02d}:{m:02d}:{s:02d}{TZ}'
@@ -1155,7 +1162,7 @@ def mencion(canal, cuando, texto, autor_id=None, fuente=None, formato=None, metr
         r.update({'autor_id': autor_id, 'titulo': titulo or texto, 'formato': formato,
                   'fuente': FIG_TXT if g == 'figura' else (a.get('nombre') if a['es_organizacion'] else 'Cuenta pública'),
                   'fuente_tipo': 'Medio' if g in ('medio', 'emisora') else 'Oficial' if g in ('partido', 'campana', 'figura') else 'Ciudadana',
-                  'url': f'https://{DOM[canal]}/{a["handle"].lstrip("@")}/{r["id_externo"]}'})
+                  'url': PUB_URL(canal)})
         for k, x in (('vistas', v), ('me_gusta', me), ('respuestas', re_), ('compartidos', co)):
             if x is not None: r[k] = x
         partes = [x for x in (me, re_, co) if x is not None]
@@ -1200,20 +1207,20 @@ TX = {
     'v': ['Publicación de ejemplo que comenta la agenda de la figura propia.', 'Publicación de ejemplo con una opinión sobre la figura propia.',
           'Respuesta de ejemplo en una conversación sobre la figura propia.', 'Publicación de ejemplo que comparte una nota sobre la figura propia.',
           'Publicación de ejemplo sobre la campaña de la figura propia.'],
-    'f': ['Publicación de ejemplo que comenta la entrevista radial de la figura propia.', 'Publicación de ejemplo que resume lo dicho en la entrevista radial.',
-          'Publicación de ejemplo con un fragmento en video de la entrevista.', 'Publicación de ejemplo que valora la entrevista.'],
-    'fc': ['Publicación de ejemplo que comenta la entrevista en la emisora anfitriona.', 'Publicación de ejemplo que anuncia la entrevista en la emisora anfitriona.',
-           'Publicación de ejemplo con un fragmento de la entrevista y el nombre del programa.'],
+    'f': ['Publicación de ejemplo que comenta el programa de radio de ejemplo.', 'Publicación de ejemplo que resume el programa de ejemplo.',
+          'Publicación de ejemplo con un fragmento en video del programa.', 'Publicación de ejemplo que valora el programa de ejemplo.'],
+    'fc': ['Publicación de ejemplo que comenta el programa de la emisora anfitriona.', 'Publicación de ejemplo que anuncia el programa de la emisora anfitriona.',
+           'Publicación de ejemplo con un fragmento del segmento de ejemplo y el nombre del programa.'],
     'c': ['Publicación de ejemplo que nombra a la emisora anfitriona y a la figura propia.'],
     'op': ['Publicación de ejemplo desde otro país que nombra a la figura propia.'],
     'nc': ['Publicación de ejemplo devuelta por la búsqueda que no trata a la figura propia.'],
     'off': ['Publicación de ejemplo de la emisora sobre otro tema de su programación.', 'Publicación de ejemplo de la emisora con su programación del día.'],
 }
 TN = {
-    'v': ['Nota de ejemplo sobre la agenda de la figura propia', 'Nota de ejemplo sobre la campaña de la figura propia', 'Nota de ejemplo con declaraciones sobre la campaña'],
-    'f': ['Nota de ejemplo sobre la entrevista radial de la figura propia', 'Nota de ejemplo que resume los temas de la entrevista radial',
-          'Nota de ejemplo sobre lo dicho en la entrevista radial'],
-    'fc': ['Nota de ejemplo sobre la entrevista en la emisora anfitriona'],
+    'v': ['Nota de ejemplo sobre la agenda de la figura propia', 'Nota de ejemplo sobre la campaña de la figura propia', 'Nota de ejemplo sobre la campaña y sus actividades'],
+    'f': ['Nota de ejemplo sobre el programa de radio de ejemplo', 'Nota de ejemplo que resume los temas del programa de ejemplo',
+          'Nota de ejemplo sobre el segmento de ejemplo del programa'],
+    'fc': ['Nota de ejemplo sobre el programa de la emisora anfitriona'],
     'nc': ['Nota de ejemplo sobre otros temas de la campaña', 'Nota de ejemplo sobre la agenda política nacional'],
     'op': ['Nota de ejemplo de un medio de otro país que nombra a la figura propia'],
 }
@@ -1260,47 +1267,47 @@ def cuenta_expl(canal, cuando, cat):
     EXPL[(canal, cuando[:10], cat)] = EXPL.get((canal, cuando[:10], cat), 0) + 1
 
 for args in [
-    # Instagram: la emisora (4 publicaciones sobre la entrevista), el partido, la campaña, un medio y una cuenta personal.
-    ('E1', 'Instagram', inst(DB_, 20, 0), 'fc', 'Anuncio de ejemplo de la entrevista en la emisora anfitriona.', A_EMI['Instagram'], None, 'Foto', (None, 349, 22, None)),
-    ('E2', 'Instagram', inst(DE_, 8, 35), 'fc', 'Clip de ejemplo de la entrevista, publicado junto con la cuenta de la figura.', A_EMI['Instagram'], None, 'Reel', (162500, 13960, 396, None)),
-    ('E3', 'Instagram', inst(DE_, 10, 5), 'fc', 'Publicación de ejemplo sobre el invitado del programa.', A_EMI['Instagram'], None, 'Reel', (3032, 386, 52, None)),
-    ('E4', 'Instagram', inst(DP_, 7, 0), 'fc', 'Nota de ejemplo de la emisora sobre la entrevista del día anterior.', A_EMI['Instagram'], None, 'Foto', (None, 69, 3, None)),
-    ('E5', 'Instagram', inst(DE_, 9, 33), 'fc', 'Video de ejemplo con fragmentos de la entrevista radial.', A_PAR1['Instagram'], None, 'Reel', (169900, 23300, 1220, None)),
-    ('E6', 'Instagram', inst(DE_, 8, 46), 'f', 'Clip de ejemplo de la entrevista sobre organización comunitaria.', A_CAM['Instagram'], None, 'Reel', (57200, 3800, 200, None)),
-    ('E7', 'Instagram', inst(DE_, 8, 29), 'f', 'Clip de ejemplo publicado al inicio de la entrevista.', A_CAM['Instagram'], None, 'Reel', (50700, 3000, 140, None)),
-    ('E8', 'Instagram', inst(DE_, 10, 37), 'fc', 'Clip de ejemplo de un medio con fragmentos de la entrevista.', AID('Instagram', 'portal_noticias_1'), None, 'Reel', (15200, 600, 27, None)),
-    ('E9', 'Instagram', inst(DE_, 14, 41), 'f', 'Publicación de ejemplo que resume la entrevista.', PERS_IG[0], None, 'Foto', (None, 2650, 100, None)),
+    # Instagram: la emisora (4 publicaciones sobre el programa), el partido, la campaña, un medio y una cuenta personal.
+    ('E1', 'Instagram', inst(DB_, 20, 0), 'fc', 'Anuncio de ejemplo del programa en la emisora anfitriona.', A_EMI['Instagram'], None, 'Foto', (None, 349, 22, None)),
+    ('E2', 'Instagram', inst(DE_, 8, 35), 'fc', 'Clip de ejemplo del programa, publicado en colaboración con una cuenta oficial.', A_EMI['Instagram'], None, 'Reel', (162500, 13960, 396, None)),
+    ('E3', 'Instagram', inst(DE_, 10, 5), 'fc', 'Publicación de ejemplo sobre el programa del día.', A_EMI['Instagram'], None, 'Reel', (3032, 386, 52, None)),
+    ('E4', 'Instagram', inst(DP_, 7, 0), 'fc', 'Nota de ejemplo de la emisora sobre el programa del día anterior.', A_EMI['Instagram'], None, 'Foto', (None, 69, 3, None)),
+    ('E5', 'Instagram', inst(DE_, 9, 33), 'fc', 'Video de ejemplo con fragmentos del programa de radio de ejemplo.', A_PAR1['Instagram'], None, 'Reel', (169900, 23300, 1220, None)),
+    ('E6', 'Instagram', inst(DE_, 8, 46), 'f', 'Clip de ejemplo del programa sobre organización comunitaria.', A_CAM['Instagram'], None, 'Reel', (57200, 3800, 200, None)),
+    ('E7', 'Instagram', inst(DE_, 8, 29), 'f', 'Clip de ejemplo publicado al inicio del programa.', A_CAM['Instagram'], None, 'Reel', (50700, 3000, 140, None)),
+    ('E8', 'Instagram', inst(DE_, 10, 37), 'fc', 'Clip de ejemplo de un medio con fragmentos del programa.', AID('Instagram', 'portal_noticias_1'), None, 'Reel', (15200, 600, 27, None)),
+    ('E9', 'Instagram', inst(DE_, 14, 41), 'f', 'Publicación de ejemplo sobre el programa.', PERS_IG[0], None, 'Foto', (None, 2650, 100, None)),
     # TikTok
-    ('T1', 'TikTok', inst(DE_, 9, 24), 'f', 'Video de ejemplo con un fragmento de la entrevista sobre el registro para votar.', A_PAR1['TikTok'], None, 'Video', (98600, 18100, 1050, 450)),
-    ('T2', 'TikTok', inst(DE_, 8, 59), 'fc', 'Video de ejemplo de una rama en el exterior sobre la entrevista.', A_PAR1_EXT, None, 'Video', (26400, 3900, 220, 160)),
-    ('T3', 'TikTok', inst(DE_, 22, 30), 'fc', 'Video de ejemplo que comenta la entrevista radial.', TNC[0], None, 'Video', (16700, 1500, 120, 80)),
+    ('T1', 'TikTok', inst(DE_, 9, 24), 'f', 'Video de ejemplo con un fragmento del programa sobre el registro para votar.', A_PAR1['TikTok'], None, 'Video', (98600, 18100, 1050, 450)),
+    ('T2', 'TikTok', inst(DE_, 8, 59), 'fc', 'Video de ejemplo de una rama en el exterior sobre el programa.', A_PAR1_EXT, None, 'Video', (26400, 3900, 220, 160)),
+    ('T3', 'TikTok', inst(DE_, 22, 30), 'fc', 'Video de ejemplo que comenta el programa de radio de ejemplo.', TNC[0], None, 'Video', (16700, 1500, 120, 80)),
     ('T4', 'TikTok', inst(DE_, 8, 25), 'off', 'Clip automático de ejemplo del en vivo de la emisora.', A_EMI['TikTok'], None, 'En vivo', (5060, 397, 34, 10)),
     ('T5', 'TikTok', inst(DE_, 8, 44), 'off', 'Clip automático de ejemplo del en vivo de la emisora.', A_EMI['TikTok'], None, 'En vivo', (1966, 138, 7, 3)),
     # YouTube
-    ('Y1', 'YouTube', inst(DE_, 9, 18), 'fc', 'Video de ejemplo del programa completo con la entrevista (44 minutos).', A_EMI['YouTube'], None, 'En vivo', (4513, 307, 50, None)),
-    ('Y2', 'YouTube', inst(DP_, 10, 0), 'f', 'Video de ejemplo de un canal de opinión que comenta la entrevista.', A_OPI_YT, None, 'Video', (905, 180, 16, None)),
-    ('Y3', 'YouTube', inst(DE_, 12, 49), 'f', 'Video de ejemplo que comparte la entrevista.', A_PERS_YT, None, 'Video', (6, 0, 0, None)),
+    ('Y1', 'YouTube', inst(DE_, 9, 18), 'fc', 'Video de ejemplo del programa completo (44 minutos).', A_EMI['YouTube'], None, 'En vivo', (4513, 307, 50, None)),
+    ('Y2', 'YouTube', inst(DP_, 10, 0), 'f', 'Video de ejemplo de un canal de opinión que comenta el programa.', A_OPI_YT, None, 'Video', (905, 180, 16, None)),
+    ('Y3', 'YouTube', inst(DE_, 12, 49), 'f', 'Video de ejemplo que comparte el programa.', A_PERS_YT, None, 'Video', (6, 0, 0, None)),
     # Facebook: dos videos de la página del partido concentran casi todos los comentarios.
-    ('F1', 'Facebook', inst(DE_, 9, 33), 'fc', 'Video de ejemplo con fragmentos de la entrevista radial.', A_PAR1['Facebook'], None, 'Video', (212800, 24600, 2820, 1650)),
-    ('F2', 'Facebook', inst(DE_, 9, 15), 'fc', 'Video de ejemplo con una pregunta de la entrevista sobre participación.', A_PAR1['Facebook'], None, 'Video', (16700, 2400, 290, 220)),
-    ('F3', 'Facebook', inst(DE_, 8, 56), 'fc', 'Video de ejemplo con el inicio de la entrevista.', A_PAR1['Facebook'], None, 'Video', (1950, 300, 40, 37)),
-    ('F4', 'Facebook', inst(DE_, 9, 43), 'fc', 'Video de ejemplo de un medio sobre la entrevista.', AID('Facebook', 'portal_noticias_1'), None, 'Video', (660, 25, 4, 2)),
-    ('F5', 'Facebook', inst(DE_, 10, 35), 'fc', 'Video de ejemplo de un medio con un fragmento de la entrevista.', AID('Facebook', 'medio_digital_4'), None, 'Video', (616, 50, 8, 7)),
+    ('F1', 'Facebook', inst(DE_, 9, 33), 'fc', 'Video de ejemplo con fragmentos del programa de radio de ejemplo.', A_PAR1['Facebook'], None, 'Video', (212800, 24600, 2820, 1650)),
+    ('F2', 'Facebook', inst(DE_, 9, 15), 'fc', 'Video de ejemplo con el segmento de ejemplo sobre participación.', A_PAR1['Facebook'], None, 'Video', (16700, 2400, 290, 220)),
+    ('F3', 'Facebook', inst(DE_, 8, 56), 'fc', 'Video de ejemplo con el inicio del programa.', A_PAR1['Facebook'], None, 'Video', (1950, 300, 40, 37)),
+    ('F4', 'Facebook', inst(DE_, 9, 43), 'fc', 'Video de ejemplo de un medio sobre el programa.', AID('Facebook', 'portal_noticias_1'), None, 'Video', (660, 25, 4, 2)),
+    ('F5', 'Facebook', inst(DE_, 10, 35), 'fc', 'Video de ejemplo de un medio con un fragmento del programa.', AID('Facebook', 'medio_digital_4'), None, 'Video', (616, 50, 8, 7)),
     # X: la publicación con más vistas es de una cuenta personal (sale como "Cuenta personal").
-    ('X1', 'X', inst(DE_, 9, 43), 'fc', 'Publicación de ejemplo que resume en tercera persona un tema de la entrevista.', PERS_X[0], None, 'Video', (47600, 1800, 90, 200)),
-    ('X2', 'X', inst(DE_, 9, 35), 'fc', 'Publicación de ejemplo que anuncia la entrevista en curso.', VOCES['periodista_ejemplo_1'], None, 'Video', (35300, 3300, 120, 750)),
-    ('X3', 'X', inst(DE_, 9, 30), 'fc', 'Publicación de ejemplo sobre la entrevista en la emisora anfitriona.', VOCES['periodista_ejemplo_1'], None, 'Texto', (21300, 1700, 60, 400)),
-    ('X4', 'X', inst(DE_, 8, 59), 'fc', 'Publicación de ejemplo con un fragmento de la entrevista.', A_PAR1['X'], None, 'Video', (33300, 240, 20, 36)),
-    ('X5', 'X', inst(DE_, 10, 18), 'f', 'Publicación de ejemplo que difunde la entrevista.', VOCES['cuenta_opinion_1'], None, 'Video', (24900, 520, 40, 85)),
-    ('X6', 'X', inst(DE_, 8, 44), 'fc', 'Publicación de ejemplo que anuncia la primera entrevista radial de la semana.', A_CAM['X'], None, 'Foto', (22600, 380, 30, 64)),
-    ('X7', 'X', inst(DE_, 10, 51), 'f', 'Publicación de ejemplo con una valoración de la entrevista.', PERS_X[1], None, 'Texto', (18600, 800, 60, 100)),
-    ('X8', 'X', inst(DE_, 11, 20), 'f', 'Publicación crítica de ejemplo sobre la entrevista.', VOCES['analista_ejemplo_1'], None, 'Texto', (15000, 900, 50, 210)),
-    ('X9', 'X', inst(DE_, 7, 36), 'fc', 'Publicación de ejemplo de un medio que anuncia la entrevista de esta mañana.', AID('X', 'portal_noticias_3'), None, 'Texto', (4200, 60, 5, 22)),
+    ('X1', 'X', inst(DE_, 9, 43), 'fc', 'Publicación de ejemplo que comenta un tema del programa.', PERS_X[0], None, 'Video', (47600, 1800, 90, 200)),
+    ('X2', 'X', inst(DE_, 9, 35), 'fc', 'Publicación de ejemplo que anuncia el programa en curso.', VOCES['periodista_ejemplo_1'], None, 'Video', (35300, 3300, 120, 750)),
+    ('X3', 'X', inst(DE_, 9, 30), 'fc', 'Publicación de ejemplo sobre el programa de la emisora anfitriona.', VOCES['periodista_ejemplo_1'], None, 'Texto', (21300, 1700, 60, 400)),
+    ('X4', 'X', inst(DE_, 8, 59), 'fc', 'Publicación de ejemplo con un fragmento del programa.', A_PAR1['X'], None, 'Video', (33300, 240, 20, 36)),
+    ('X5', 'X', inst(DE_, 10, 18), 'f', 'Publicación de ejemplo que difunde el programa.', VOCES['cuenta_opinion_1'], None, 'Video', (24900, 520, 40, 85)),
+    ('X6', 'X', inst(DE_, 8, 44), 'fc', 'Publicación de ejemplo que anuncia el programa de radio de la semana.', A_CAM['X'], None, 'Foto', (22600, 380, 30, 64)),
+    ('X7', 'X', inst(DE_, 10, 51), 'f', 'Publicación de ejemplo con una valoración del programa.', PERS_X[1], None, 'Texto', (18600, 800, 60, 100)),
+    ('X8', 'X', inst(DE_, 11, 20), 'f', 'Publicación crítica de ejemplo sobre el programa.', VOCES['analista_ejemplo_1'], None, 'Texto', (15000, 900, 50, 210)),
+    ('X9', 'X', inst(DE_, 7, 36), 'fc', 'Publicación de ejemplo de un medio que anuncia el programa de esta mañana.', AID('X', 'portal_noticias_3'), None, 'Texto', (4200, 60, 5, 22)),
 ]:
     clave, canal, cuando, cat, texto, aid, fuente, formato, m = args
     explicita(clave, canal, cuando, cat, texto, autor_id=aid, fuente=fuente, formato=formato, m=m, en_tema=cat != 'off')
     cuenta_expl(canal, cuando, cat)
-# Noticias sobre la entrevista: lista revisada a mano (todas explícitas), la primera a las 09:31.
+# Noticias sobre el programa: lista revisada a mano (todas explícitas), la primera a las 09:31.
 for i, (dia, hm, f, cat) in enumerate([(DE_, '09:31', 'Portal de noticias 1', 'f'), (DE_, '09:58', 'Portal de noticias 1', 'f'), (DE_, '10:15', 'Diario digital 1', 'fc'),
                                        (DE_, '10:42', 'Medio regional 1', 'f'), (DE_, '11:14', 'Portal de noticias 5', 'f'), (DE_, '12:02', 'Medio digital nacional 2', 'f'),
                                        (DE_, '13:09', 'Portal de noticias 6', 'f'), (DE_, '13:41', 'Diario nacional 1', 'f'), (DE_, '15:19', 'Emisora de radio 2', 'fc'),
@@ -1311,12 +1318,12 @@ for i, (dia, hm, f, cat) in enumerate([(DE_, '09:31', 'Portal de noticias 1', 'f
     cuenta_expl('Medio digital', dia, cat)
 # Los titulares de las noticias explícitas (se fijan después para no repetir).
 for i, k in enumerate([f'N{j}' for j in range(1, 13)]):
-    t = ['Nota de ejemplo sobre la entrevista radial de la figura propia', 'Nota de ejemplo sobre una propuesta de servicios mencionada en la entrevista',
-         'Nota de ejemplo que nombra a la emisora anfitriona y resume la entrevista', 'Nota de ejemplo que resume los temas de la entrevista radial',
-         'Nota de ejemplo sobre lo dicho en la entrevista acerca de las instituciones', 'Nota de ejemplo sobre la primera entrevista radial de la semana',
-         'Nota de ejemplo con fragmentos de la entrevista', 'Nota de ejemplo sobre la transición mencionada en la entrevista',
-         'Nota de ejemplo de una emisora local que comenta la entrevista en otra emisora', 'Nota de ejemplo sobre los temas económicos de la entrevista',
-         'Nota de ejemplo de un canal de noticias sobre la entrevista', 'Nota de ejemplo del día siguiente sobre la entrevista'][i]
+    t = ['Nota de ejemplo sobre el programa de radio de ejemplo', 'Nota de ejemplo sobre servicios públicos y el programa de ejemplo',
+         'Nota de ejemplo que nombra a la emisora anfitriona y resume el programa', 'Nota de ejemplo que resume los temas del programa de ejemplo',
+         'Nota de ejemplo sobre el segmento de ejemplo acerca de las instituciones', 'Nota de ejemplo sobre el programa de radio de la semana',
+         'Nota de ejemplo con fragmentos del programa', 'Nota de ejemplo sobre el programa y la agenda institucional',
+         'Nota de ejemplo de una emisora local que comenta el programa de otra emisora', 'Nota de ejemplo sobre los temas económicos del programa',
+         'Nota de ejemplo de un canal de noticias sobre el programa', 'Nota de ejemplo del día siguiente sobre el programa'][i]
     for f in T['menciones']:
         if f['id'] == EVX[k]: f['titulo'] = t
     MI[EVX[k]]['titulo'] = t
@@ -1507,7 +1514,7 @@ def conv_de(canal, dia, cat_foco, excluir=()):
     out = [m for m, r in MI.items() if r['canal'] == canal and r['publicada_en'][:10] == dia and EJ['conversacion'] in r['_ejes']
            and (EJ['foco'] in r['_ejes']) == cat_foco and not r['otro_pais'] and m not in excluir]
     return sorted(out, key=lambda m: (-(MI[m].get('respuestas') or 0), m))
-# Instagram: 510 en 15 publicaciones (45 % en publicaciones sobre la entrevista).
+# Instagram: 510 en 15 publicaciones (45 % en publicaciones sobre el programa).
 
 fig_base = [m for m in conv_de('Instagram', DB_, False) if MI[m]['autor_id'] == A_FIG['Instagram']]
 if not fig_base:   # una publicación de la cuenta de la figura el día base, con comentarios
@@ -1548,7 +1555,7 @@ for libro, lista in [('General', [('apoyo', 'Apoyo o afecto', 'apoyo'), ('emojis
                                   ('inscripcion', 'Inscripción o participación', 'neutro'), ('critica_gob', 'Críticas al gobierno', 'critica'),
                                   ('valoracion', 'Valoración del evento', 'neutro'), ('cotidiana', 'Vida cotidiana', 'neutro'),
                                   ('defensa', 'Defensa frente a críticos', 'apoyo'), ('falla', 'Falla técnica de la transmisión', 'neutro'),
-                                  ('resumen', 'Resumen de lo dicho', 'neutro')]),
+                                  ('resumen', 'Resumen del programa', 'neutro')]),
                      ('Tema', [('apoyo', 'Apoyo o afecto', 'apoyo'), ('otro', 'Otro, etiquetas a cuentas o no se entiende', 'neutro'),
                                ('servicios', 'Pedidos sobre servicios públicos', 'neutro'), ('critica_fig', 'Críticas a la figura', 'critica'),
                                ('fe', 'Fe o ánimo general', 'apoyo'), ('critica_sin', 'Críticas sin destinatario claro', 'critica'),
@@ -1563,7 +1570,7 @@ TEXTO_COD = {'apoyo': 'Comentario de ejemplo de apoyo o afecto.', 'otro': 'Comen
              'critica_fig': 'Comentario crítico de ejemplo hacia la figura.', 'inscripcion': 'Comentario de ejemplo que pregunta cómo inscribirse o participar.',
              'critica_gob': 'Comentario de ejemplo con críticas al gobierno.', 'valoracion': 'Comentario de ejemplo que valora el evento.',
              'cotidiana': 'Comentario de ejemplo sobre la vida cotidiana.', 'defensa': 'Comentario de ejemplo que responde a otros comentarios críticos.',
-             'falla': 'Comentario de ejemplo que dice que el audio de la transmisión se cortó.', 'resumen': 'Comentario de ejemplo que resume lo dicho.',
+             'falla': 'Comentario de ejemplo que dice que el audio de la transmisión se cortó.', 'resumen': 'Comentario de ejemplo que resume el programa.',
              'servicios': 'Comentario de ejemplo que pide soluciones en los servicios públicos.', 'fe': 'Comentario de ejemplo con un mensaje de fe o ánimo.',
              'critica_sin': 'Comentario crítico de ejemplo sin destinatario claro.', 'caso': 'Comentario de ejemplo sobre un caso personal o familiar.',
              'politica': 'Comentario de ejemplo sobre elecciones e instituciones.'}
@@ -1618,18 +1625,18 @@ add('muestras', {'id': MU_EV, 'campana_id': CI, 'nombre': 'Comentarios, muestra 
                  'tamano': sum(TAM_EV.values()), 'semilla': '20270512', 'ponderacion': 'por volumen', 'orden': 1,
                  'metodo': 'Muestra aleatoria con semilla fija dentro de cada plataforma: todos los de YouTube y el resto en proporción al volumen. Lectura uno por uno, revisada.',
                  'estratos': [{'canal': k, 'universo': len(uni_ev[k])} for k in ('YouTube', 'Instagram', 'TikTok', 'Facebook')],
-                 'extra': {'reglas': ['Los resúmenes de lo dicho cuentan como neutral.', 'Los comentarios solo con emojis cuentan como neutral.',
+                 'extra': {'reglas': ['Los resúmenes del programa cuentan como neutral.', 'Los comentarios solo con emojis cuentan como neutral.',
                                       'Una queja por una falla técnica de la transmisión cuenta como neutral.']}})
 for k in ('YouTube', 'Instagram', 'TikTok', 'Facebook'):
     items = sorted(RI.sample(uni_ev[k], TAM_EV[k]), key=lambda i: int(i.rsplit('-', 1)[1]))
     codifica_muestra(MU_EV, 'General', items, SENT_EV[k], PES_EV[k])
-# X: 150 publicaciones al azar entre las que tienen la marca de la entrevista o de la emisora.
+# X: 150 publicaciones al azar entre las que tienen la marca del programa o de la emisora.
 uni_x = [m for m, r in MI.items() if r['canal'] == 'X' and t2s(INI_EV) <= t2s(r['publicada_en']) < t2s(FIN_EV)
          and (EJ['foco'] in r['_ejes'] or EJ['anfitrion'] in r['_ejes'])]
 MU_X = 'inf-mu-x'
 add('muestras', {'id': MU_X, 'campana_id': CI, 'nombre': 'Publicaciones de X', 'objeto': 'menciones', 'canal': 'X', 'universo': len(uni_x), 'tamano': 150,
                  'semilla': '20270512', 'ponderacion': 'ninguna', 'orden': 2,
-                 'metodo': 'Muestra aleatoria con semilla fija entre las publicaciones de X con la marca de la entrevista o de la emisora.'})
+                 'metodo': 'Muestra aleatoria con semilla fija entre las publicaciones de X con la marca del programa o de la emisora.'})
 items = sorted(RI.sample(uni_x, 150), key=lambda m: int(m.rsplit('-', 1)[1]))
 codifica_muestra(MU_X, 'General', items, (40, 33, 77), {'fav': {'apoyo': 9, 'defensa': 6, 'valoracion': 15, 'elecciones': 5, 'resumen': 5},
                                                         'cri': {'critica_fig': 28, 'valoracion': 5}, 'neu': {'resumen': 38, 'otro': 30, 'critica_gob': 4, 'valoracion': 5}}, es_com=False)
@@ -1661,49 +1668,49 @@ def ejec(dia, h=23, m=50):
 SIG = lambda dia: str(date.fromisoformat(dia) + timedelta(days=1))
 # Evento.
 recol(rid('nt', 'evento'), 'Medio digital', 'RSS', 'Agregador de noticias por RSS, edición Venezuela en español.',
-      consulta='Nombre de la figura propia, entrevista, emisora anfitriona y su programa (términos de ejemplo).', periodo_inicio=INI_EV, periodo_fin=FIN_EV,
+      consulta='Nombre de la figura propia, emisora anfitriona y su programa (términos de ejemplo).', periodo_inicio=INI_EV, periodo_fin=FIN_EV,
       ejecutada_en=inst(DP_, 11, 20), filas=filas_de('Medio digital', INI_EV, FIN_EV), pedidas=4, leidas=4,
       limites=['Las marcas leen solo el titular.', 'La hora es la que da el agregador; puede ser posterior a la publicación original.'])
 for dia, fin in ((DB_, inst(DE_, 0, 0)), (DE_, inst(DP_, 0, 0)), (DP_, FIN_EV)):
-    recol(rid('x', dia), 'X', 'Búsqueda avanzada', 'Búsqueda en español sobre la figura propia, la entrevista y la emisora, sin reposts.',
-          consulta='(figura propia OR entrevista OR emisora anfitriona) lang:es -is:retweet', eje_id=EJ['conversacion'], dia=dia,
+    recol(rid('x', dia), 'X', 'Búsqueda avanzada', 'Búsqueda en español sobre la figura propia, el programa y la emisora, sin reposts.',
+          consulta='(figura propia OR programa de ejemplo OR emisora anfitriona) lang:es -is:retweet', eje_id=EJ['conversacion'], dia=dia,
           periodo_inicio=inst(dia, 0, 0), periodo_fin=fin, ejecutada_en=inst(DP_, 11, 30), filas=filas_de('X', inst(dia, 0, 0), fin), tope=1500, llego_al_tope=False,
           pedidas=1, leidas=1, limites=['Solo publicaciones en español.', 'Sin reposts.', 'Tope de 1.500 publicaciones por búsqueda y por día.'])
-recol(rid('x', 'foco'), 'X', 'Búsqueda avanzada', 'Búsqueda de la marca de la entrevista o de la emisora junto a la figura propia.',
-      consulta='(entrevista OR emisora anfitriona) figura propia lang:es -is:retweet', eje_id=EJ['foco'], dia=DE_, periodo_inicio=inst(DE_, 0, 0), periodo_fin=inst(DP_, 0, 0),
+recol(rid('x', 'foco'), 'X', 'Búsqueda avanzada', 'Búsqueda de la marca del programa o de la emisora junto a la figura propia.',
+      consulta='(programa de ejemplo OR emisora anfitriona) figura propia lang:es -is:retweet', eje_id=EJ['foco'], dia=DE_, periodo_inicio=inst(DE_, 0, 0), periodo_fin=inst(DP_, 0, 0),
       ejecutada_en=inst(DP_, 11, 35), filas=eje_dia('X', 'foco', DE_, rid('x', 'foco')), tope=1500, llego_al_tope=False, pedidas=1, leidas=1,
-      limites=['Puede incluir otras entrevistas o dejar fuera publicaciones que no nombran la entrevista.'])
+      limites=['Puede incluir otros programas o dejar fuera publicaciones que no nombran el programa.'])
 recol(rid('ig', 'cuentas', 'evento'), 'Instagram', 'Cuentas', 'Cuentas de la emisora, de la figura, de partidos y de medios.', periodo_inicio=INI_EV, periodo_fin=FIN_EV,
       ejecutada_en=inst(DP_, 11, 40), filas=filas_de('Instagram', INI_EV, FIN_EV) - 6, pedidas=14, leidas=12,
-      faltantes=[{'cuenta': '@portal_noticias_5', 'motivo': 'La cuenta no devolvió datos.'}, {'cuenta': '@medio_regional_2', 'motivo': 'Cuenta no encontrada.'}],
+      faltantes=[{'cuenta': '@portal_noticias_5', 'es_organizacion': True, 'motivo': 'La cuenta no devolvió datos.'}, {'cuenta': '@medio_regional_2', 'es_organizacion': True, 'motivo': 'Cuenta no encontrada.'}],
       limites=['Máximo de 3 páginas de publicaciones por cuenta.', 'Las fotos no informan visualizaciones.'])
-recol(rid('ig', 'etiquetas', 'evento'), 'Instagram', 'Etiquetas', 'Cuatro etiquetas de ejemplo sobre la entrevista y la figura.',
-      consulta='#entrevista_ejemplo, #emisora_ejemplo, #figura_ejemplo, #programa_ejemplo', periodo_inicio=INI_EV, periodo_fin=FIN_EV, ejecutada_en=inst(DP_, 11, 42),
+recol(rid('ig', 'etiquetas', 'evento'), 'Instagram', 'Etiquetas', 'Cuatro etiquetas de ejemplo sobre el programa y la figura.',
+      consulta='#segmento_ejemplo, #emisora_ejemplo, #figura_ejemplo, #programa_ejemplo', periodo_inicio=INI_EV, periodo_fin=FIN_EV, ejecutada_en=inst(DP_, 11, 42),
       filas=6, pedidas=4, leidas=4, limites=['Las etiquetas devuelven solo las publicaciones más recientes.'])
-recol(rid('tt', 'palabras', 'evento'), 'TikTok', 'Búsqueda por palabras', 'Búsqueda por palabras sobre la figura propia y la entrevista.',
-      consulta='figura propia entrevista; figura propia emisora; entrevista radial; programa de ejemplo', periodo_inicio=INI_EV, periodo_fin=FIN_EV,
+recol(rid('tt', 'palabras', 'evento'), 'TikTok', 'Búsqueda por palabras', 'Búsqueda por palabras sobre la figura propia y el programa.',
+      consulta='figura propia programa; figura propia emisora; programa de radio; programa de ejemplo', periodo_inicio=INI_EV, periodo_fin=FIN_EV,
       ejecutada_en=inst(DP_, 11, 45), filas=filas_de('TikTok', INI_EV, FIN_EV) - 20, tope=400, llego_al_tope=False, pedidas=4, leidas=4,
       limites=['Ventana de 7 días.', '5 páginas de 20 videos por consulta.', '4 consultas.'])
 recol(rid('tt', 'cuentas', 'evento'), 'TikTok', 'Cuentas', 'Cuentas de la emisora y del partido.', periodo_inicio=INI_EV, periodo_fin=FIN_EV,
       ejecutada_en=inst(DP_, 11, 47), filas=20, pedidas=3, leidas=3, limites=['Los clips automáticos del en vivo llevan un texto genérico.'])
 recol(rid('yt', 'cuentas', 'evento'), 'YouTube', 'Cuentas', 'Canal de la emisora anfitriona.', periodo_inicio=INI_EV, periodo_fin=FIN_EV, ejecutada_en=inst(DP_, 11, 50),
       filas=10, pedidas=1, leidas=1, limites=['El video del programa aparece con la hora de la transmisión.'])
-recol(rid('yt', 'palabras', 'evento'), 'YouTube', 'Búsqueda por palabras', 'Búsqueda por palabras sobre la entrevista.', consulta='entrevista radial figura propia',
+recol(rid('yt', 'palabras', 'evento'), 'YouTube', 'Búsqueda por palabras', 'Búsqueda por palabras sobre el programa.', consulta='programa de radio figura propia',
       periodo_inicio=INI_EV, periodo_fin=FIN_EV, ejecutada_en=inst(DP_, 11, 52), filas=filas_de('YouTube', INI_EV, FIN_EV) - 10, pedidas=1, leidas=1,
       limites=['No se encontró una copia completa subida por otras cuentas.'])
 recol(rid('fb', 'paginas', 'evento'), 'Facebook', 'Páginas', 'Páginas públicas del partido y de seis medios, leídas sin iniciar sesión.', periodo_inicio=INI_EV, periodo_fin=FIN_EV,
       ejecutada_en=inst(DP_, 11, 55), filas=filas_de('Facebook', INI_EV, FIN_EV), pedidas=9, leidas=7,
-      faltantes=[{'cuenta': 'Página de la figura propia', 'motivo': 'La página no devolvió datos.'},
-                 {'cuenta': 'Página de la emisora anfitriona', 'motivo': 'No se encontró una página pública.'}],
+      faltantes=[{'cuenta': 'Página de la figura propia', 'es_organizacion': True, 'motivo': 'La página no devolvió datos.'},
+                 {'cuenta': 'Página de la emisora anfitriona', 'es_organizacion': True, 'motivo': 'No se encontró una página pública.'}],
       limites=['Las 60 a 130 publicaciones más recientes de cada página.', 'Solo los videos informan visualizaciones.', 'Las fechas llegan en UTC y se pasan a hora de Caracas.'])
 for canal, desc, metodo, tope, lim in [
         ('Instagram', 'Comentarios de las publicaciones elegidas.', 'Cuentas', 100, ['Tope del proveedor por publicación; es probable que falten las respuestas.']),
         ('TikTok', 'Comentarios de los videos elegidos.', 'Búsqueda por palabras', 300, ['Tope del proveedor por video.']),
         ('YouTube', 'Comentarios del video de la emisora.', 'Cuentas', None, ['Se recolectaron todos los comentarios del video.']),
-        ('Facebook', 'Comentarios de cuatro publicaciones sobre la entrevista.', 'Páginas', 100, ['Máximo de 100 comentarios por publicación.'])]:
+        ('Facebook', 'Comentarios de cuatro publicaciones sobre el programa.', 'Páginas', 100, ['Máximo de 100 comentarios por publicación.'])]:
     filas_c = sum(1 for c in COMS[:N_COM_EV] if c['canal'] == canal)
     pubs = len({c['mencion_id'] for c in COMS[:N_COM_EV] if c['canal'] == canal})
-    falt = [{'cuenta': 'Video principal de la página del partido', 'motivo': f'El proveedor devolvió 85 de {MI[EVX["F1"]]["respuestas"]:,} comentarios.'.replace(',', '.')}] if canal == 'Facebook' else []
+    falt = [{'cuenta': 'Video principal de la página del partido', 'es_organizacion': True, 'motivo': f'El proveedor devolvió 85 de {MI[EVX["F1"]]["respuestas"]:,} comentarios.'.replace(',', '.')}] if canal == 'Facebook' else []
     recol(REC_COM[canal], canal, metodo, desc, periodo_inicio=INI_EV, periodo_fin=FIN_EV, ejecutada_en=inst(DP_, 12, 10), filas=filas_c, tope=tope,
           llego_al_tope=canal == 'Facebook', pedidas=pubs, leidas=pubs, faltantes=falt, limites=lim, extra={'objeto': 'comentarios'})
 # Tema (6 al 9; el 10 lo cubren las recolecciones del evento).
@@ -1723,7 +1730,8 @@ for dia in DT_:
               limites=['Tope de 250 publicaciones por eje y por día.', 'Con tope, el estimado del día completo supone un ritmo parejo de publicación.'] if tope else ['Tope de 250 publicaciones por eje y por día.'])
 recol(rid('ig', 'cuentas', 'tema'), 'Instagram', 'Cuentas', '30 cuentas de prensa, política y organizaciones.', periodo_inicio=INI_T, periodo_fin=INI_EV, ejecutada_en=inst(DB_, 7, 0),
       filas=filas_de('Instagram', INI_T, INI_EV) - 12, pedidas=30, leidas=28,
-      faltantes=[{'cuenta': '@portal_noticias_7', 'motivo': 'La cuenta no devolvió datos.'}, {'cuenta': '@organizacion_ejemplo_1', 'motivo': 'Cuenta privada.'}],
+      faltantes=[{'cuenta': '@portal_noticias_7', 'es_organizacion': True, 'motivo': 'La cuenta no devolvió datos.'}, {'cuenta': '@organizacion_ejemplo_1', 'es_organizacion': True, 'motivo': 'Cuenta privada.'},
+                 {'cuenta': '@cuenta_personal_ig_9', 'motivo': 'Cuenta privada.'}],
       limites=['Máximo de publicaciones por cuenta: a 9 cuentas les faltan sus días más antiguos.', 'Solo se guardaron publicaciones con algún eje.'],
       extra={'cuentas_al_limite': 9})
 recol(rid('ig', 'etiquetas', 'tema'), 'Instagram', 'Etiquetas', 'Seis etiquetas de ejemplo de los cuatro ejes.',
@@ -1731,9 +1739,9 @@ recol(rid('ig', 'etiquetas', 'tema'), 'Instagram', 'Etiquetas', 'Seis etiquetas 
       ejecutada_en=inst(DB_, 7, 5), filas=12, pedidas=6, leidas=6, limites=['Las etiquetas devuelven solo las publicaciones más recientes.'])
 recol(rid('fb', 'paginas', 'tema'), 'Facebook', 'Páginas', 'Páginas públicas de un partido y de nueve medios.', periodo_inicio=INI_T, periodo_fin=INI_EV, ejecutada_en=inst(DB_, 7, 10),
       filas=filas_de('Facebook', INI_T, INI_EV), pedidas=10, leidas=8,
-      faltantes=[{'cuenta': 'Página de la figura propia', 'motivo': 'La página no devolvió datos.'},
-                 {'cuenta': 'Página de una organización de ejemplo', 'motivo': 'La página no devolvió datos.'},
-                 {'cuenta': '@portal_noticias_3', 'motivo': 'Faltan los días más antiguos.', 'desde': inst('2027-05-07', 14, 0)}],
+      faltantes=[{'cuenta': 'Página de la figura propia', 'es_organizacion': True, 'motivo': 'La página no devolvió datos.'},
+                 {'cuenta': 'Página de una organización de ejemplo', 'es_organizacion': True, 'motivo': 'La página no devolvió datos.'},
+                 {'cuenta': '@portal_noticias_3', 'es_organizacion': True, 'motivo': 'Faltan los días más antiguos.', 'desde': inst('2027-05-07', 14, 0)}],
       limites=['Solo publicaciones con algún eje, con el texto de la publicación o el título del enlace.'])
 for canal, desc, metodo in [('Instagram', 'Comentarios: los 25 más recientes de las 30 publicaciones con más comentarios.', 'Cuentas'),
                             ('Facebook', 'Comentarios: hasta 25 de las 12 publicaciones con más comentarios, en el orden que devuelve la página.', 'Páginas')]:
@@ -1760,21 +1768,21 @@ INF_EV = {
     'enmascarar': {'top_publicaciones': 'agrupar', 'top_cuentas': 'agrupar', 'destacadas': 'agrupar'},
     'cuentas_propias': [A_EMI['Instagram'], A_EMI['TikTok'], A_EMI['YouTube'], A_EMI['X']],
     'destacadas': [
-        dest_(EVX['E1'], 'Anuncio de la entrevista, publicado la noche anterior a las 20:00 (ejemplo).', grupo='propias'),
-        dest_(EVX['E2'], 'Clip con la figura, publicado junto con su cuenta (ejemplo).', grupo='propias'),
-        dest_(EVX['E3'], 'Publicación sobre el invitado del programa (ejemplo).', grupo='propias'),
+        dest_(EVX['E1'], 'Anuncio del programa, publicado la noche anterior a las 20:00 (ejemplo).', grupo='propias'),
+        dest_(EVX['E2'], 'Clip del programa, publicado en colaboración con una cuenta oficial (ejemplo).', grupo='propias'),
+        dest_(EVX['E3'], 'Publicación sobre el programa del día (ejemplo).', grupo='propias'),
         dest_(EVX['E4'], 'Nota de la emisora del día siguiente, 07:00 (ejemplo).', grupo='propias'),
-        dest_(EVX['Y1'], 'Video del programa con la entrevista, 44 minutos, fechado a las 09:18 (ejemplo).', grupo='propias'),
-        dest_(EVX['T4'], 'Clip automático del en vivo. El texto no nombra la entrevista (ejemplo).', grupo='propias'),
-        dest_(EVX['T5'], 'Clip automático del en vivo. El texto no nombra la entrevista (ejemplo).', grupo='propias'),
-        dest_(EVX['X2'], 'Un periodista anuncia la entrevista en curso y nombra a la emisora (ejemplo).'),
-        dest_(EVX['X1'], 'Una cuenta personal resume un tema de la entrevista. Es la publicación de X con más vistas (ejemplo).'),
-        dest_(EVX['F1'], 'Video del partido con fragmentos de la entrevista. Reúne casi todas las vistas de Facebook (ejemplo).'),
-        dest_(EVX['E5'], 'Video del partido con fragmentos de la entrevista (ejemplo).'),
+        dest_(EVX['Y1'], 'Video del programa completo, 44 minutos, fechado a las 09:18 (ejemplo).', grupo='propias'),
+        dest_(EVX['T4'], 'Clip automático del en vivo. El texto no nombra el programa (ejemplo).', grupo='propias'),
+        dest_(EVX['T5'], 'Clip automático del en vivo. El texto no nombra el programa (ejemplo).', grupo='propias'),
+        dest_(EVX['X2'], 'Un periodista anuncia el programa en curso y nombra a la emisora (ejemplo).'),
+        dest_(EVX['X1'], 'Una cuenta personal comenta un tema del programa. Es la publicación de X con más vistas (ejemplo).'),
+        dest_(EVX['F1'], 'Video del partido con fragmentos del programa. Reúne casi todas las vistas de Facebook (ejemplo).'),
+        dest_(EVX['E5'], 'Video del partido con fragmentos del programa (ejemplo).'),
         dest_(EVX['T1'], 'Video del partido sobre el registro para votar; concentra los comentarios de TikTok (ejemplo).'),
-        dest_(EVX['X8'], 'Un analista cuestiona el formato de la entrevista. Es una de las voces críticas con más vistas (ejemplo).', etiqueta='Crítica'),
+        dest_(EVX['X8'], 'Un analista cuestiona el formato del programa. Es una de las voces críticas con más vistas (ejemplo).', etiqueta='Crítica'),
     ],
-    'titulo': 'Informe de impacto: entrevista radial de ejemplo', 'subtitulo': 'Programa de ejemplo, martes 11 de mayo de 2027',
+    'titulo': 'Informe de impacto: programa de radio (ejemplo)', 'subtitulo': 'Programa de ejemplo, martes 11 de mayo de 2027',
     'nota_portada': 'Edición de ejemplo. Las cifras son inventadas y la recolección se limitó a propósito para mostrar el tipo de análisis.',
     'nota_version': 'Versión 2: se agrega Facebook.', 'fecha_informe': DP_,
     'secciones': [{'id': s, 'activa': True, 'texto': ''} for s in SECS_EV],
@@ -1802,7 +1810,7 @@ INF_T = {
     'secciones': [{'id': s, 'activa': s in SECS_T, 'texto': ''} for s in SECS_T + ['alcance', 'reparto', 'comparacion']],
 }
 for o, (rid_, nombre, ev, cfg, desc) in enumerate([
-        ('inf-rep-evento', 'Informe de impacto · Entrevista radial (ejemplo)', EV_INF, INF_EV, 'Impacto de la entrevista radial del 11 de mayo: día base, día del evento y mañana siguiente.'),
+        ('inf-rep-evento', 'Informe de impacto · Programa de radio (ejemplo)', EV_INF, INF_EV, 'Impacto del programa de radio de ejemplo del 11 de mayo: día base, día del evento y mañana siguiente.'),
         ('inf-rep-tema', 'Informe de conversación · Cuatro ejes (ejemplo)', None, INF_T, 'Conversación del 6 al 10 de mayo en cuatro ejes, en noticias, X, Instagram y Facebook.')], 1):
     r = {'id': rid_, 'campana_id': CI, 'nombre': nombre, 'tipo': 'Informe', 'frecuencia': 'Una vez', 'formato': 'PDF', 'estado': 'Activo',
          'requiere_aprobacion': True, 'orden': o, 'extra': {'descripcion': desc, 'marca': 'Consultora', 'confidencial': True, 'informe': cfg}}
@@ -1819,6 +1827,14 @@ for m in T['menciones']:
         assert 'ejemplo' in (m.get('titulo') or '') and '"' not in (m.get('titulo') or '') and '“' not in (m.get('titulo') or ''), m['id']
         if m['canal'] == 'Medio digital': assert not any(m.get(k) for k in ('vistas', 'me_gusta', 'respuestas', 'compartidos')), m['id']
         if m.get('vistas') is not None: assert m['canal'] == 'X' or m['formato'] in ('Video', 'Reel', 'En vivo'), m['id']
+        # La url de una publicación no lleva el usuario de la cuenta.
+        if m.get('autor_id'): assert AUT[m['autor_id']]['handle'].lstrip('@') not in (m.get('url') or ''), m['id']
+# Ids de autores neutros, sin el usuario.
+for a in T['autores']:
+    if a['campana_id'] == CI: assert re.fullmatch(r'inf-a-\d{4}', a['id']) and a['handle'].lstrip('@') not in a['id'], a['id']
+# Sin entrevistas ni declaraciones atribuidas a la figura propia (docs/semilla.md): ningún texto del Informe de ejemplo las nombra.
+_txt = json.dumps([[r for r in T[t] if r.get('campana_id') == CI] for t in T], ensure_ascii=False).lower()
+assert not re.search(r'entrevist|lo dicho|declaracion|declaración', _txt), re.search(r'.{60}(entrevist|lo dicho|declaraci).{60}', _txt).group(0)
 
 # ====================================================================
 os.makedirs(OUT, exist_ok=True)

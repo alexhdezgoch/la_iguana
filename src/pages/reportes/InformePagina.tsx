@@ -1,7 +1,7 @@
 // Pantalla del Informe (/c/:campanaId/reportes/informe/:reporteId): vista previa A4 y panel de configuración.
 // Lee informe_datos (rpc), reportes, ejes, muestras y eventos. Guarda la configuración en reportes.extra.informe y
 // "Generar edición" crea una fila de reporte_envios congelada ('Pendiente de envío': no se envía nada por correo).
-// ?envio=<id> muestra una edición guardada; &vista=impresion reemplaza la página por el documento autónomo
+// ?envio=<id> muestra una edición guardada de ESTE reporte y esta campaña (si no, "no disponible"); &vista=impresion reemplaza la página por el documento autónomo
 // (lo usa rig/informe-pdf.mjs para el PDF sin pantalla).
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
@@ -19,7 +19,8 @@ import { Informe, SECCIONES, armar, seccionesDe, tablasDe } from '../../lib/info
 import { textoAuto } from '../../lib/informe/hallazgos';
 import { tablasCsv } from '../../lib/informe/Tabla';
 import { informeHtml, imprimirInforme } from '../../lib/informe/servidor';
-import { cargarInforme, configEvento, esEdicionInforme, generarEdicion } from '../../lib/informe/edicion';
+import { EDICION_ILEGIBLE, cargarInforme, configEvento, esDocInforme, esEdicionInforme, generarEdicion } from '../../lib/informe/edicion';
+import { IlegibleInforme, LimiteInforme } from '../../lib/informe/Limite';
 import type { InformeConfig, InformeDatos, SeccionConfig } from '../../lib/informe/tipos';
 import { COLA, contarDest, desfase, listasDe } from './util';
 import '../../lib/informe/informe.css';
@@ -54,7 +55,11 @@ export default function InformePagina() {
   const muestras = useTabla<Muestra>('muestras', { eq: { campana_id: campana.id }, orden: 'orden' });
   const eventos = useTabla<Evento>('eventos', { eq: { campana_id: campana.id }, orden: 'fecha_inicio' });
 
-  const edicion = envioId && esEdicionInforme(envio.datos?.contenido) ? envio.datos!.contenido as unknown as { datos: InformeDatos; textos: Record<string, string>; titulo: string } : null;
+  // Solo una edición de este reporte y de esta campaña: un ?envio= de otro reporte se trata como no encontrado.
+  const envioPropio = !!envio.datos && envio.datos.reporte_id === reporteId && envio.datos.campana_id === campana.id;
+  const ilegible = envioPropio && esDocInforme(envio.datos!.contenido) && !esEdicionInforme(envio.datos!.contenido);
+  const edicion = envioId && envioPropio && esEdicionInforme(envio.datos!.contenido) ? envio.datos!.contenido as unknown as { datos: InformeDatos; textos: Record<string, string>; titulo: string } : null;
+  const [errorImpresion, setErrorImpresion] = useState(false);
 
   // ---------- formulario ----------
   const guardado = (rep.datos?.extra?.informe ?? {}) as InformeConfig;
@@ -85,7 +90,8 @@ export default function InformePagina() {
   // Vista de impresión: reemplaza la página por el documento autónomo (sin diálogo de impresión).
   useEffect(() => {
     if (!impresion || !vista) return;
-    const html = informeHtml({ datos: vista, textos });
+    let html: string;
+    try { html = informeHtml({ datos: vista, textos }); } catch (e) { console.error('Informe:', e); setErrorImpresion(true); return; }
     document.open(); document.write(html); document.close();
   }, [impresion, vista, textos]);
 
@@ -98,6 +104,12 @@ export default function InformePagina() {
   }
   if (rep.datos && rep.datos.tipo !== 'Informe') {
     return <main className="page pg-reportes pg-informe"><Vacio titulo="Este reporte no es un Informe"><Link className="lkb" to={`/c/${campana.id}/reportes?ver=${rep.datos.id}`}>Abrir en el editor de reportes</Link></Vacio></main>;
+  }
+  if (envioId && !envio.cargando && ilegible) {
+    return <main className="page pg-reportes pg-informe"><div className="ph"><div>{volver}<h1>{EDICION_ILEGIBLE}</h1></div></div><section className="card"><IlegibleInforme /></section></main>;
+  }
+  if (impresion && errorImpresion) {
+    return <main className="page pg-reportes pg-informe"><IlegibleInforme titulo={envioId ? EDICION_ILEGIBLE : 'Este informe no se puede mostrar'} detalle="El documento no se pudo armar con estos datos." /></main>;
   }
   if (envioId && !envio.cargando && !edicion) {
     return <main className="page pg-reportes pg-informe"><Vacio titulo="Esta edición no está disponible">Puede que se haya borrado o que no sea una edición de un Informe. <Link className="lkb" to={`/c/${campana.id}/reportes?tab=hist`}>Ver el historial</Link></Vacio></main>;
@@ -181,7 +193,10 @@ export default function InformePagina() {
           <section className="card pv inf-pv" aria-label="Vista previa del informe">
             {datos.error ? <p className="mu" style={{ padding: '40px 0' }}>No se pudo armar el informe: {datos.error}</p>
               : !vista ? <p className="mu" style={{ padding: '40px 0' }}>{datos.cargando || envio.cargando ? 'Armando el informe…' : 'No hay datos para este informe.'}</p>
-                : <Informe datos={vista} textos={textos} />}
+                : <LimiteInforme key={envioId ?? `vivo-${vista.generado_en}`} titulo={edicion ? EDICION_ILEGIBLE : 'Este informe no se puede mostrar'}
+                    detalle={edicion ? undefined : 'El documento no se pudo armar con estos datos. Revisa la configuración o vuelve a intentarlo.'}>
+                    <Informe datos={vista} textos={textos} />
+                  </LimiteInforme>}
           </section>
 
           {!edicion ? (

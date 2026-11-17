@@ -1,6 +1,7 @@
 // Tablas del Informe. Cada tabla es un dato (TablaDatos) antes de ser HTML: el mismo objeto se pinta en el documento
 // y se exporta al CSV ("una tabla, un bloque"). Las celdas numéricas se guardan crudas y se formatean al pintar.
 import { num } from '../formato';
+import { urlSegura } from '../url';
 import { colorCanal } from './util';
 
 export interface Columna { titulo: string; num?: boolean; ancho?: string }
@@ -44,12 +45,14 @@ export function csvCelda(c: Celda): string {
 
 function Td({ c, col, th }: { c: Celda; col: Columna; th?: boolean }) {
   const cls = col.num ? 'n' : undefined;
+  // Enlaces de los datos (o de una edición congelada vieja): solo http(s); javascript:, data: o relativos salen sin enlace.
+  const href = esRica(c) ? urlSegura(c.enlace) : null;
   const cont = esRica(c) ? (
     <>
       <span className={c.canal && !c.nota && c.texto.length < 24 ? 'inf-c1 inf-nw' : 'inf-c1'}>
         {c.canal ? <i className="inf-dot" style={{ background: colorCanal(c.canal) }} aria-hidden="true" /> : null}
         {c.fuerte ? <b>{c.texto}</b> : c.texto}
-        {c.enlace ? <> <a href={c.enlace} target="_blank" rel="noreferrer">ver</a></> : null}
+        {href ? <> <a href={href} target="_blank" rel="noopener noreferrer">ver</a></> : null}
       </span>
       {c.nota ? <span className="inf-c2">{c.nota}</span> : null}
     </>
@@ -77,9 +80,15 @@ export function Tabla({ t }: { t: TablaDatos }) {
   );
 }
 
+/** Celda de CSV sin inyección de fórmulas: lo que empieza con = + - @ tabulador o retorno lleva un apóstrofo delante.
+ *  Excepción: un número negativo puro ("-12", "-3.5") queda como número. */
+export function csvSeguro(s: string): string {
+  if (/^-\d+(\.\d+)?$/.test(s)) return s;
+  return /^[=+\-@\t\r]/.test(s) ? `'${s}` : s;
+}
 /** Todas las tablas como CSV: un bloque por tabla (título, encabezados, filas, total) separado por una línea vacía. */
 export function tablasCsv(tablas: { seccion: string; tabla: TablaDatos }[], aviso?: string): string {
-  const q = (s: string) => (/[",\n;]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s);
+  const q = (s0: string) => { const s = csvSeguro(s0); return /[",\n\r;]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; };
   const lineas: string[] = [];
   if (aviso) lineas.push(q(aviso), '');
   for (const { seccion, tabla } of tablas) {

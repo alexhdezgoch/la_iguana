@@ -6,7 +6,10 @@ set client_min_messages = warning;
 -- campanas_visibles() (ajeno, anónimo). Cliente y Solo lectura lo reciben aunque no lean autores, comentarios,
 -- codificaciones ni recolecciones: salen solo agregados, y la regla de publicación de cuentas se aplica aquí:
 --   el usuario de una cuenta se muestra solo si seguidores >= 100.000 o es una organización; si no, "Cuenta personal",
---   sin usuario, sin enlace de la cuenta ni de la publicación. Los textos de comentarios nunca salen.
+--   sin usuario, sin autor_id, sin enlace de la cuenta ni de la publicación, sin mencion_id y con fuente "Cuenta personal"
+--   (queda el fragmento de texto). Las cuentas de recolecciones.faltantes pasan por la misma regla. Los textos de
+--   comentarios nunca salen. Esto protege la salida del Informe; las filas crudas de menciones (url, autor_id) siguen
+--   legibles para todo miembro de la campaña, igual que en la pantalla Menciones (900_acceso.sql).
 -- Toda consulta filtra por la campaña del reporte. Días y horas en campanas.zona_horaria (o config.zona).
 -- Configuración: reportes.extra.informe (ver InformeConfig en tipos.ts).
 -- Solo lee: sirve en transacciones de solo lectura (sin tablas temporales); las filas del periodo se guardan una vez
@@ -54,16 +57,19 @@ language sql immutable set search_path = public as $$
   end;
 $$;
 
+-- Publicación de una cuenta enmascarada: sin mencion_id, url ni fuente que la identifiquen (queda el fragmento de texto).
 create or replace function public.informe_pub(m public.menciones, a public.autores) returns jsonb
 language sql immutable set search_path = public as $$
   select jsonb_build_object(
-    'mencion_id', m.id, 'canal', m.canal, 'publicada_en', m.publicada_en, 'fuente', m.fuente,
+    'mencion_id', case when v.vis then m.id end, 'canal', m.canal, 'publicada_en', m.publicada_en,
+    'fuente', case when v.vis then m.fuente else 'Cuenta personal' end,
     'titulo', m.titulo, 'texto', left(coalesce(m.texto, m.resumen), 280),
-    'url', case when public.informe_visible(a, m.canal) then m.url end,
+    'url', case when v.vis then m.url end,
     'formato', m.formato, 'tipo_pub', m.tipo_pub,
     'vistas', m.vistas, 'me_gusta', m.me_gusta, 'respuestas', m.respuestas, 'compartidos', m.compartidos,
     'interaccion', public.informe_interaccion(m),
-    'cuenta', public.informe_cuenta(a, m.fuente, m.canal));
+    'cuenta', public.informe_cuenta(a, m.fuente, m.canal))
+  from (select public.informe_visible(a, m.canal) as vis) v;
 $$;
 
 create or replace function public.informe_pct(p_parte numeric, p_todo numeric) returns numeric
@@ -110,13 +116,14 @@ declare
   m_pub text; m_cta text; m_dest text;
   v_orden constant text[] := array['Medio digital','X','Instagram','TikTok','YouTube','Facebook','Radio','Televisión'];
   v_cero jsonb; v_cero_h jsonb;
-  j_dias jsonb; j_series jsonb; j_com jsonb; j_hora jsonb; j_prom jsonb; j_pico jsonb; j_pico_foco jsonb;
+  j_dias jsonb; j_series jsonb; j_com jsonb; j_hora jsonb; j_prom jsonb; j_prom_foco jsonb; j_pico jsonb; j_pico_foco jsonb; j_b jsonb;
   j_desglose jsonb := '{}'::jsonb; j_ejes jsonb; j_ejes_canal jsonb; j_ejes_def jsonb;
   j_rank_pub jsonb; j_rank_cta jsonb; j_titulares jsonb; j_por_fuente jsonb; j_med_cuentas jsonb; n_titulares int;
   j_coment jsonb; j_muestras jsonb := '[]'::jsonb; j_codigos jsonb; j_recol jsonb; j_dest jsonb; n_dest_omit int;
   j_propias jsonb; j_cuentas jsonb;
   v_flag text; mu public.muestras%rowtype; j_m jsonb; v_pond boolean; v_n int;
   t_ini text; t_fin text;
+  v_horas_base numeric;
 begin
   select * into r from public.reportes where id = p_reporte_id;
   if r.id is null or r.campana_id not in (select public.campanas_visibles()) then
@@ -268,17 +275,26 @@ begin
       cross join generate_series(0, 23) h(h)
       left join unnest(v_filas) f on f.canal = k.canal and f.dia = v_evento and f.hora = h.h
       group by k.canal, h.h) g;
-    select jsonb_build_object(
-        'por_canal', coalesce(jsonb_object_agg(k.canal, round(coalesce(b.n, 0) / 24.0, 1)), '{}'::jsonb),
-        'total', round(coalesce(sum(b.n), 0) / 24.0, 1),
-        'n_por_canal', coalesce(jsonb_object_agg(k.canal, coalesce(b.n, 0)), '{}'::jsonb),
-        'n_total', coalesce(sum(b.n), 0))
-      into j_prom
-      from unnest(v_canales) k(canal)
-      left join (select f.canal, count(*) as n from unnest(v_filas) f where f.conv and f.dia = v_base group by f.canal) b on b.canal = k.canal;
-    if v_base is null then j_prom := null; end if;
-    -- Pico: la hora con más publicaciones (empate: la más temprana).
+    -- Horas reales del día base en la zona (23 o 25 con cambio de hora).
+    v_horas_base := extract(epoch from ((v_base + 1)::timestamp at time zone v_zona) - (v_base::timestamp at time zone v_zona)) / 3600.0;
     for v_flag in select unnest(array['conversacion', 'foco']) loop
+      select jsonb_build_object(
+          'por_canal', coalesce(jsonb_object_agg(k.canal, round(coalesce(b.n, 0) / v_horas_base, 1)), '{}'::jsonb),
+          'total', round(coalesce(sum(b.n), 0) / v_horas_base, 1),
+          'n_por_canal', coalesce(jsonb_object_agg(k.canal, coalesce(b.n, 0)), '{}'::jsonb),
+          'n_total', coalesce(sum(b.n), 0),
+          'horas', v_horas_base)
+        into j_m
+        from unnest(v_canales) k(canal)
+        left join (select f.canal, count(*) as n from unnest(v_filas) f
+                   where f.dia = v_base and case v_flag when 'conversacion' then f.conv else f.foco end group by f.canal) b on b.canal = k.canal;
+      if v_base is null then j_m := null; end if;
+      if v_flag = 'conversacion' then j_prom := j_m; else j_prom_foco := j_m; end if;
+    end loop;
+    -- Pico: la hora con más publicaciones (empate: la más temprana). veces_base: contra el promedio horario del día base
+    -- de la misma métrica (conversación o foco); null si el día base no tiene publicaciones.
+    for v_flag in select unnest(array['conversacion', 'foco']) loop
+      j_b := case v_flag when 'conversacion' then j_prom else j_prom_foco end;
       with hh as (
         select f.canal, f.hora, count(*) as n from unnest(v_filas) f
         where f.dia = v_evento and case v_flag when 'conversacion' then f.conv else f.foco end group by f.canal, f.hora),
@@ -286,10 +302,10 @@ begin
       tt as (select hora, sum(n) as n from hh group by hora order by sum(n) desc, hora limit 1)
       select jsonb_build_object(
         'por_canal', coalesce((select jsonb_object_agg(pc.canal, jsonb_build_object('hora', pc.hora, 'n', pc.n,
-            'veces_base', case when (j_prom->'n_por_canal'->>pc.canal)::numeric > 0
-              then round(pc.n * 24.0 / (j_prom->'n_por_canal'->>pc.canal)::numeric, 1) end)) from pc), '{}'::jsonb),
+            'veces_base', case when (j_b->'n_por_canal'->>pc.canal)::numeric > 0
+              then round(pc.n * v_horas_base / (j_b->'n_por_canal'->>pc.canal)::numeric, 1) end)) from pc), '{}'::jsonb),
         'total', (select jsonb_build_object('hora', tt.hora, 'n', tt.n,
-            'veces_base', case when (j_prom->>'n_total')::numeric > 0 then round(tt.n * 24.0 / (j_prom->>'n_total')::numeric, 1) end) from tt))
+            'veces_base', case when (j_b->>'n_total')::numeric > 0 then round(tt.n * v_horas_base / (j_b->>'n_total')::numeric, 1) end) from tt))
       into j_m;
       if v_flag = 'conversacion' then j_pico := j_m; else j_pico_foco := j_m; end if;
     end loop;
@@ -490,13 +506,15 @@ begin
       from jsonb_array_elements(case when jsonb_typeof(mu.estratos) = 'array' then mu.estratos else '[]'::jsonb end) with ordinality x(e, o)),
     est as (
       select coalesce(u.canal, s.canal) as canal, coalesce(u.o, 1000) as o, u.universo,
-        coalesce(s.n, 0) as n, coalesce(s.fav, 0) as fav, coalesce(s.neu, 0) as neu, coalesce(s.des, 0) as des
-      from (select canal, count(*) as n, count(*) filter (where sentimiento = 'Favorable') as fav,
+        coalesce(s.n, 0) as n, coalesce(s.ns, 0) as ns, coalesce(s.fav, 0) as fav, coalesce(s.neu, 0) as neu, coalesce(s.des, 0) as des
+      from (select canal, count(*) as n, count(sentimiento) as ns, count(*) filter (where sentimiento = 'Favorable') as fav,
               count(*) filter (where sentimiento = 'Neutral') as neu, count(*) filter (where sentimiento = 'Desfavorable') as des
             from cod group by canal) s
       full join uni u on u.canal = s.canal),
-    -- Pesos: universo del estrato / universo de los estratos con ítems codificados.
-    w as (select canal, universo / nullif(sum(universo) over (), 0) as peso from est where v_pond and n > 0 and universo is not null),
+    -- Pesos: universo del estrato / universo de los estratos con ítems codificados. Sentimiento (w): solo estratos con
+    -- algún ítem con sentimiento y % sobre esos ítems (ns). Temas (wt): estratos con ítems codificados, % sobre n.
+    w as (select canal, universo / nullif(sum(universo) over (), 0) as peso from est where v_pond and ns > 0 and universo is not null),
+    wt as (select canal, universo / nullif(sum(universo) over (), 0) as peso from est where v_pond and n > 0 and universo is not null),
     tot as (select count(*) as n, count(*) filter (where sentimiento = 'Favorable') as fav, count(*) filter (where sentimiento = 'Neutral') as neu,
               count(*) filter (where sentimiento = 'Desfavorable') as des, count(sentimiento) as con_sentimiento from cod),
     tem as (
@@ -507,26 +525,26 @@ begin
       'id', mu.id, 'nombre', mu.nombre, 'objeto', mu.objeto, 'canal', mu.canal, 'universo', mu.universo, 'tamano', mu.tamano,
       'semilla', mu.semilla, 'metodo', mu.metodo, 'ponderacion', mu.ponderacion, 'extra', mu.extra,
       'n', tot.n, 'con_sentimiento', tot.con_sentimiento,
-      'margen_max', case when tot.n > 0 then round(1.96 * sqrt(0.25 / tot.n) * 100)::int end,
+      'margen_max', case when tot.con_sentimiento > 0 then round(1.96 * sqrt(0.25 / tot.con_sentimiento) * 100)::int end,
       'sentimiento', jsonb_build_object(
-        'favorable', jsonb_build_object('n', tot.fav, 'pct', public.informe_pct(tot.fav, tot.n)),
-        'neutral', jsonb_build_object('n', tot.neu, 'pct', public.informe_pct(tot.neu, tot.n)),
-        'desfavorable', jsonb_build_object('n', tot.des, 'pct', public.informe_pct(tot.des, tot.n))),
+        'favorable', jsonb_build_object('n', tot.fav, 'pct', public.informe_pct(tot.fav, tot.con_sentimiento)),
+        'neutral', jsonb_build_object('n', tot.neu, 'pct', public.informe_pct(tot.neu, tot.con_sentimiento)),
+        'desfavorable', jsonb_build_object('n', tot.des, 'pct', public.informe_pct(tot.des, tot.con_sentimiento))),
       'ponderado', case when v_pond and exists (select 1 from w) then jsonb_build_object(
-        'favorable', (select round(sum(w.peso * est.fav * 100.0 / est.n), 1) from w join est using (canal)),
-        'neutral', (select round(sum(w.peso * est.neu * 100.0 / est.n), 1) from w join est using (canal)),
-        'desfavorable', (select round(sum(w.peso * est.des * 100.0 / est.n), 1) from w join est using (canal)),
+        'favorable', (select round(sum(w.peso * est.fav * 100.0 / est.ns), 1) from w join est using (canal)),
+        'neutral', (select round(sum(w.peso * est.neu * 100.0 / est.ns), 1) from w join est using (canal)),
+        'desfavorable', (select round(sum(w.peso * est.des * 100.0 / est.ns), 1) from w join est using (canal)),
         'universo', (select sum(est.universo) from w join est using (canal))) end,
-      'estratos', coalesce((select jsonb_agg(jsonb_build_object('canal', est.canal, 'universo', est.universo, 'n', est.n,
-          'margen_max', case when est.n > 0 then round(1.96 * sqrt(0.25 / est.n) * 100)::int end,
+      'estratos', coalesce((select jsonb_agg(jsonb_build_object('canal', est.canal, 'universo', est.universo, 'n', est.n, 'con_sentimiento', est.ns,
+          'margen_max', case when est.ns > 0 then round(1.96 * sqrt(0.25 / est.ns) * 100)::int end,
           'peso', (select round(w.peso, 4) from w where w.canal = est.canal),
-          'favorable', jsonb_build_object('n', est.fav, 'pct', public.informe_pct(est.fav, est.n)),
-          'neutral', jsonb_build_object('n', est.neu, 'pct', public.informe_pct(est.neu, est.n)),
-          'desfavorable', jsonb_build_object('n', est.des, 'pct', public.informe_pct(est.des, est.n))) order by est.o, est.canal) from est), '[]'::jsonb),
+          'favorable', jsonb_build_object('n', est.fav, 'pct', public.informe_pct(est.fav, est.ns)),
+          'neutral', jsonb_build_object('n', est.neu, 'pct', public.informe_pct(est.neu, est.ns)),
+          'desfavorable', jsonb_build_object('n', est.des, 'pct', public.informe_pct(est.des, est.ns))) order by est.o, est.canal) from est), '[]'::jsonb),
       'temas', coalesce((select jsonb_agg(jsonb_build_object('codigo_id', tem.codigo_id, 'n', tem.n, 'pct', public.informe_pct(tem.n, tot.n),
-          'pct_ponderado', case when v_pond and exists (select 1 from w)
-            then coalesce((select round(sum(w.peso * coalesce(te.n, 0) * 100.0 / est.n), 1) from w join est using (canal)
-                           left join tem_est te on te.canal = w.canal and te.codigo_id = tem.codigo_id), 0)
+          'pct_ponderado', case when v_pond and exists (select 1 from wt)
+            then coalesce((select round(sum(wt.peso * coalesce(te.n, 0) * 100.0 / est.n), 1) from wt join est using (canal)
+                           left join tem_est te on te.canal = wt.canal and te.codigo_id = tem.codigo_id), 0)
             else public.informe_pct(tem.n, tot.n) end,
           'por_estrato', coalesce((select jsonb_object_agg(te.canal, jsonb_build_object('n', te.n,
               'pct', public.informe_pct(te.n, (select est.n from est where est.canal = te.canal))))
@@ -538,7 +556,20 @@ begin
   end loop;
 
   -- ---------- recolecciones (Metodología) ----------
-  select coalesce(jsonb_agg(to_jsonb(x) - 'campana_id' || jsonb_build_object('eje_nombre', e.nombre)
+  -- faltantes[].cuenta pasa por la regla de publicación: si coincide con el usuario de un autor de la campaña (mismo canal
+  -- primero), se muestra solo si ese autor es visible; si no coincide, solo si la entrada dice es_organizacion = true
+  -- (un medio o una organización escrita por quien analiza). Si no, "Cuenta personal".
+  select coalesce(jsonb_agg(to_jsonb(x) - 'campana_id' || jsonb_build_object('eje_nombre', e.nombre,
+      'faltantes', (select coalesce(jsonb_agg((fl.v - 'cuenta' - 'es_organizacion' - 'autor_id') || jsonb_build_object('cuenta',
+            case when (q.au).id is not null then case when public.informe_visible(q.au, x.canal) then fl.v->>'cuenta' else 'Cuenta personal' end
+                 when jsonb_typeof(fl.v->'es_organizacion') = 'boolean' and (fl.v->>'es_organizacion')::boolean then fl.v->>'cuenta'
+                 else 'Cuenta personal' end) order by fl.o), '[]'::jsonb)
+        from jsonb_array_elements(case when jsonb_typeof(x.faltantes) = 'array' then x.faltantes else '[]'::jsonb end) with ordinality fl(v, o)
+        left join lateral (select a2 as au from public.autores a2
+          where a2.campana_id = r.campana_id and nullif(trim(fl.v->>'cuenta'), '') is not null
+            and lower(ltrim(a2.handle, '@')) = lower(ltrim(trim(fl.v->>'cuenta'), '@'))
+          order by (a2.canal = x.canal) desc, a2.id limit 1) q on true
+        where jsonb_typeof(fl.v) = 'object'))
       order by coalesce(array_position(v_orden, x.canal), 99), x.canal, x.dia nulls first, x.ejecutada_en nulls first, x.id), '[]'::jsonb)
   into j_recol
   from public.recolecciones x left join public.ejes e on e.id = x.eje_id
@@ -588,7 +619,15 @@ begin
     'generado_en', now(),
     'reporte', jsonb_build_object('id', r.id, 'nombre', r.nombre, 'tipo', r.tipo, 'campana_id', r.campana_id, 'evento_id', coalesce(cfg->>'evento_id', r.evento_id)),
     'campana', jsonb_build_object('id', c.id, 'nombre', c.nombre, 'nombre_corto', c.nombre_corto, 'titulo_largo', c.titulo_largo, 'es_demo', c.es_demo, 'zona_horaria', c.zona_horaria),
-    'config', cfg,
+    -- La configuración sale sin los ids de publicaciones y cuentas enmascaradas (destacadas y cuentas propias).
+    'config', cfg || jsonb_build_object(
+      'destacadas', coalesce((select jsonb_agg(case when public.informe_visible(a, m.canal) then e else e - 'mencion_id' end order by o)
+          from jsonb_array_elements(case when jsonb_typeof(cfg->'destacadas') = 'array' then cfg->'destacadas' else '[]'::jsonb end) with ordinality x(e, o)
+          left join public.menciones m on m.id = e->>'mencion_id' and m.campana_id = r.campana_id
+          left join public.autores a on a.id = m.autor_id and a.campana_id = r.campana_id
+          where jsonb_typeof(e) = 'object'), '[]'::jsonb),
+      'cuentas_propias', coalesce((select jsonb_agg(a.id order by u.o) from unnest(v_propias) with ordinality u(id, o)
+          join public.autores a on a.id = u.id where public.informe_visible(a, a.canal)), '[]'::jsonb)),
     'portada', jsonb_build_object('titulo', coalesce(cfg->>'titulo', r.nombre), 'subtitulo', cfg->>'subtitulo', 'nota_portada', cfg->>'nota_portada',
       'nota_version', cfg->>'nota_version', 'fecha_informe', coalesce(nullif(cfg->>'fecha_informe', '')::date, c.fecha_corte, (now() at time zone v_zona)::date)),
     'secciones', case when jsonb_typeof(cfg->'secciones') = 'array' then cfg->'secciones' else '[]'::jsonb end,
@@ -608,7 +647,7 @@ begin
     'series', j_series,
     'por_hora', case when v_evento is not null then jsonb_build_object('dia', v_evento,
       'conversacion', coalesce(j_hora->'conversacion', v_cero_h), 'foco', coalesce(j_hora->'foco', v_cero_h),
-      'promedio_base', j_prom, 'pico', j_pico, 'pico_foco', j_pico_foco) end,
+      'promedio_base', j_prom, 'promedio_base_foco', j_prom_foco, 'pico', j_pico, 'pico_foco', j_pico_foco) end,
     'desglose', j_desglose,
     'cuentas_distintas', j_cuentas,
     'ejes', jsonb_build_object('definiciones', j_ejes_def, 'lista', j_ejes),

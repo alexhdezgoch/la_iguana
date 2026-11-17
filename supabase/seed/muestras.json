@@ -30,7 +30,7 @@
   ],
   "extra": {
    "reglas": [
-    "Los resúmenes de lo dicho cuentan como neutral.",
+    "Los resúmenes del programa cuentan como neutral.",
     "Los comentarios solo con emojis cuentan como neutral.",
     "Una queja por una falla técnica de la transmisión cuenta como neutral."
    ]
@@ -47,7 +47,7 @@
   "semilla": "20270512",
   "ponderacion": "ninguna",
   "orden": 2,
-  "metodo": "Muestra aleatoria con semilla fija entre las publicaciones de X con la marca de la entrevista o de la emisora."
+  "metodo": "Muestra aleatoria con semilla fija entre las publicaciones de X con la marca del programa o de la emisora."
  },
  {
   "id": "inf-mu-tema",

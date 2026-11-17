@@ -7,9 +7,22 @@ import { seccionesDe, textosDe } from './Informe';
 import type { InformeConfig, InformeDatos } from './tipos';
 
 export interface ContenidoInforme { tipo_doc: 'Informe'; titulo: string; datos: InformeDatos; textos: Record<string, string> }
-export function esEdicionInforme(c: unknown): c is ContenidoInforme {
-  return !!c && typeof c === 'object' && (c as { tipo_doc?: string }).tipo_doc === 'Informe' && !!(c as { datos?: unknown }).datos;
+const esObj = (x: unknown): x is Record<string, unknown> => !!x && typeof x === 'object' && !Array.isArray(x);
+/** El contenido dice ser una edición de Informe (tipo_doc 'Informe'), se pueda mostrar o no. */
+export function esDocInforme(c: unknown): boolean {
+  return esObj(c) && c.tipo_doc === 'Informe';
 }
+/** Edición de Informe que este código sabe mostrar: datos con version 1 y las claves que el documento necesita. */
+export function esEdicionInforme(c: unknown): c is ContenidoInforme {
+  if (!esDocInforme(c)) return false;
+  const { datos: d, textos } = c as { datos?: unknown; textos?: unknown };
+  if (!esObj(d) || d.version !== 1) return false;
+  if (textos != null && !esObj(textos)) return false;
+  return esObj(d.campana) && esObj(d.portada) && Array.isArray(d.dias) && esObj(d.series) && Array.isArray(d.canales)
+    && (d.secciones == null || Array.isArray(d.secciones));
+}
+/** Texto del estado cuando una edición guardada no se puede mostrar (versión desconocida o datos incompletos). */
+export const EDICION_ILEGIBLE = 'Esta edición no se puede mostrar';
 
 export const cargarInforme = (reporteId: string) => db.rpc<InformeDatos | null>('informe_datos', { p_reporte_id: reporteId });
 
@@ -47,6 +60,8 @@ export async function generarEdicion(o: { reporte: Reporte; personaId: string | 
     titulo: `${datos.portada.titulo} · edición`,
     periodo_inicio: datos.periodo.inicio, periodo_fin: datos.periodo.fin,
     estado: 'Pendiente de envío', destinatarios: o.destinatarios ?? 0, entregados: 0,
+    // Igual que ponerEnCola (src/pages/reportes/util.ts): si el reporte requiere aprobación, quien la genera la aprueba.
+    aprobado_por: o.reporte.requiere_aprobacion ? o.personaId : null,
     contenido: contenido as unknown as ReporteEnvio['contenido'],
     extra: { nota: 'Edición congelada. En cola, sin enviar: el envío por correo todavía no está conectado.', origen: 'manual', pedido_por: o.personaId, tipo_doc: 'Informe' },
   });

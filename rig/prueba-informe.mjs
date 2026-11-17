@@ -96,6 +96,29 @@ insert into reportes (id, campana_id, nombre, tipo, extra) values
   ('pi-rep-tema', '${C}', 'Informe de tema', 'Informe', $j$ {"informe": {
     "modo": "tema", "periodo_inicio": "2027-05-10", "periodo_fin": "2027-05-12", "ejes": ["pi-a", "pi-b"],
     "enmascarar": {"top_publicaciones": "omitir", "top_cuentas": "omitir"}}}$j$::jsonb);
+
+-- Día base con cambio de hora (23 horas en Nueva York el 14 de marzo de 2027): dos de conversación, una del foco.
+insert into menciones (id, campana_id, canal, fuente, texto, publicada_en, autor_id, vistas, otro_pais, en_tema) values
+  ('pi-m13', '${C}', 'X', 'Cuenta pública', 'base foco', '2027-03-14T12:00:00-04:00', 'pi-org', 10, false, true),
+  ('pi-m14', '${C}', 'X', 'Cuenta pública', 'base conv', '2027-03-14T13:00:00-04:00', 'pi-org', 10, false, true),
+  ('pi-m15', '${C}', 'X', 'Cuenta pública', 'evento', '2027-03-15T10:00:00-04:00', 'pi-org', 10, false, true);
+insert into mencion_ejes (campana_id, mencion_id, eje_id, metodo) values
+  ('${C}', 'pi-m13', 'pi-conv', 'Regla'), ('${C}', 'pi-m13', 'pi-foco', 'Regla'), ('${C}', 'pi-m14', 'pi-conv', 'Regla'),
+  ('${C}', 'pi-m15', 'pi-conv', 'Regla'), ('${C}', 'pi-m15', 'pi-foco', 'Regla');
+-- Muestra con codificaciones sin sentimiento: 4 favorables, 2 desfavorables y 4 sin sentimiento (solo tema).
+insert into muestras (id, campana_id, nombre, objeto, ponderacion, estratos, tamano, orden) values
+  ('pi-mu-ns', '${C}', 'Con sentimiento nulo', 'menciones', 'por volumen', '[{"canal":"X","universo":100}]', 10, 3);
+insert into codificaciones (campana_id, muestra_id, mencion_id, sentimiento, codigo_id)
+select '${C}', 'pi-mu-ns', 'pi-x-' || i, case when i <= 4 then 'Favorable' when i <= 6 then 'Desfavorable' end, 'pi-c-otro' from generate_series(1, 10) i;
+-- Cuentas que no se pudieron leer: la regla de publicación también se aplica aquí.
+insert into recolecciones (campana_id, canal, metodo, dia, filas, faltantes) values
+  ('${C}', 'X', 'Cuentas', '2027-03-14', 3, $j$ [{"cuenta": "@persona_1", "motivo": "Sin datos."}, {"cuenta": "partido_1", "motivo": "Sin datos."},
+    {"cuenta": "@desconocida_9", "motivo": "Cuenta no encontrada."}, {"cuenta": "Página de un medio de ejemplo", "es_organizacion": true, "motivo": "Sin datos."},
+    {"cuenta": "Un nombre sin marca", "motivo": "Sin datos."}] $j$::jsonb);
+insert into reportes (id, campana_id, nombre, tipo, extra) values
+  ('pi-rep-dst', '${C}', 'Informe con cambio de hora', 'Informe', $j$ {"informe": {
+    "modo": "evento", "zona": "America/New_York", "periodo_inicio": "2027-03-14", "periodo_fin": "2027-03-15", "dia_base": "2027-03-14", "dia_evento": "2027-03-15",
+    "eje_conversacion": "pi-conv", "eje_foco": "pi-foco", "muestras": ["pi-mu-ns"]}}$j$::jsonb);
 `;
 
 const c = await pool.connect();
@@ -141,6 +164,10 @@ try {
   revisa('hora por hora en X', [d.por_hora.conversacion.por_canal.X[9], d.por_hora.conversacion.por_canal.X[23]], [3, 1]);
   revisa('pico y veces el promedio base', [d.por_hora.pico.por_canal.X.hora, d.por_hora.pico.por_canal.X.n, d.por_hora.pico.por_canal.X.veces_base, d.por_hora.promedio_base.por_canal.X],
     [9, 3, 36, 0.1]);
+  revisa('día base de 24 horas', d.por_hora.promedio_base.horas, 24);
+  // Foco: el día base no tiene publicaciones del foco → veces_base null (no se compara contra la conversación).
+  revisa('pico del foco sin base del foco: veces_base null', [d.por_hora.pico_foco.por_canal.X.n, d.por_hora.pico_foco.por_canal.X.veces_base, d.por_hora.pico_foco.total.veces_base, d.por_hora.promedio_base_foco.n_total],
+    [3, null, null, 0]);
   // Desglose del foco.
   const fx = d.desglose.foco.filas.find((x) => x.canal === 'X');
   revisa('desglose del foco en X', [fx.publicaciones, fx.vistas, fx.me_gusta, fx.interaccion], [3, 17000, 151, 163]);
@@ -149,9 +176,11 @@ try {
   revisa('total del foco', [d.desglose.foco.total.publicaciones, d.desglose.foco.total.vistas], [6, 19100]);
   // Rankings: solo Regla o Manual (m4, por búsqueda, queda fuera); la cuenta chica sale como "Cuenta personal" sin enlace.
   const px = d.rankings.publicaciones.X.por_vistas;
-  revisa('top de X por vistas sin la de búsqueda', px.map((p) => p.mencion_id), ['pi-m2', 'pi-m3']);
-  revisa('cuenta chica enmascarada sin enlaces', [px[0].cuenta.etiqueta, px[0].cuenta.handle, px[0].cuenta.url, px[0].url, px[0].cuenta.autor_id],
-    ['Cuenta personal', null, null, null, null]);
+  revisa('top de X por vistas sin la de búsqueda', px.map((p) => p.texto), ['texto 2', 'texto 3']);
+  revisa('cuenta chica enmascarada sin enlaces ni ids', [px[0].cuenta.etiqueta, px[0].cuenta.handle, px[0].cuenta.url, px[0].url, px[0].cuenta.autor_id, px[0].mencion_id, px[0].fuente],
+    ['Cuenta personal', null, null, null, null, null, 'Cuenta personal']);
+  revisa('publicación visible conserva mencion_id', px[1].mencion_id, 'pi-m3');
+  revisa('ningún id de la mención enmascarada en la salida', [JSON.stringify(d).includes('"pi-m2"'), JSON.stringify(d).includes('pi-chica')], [false, false]);
   revisa('organización chica visible con enlace', [px[1].cuenta.etiqueta, px[1].url], ['@partido_1', 'https://x.test/partido_1/3']);
   revisa('nada del ranking filtra el usuario chico', JSON.stringify(d).includes('persona_1'), false);
   revisa('top de cuentas en X', d.rankings.cuentas.X.por_vistas.map((x) => [x.etiqueta, x.publicaciones, x.vistas]), [['Cuenta personal', 1, 5000], ['@partido_1', 1, 3000]]);
@@ -173,7 +202,7 @@ try {
   revisa('tema ponderado igual al favorable ponderado', [apoyo.n, apoyo.pct_ponderado, apoyo.por_estrato.YouTube.n], [128, mc.ponderado.favorable, 36]);
   // Destacadas y cuentas propias.
   revisa('destacadas con la regla de publicación', d.destacadas.lista.map((x) => [x.mencion_id, x.cuenta.etiqueta, x.url, x.grupo]),
-    [['pi-m2', 'Cuenta personal', null, 'destacadas'], ['pi-m9', '@emisora_1', 'https://ig.test/emisora_1/9', 'propias']]);
+    [[null, 'Cuenta personal', null, 'destacadas'], ['pi-m9', '@emisora_1', 'https://ig.test/emisora_1/9', 'propias']]);
   revisa('publicaciones propias con "qué es"', d.cuentas_propias.publicaciones.map((x) => [x.mencion_id, x.que_es]), [['pi-m9', 'Clip con la figura']]);
   revisa('cuentas distintas en X', d.cuentas_distintas.por_canal.X, 3);
 
@@ -191,6 +220,20 @@ try {
   revisa('tema: cuentas omitidas', [t.rankings.cuentas.X.por_vistas.map((x) => x.etiqueta), t.rankings.cuentas.X.omitidas.por_vistas], [['@cuenta_opinion_1'], 1]);
   revisa('tema: sin día de evento', t.por_hora, null);
   revisa('recolecciones del periodo', t.recolecciones.map((x) => [x.dia, x.llego_al_tope, x.eje_nombre]), [['2027-05-10', false, 'Eje A'], ['2027-05-11', true, 'Eje A']]);
+
+  // ---------- cambio de hora, base del foco, sentimiento nulo y faltantes ----------
+  const { r: h } = await llamar('admin', 'pi-rep-dst');
+  revisa('día base con cambio de hora: 23 horas', [h.por_hora.promedio_base.horas, h.por_hora.promedio_base.n_total, h.por_hora.promedio_base_foco.n_total], [23, 2, 1]);
+  revisa('pico de conversación: 1 × 23 / 2', [h.por_hora.pico.total.n, h.por_hora.pico.total.veces_base], [1, 11.5]);
+  revisa('pico del foco contra la base del foco: 1 × 23 / 1', [h.por_hora.pico_foco.total.n, h.por_hora.pico_foco.total.veces_base, h.por_hora.pico_foco.por_canal.X.veces_base], [1, 23, 23]);
+  const ns = h.muestras[0];
+  revisa('sentimiento sobre ítems con sentimiento (6 de 10)', [ns.n, ns.con_sentimiento, ns.sentimiento.favorable.pct, ns.sentimiento.desfavorable.pct, ns.margen_max], [10, 6, 66.7, 33.3, 40]);
+  revisa('ponderado y estrato sobre ítems con sentimiento', [ns.ponderado.favorable, ns.estratos[0].favorable.pct, ns.estratos[0].margen_max, ns.estratos[0].con_sentimiento], [66.7, 66.7, 40, 6]);
+  revisa('temas siguen sobre todos los codificados', ns.temas.map((t) => [t.codigo_id, t.n, t.pct, t.pct_ponderado]), [['pi-c-otro', 10, 100, 100]]);
+  revisa('faltantes con la regla de publicación', h.recolecciones.flatMap((x) => x.faltantes.map((f) => f.cuenta)),
+    ['Cuenta personal', 'partido_1', 'Cuenta personal', 'Página de un medio de ejemplo', 'Cuenta personal']);
+  revisa('faltantes sin la marca es_organizacion', h.recolecciones.some((x) => x.faltantes.some((f) => 'es_organizacion' in f)), false);
+  revisa('cliente ajeno a la campaña no recibe el informe con faltantes', (await llamar('cliente', 'pi-rep-dst')).r, null);
 
   // Campaña vacía: un Informe sin filas no falla.
   await c.query(`insert into reportes (id, campana_id, nombre, tipo, extra) values ('pi-rep-vacio', 'vacia', 'Vacío', 'Informe', '{"informe": {"modo": "evento"}}')`);

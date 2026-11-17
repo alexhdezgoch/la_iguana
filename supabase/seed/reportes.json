@@ -303,7 +303,7 @@
  {
   "id": "inf-rep-evento",
   "campana_id": "informe-ejemplo",
-  "nombre": "Informe de impacto · Entrevista radial (ejemplo)",
+  "nombre": "Informe de impacto · Programa de radio (ejemplo)",
   "tipo": "Informe",
   "frecuencia": "Una vez",
   "formato": "PDF",
@@ -311,7 +311,7 @@
   "requiere_aprobacion": true,
   "orden": 1,
   "extra": {
-   "descripcion": "Impacto de la entrevista radial del 11 de mayo: día base, día del evento y mañana siguiente.",
+   "descripcion": "Impacto del programa de radio de ejemplo del 11 de mayo: día base, día del evento y mañana siguiente.",
    "marca": "Consultora",
    "confidencial": true,
    "informe": {
@@ -321,7 +321,7 @@
     "periodo_fin": "2027-05-12T11:00:00-04:00",
     "dia_base": "2027-05-10",
     "dia_evento": "2027-05-11",
-    "evento_id": "inf-entrevista-radial",
+    "evento_id": "inf-programa-radio",
     "ventana_evento": {
      "inicio": "2027-05-11T08:30:00-04:00",
      "fin": "2027-05-11T09:15:00-04:00",
@@ -345,25 +345,25 @@
      "destacadas": "agrupar"
     },
     "cuentas_propias": [
-     "inf-a-ig-emisora-ejemplo",
-     "inf-a-tt-emisora-ejemplo",
-     "inf-a-yt-emisora-ejemplo",
-     "inf-a-x-emisora-ejemplo"
+     "inf-a-0049",
+     "inf-a-0060",
+     "inf-a-0069",
+     "inf-a-0008"
     ],
     "destacadas": [
      {
       "mencion_id": "inf-ig-1",
-      "resumen": "Anuncio de la entrevista, publicado la noche anterior a las 20:00 (ejemplo).",
+      "resumen": "Anuncio del programa, publicado la noche anterior a las 20:00 (ejemplo).",
       "grupo": "propias"
      },
      {
       "mencion_id": "inf-ig-2",
-      "resumen": "Clip con la figura, publicado junto con su cuenta (ejemplo).",
+      "resumen": "Clip del programa, publicado en colaboración con una cuenta oficial (ejemplo).",
       "grupo": "propias"
      },
      {
       "mencion_id": "inf-ig-3",
-      "resumen": "Publicación sobre el invitado del programa (ejemplo).",
+      "resumen": "Publicación sobre el programa del día (ejemplo).",
       "grupo": "propias"
      },
      {
@@ -373,34 +373,34 @@
      },
      {
       "mencion_id": "inf-yt-1",
-      "resumen": "Video del programa con la entrevista, 44 minutos, fechado a las 09:18 (ejemplo).",
+      "resumen": "Video del programa completo, 44 minutos, fechado a las 09:18 (ejemplo).",
       "grupo": "propias"
      },
      {
       "mencion_id": "inf-tt-4",
-      "resumen": "Clip automático del en vivo. El texto no nombra la entrevista (ejemplo).",
+      "resumen": "Clip automático del en vivo. El texto no nombra el programa (ejemplo).",
       "grupo": "propias"
      },
      {
       "mencion_id": "inf-tt-5",
-      "resumen": "Clip automático del en vivo. El texto no nombra la entrevista (ejemplo).",
+      "resumen": "Clip automático del en vivo. El texto no nombra el programa (ejemplo).",
       "grupo": "propias"
      },
      {
       "mencion_id": "inf-x-2",
-      "resumen": "Un periodista anuncia la entrevista en curso y nombra a la emisora (ejemplo)."
+      "resumen": "Un periodista anuncia el programa en curso y nombra a la emisora (ejemplo)."
      },
      {
       "mencion_id": "inf-x-1",
-      "resumen": "Una cuenta personal resume un tema de la entrevista. Es la publicación de X con más vistas (ejemplo)."
+      "resumen": "Una cuenta personal comenta un tema del programa. Es la publicación de X con más vistas (ejemplo)."
      },
      {
       "mencion_id": "inf-fb-1",
-      "resumen": "Video del partido con fragmentos de la entrevista. Reúne casi todas las vistas de Facebook (ejemplo)."
+      "resumen": "Video del partido con fragmentos del programa. Reúne casi todas las vistas de Facebook (ejemplo)."
      },
      {
       "mencion_id": "inf-ig-5",
-      "resumen": "Video del partido con fragmentos de la entrevista (ejemplo)."
+      "resumen": "Video del partido con fragmentos del programa (ejemplo)."
      },
      {
       "mencion_id": "inf-tt-1",
@@ -408,11 +408,11 @@
      },
      {
       "mencion_id": "inf-x-8",
-      "resumen": "Un analista cuestiona el formato de la entrevista. Es una de las voces críticas con más vistas (ejemplo).",
+      "resumen": "Un analista cuestiona el formato del programa. Es una de las voces críticas con más vistas (ejemplo).",
       "etiqueta": "Crítica"
      }
     ],
-    "titulo": "Informe de impacto: entrevista radial de ejemplo",
+    "titulo": "Informe de impacto: programa de radio (ejemplo)",
     "subtitulo": "Programa de ejemplo, martes 11 de mayo de 2027",
     "nota_portada": "Edición de ejemplo. Las cifras son inventadas y la recolección se limitó a propósito para mostrar el tipo de análisis.",
     "nota_version": "Versión 2: se agrega Facebook.",
@@ -466,7 +466,7 @@
     ]
    }
   },
-  "evento_id": "inf-entrevista-radial"
+  "evento_id": "inf-programa-radio"
  },
  {
   "id": "inf-rep-tema",
