@@ -52,7 +52,15 @@ La demo usa figuras públicas reales con cifras y hechos inventados. Toda la sem
 | `alertas.severidad` | Alta, Media, Baja. En las reglas existe también "Según tamaño". |
 | `alertas.estado` | Nueva, En revisión, Pospuesta, Resuelta, Descartada |
 | `reglas_alerta.canales` | En la app, Email, WhatsApp, Slack, Telegram |
-| `reportes.tipo` | Corte diario, Post-evento, Semanal de narrativas, A la medida |
+| `reportes.tipo` | Corte diario, Post-evento, Semanal de narrativas, A la medida, Informe |
+| `autores.tipo` | Medio, Periodista, Partido u organización, Campaña política, Cuenta de opinión con gran audiencia, Analista, Emisora, Cuenta personal, Tipo no confirmado |
+| `menciones.formato` | Texto, Foto, Video, Reel, Artículo, En vivo |
+| `menciones.tipo_pub` | Original, Respuesta, Cita, Repost |
+| `mencion_ejes.metodo` | Regla, Búsqueda, Manual (los rankings del Informe usan Regla y Manual) |
+| `recolecciones.metodo` | Búsqueda avanzada, Cuentas, Etiquetas, RSS, Búsqueda por palabras, Páginas |
+| `codigos.tono` | apoyo, critica, neutro |
+| `muestras.objeto` / `muestras.ponderacion` | comentarios, menciones / ninguna, por volumen |
+| `codificaciones.codificado_por` | Persona, Modelo |
 | `reportes.frecuencia` | Diario, Semanal, Por evento, Una vez |
 | `reporte_envios.estado` | Borrador, En revisión, Pendiente de envío, Entregado, Envío parcial, Fallido |
 | formato de destinatario | Correo con PDF, Enlace con acceso, WhatsApp resumen |

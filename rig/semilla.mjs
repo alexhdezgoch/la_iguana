@@ -10,7 +10,8 @@ export const ORDEN = [
   'figuras', 'campana_figuras', 'figura_metricas',
   'temas', 'tema_figuras', 'narrativas',
   'eventos', 'evento_participantes', 'evento_mensajes', 'terminos',
-  'menciones', 'mencion_figuras',
+  'autores', 'ejes', 'recolecciones',
+  'menciones', 'mencion_figuras', 'mencion_ejes', 'comentarios', 'codigos', 'muestras', 'codificaciones',
   'reglas_alerta', 'alertas', 'alerta_actividad',
   'reporte_plantillas', 'reportes', 'reporte_envios', 'notas_internas', 'series_diarias',
 ];
