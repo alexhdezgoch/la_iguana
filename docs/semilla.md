@@ -2,7 +2,7 @@
 
 Mapa de cada pantalla de `design/demo/*.dc.html` a la base. Si un valor no aparece aquí, es **texto fijo de la interfaz y se queda en el componente**. Si aparece como **derivado**, se calcula al leer y no se guarda.
 
-Los datos están en `supabase/seed/<tabla>.json`. `rig/semilla.mjs` los carga en el orden de `ORDEN`. Las tres campañas son `presidenciales` (completa), `zulia` y `chacao` (vista compacta). Además existe `vacia`, que se crea solo en las pruebas.
+Los datos están en `supabase/seed/<tabla>.json`. `rig/semilla.mjs` los carga en el orden de `ORDEN`. Las campañas son `presidenciales` (completa), `zulia` y `chacao` (vista compacta) e `informe-ejemplo` (vista compacta, corpus crudo del Informe, sección 16). Además existe `vacia`, que se crea solo en las pruebas.
 
 ## Reglas generales
 
@@ -20,6 +20,7 @@ Los datos están en `supabase/seed/<tabla>.json`. `rig/semilla.mjs` los carga en
 La demo usa figuras públicas reales con cifras y hechos inventados. Toda la semilla sale de `rig/generar-semilla.py` (`python3 rig/generar-semilla.py` y después `node rig/semilla.mjs`); los JSON y `seed.sql` no se editan a mano.
 
 - **Fuentes genéricas, nunca un medio real.** `menciones.fuente`, `alertas.detalle.evidencia[].fuente`, `narrativas.detalle.publicaciones[].fuente` e `impulsores[].medio`, `figura_metricas.detalle.cobertura.por_medio[].medio`, `reglas_alerta.condicion.alcance.medios` y los ítems de medios de los reportes usan solo estas etiquetas: `Medio digital nacional`, `Portal de noticias`, `Diario nacional`, `Diario digital`, `Medio regional`, `Emisora de radio`, `Canal de TV`, `Canal de noticias de TV`, o `Cuenta pública`, `Cuenta oficial`, `Cuenta oficial de una figura en seguimiento`, `Cuentas sin afiliación pública`. El tipo (`fuente_tipo`, `canal`) sigue los vocabularios de abajo.
+- **Corpus del Informe (`informe-ejemplo`): etiquetas genéricas numeradas.** Ahí las noticias y las cuentas usan etiquetas genéricas con número para que el informe tenga muchas fuentes distintas: `menciones.fuente` "Portal de noticias 7", "Medio regional 3", "Diario digital 2", "Diario nacional 1", "Medio digital nacional 2", "Emisora de radio 2", "Canal de noticias de TV 1"; `autores.handle` `@portal_noticias_3`, `@medio_digital_4`, `@cuenta_opinion_2`, `@periodista_ejemplo_1`, `@partido_ejemplo_1`, `@campana_ejemplo_1`, `@emisora_ejemplo`, `@canal_video_2`, `@cuenta_personal_12`. Nunca una cuenta o un medio real. Las cuentas de la figura propia (`figura_id` machado) se llaman "Cuenta oficial de una figura en seguimiento". Textos y titulares "de ejemplo" sin comillas ni citas; los resúmenes de destacadas terminan en "(ejemplo)". El generador lo comprueba.
 - **Títulos descriptivos "de ejemplo".** "Nota de ejemplo sobre…", "Segmento de radio de ejemplo sobre…", "Publicación ciudadana de ejemplo…". No hay citas, entrevistas ni declaraciones atribuidas a personas reales.
 - **Sin acciones atribuidas a personas reales.** Las alertas y reportes dicen "Una cuenta oficial de una figura rival publicó sobre…" y no llevan `figura_id` de la persona (`pres-alerta-3`, `zulia-alerta-3`). La sección "Rivales" del corte diario cuenta publicaciones de cuentas rivales por tema. Las reacciones de rivales al debate no se vinculan a narrativas en contra (`narrativa_id` y `menciones` null).
 - **Narrativas en contra sin figuras como impulsoras.** En las narrativas `Desfavorable`, `detalle.impulsores` solo tiene `{medio}` (medios genéricos o `Cuentas sin afiliación pública`); el generador lo comprueba.
@@ -265,6 +266,19 @@ Igual que Zulia:
 - 5 menciones (ninguna por revisar);
 - 2 alertas (1 abierta);
 - serie de duque con pico el día 20.
+
+## 16. Informe de ejemplo — `/c/informe-ejemplo` (y `/c/informe-ejemplo/reportes`)
+
+Campaña `es_demo` "Monitoreo de ejemplo · Venezuela 2027" (vista compacta, figura propia machado; rivales delcy-rodriguez y capriles, aliada gonzalez-urrutia). Mismo equipo que presidenciales; en el banco de pruebas `analista`, `lector` y `cliente` tienen ahí el mismo rol que en presidenciales (`rig/usuarios.sql`). Solo tiene filas crudas: no hay `figura_metricas`, temas, narrativas ni alertas, así que sus pantallas de cortes guardados salen vacías. Todo sale de la sección "Informe de ejemplo" de `rig/generar-semilla.py` (RNG con semilla fija); `node rig/semilla.mjs` escribe además `supabase/seed_informe.sql`, solo con esta campaña y `on conflict do nothing`, para cargarla en producción.
+
+- Evento `inf-entrevista-radial` "Entrevista radial (ejemplo)", martes 11 de mayo 08:30–09:15 (hora estimada).
+- Ejes (`ejes`): `inf-eje-conversacion` (Sobre la figura o el evento), `inf-eje-foco` (Sobre el evento), `inf-eje-anfitrion` (Nombra al medio anfitrión) y los cuatro del tema: `inf-eje-figura`, `inf-eje-servicios`, `inf-eje-fecha`, `inf-eje-economia`. Cada uno con `regla`.
+- `autores`: 79 cuentas en X, Instagram, TikTok, YouTube y Facebook (las noticias no tienen autor: su `fuente` es el medio). Seguidores a los dos lados de 100.000; en Instagram no hay seguidores (solo se publican organizaciones y la cuenta de la figura).
+- `menciones`: unas 4,400. Evento (10 al 12 de mayo 11:00): ~2,000 filas, conversación 724 / 965 / 201 por día (1.33 veces la base), pico a las 09:00 del 11, foco 206, filas fuera de tema (`en_tema` false: publicaciones de la emisora sobre otros temas) y de otro país. Tema (6 al 10): noticias, X, Instagram y Facebook; el 10 sale del corpus del evento. `mencion_ejes` con método Regla, Búsqueda (fuera de los rankings) y Manual.
+- `comentarios`: 2,060 (1,010 del evento en 26 publicaciones, 76 % de TikTok en un video; 1,050 del tema). Sin autor. Algunos `solo_emojis` y `duplicado`.
+- `codigos`: libro `General` (12 códigos, evento) y libro `Tema` (11). `muestras`: `inf-mu-comentarios` (340, estratos por canal con universo = comentarios recolectados, ponderada por volumen), `inf-mu-x` (150 publicaciones de X), `inf-mu-tema` (420 de Instagram y Facebook). 910 `codificaciones` (Persona y Modelo, revisado).
+- `recolecciones`: una por canal y método, con pedidas, leídas, faltantes, límites y topes. En X, Figura propia llega al tope de 250 el 6 y el 9 de mayo (`estimado` 472 y 419).
+- `reportes` de tipo Informe: `inf-rep-evento` (modo evento, día base 10, ventana estimada, comparación, destacadas y cuentas propias de la emisora con su "Qué es") e `inf-rep-tema` (modo tema, cuatro ejes, `canales` sin TikTok ni YouTube, cuentas personales omitidas en las tablas de cuentas, ejemplos por eje). Textos de sección vacíos: los llena quien analiza. Sin ediciones: las crea "Generar edición".
 
 ## No sembrado / fijo en la interfaz
 

@@ -299,5 +299,336 @@
    "seccion_analisis": "esencial"
   },
   "campana_id": "presidenciales"
+ },
+ {
+  "id": "inf-rep-evento",
+  "campana_id": "informe-ejemplo",
+  "nombre": "Informe de impacto · Entrevista radial (ejemplo)",
+  "tipo": "Informe",
+  "frecuencia": "Una vez",
+  "formato": "PDF",
+  "estado": "Activo",
+  "requiere_aprobacion": true,
+  "orden": 1,
+  "extra": {
+   "descripcion": "Impacto de la entrevista radial del 11 de mayo: día base, día del evento y mañana siguiente.",
+   "marca": "Consultora",
+   "confidencial": true,
+   "informe": {
+    "modo": "evento",
+    "zona": "America/Caracas",
+    "periodo_inicio": "2027-05-10T00:00:00-04:00",
+    "periodo_fin": "2027-05-12T11:00:00-04:00",
+    "dia_base": "2027-05-10",
+    "dia_evento": "2027-05-11",
+    "evento_id": "inf-entrevista-radial",
+    "ventana_evento": {
+     "inicio": "2027-05-11T08:30:00-04:00",
+     "fin": "2027-05-11T09:15:00-04:00",
+     "estimada": true
+    },
+    "eje_conversacion": "inf-eje-conversacion",
+    "eje_foco": "inf-eje-foco",
+    "comparacion": {
+     "eje_id": "inf-eje-anfitrion",
+     "etiqueta": "Nombra al medio anfitrión"
+    },
+    "muestras": [
+     "inf-mu-comentarios",
+     "inf-mu-x"
+    ],
+    "libro": "General",
+    "ambito_rankings": "foco",
+    "enmascarar": {
+     "top_publicaciones": "agrupar",
+     "top_cuentas": "agrupar",
+     "destacadas": "agrupar"
+    },
+    "cuentas_propias": [
+     "inf-a-ig-emisora-ejemplo",
+     "inf-a-tt-emisora-ejemplo",
+     "inf-a-yt-emisora-ejemplo",
+     "inf-a-x-emisora-ejemplo"
+    ],
+    "destacadas": [
+     {
+      "mencion_id": "inf-ig-1",
+      "resumen": "Anuncio de la entrevista, publicado la noche anterior a las 20:00 (ejemplo).",
+      "grupo": "propias"
+     },
+     {
+      "mencion_id": "inf-ig-2",
+      "resumen": "Clip con la figura, publicado junto con su cuenta (ejemplo).",
+      "grupo": "propias"
+     },
+     {
+      "mencion_id": "inf-ig-3",
+      "resumen": "Publicación sobre el invitado del programa (ejemplo).",
+      "grupo": "propias"
+     },
+     {
+      "mencion_id": "inf-ig-4",
+      "resumen": "Nota de la emisora del día siguiente, 07:00 (ejemplo).",
+      "grupo": "propias"
+     },
+     {
+      "mencion_id": "inf-yt-1",
+      "resumen": "Video del programa con la entrevista, 44 minutos, fechado a las 09:18 (ejemplo).",
+      "grupo": "propias"
+     },
+     {
+      "mencion_id": "inf-tt-4",
+      "resumen": "Clip automático del en vivo. El texto no nombra la entrevista (ejemplo).",
+      "grupo": "propias"
+     },
+     {
+      "mencion_id": "inf-tt-5",
+      "resumen": "Clip automático del en vivo. El texto no nombra la entrevista (ejemplo).",
+      "grupo": "propias"
+     },
+     {
+      "mencion_id": "inf-x-2",
+      "resumen": "Un periodista anuncia la entrevista en curso y nombra a la emisora (ejemplo)."
+     },
+     {
+      "mencion_id": "inf-x-1",
+      "resumen": "Una cuenta personal resume un tema de la entrevista. Es la publicación de X con más vistas (ejemplo)."
+     },
+     {
+      "mencion_id": "inf-fb-1",
+      "resumen": "Video del partido con fragmentos de la entrevista. Reúne casi todas las vistas de Facebook (ejemplo)."
+     },
+     {
+      "mencion_id": "inf-ig-5",
+      "resumen": "Video del partido con fragmentos de la entrevista (ejemplo)."
+     },
+     {
+      "mencion_id": "inf-tt-1",
+      "resumen": "Video del partido sobre el registro para votar; concentra los comentarios de TikTok (ejemplo)."
+     },
+     {
+      "mencion_id": "inf-x-8",
+      "resumen": "Un analista cuestiona el formato de la entrevista. Es una de las voces críticas con más vistas (ejemplo).",
+      "etiqueta": "Crítica"
+     }
+    ],
+    "titulo": "Informe de impacto: entrevista radial de ejemplo",
+    "subtitulo": "Programa de ejemplo, martes 11 de mayo de 2027",
+    "nota_portada": "Edición de ejemplo. Las cifras son inventadas y la recolección se limitó a propósito para mostrar el tipo de análisis.",
+    "nota_version": "Versión 2: se agrega Facebook.",
+    "fecha_informe": "2027-05-12",
+    "secciones": [
+     {
+      "id": "resumen",
+      "activa": true,
+      "texto": ""
+     },
+     {
+      "id": "volumen",
+      "activa": true,
+      "texto": ""
+     },
+     {
+      "id": "alcance",
+      "activa": true,
+      "texto": ""
+     },
+     {
+      "id": "reparto",
+      "activa": true,
+      "texto": ""
+     },
+     {
+      "id": "sentimiento",
+      "activa": true,
+      "texto": ""
+     },
+     {
+      "id": "publicaciones",
+      "activa": true,
+      "texto": ""
+     },
+     {
+      "id": "medios",
+      "activa": true,
+      "texto": ""
+     },
+     {
+      "id": "comparacion",
+      "activa": true,
+      "texto": ""
+     },
+     {
+      "id": "metodologia",
+      "activa": true,
+      "texto": ""
+     }
+    ]
+   }
+  },
+  "evento_id": "inf-entrevista-radial"
+ },
+ {
+  "id": "inf-rep-tema",
+  "campana_id": "informe-ejemplo",
+  "nombre": "Informe de conversación · Cuatro ejes (ejemplo)",
+  "tipo": "Informe",
+  "frecuencia": "Una vez",
+  "formato": "PDF",
+  "estado": "Activo",
+  "requiere_aprobacion": true,
+  "orden": 2,
+  "extra": {
+   "descripcion": "Conversación del 6 al 10 de mayo en cuatro ejes, en noticias, X, Instagram y Facebook.",
+   "marca": "Consultora",
+   "confidencial": true,
+   "informe": {
+    "modo": "tema",
+    "zona": "America/Caracas",
+    "periodo_inicio": "2027-05-06",
+    "periodo_fin": "2027-05-10",
+    "ejes": [
+     "inf-eje-figura",
+     "inf-eje-servicios",
+     "inf-eje-fecha",
+     "inf-eje-economia"
+    ],
+    "canales": [
+     "Medio digital",
+     "X",
+     "Instagram",
+     "Facebook"
+    ],
+    "muestras": [
+     "inf-mu-tema"
+    ],
+    "libro": "Tema",
+    "ambito_rankings": "ejes",
+    "enmascarar": {
+     "top_publicaciones": "agrupar",
+     "top_cuentas": "omitir",
+     "destacadas": "agrupar"
+    },
+    "limites": {
+     "cuentas": 10,
+     "medios": 10
+    },
+    "destacadas": [
+     {
+      "mencion_id": "inf-x-1780",
+      "resumen": "Publicación de la cuenta oficial sobre su agenda del día (ejemplo).",
+      "eje_id": "inf-eje-figura"
+     },
+     {
+      "mencion_id": "inf-x-1779",
+      "resumen": "Un fotoperiodista publica fotos de una actividad de la figura (ejemplo).",
+      "eje_id": "inf-eje-figura"
+     },
+     {
+      "mencion_id": "inf-ig-76",
+      "resumen": "Video de una actividad con familias. Es la publicación de Instagram con más reproducciones (ejemplo).",
+      "eje_id": "inf-eje-figura"
+     },
+     {
+      "mencion_id": "inf-x-1778",
+      "resumen": "Un analista cuestiona la agenda de la figura. Es una de las voces críticas con más vistas (ejemplo).",
+      "etiqueta": "Crítica",
+      "eje_id": "inf-eje-figura"
+     },
+     {
+      "mencion_id": "inf-ig-77",
+      "resumen": "Video del partido con un mensaje sobre servicios públicos (ejemplo).",
+      "eje_id": "inf-eje-servicios"
+     },
+     {
+      "mencion_id": "inf-nt-72",
+      "resumen": "Nota sobre cortes de luz en varias ciudades (ejemplo).",
+      "eje_id": "inf-eje-servicios"
+     },
+     {
+      "mencion_id": "inf-fb-15",
+      "resumen": "Video sobre el servicio de agua en una comunidad (ejemplo).",
+      "eje_id": "inf-eje-servicios"
+     },
+     {
+      "mencion_id": "inf-nt-73",
+      "resumen": "Nota sobre el cronograma de la jornada electoral (ejemplo).",
+      "eje_id": "inf-eje-fecha"
+     },
+     {
+      "mencion_id": "inf-x-1781",
+      "resumen": "Un analista resume el calendario electoral (ejemplo).",
+      "eje_id": "inf-eje-fecha"
+     },
+     {
+      "mencion_id": "inf-nt-74",
+      "resumen": "Nota sobre el ajuste del salario mínimo (ejemplo).",
+      "eje_id": "inf-eje-economia"
+     },
+     {
+      "mencion_id": "inf-ig-78",
+      "resumen": "Video de un medio sobre precios y salarios (ejemplo).",
+      "eje_id": "inf-eje-economia"
+     }
+    ],
+    "titulo": "Informe de conversación: cuatro ejes de ejemplo",
+    "subtitulo": "6 al 10 de mayo de 2027",
+    "nota_portada": "Edición de ejemplo con cifras inventadas. Fuentes: noticias en línea, X, Instagram y Facebook.",
+    "nota_version": "Versión 2: se agrega Facebook.",
+    "fecha_informe": "2027-05-12",
+    "secciones": [
+     {
+      "id": "resumen",
+      "activa": true,
+      "texto": ""
+     },
+     {
+      "id": "volumen",
+      "activa": true,
+      "texto": ""
+     },
+     {
+      "id": "ejes",
+      "activa": true,
+      "texto": ""
+     },
+     {
+      "id": "medios",
+      "activa": true,
+      "texto": ""
+     },
+     {
+      "id": "publicaciones",
+      "activa": true,
+      "texto": ""
+     },
+     {
+      "id": "sentimiento",
+      "activa": true,
+      "texto": ""
+     },
+     {
+      "id": "metodologia",
+      "activa": true,
+      "texto": ""
+     },
+     {
+      "id": "alcance",
+      "activa": false,
+      "texto": ""
+     },
+     {
+      "id": "reparto",
+      "activa": false,
+      "texto": ""
+     },
+     {
+      "id": "comparacion",
+      "activa": false,
+      "texto": ""
+     }
+    ]
+   }
+  }
  }
 ]

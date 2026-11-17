@@ -57,9 +57,10 @@ await espera('ajeno no ve figuras de Brújula', 'ajeno', cuenta('select 1 from f
 await espera('ajeno no ve personas de Brújula', 'ajeno', cuenta(`select 1 from personas where org_id = 'brujula'`), n(0));
 await espera('ajeno no ve menciones ni alertas', 'ajeno', cuenta('select 1 from alertas union all select 1 from menciones'), n(0));
 await espera('ajeno no ve la vista de resumen', 'ajeno', cuenta('select 1 from v_campanas_resumen'), n(0));
-await espera('admin ve las 4 campañas del equipo', 'admin', cuenta('select 1 from campanas'), n(4));
-await espera('admin ve la vista de resumen', 'admin', cuenta('select 1 from v_campanas_resumen'), n(4));
-await espera('analista ve solo presidenciales', 'analista', cuenta('select 1 from campanas'), n(1));
+await espera('admin ve las 5 campañas del equipo', 'admin', cuenta('select 1 from campanas'), n(5));
+await espera('admin ve la vista de resumen', 'admin', cuenta('select 1 from v_campanas_resumen'), n(5));
+await espera('analista ve solo presidenciales e informe-ejemplo', 'analista', cuenta(`select 1 from campanas where id in ('presidenciales', 'informe-ejemplo')`), n(2));
+await espera('analista no ve otras campañas', 'analista', cuenta('select 1 from campanas'), n(2));
 await espera('analista no ve figuras vinculadas de Zulia', 'analista', cuenta(`select 1 from campana_figuras where campana_id = 'zulia'`), n(0));
 await espera('analista ve el directorio de figuras del equipo', 'analista', cuenta('select 1 from figuras'), n(10));
 await espera('cliente ve solo las figuras de su campaña', 'cliente', cuenta('select 1 from figuras'), n(8));
@@ -384,6 +385,14 @@ await espera('[inf] informe_datos no muestra la cuenta chica ni el texto de come
   const d = (await c.query(`select informe_datos('pa-informe')::text as t`)).rows[0].t;
   return [d.includes('persona_prueba'), d.includes('texto de un tercero'), JSON.parse(d).series.conversacion.total.reduce((a, b) => a + b, 0)];
 }, (r) => r.ok && r.valor[0] === false && r.valor[1] === false && r.valor[2] >= 1, INF);
+// Informe de ejemplo sembrado (campaña informe-ejemplo): el cliente lo recibe sin cuentas chicas ni textos de comentarios.
+await espera('[inf] cliente recibe el Informe de ejemplo sin cuentas personales ni comentarios', 'cliente', async (c) => {
+  const d = (await c.query(`select informe_datos('inf-rep-evento')::text as t`)).rows[0].t;
+  return [JSON.parse(d).reporte.id, /cuenta_personal_|Comentario de ejemplo/.test(d)];
+}, (r) => r.ok && r.valor[0] === 'inf-rep-evento' && r.valor[1] === false);
+await espera('[inf] ajeno recibe null del Informe de ejemplo', 'ajeno', uno(`select informe_datos('inf-rep-tema')`), vale(null));
+await espera('[inf] cliente no lee comentarios crudos del Informe de ejemplo', 'cliente', cuenta(`select 1 from comentarios where campana_id = 'informe-ejemplo'`), n(0));
+await espera('[inf] lector no cambia el Informe de ejemplo', 'lector', afecta(`update reportes set nombre = 'x' where id = 'inf-rep-evento'`), n(0));
 await espera('[inf] 860 es re-ejecutable y deja el permiso', 'base', async (c) => {
   await c.query(fs.readFileSync('supabase/migrations/860_informe.sql', 'utf8'));
   return (await c.query(`select has_function_privilege('authenticated', 'public.informe_datos(text)', 'execute') and not has_function_privilege('anon', 'public.informe_datos(text)', 'execute') as ok`)).rows[0].ok;

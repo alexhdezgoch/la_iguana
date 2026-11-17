@@ -46,5 +46,13 @@
   "inicio": null,
   "fin": null,
   "orden": 1
+ },
+ {
+  "id": "inf-fase-campana",
+  "campana_id": "informe-ejemplo",
+  "nombre": "Campaña",
+  "inicio": "2027-04-04",
+  "fin": "2027-06-02",
+  "orden": 1
  }
 ]

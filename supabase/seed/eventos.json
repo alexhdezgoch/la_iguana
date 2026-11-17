@@ -285,5 +285,24 @@
   "sede": "Los Palos Grandes",
   "ciudad": "Chacao",
   "menciones": 210
+ },
+ {
+  "id": "inf-entrevista-radial",
+  "campana_id": "informe-ejemplo",
+  "nombre": "Entrevista radial (ejemplo)",
+  "tipo": "Entrevista",
+  "origen": "Propio",
+  "estado": "En análisis",
+  "fecha_inicio": "2027-05-11",
+  "fecha_fin": "2027-05-11",
+  "hora": "08:30",
+  "sede": "Emisora de radio",
+  "ciudad": "Caracas",
+  "nota_estado": "Resultados preliminares",
+  "extra": {
+   "hora_fin": "09:15",
+   "hora_estimada": true,
+   "estado_region": "Distrito Capital"
+  }
  }
 ]

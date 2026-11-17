@@ -1,0 +1,186 @@
+[
+ {
+  "id": "inf-cod-general-apoyo",
+  "campana_id": "informe-ejemplo",
+  "libro": "General",
+  "nombre": "Apoyo o afecto",
+  "tono": "apoyo",
+  "orden": 1
+ },
+ {
+  "id": "inf-cod-general-emojis",
+  "campana_id": "informe-ejemplo",
+  "libro": "General",
+  "nombre": "Solo emojis",
+  "tono": "neutro",
+  "orden": 2
+ },
+ {
+  "id": "inf-cod-general-otro",
+  "campana_id": "informe-ejemplo",
+  "libro": "General",
+  "nombre": "Otro o sin tema",
+  "tono": "neutro",
+  "orden": 3
+ },
+ {
+  "id": "inf-cod-general-elecciones",
+  "campana_id": "informe-ejemplo",
+  "libro": "General",
+  "nombre": "Elecciones y voto",
+  "tono": "neutro",
+  "orden": 4
+ },
+ {
+  "id": "inf-cod-general-critica-fig",
+  "campana_id": "informe-ejemplo",
+  "libro": "General",
+  "nombre": "Críticas a la figura",
+  "tono": "critica",
+  "orden": 5
+ },
+ {
+  "id": "inf-cod-general-inscripcion",
+  "campana_id": "informe-ejemplo",
+  "libro": "General",
+  "nombre": "Inscripción o participación",
+  "tono": "neutro",
+  "orden": 6
+ },
+ {
+  "id": "inf-cod-general-critica-gob",
+  "campana_id": "informe-ejemplo",
+  "libro": "General",
+  "nombre": "Críticas al gobierno",
+  "tono": "critica",
+  "orden": 7
+ },
+ {
+  "id": "inf-cod-general-valoracion",
+  "campana_id": "informe-ejemplo",
+  "libro": "General",
+  "nombre": "Valoración del evento",
+  "tono": "neutro",
+  "orden": 8
+ },
+ {
+  "id": "inf-cod-general-cotidiana",
+  "campana_id": "informe-ejemplo",
+  "libro": "General",
+  "nombre": "Vida cotidiana",
+  "tono": "neutro",
+  "orden": 9
+ },
+ {
+  "id": "inf-cod-general-defensa",
+  "campana_id": "informe-ejemplo",
+  "libro": "General",
+  "nombre": "Defensa frente a críticos",
+  "tono": "apoyo",
+  "orden": 10
+ },
+ {
+  "id": "inf-cod-general-falla",
+  "campana_id": "informe-ejemplo",
+  "libro": "General",
+  "nombre": "Falla técnica de la transmisión",
+  "tono": "neutro",
+  "orden": 11
+ },
+ {
+  "id": "inf-cod-general-resumen",
+  "campana_id": "informe-ejemplo",
+  "libro": "General",
+  "nombre": "Resumen de lo dicho",
+  "tono": "neutro",
+  "orden": 12
+ },
+ {
+  "id": "inf-cod-tema-apoyo",
+  "campana_id": "informe-ejemplo",
+  "libro": "Tema",
+  "nombre": "Apoyo o afecto",
+  "tono": "apoyo",
+  "orden": 1
+ },
+ {
+  "id": "inf-cod-tema-otro",
+  "campana_id": "informe-ejemplo",
+  "libro": "Tema",
+  "nombre": "Otro, etiquetas a cuentas o no se entiende",
+  "tono": "neutro",
+  "orden": 2
+ },
+ {
+  "id": "inf-cod-tema-servicios",
+  "campana_id": "informe-ejemplo",
+  "libro": "Tema",
+  "nombre": "Pedidos sobre servicios públicos",
+  "tono": "neutro",
+  "orden": 3
+ },
+ {
+  "id": "inf-cod-tema-critica-fig",
+  "campana_id": "informe-ejemplo",
+  "libro": "Tema",
+  "nombre": "Críticas a la figura",
+  "tono": "critica",
+  "orden": 4
+ },
+ {
+  "id": "inf-cod-tema-fe",
+  "campana_id": "informe-ejemplo",
+  "libro": "Tema",
+  "nombre": "Fe o ánimo general",
+  "tono": "apoyo",
+  "orden": 5
+ },
+ {
+  "id": "inf-cod-tema-critica-sin",
+  "campana_id": "informe-ejemplo",
+  "libro": "Tema",
+  "nombre": "Críticas sin destinatario claro",
+  "tono": "critica",
+  "orden": 6
+ },
+ {
+  "id": "inf-cod-tema-critica-gob",
+  "campana_id": "informe-ejemplo",
+  "libro": "Tema",
+  "nombre": "Críticas al gobierno",
+  "tono": "critica",
+  "orden": 7
+ },
+ {
+  "id": "inf-cod-tema-caso",
+  "campana_id": "informe-ejemplo",
+  "libro": "Tema",
+  "nombre": "Caso personal o familiar",
+  "tono": "neutro",
+  "orden": 8
+ },
+ {
+  "id": "inf-cod-tema-politica",
+  "campana_id": "informe-ejemplo",
+  "libro": "Tema",
+  "nombre": "Política: elecciones e instituciones",
+  "tono": "neutro",
+  "orden": 9
+ },
+ {
+  "id": "inf-cod-tema-cotidiana",
+  "campana_id": "informe-ejemplo",
+  "libro": "Tema",
+  "nombre": "Vida cotidiana: luz, precios, pensiones",
+  "tono": "neutro",
+  "orden": 10
+ },
+ {
+  "id": "inf-cod-tema-emojis",
+  "campana_id": "informe-ejemplo",
+  "libro": "Tema",
+  "nombre": "Solo emojis o sin texto",
+  "tono": "neutro",
+  "orden": 11
+ }
+]
