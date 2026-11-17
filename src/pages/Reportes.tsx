@@ -2,7 +2,7 @@
 // El envío por correo es de la fase 2: "Poner en cola", "Aprobar" y "Volver a poner en cola" dejan la fila en reporte_envios
 // con estado 'Pendiente de envío' y la interfaz lo dice así. Nunca se marca nada como enviado.
 import { useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { Navigate, useNavigate, useSearchParams } from 'react-router-dom';
 import { hoyDe, useCampana, usePagina, useRol } from '../shell/Campana';
 import { useSesion } from '../shell/Sesion';
 import { useAcciones } from '../shell/Acciones';
@@ -15,7 +15,8 @@ import type { Evento, Persona, Reporte, ReporteEnvio, ReportePlantilla } from '.
 import { Editor } from './reportes/Editor';
 import { VerEnvio } from './reportes/VerEnvio';
 import type { Contenido, SeccionCfg } from '../lib/reportes/documento';
-import { COLA, ESTADO_ENVIO, aLas, descripcionDe, enDias, gmt, listasDe, momento, nombreDest, periodoEnvio, ponerEnCola, resumenDest } from './reportes/util';
+import { COLA, ESTADO_ENVIO, aLas, contarDest, descripcionDe, enDias, gmt, listasDe, momento, nombreDest, periodoEnvio, ponerEnCola, resumenDest } from './reportes/util';
+import { crearInforme, esEdicionInforme, generarEdicion } from '../lib/informe/edicion';
 import './Reportes.css';
 
 const ORDEN_ESTADOS = ['Pendiente de envío', 'En revisión', 'Borrador', 'Entregado', 'Envío parcial', 'Fallido'];
@@ -38,6 +39,7 @@ export default function Reportes() {
   const fTipo = params.get('ftipo') ?? 'todos';
   const fEst = params.get('festado') ?? 'todos';
   const [ocupado, setOcupado] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const reportes = useTabla<Reporte>('reportes', { eq: { campana_id: cid }, orden: 'orden' });
   const plantillas = useTabla<ReportePlantilla>('reporte_plantillas', { eq: { campana_id: cid }, orden: 'orden' });
@@ -53,14 +55,23 @@ export default function Reportes() {
     window.scrollTo(0, 0);
   };
   const repDe = (id: string) => reportes.datos.find((r) => r.id === id) ?? null;
-  const previoDe = (id: string) => envios.datos.find((e) => e.reporte_id === id && e.contenido?.secciones?.length)?.contenido as Contenido | undefined ?? null;
+  const previoDe = (id: string) => envios.datos.find((e) => e.reporte_id === id && e.contenido?.tipo_doc !== 'Informe' && e.contenido?.secciones?.length)?.contenido as Contenido | undefined ?? null;
 
   async function correr(clave: string, fn: () => Promise<unknown>, ok: string, enlace?: { texto: string; a: string }) {
     setOcupado(clave);
     try { await fn(); aviso(ok, enlace); } catch (e) { aviso(e instanceof Error ? e.message : String(e)); } finally { setOcupado(null); }
   }
-  const enviarAhora = (r: Reporte) => correr(`env-${r.id}`, () => ponerEnCola(r, { campana, hoy, personaId: persona?.id ?? null, listas, previo: previoDe(r.id) }),
-    `"${r.nombre}" quedó pendiente de envío. ${COLA}`, { texto: 'Ver en historial', a: `/c/${cid}/reportes?tab=hist` });
+  // Un Informe se pone en cola como edición congelada (datos de informe_datos y textos); el resto, con el documento de siempre.
+  const enviarAhora = (r: Reporte) => correr(`env-${r.id}`, () => (r.tipo === 'Informe'
+    ? generarEdicion({ reporte: r, personaId: persona?.id ?? null, destinatarios: contarDest(r.destinatarios, listas) })
+    : ponerEnCola(r, { campana, hoy, personaId: persona?.id ?? null, listas, previo: previoDe(r.id) })),
+  `"${r.nombre}" quedó pendiente de envío. ${COLA}`, { texto: 'Ver en historial', a: `/c/${cid}/reportes?tab=hist` });
+  /** Abre un reporte: los Informes en su pantalla, el resto en el editor. */
+  const abrirRep = (r: Reporte) => (r.tipo === 'Informe' ? navigate(`/c/${cid}/reportes/informe/${r.id}`) : ir({ ver: r.id }));
+  const nuevoInforme = () => correr('nuevo-informe', async () => {
+    const r = await crearInforme({ campana, hoy, orden: Math.max(0, ...reportes.datos.map((x) => x.orden)) + 1 });
+    navigate(`/c/${cid}/reportes/informe/${r.id}`);
+  }, 'Informe creado: ajusta el periodo y los ejes y guarda.');
   const pausar = (r: Reporte) => correr(`pau-${r.id}`, () => db.cambiar('reportes', r.id, { estado: r.estado === 'Pausado' ? 'Activo' : 'Pausado' }),
     r.estado === 'Pausado' ? `"${r.nombre}" vuelve a estar activo.` : `"${r.nombre}" quedó en pausa.`);
   const aprobar = (e: ReporteEnvio) => correr(`apr-${e.id}`, () => db.cambiar('reporte_envios', e.id, { estado: 'Pendiente de envío', aprobado_por: persona?.id ?? null, extra: { ...e.extra, nota: 'Aprobado, en cola de envío' } }),
@@ -75,6 +86,7 @@ export default function Reportes() {
   // ---------- editor y vista de un envío ----------
   if (ver) {
     const rep = ver === 'nuevo' ? null : repDe(ver);
+    if (rep?.tipo === 'Informe') return <Navigate to={`/c/${cid}/reportes/informe/${rep.id}`} replace />;
     if (ver !== 'nuevo' && !rep && !reportes.cargando) {
       return (
         <main className="page pg-reportes">
@@ -154,6 +166,7 @@ export default function Reportes() {
           </div>
           <div className="acts">
             {vacia ? null : <button type="button" className="btn bg" onClick={() => abrirDescarga()}>Descargar reporte</button>}
+            {puedeEditar ? <button type="button" className="btn bg" disabled={!!ocupado} onClick={nuevoInforme}>{ocupado === 'nuevo-informe' ? 'Creando…' : 'Nuevo informe'}</button> : null}
             {puedeEditar ? (
               <button type="button" className="btn bp" onClick={() => ir({ ver: 'nuevo' })}>
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>Nuevo reporte
@@ -174,6 +187,7 @@ export default function Reportes() {
               <Vacio titulo="Todavía no hay reportes programados"
                 accion={puedeEditar ? <>
                   <button type="button" className="btn bg" onClick={() => ir({ ver: 'nuevo' })}><Icono n="mas" g={2} />Crear reporte</button>
+                  <button type="button" className="btn bg" disabled={!!ocupado} onClick={nuevoInforme}>Crear informe</button>
                   {plantillas.datos.length ? <button type="button" className="btn bg" onClick={() => ir({ tab: 'plant' })}>Partir de una plantilla</button> : null}
                 </> : null}>
                 {puedeEditar ? 'Programa un reporte para el equipo o el cliente: queda armado y en cola en cada fecha.' : 'Cuando el equipo programe un reporte aparecerá aquí.'}
@@ -210,7 +224,7 @@ export default function Reportes() {
                         ))}
                       </div>
                       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, alignItems: 'center', marginTop: 'auto' }}>
-                        <button type="button" className="btn bg" onClick={() => ir({ ver: r.id })}>Vista previa</button>
+                        <button type="button" className="btn bg" onClick={() => abrirRep(r)}>{r.tipo === 'Informe' ? 'Abrir informe' : 'Vista previa'}</button>
                         {puedeEditar ? (
                           <>
                             <button type="button" className="btn bg" disabled={!!ocupado} onClick={() => enviarAhora(r)}>{ocupado === `env-${r.id}` ? 'Poniendo en cola…' : 'Poner en cola'}</button>
@@ -246,7 +260,7 @@ export default function Reportes() {
                         </div>
                         {r.requiere_aprobacion ? <span className="chip ring">Requiere aprobación</span> : null}
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                          <button type="button" className="btn bg" onClick={() => ir({ ver: r.id })}>Vista previa</button>
+                          <button type="button" className="btn bg" onClick={() => abrirRep(r)}>{r.tipo === 'Informe' ? 'Abrir informe' : 'Vista previa'}</button>
                           {puedeEditar ? <button type="button" className="btn bg" disabled={!!ocupado} onClick={() => enviarAhora(r)}>{ocupado === `env-${r.id}` ? 'Poniendo en cola…' : 'Poner en cola'}</button> : null}
                         </div>
                       </div>
@@ -317,7 +331,7 @@ export default function Reportes() {
                     <thead><tr><th scope="col">Reporte</th><th scope="col">Periodo cubierto</th><th scope="col">Generado</th><th scope="col">Enviado</th><th scope="col">Entregados</th><th scope="col">Estado</th><th scope="col" className="r">Acciones</th></tr></thead>
                     <tbody>
                       {hist.map((e) => {
-                        const conDoc = !!e.contenido?.secciones?.length;
+                        const conDoc = !!e.contenido?.secciones?.length || esEdicionInforme(e.contenido);
                         const accion = e.estado === 'En revisión' ? ['Aprobar', () => aprobar(e)] as const
                           : e.estado === 'Borrador' ? ['Enviar', () => aprobar(e)] as const
                             : e.estado === 'Pendiente de envío' ? ['Sacar de la cola', () => sacarDeCola(e)] as const

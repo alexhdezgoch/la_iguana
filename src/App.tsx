@@ -20,6 +20,7 @@ const Menciones = lazy(() => import('./pages/Menciones'));
 const Temas = lazy(() => import('./pages/Temas'));
 const Alertas = lazy(() => import('./pages/Alertas'));
 const Reportes = lazy(() => import('./pages/Reportes'));
+const InformePagina = lazy(() => import('./pages/reportes/InformePagina'));
 const CampanaCompacta = lazy(() => import('./pages/CampanaCompacta'));
 
 export type SeccionCompacta = 'resumen' | 'figuras' | 'eventos' | 'menciones' | 'temas' | 'alertas';
@@ -56,6 +57,7 @@ function Consola() {
                 <Route path="temas" element={<Seccion nombre="temas"><Temas /></Seccion>} />
                 <Route path="alertas" element={<Seccion nombre="alertas"><Alertas /></Seccion>} />
                 <Route path="reportes" element={<Reportes />} />
+                <Route path="reportes/informe/:reporteId" element={<InformePagina />} />
               </Route>
               <Route path="*" element={<Navigate to="/" replace />} />
             </Route>
