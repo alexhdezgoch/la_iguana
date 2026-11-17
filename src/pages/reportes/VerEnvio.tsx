@@ -6,6 +6,11 @@ import { useNombres, useTabla } from '../../lib/hooks';
 import type { Persona, Reporte, ReporteEnvio } from '../../lib/tipos';
 import { Documento, imprimir, paginas } from '../../lib/reportes/Documento';
 import type { Contenido } from '../../lib/reportes/documento';
+import { Informe, seccionesDe } from '../../lib/informe/Informe';
+import { esDocInforme, esEdicionInforme } from '../../lib/informe/edicion';
+import { IlegibleInforme, LimiteInforme } from '../../lib/informe/Limite';
+import { imprimirInforme } from '../../lib/informe/servidor';
+import '../../lib/informe/informe.css';
 import { COLA, ESTADO_ENVIO, marcaDe, momento, periodoEnvio, pieDe } from './util';
 
 export function VerEnvio({ envio, reporte, volver, editar, aprobar, reenviar, ocupado }: {
@@ -30,9 +35,14 @@ export function VerEnvio({ envio, reporte, volver, editar, aprobar, reenviar, oc
   if (!envio) {
     return <main className="page pg-reportes"><div className="ph"><div>{atras}<h1>Envío no disponible</h1><p className="mu">Puede que se haya borrado o que tu rol no lo vea.</p></div></div></main>;
   }
+  // Edición de un Informe: se pinta desde la copia congelada (datos + textos), no desde contenido.secciones.
+  // Una edición de otra versión o con datos incompletos muestra "Esta edición no se puede mostrar".
+  const docInf = esDocInforme(envio.contenido);
+  const inf = esEdicionInforme(envio.contenido) ? envio.contenido : null;
   const contenido = envio.contenido as Contenido;
-  const conDoc = !!contenido?.secciones?.length;
+  const conDoc = !docInf && !!contenido?.secciones?.length;
   const pags = conDoc ? paginas(contenido) : [];
+  const secsInf = inf ? seccionesDe(inf.datos).filter((s) => s.activa) : [];
   const marca = marcaDe(contenido?.marca, campana, org);
   const pie = pieDe(contenido?.marca, reporte?.extra?.confidencial !== false, campana, org);
   const aprobo = personas.datos.find((p) => p.id === envio.aprobado_por)?.nombre ?? (envio.aprobado_por ? nombres.get(envio.aprobado_por)?.nombre_corto : undefined);
@@ -56,13 +66,16 @@ export function VerEnvio({ envio, reporte, volver, editar, aprobar, reenviar, oc
         <div>
           {atras}
           <h1>{envio.titulo ?? reporte?.nombre ?? 'Reporte'}</h1>
-          <p className="mu">{reporte?.tipo ?? 'Reporte'} · {conDoc ? `${pags.length} ${pags.length === 1 ? 'página' : 'páginas'}` : 'sin copia del documento'}</p>
+          <p className="mu">{reporte?.tipo ?? 'Reporte'} · {inf ? `edición congelada, ${secsInf.length} ${secsInf.length === 1 ? 'sección' : 'secciones'}` : docInf ? 'edición que no se puede mostrar' : conDoc ? `${pags.length} ${pags.length === 1 ? 'página' : 'páginas'}` : 'sin copia del documento'}</p>
         </div>
         <div className="acts" style={{ alignItems: 'center' }}>
           {conDoc ? (
             <button type="button" className="btn bg" onClick={() => { if (!imprimir({ contenido, marca, pie })) aviso('El navegador bloqueó la ventana de impresión. Permite ventanas emergentes para este sitio.'); }}>
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" /></svg>Descargar PDF
             </button>
+          ) : null}
+          {inf ? (
+            <button type="button" className="btn bg" onClick={() => { if (!imprimirInforme({ datos: inf.datos, textos: inf.textos })) aviso('El navegador bloqueó la ventana de impresión. Permite ventanas emergentes para este sitio.'); }}>Imprimir / Guardar PDF</button>
           ) : null}
           {accion ? <button type="button" className="btn bp" disabled={!!ocupado} onClick={accion.f}>{accion.t}</button> : null}
         </div>
@@ -80,13 +93,21 @@ export function VerEnvio({ envio, reporte, volver, editar, aprobar, reenviar, oc
               <ol className="secs">{contenido.secciones!.map((s) => <li key={s.id}>{s.titulo}</li>)}</ol>
             </>
           ) : null}
+          {inf ? (
+            <>
+              <h2 style={{ paddingTop: 6 }}>Secciones</h2>
+              <ol className="secs">{secsInf.map((s) => <li key={s.id}>{s.titulo}</li>)}</ol>
+            </>
+          ) : null}
           {reporte ? <div><button type="button" className="btn bg" onClick={() => editar(reporte.id)}>{puedeEditar ? 'Editar el reporte' : 'Ver el reporte'}</button></div> : null}
         </section>
         <section className="card pv" aria-label={envio.enviado_en ? "Documento enviado" : "Copia guardada del documento"} style={{ flex: '3 1 400px', minWidth: 0 }}>
-          {conDoc ? <Documento contenido={contenido} marca={marca} pie={pie} /> : (
+          {inf ? <LimiteInforme key={envio.id}><Informe datos={inf.datos} textos={inf.textos} /></LimiteInforme>
+            : docInf ? <IlegibleInforme />
+            : conDoc ? <Documento contenido={contenido} marca={marca} pie={pie} /> : (
             <p className="mu" style={{ padding: '40px 0', maxWidth: 420, textAlign: 'center' }}>Este envío no guardó una copia del documento. Los envíos que se pongan en cola desde aquí guardan su copia.</p>
           )}
-          {conDoc ? <p className="mu" style={{ textAlign: 'center', maxWidth: 560 }}>Copia guardada del documento tal como se generó.</p> : null}
+          {conDoc || inf ? <p className="mu" style={{ textAlign: 'center', maxWidth: 560 }}>Copia guardada del documento tal como se generó.</p> : null}
         </section>
       </div>
     </main>

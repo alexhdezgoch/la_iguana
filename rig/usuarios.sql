@@ -1,8 +1,8 @@
 -- Solo para el banco de pruebas: cuentas de prueba, una por rol. Contraseña de todas: iguana-rig
 -- admin@rig.test     admin del equipo Brújula (ve todo)
--- analista@rig.test  Análisis en presidenciales
--- lector@rig.test    Solo lectura en presidenciales, zulia y vacia
--- cliente@rig.test   Cliente en presidenciales (sin notas internas)
+-- analista@rig.test  Análisis en presidenciales e informe-ejemplo
+-- lector@rig.test    Solo lectura en presidenciales, zulia, vacia e informe-ejemplo
+-- cliente@rig.test   Cliente en presidenciales e informe-ejemplo (sin notas internas)
 -- ajeno@rig.test     otra organización (no debe ver nada de Brújula)
 insert into public.organizaciones (id, nombre, iniciales) values ('otra-org', 'Otra consultora', 'OC') on conflict do nothing;
 -- Campaña vacía, para probar estados sin datos: /c/vacia
@@ -20,7 +20,11 @@ insert into public.miembros_campana (campana_id, persona_id, rol) values
   ('presidenciales', 'rig-lector', 'Solo lectura'),
   ('presidenciales', 'rig-cliente', 'Cliente'),
   ('zulia', 'rig-lector', 'Solo lectura'),
-  ('vacia', 'rig-lector', 'Solo lectura')
+  ('vacia', 'rig-lector', 'Solo lectura'),
+  -- Informe de ejemplo: los mismos roles que en presidenciales.
+  ('informe-ejemplo', 'rig-analista', 'Análisis'),
+  ('informe-ejemplo', 'rig-lector', 'Solo lectura'),
+  ('informe-ejemplo', 'rig-cliente', 'Cliente')
 on conflict do nothing;
 -- Borrador del asistente para admin@rig.test: copia del sembrado (Alcaldía de Maracaibo), para retomarlo en /nueva-campana.
 insert into public.borradores (id, org_id, persona_id, tipo, datos, actualizado_en)

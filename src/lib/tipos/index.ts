@@ -105,7 +105,13 @@ export interface Mencion {
   sentimiento: N<Sentimiento>; sentimiento_manual: N<Sentimiento>; importancia: N<'alto' | 'medio' | 'bajo'>; alcance: N<number>;
   interacciones: N<number>; requiere_revision: boolean; revisada: boolean; revisada_por: N<string>; revisada_en: N<string>;
   estado: 'Por procesar' | 'Procesada' | 'Descartada'; origen: 'Ingesta' | 'Manual'; extra: Json; creada_en: string;
+  // Filas crudas para el Informe (100_informe.sql). Todas opcionales en los datos viejos: null o su valor por defecto.
+  autor_id: N<string>; id_externo: N<string>; texto: N<string>; formato: N<FormatoPublicacion>;
+  vistas: N<number>; me_gusta: N<number>; respuestas: N<number>; compartidos: N<number>;
+  tipo_pub: TipoPublicacion; otro_pais: boolean; en_tema: boolean;
 }
+export type FormatoPublicacion = 'Texto' | 'Foto' | 'Video' | 'Reel' | 'Artículo' | 'En vivo';
+export type TipoPublicacion = 'Original' | 'Respuesta' | 'Cita' | 'Repost';
 export interface MencionFigura {
   id: string; campana_id: string; mencion_id: string; figura_id: string; sentimiento: N<Sentimiento>; sentimiento_manual: N<Sentimiento>;
 }
@@ -142,4 +148,40 @@ export interface ReporteEnvio {
 export interface NotaInterna {
   id: string; campana_id: string; entidad: 'campana' | 'figura' | 'evento' | 'mencion' | 'narrativa' | 'alerta'; entidad_id: string;
   texto: string; autor_id: N<string>; creada_en: string; actualizada_en: string;
+}
+
+// ---------- Informe (100_informe.sql). autores, comentarios, codificaciones y recolecciones no las lee el rol Cliente. ----------
+export type TipoAutor = 'Medio' | 'Periodista' | 'Partido u organización' | 'Campaña política' | 'Cuenta de opinión con gran audiencia'
+  | 'Analista' | 'Emisora' | 'Cuenta personal' | 'Tipo no confirmado';
+/** Cuenta que publica. Su usuario solo se publica si seguidores >= 100.000 o es_organizacion (lo aplica informe_datos). */
+export interface Autor {
+  id: string; campana_id: string; canal: string; handle: N<string>; nombre: N<string>; tipo: TipoAutor; descriptor: N<string>;
+  es_organizacion: boolean; seguidores: N<number>; figura_id: N<string>; url: N<string>; extra: Json; creado_en: string;
+}
+export type MetodoRecoleccion = 'Búsqueda avanzada' | 'Cuentas' | 'Etiquetas' | 'RSS' | 'Búsqueda por palabras' | 'Páginas';
+/** Bitácora de una corrida de recolección: topes, cuentas que faltaron y límites (Metodología). */
+export interface Recoleccion {
+  id: string; campana_id: string; canal: string; metodo: MetodoRecoleccion; descripcion: N<string>; consulta: N<string>;
+  eje_id: N<string>; dia: N<string>; periodo_inicio: N<string>; periodo_fin: N<string>; cubre_desde: N<string>; ejecutada_en: N<string>;
+  filas: N<number>; tope: N<number>; llego_al_tope: boolean; estimado: N<number>; pedidas: N<number>; leidas: N<number>;
+  faltantes: { cuenta: string; motivo?: string; desde?: string }[]; limites: string[]; extra: Json;
+}
+/** Eje del tema o marca con regla ("sobre el evento", "nombra a la emisora"). */
+export interface Eje { id: string; campana_id: string; nombre: string; regla: N<string>; terminos: Json[]; color: N<string>; orden: number; extra: Json }
+export interface MencionEje { id: string; campana_id: string; mencion_id: string; eje_id: string; metodo: 'Regla' | 'Búsqueda' | 'Manual'; recoleccion_id: N<string> }
+/** Comentario recolectado. Nunca guarda su autor. */
+export interface Comentario {
+  id: string; campana_id: string; mencion_id: N<string>; canal: string; publicada_en: N<string>; texto: N<string>; me_gusta: N<number>;
+  recoleccion_id: N<string>; solo_emojis: boolean; duplicado: boolean; extra: Json; creado_en: string;
+}
+export interface Codigo { id: string; campana_id: string; libro: string; nombre: string; tono: 'apoyo' | 'critica' | 'neutro'; orden: number }
+export interface Muestra {
+  id: string; campana_id: string; nombre: string; objeto: 'comentarios' | 'menciones'; canal: N<string>; universo: N<number>; tamano: N<number>;
+  semilla: N<string>; metodo: N<string>; ponderacion: 'ninguna' | 'por volumen'; estratos: { canal: string; universo: number }[];
+  orden: number; extra: Json; creada_en: string;
+}
+/** Un ítem de una muestra leído: exactamente uno de mencion_id o comentario_id. */
+export interface Codificacion {
+  id: string; campana_id: string; muestra_id: string; mencion_id: N<string>; comentario_id: N<string>; sentimiento: N<Sentimiento>;
+  codigo_id: N<string>; codificado_por: 'Persona' | 'Modelo'; revisado: boolean; creada_en: string;
 }

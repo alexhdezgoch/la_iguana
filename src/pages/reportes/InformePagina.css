@@ -1,0 +1,14 @@
+/* Pantalla del Informe: vista previa A4 a la izquierda, panel de configuración a la derecha. Prefijo .pg-informe. */
+.pg-informe .inf-fila{align-items:flex-start}
+.pg-informe .inf-pv{flex:3 1 560px;min-width:0;padding:24px 16px}
+.pg-informe .inf-panel{flex:1 1 300px;min-width:0;max-width:440px}
+.pg-informe .inf-panel .card{gap:12px}
+.pg-informe .fila2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;width:100%}
+.pg-informe .fila2 .sel,.pg-informe .fld .sel{width:100%}
+.pg-informe .fld{width:100%}
+.pg-informe .cks{display:flex;flex-direction:column;gap:6px}
+.pg-informe .ck{display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+.pg-informe .inf-sl{flex-direction:column;align-items:stretch;gap:6px;padding:10px 0}
+.pg-informe .inf-slh{display:flex;align-items:center;gap:10px}
+.pg-informe .inf-sl .ta{font-size:13px;line-height:19px}
+@media (max-width:640px){.pg-informe .inf-pv{padding:12px 8px}.pg-informe .inf-panel{max-width:none}}

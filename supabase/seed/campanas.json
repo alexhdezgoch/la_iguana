@@ -98,5 +98,32 @@
    "nota_temas": "Movilidad es el tema con más volumen del periodo y el de la única alerta abierta de la campaña.",
    "avance_fase": 10
   }
+ },
+ {
+  "org_id": "brujula",
+  "pais": "Venezuela",
+  "fecha_corte": "2027-05-12",
+  "periodo_inicio": "2027-05-06",
+  "periodo_fin": "2027-05-12",
+  "es_demo": true,
+  "id": "informe-ejemplo",
+  "nombre": "Monitoreo de ejemplo · Venezuela 2027",
+  "nombre_corto": "Informe de ejemplo",
+  "contienda": "Presidenciales 2027",
+  "titulo_largo": "Monitoreo de ejemplo · Venezuela 2027",
+  "iniciales": "ME",
+  "ambito": "Presidenciales",
+  "territorio": "Venezuela",
+  "fase": "Campaña",
+  "inicio_campana": "2027-04-04",
+  "fin_campana": "2027-06-02",
+  "jornada": "2027-06-06",
+  "figura_propia_id": "machado",
+  "vista": "compacta",
+  "orden": 4,
+  "extra": {
+   "nota_temas": "Campaña de ejemplo para el Informe: publicaciones, comentarios y recolecciones con cifras inventadas.",
+   "avance_fase": 63
+  }
  }
 ]

@@ -7,7 +7,7 @@ import { hoyDe, useCampana, usePagina, useRol } from '../shell/Campana';
 import { Carga, Vacio } from '../shell/Estados';
 import { Icono } from '../shell/Iconos';
 import { useAcciones } from '../shell/Acciones';
-import { useNombres, useTabla } from '../lib/hooks';
+import { useCuenta, useNombres, useTabla } from '../lib/hooks';
 import { corto, cuando, num, pct, rango } from '../lib/formato';
 import type { Evento, FiguraCampana, Mencion, MencionFigura, Narrativa, NotaInterna, Persona, Sentimiento, Tema } from '../lib/tipos';
 import { CHIP_IMP, CHIP_SENT, PUNTO, SENTIMIENTOS, SIN, TEXTO_IMP, VISTAS, enVista, estadoDe, lista, momento, pendiente, sentimientoDe, type Vista } from './menciones/comun';
@@ -16,6 +16,8 @@ import { Revision, hayCambios, type Borrador } from './menciones/Revision';
 
 type ClaveFiltro = 'canal' | 'figura' | 'tema' | 'narrativa' | 'sentimiento' | 'evento';
 const FILTROS: ClaveFiltro[] = ['canal', 'figura', 'tema', 'narrativa', 'sentimiento', 'evento'];
+/** Menciones por página de la lista. */
+const PAGINA = 200;
 
 /** Valores de la mención para un filtro. Una mención puede nombrar varias figuras. */
 function valoresDe(m: Mencion, k: ClaveFiltro, figs: Map<string, string[]>): string[] {
@@ -44,7 +46,13 @@ export default function Menciones() {
   const [params, setParams] = useSearchParams();
   const [borradores, setBorradores] = useState<Record<string, Borrador | undefined>>({});
 
-  const menciones = useTabla<Mencion>('menciones', { eq: { campana_id: cid }, orden: [['publicada_en', 'desc']] });
+  // Por páginas: con la ingesta una campaña tiene miles de menciones. Se traen las más recientes y "Cargar más" suma otra página.
+  // Las que esperan proceso (sin fecha) se traen aparte para que siempre aparezcan primero.
+  const [limite, setLimite] = useState(PAGINA);
+  const conFecha = useTabla<Mencion>('menciones', { eq: { campana_id: cid }, orden: [['publicada_en', 'desc'], ['id', 'asc']], limite });
+  const sinFecha = useTabla<Mencion>('menciones', { eq: { campana_id: cid, publicada_en: null }, limite: PAGINA });
+  const totalMenciones = useCuenta('menciones', { eq: { campana_id: cid } });
+  const pendientesDb = useCuenta('menciones', { eq: { campana_id: cid, requiere_revision: true, revisada: false }, neq: { estado: 'Descartada' } });
   const mf = useTabla<MencionFigura>('mencion_figuras', { eq: { campana_id: cid } });
   const figuras = useTabla<FiguraCampana>('v_figuras_campana', { eq: { campana_id: cid }, orden: 'orden' });
   const temas = useTabla<Tema>('temas', { eq: { campana_id: cid }, orden: 'orden' });
@@ -81,16 +89,22 @@ export default function Menciones() {
     mf.datos.forEach((f) => m.set(f.mencion_id, [...(m.get(f.mencion_id) ?? []), f.figura_id]));
     return m;
   }, [mf.datos]);
-  const todas = useMemo(
+  const todas = useMemo(() => {
     // Las que esperan proceso (sin fecha de publicación) van primero; luego las más recientes.
-    () => [...menciones.datos].sort((a, b) => (a.publicada_en ? 1 : 0) - (b.publicada_en ? 1 : 0) || (Date.parse(momento(b)) || 0) - (Date.parse(momento(a)) || 0)),
-    [menciones.datos],
-  );
+    const vistas = new Set<string>();
+    const juntas = [...sinFecha.datos, ...conFecha.datos].filter((m) => (vistas.has(m.id) ? false : (vistas.add(m.id), true)));
+    return juntas.sort((a, b) => (a.publicada_en ? 1 : 0) - (b.publicada_en ? 1 : 0) || (Date.parse(momento(b)) || 0) - (Date.parse(momento(a)) || 0));
+  }, [sinFecha.datos, conFecha.datos]);
+  const cargadas = todas.length;
+  const total = Math.max(totalMenciones.datos, cargadas);
+  const hayMas = conFecha.datos.length >= limite && cargadas < total;
+  const menciones = { cargando: conFecha.cargando || sinFecha.cargando, error: conFecha.error ?? sinFecha.error };
   const filtradas = todas.filter((m) => FILTROS.every((k) => !elegidos[k].length || valoresDe(m, k, figsDe).some((v) => elegidos[k].includes(v))));
   const items = filtradas.filter((m) => enVista(m, vista));
   const enEstaVista = todas.filter((m) => enVista(m, vista));
   const cuentaVista = (v: Vista) => filtradas.filter((m) => enVista(m, v)).length;
-  const pendientes = todas.filter(pendiente).length;
+  // Con todo cargado se cuenta en pantalla (refleja la revisión al instante); si no, lo cuenta la base.
+  const pendientes = hayMas ? pendientesDb.datos : todas.filter(pendiente).length;
 
   const selId = params.get('m');
   const sel = items.find((m) => m.id === selId) ?? items[0] ?? null;
@@ -199,6 +213,12 @@ export default function Menciones() {
                   {!items.length ? (
                     <div style={{ padding: '40px 20px', textAlign: 'center' }} className="mu">
                       No hay menciones en esta vista.{hayFiltros ? ' Prueba quitando algún filtro.' : ''}
+                    </div>
+                  ) : null}
+                  {hayMas ? (
+                    <div className="mas" style={{ padding: '14px 16px', display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap', borderTop: '1px solid var(--line)' }}>
+                      <button type="button" className="btn bg" onClick={() => setLimite((n) => n + PAGINA)}>Cargar más</button>
+                      <span className="mu">Se muestran las {num(cargadas)} más recientes de {num(total)}. Los filtros y los conteos usan las cargadas.</span>
                     </div>
                   ) : null}
                   <div className="mu" style={{ padding: '12px 16px', background: '#F1F3EF' }}>

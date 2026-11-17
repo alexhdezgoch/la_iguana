@@ -1,0 +1,892 @@
+[
+ {
+  "id": "inf-rec-nt-evento",
+  "campana_id": "informe-ejemplo",
+  "canal": "Medio digital",
+  "metodo": "RSS",
+  "descripcion": "Agregador de noticias por RSS, edición Venezuela en español.",
+  "consulta": "Nombre de la figura propia, emisora anfitriona y su programa (términos de ejemplo).",
+  "periodo_inicio": "2027-05-10T00:00:00-04:00",
+  "periodo_fin": "2027-05-12T11:00:00-04:00",
+  "ejecutada_en": "2027-05-12T11:20:00-04:00",
+  "filas": 97,
+  "pedidas": 4,
+  "leidas": 4,
+  "limites": [
+   "Las marcas leen solo el titular.",
+   "La hora es la que da el agregador; puede ser posterior a la publicación original."
+  ]
+ },
+ {
+  "id": "inf-rec-x-2027-05-10",
+  "campana_id": "informe-ejemplo",
+  "canal": "X",
+  "metodo": "Búsqueda avanzada",
+  "descripcion": "Búsqueda en español sobre la figura propia, el programa y la emisora, sin reposts.",
+  "consulta": "(figura propia OR programa de ejemplo OR emisora anfitriona) lang:es -is:retweet",
+  "eje_id": "inf-eje-conversacion",
+  "dia": "2027-05-10",
+  "periodo_inicio": "2027-05-10T00:00:00-04:00",
+  "periodo_fin": "2027-05-11T00:00:00-04:00",
+  "ejecutada_en": "2027-05-12T11:30:00-04:00",
+  "filas": 685,
+  "tope": 1500,
+  "llego_al_tope": false,
+  "pedidas": 1,
+  "leidas": 1,
+  "limites": [
+   "Solo publicaciones en español.",
+   "Sin reposts.",
+   "Tope de 1.500 publicaciones por búsqueda y por día."
+  ]
+ },
+ {
+  "id": "inf-rec-x-2027-05-11",
+  "campana_id": "informe-ejemplo",
+  "canal": "X",
+  "metodo": "Búsqueda avanzada",
+  "descripcion": "Búsqueda en español sobre la figura propia, el programa y la emisora, sin reposts.",
+  "consulta": "(figura propia OR programa de ejemplo OR emisora anfitriona) lang:es -is:retweet",
+  "eje_id": "inf-eje-conversacion",
+  "dia": "2027-05-11",
+  "periodo_inicio": "2027-05-11T00:00:00-04:00",
+  "periodo_fin": "2027-05-12T00:00:00-04:00",
+  "ejecutada_en": "2027-05-12T11:30:00-04:00",
+  "filas": 901,
+  "tope": 1500,
+  "llego_al_tope": false,
+  "pedidas": 1,
+  "leidas": 1,
+  "limites": [
+   "Solo publicaciones en español.",
+   "Sin reposts.",
+   "Tope de 1.500 publicaciones por búsqueda y por día."
+  ]
+ },
+ {
+  "id": "inf-rec-x-2027-05-12",
+  "campana_id": "informe-ejemplo",
+  "canal": "X",
+  "metodo": "Búsqueda avanzada",
+  "descripcion": "Búsqueda en español sobre la figura propia, el programa y la emisora, sin reposts.",
+  "consulta": "(figura propia OR programa de ejemplo OR emisora anfitriona) lang:es -is:retweet",
+  "eje_id": "inf-eje-conversacion",
+  "dia": "2027-05-12",
+  "periodo_inicio": "2027-05-12T00:00:00-04:00",
+  "periodo_fin": "2027-05-12T11:00:00-04:00",
+  "ejecutada_en": "2027-05-12T11:30:00-04:00",
+  "filas": 191,
+  "tope": 1500,
+  "llego_al_tope": false,
+  "pedidas": 1,
+  "leidas": 1,
+  "limites": [
+   "Solo publicaciones en español.",
+   "Sin reposts.",
+   "Tope de 1.500 publicaciones por búsqueda y por día."
+  ]
+ },
+ {
+  "id": "inf-rec-x-foco",
+  "campana_id": "informe-ejemplo",
+  "canal": "X",
+  "metodo": "Búsqueda avanzada",
+  "descripcion": "Búsqueda de la marca del programa o de la emisora junto a la figura propia.",
+  "consulta": "(programa de ejemplo OR emisora anfitriona) figura propia lang:es -is:retweet",
+  "eje_id": "inf-eje-foco",
+  "dia": "2027-05-11",
+  "periodo_inicio": "2027-05-11T00:00:00-04:00",
+  "periodo_fin": "2027-05-12T00:00:00-04:00",
+  "ejecutada_en": "2027-05-12T11:35:00-04:00",
+  "filas": 140,
+  "tope": 1500,
+  "llego_al_tope": false,
+  "pedidas": 1,
+  "leidas": 1,
+  "limites": [
+   "Puede incluir otros programas o dejar fuera publicaciones que no nombran el programa."
+  ]
+ },
+ {
+  "id": "inf-rec-ig-cuentas-evento",
+  "campana_id": "informe-ejemplo",
+  "canal": "Instagram",
+  "metodo": "Cuentas",
+  "descripcion": "Cuentas de la emisora, de la figura, de partidos y de medios.",
+  "periodo_inicio": "2027-05-10T00:00:00-04:00",
+  "periodo_fin": "2027-05-12T11:00:00-04:00",
+  "ejecutada_en": "2027-05-12T11:40:00-04:00",
+  "filas": 84,
+  "pedidas": 14,
+  "leidas": 12,
+  "faltantes": [
+   {
+    "cuenta": "@portal_noticias_5",
+    "es_organizacion": true,
+    "motivo": "La cuenta no devolvió datos."
+   },
+   {
+    "cuenta": "@medio_regional_2",
+    "es_organizacion": true,
+    "motivo": "Cuenta no encontrada."
+   }
+  ],
+  "limites": [
+   "Máximo de 3 páginas de publicaciones por cuenta.",
+   "Las fotos no informan visualizaciones."
+  ]
+ },
+ {
+  "id": "inf-rec-ig-etiquetas-evento",
+  "campana_id": "informe-ejemplo",
+  "canal": "Instagram",
+  "metodo": "Etiquetas",
+  "descripcion": "Cuatro etiquetas de ejemplo sobre el programa y la figura.",
+  "consulta": "#segmento_ejemplo, #emisora_ejemplo, #figura_ejemplo, #programa_ejemplo",
+  "periodo_inicio": "2027-05-10T00:00:00-04:00",
+  "periodo_fin": "2027-05-12T11:00:00-04:00",
+  "ejecutada_en": "2027-05-12T11:42:00-04:00",
+  "filas": 6,
+  "pedidas": 4,
+  "leidas": 4,
+  "limites": [
+   "Las etiquetas devuelven solo las publicaciones más recientes."
+  ]
+ },
+ {
+  "id": "inf-rec-tt-palabras-evento",
+  "campana_id": "informe-ejemplo",
+  "canal": "TikTok",
+  "metodo": "Búsqueda por palabras",
+  "descripcion": "Búsqueda por palabras sobre la figura propia y el programa.",
+  "consulta": "figura propia programa; figura propia emisora; programa de radio; programa de ejemplo",
+  "periodo_inicio": "2027-05-10T00:00:00-04:00",
+  "periodo_fin": "2027-05-12T11:00:00-04:00",
+  "ejecutada_en": "2027-05-12T11:45:00-04:00",
+  "filas": 22,
+  "tope": 400,
+  "llego_al_tope": false,
+  "pedidas": 4,
+  "leidas": 4,
+  "limites": [
+   "Ventana de 7 días.",
+   "5 páginas de 20 videos por consulta.",
+   "4 consultas."
+  ]
+ },
+ {
+  "id": "inf-rec-tt-cuentas-evento",
+  "campana_id": "informe-ejemplo",
+  "canal": "TikTok",
+  "metodo": "Cuentas",
+  "descripcion": "Cuentas de la emisora y del partido.",
+  "periodo_inicio": "2027-05-10T00:00:00-04:00",
+  "periodo_fin": "2027-05-12T11:00:00-04:00",
+  "ejecutada_en": "2027-05-12T11:47:00-04:00",
+  "filas": 20,
+  "pedidas": 3,
+  "leidas": 3,
+  "limites": [
+   "Los clips automáticos del en vivo llevan un texto genérico."
+  ]
+ },
+ {
+  "id": "inf-rec-yt-cuentas-evento",
+  "campana_id": "informe-ejemplo",
+  "canal": "YouTube",
+  "metodo": "Cuentas",
+  "descripcion": "Canal de la emisora anfitriona.",
+  "periodo_inicio": "2027-05-10T00:00:00-04:00",
+  "periodo_fin": "2027-05-12T11:00:00-04:00",
+  "ejecutada_en": "2027-05-12T11:50:00-04:00",
+  "filas": 10,
+  "pedidas": 1,
+  "leidas": 1,
+  "limites": [
+   "El video del programa aparece con la hora de la transmisión."
+  ]
+ },
+ {
+  "id": "inf-rec-yt-palabras-evento",
+  "campana_id": "informe-ejemplo",
+  "canal": "YouTube",
+  "metodo": "Búsqueda por palabras",
+  "descripcion": "Búsqueda por palabras sobre el programa.",
+  "consulta": "programa de radio figura propia",
+  "periodo_inicio": "2027-05-10T00:00:00-04:00",
+  "periodo_fin": "2027-05-12T11:00:00-04:00",
+  "ejecutada_en": "2027-05-12T11:52:00-04:00",
+  "filas": 4,
+  "pedidas": 1,
+  "leidas": 1,
+  "limites": [
+   "No se encontró una copia completa subida por otras cuentas."
+  ]
+ },
+ {
+  "id": "inf-rec-fb-paginas-evento",
+  "campana_id": "informe-ejemplo",
+  "canal": "Facebook",
+  "metodo": "Páginas",
+  "descripcion": "Páginas públicas del partido y de seis medios, leídas sin iniciar sesión.",
+  "periodo_inicio": "2027-05-10T00:00:00-04:00",
+  "periodo_fin": "2027-05-12T11:00:00-04:00",
+  "ejecutada_en": "2027-05-12T11:55:00-04:00",
+  "filas": 19,
+  "pedidas": 9,
+  "leidas": 7,
+  "faltantes": [
+   {
+    "cuenta": "Página de la figura propia",
+    "es_organizacion": true,
+    "motivo": "La página no devolvió datos."
+   },
+   {
+    "cuenta": "Página de la emisora anfitriona",
+    "es_organizacion": true,
+    "motivo": "No se encontró una página pública."
+   }
+  ],
+  "limites": [
+   "Las 60 a 130 publicaciones más recientes de cada página.",
+   "Solo los videos informan visualizaciones.",
+   "Las fechas llegan en UTC y se pasan a hora de Caracas."
+  ]
+ },
+ {
+  "id": "inf-rec-com-ig-evento",
+  "campana_id": "informe-ejemplo",
+  "canal": "Instagram",
+  "metodo": "Cuentas",
+  "descripcion": "Comentarios de las publicaciones elegidas.",
+  "periodo_inicio": "2027-05-10T00:00:00-04:00",
+  "periodo_fin": "2027-05-12T11:00:00-04:00",
+  "ejecutada_en": "2027-05-12T12:10:00-04:00",
+  "filas": 510,
+  "tope": 100,
+  "llego_al_tope": false,
+  "pedidas": 15,
+  "leidas": 15,
+  "faltantes": [],
+  "limites": [
+   "Tope del proveedor por publicación; es probable que falten las respuestas."
+  ],
+  "extra": {
+   "objeto": "comentarios"
+  }
+ },
+ {
+  "id": "inf-rec-com-tt-evento",
+  "campana_id": "informe-ejemplo",
+  "canal": "TikTok",
+  "metodo": "Búsqueda por palabras",
+  "descripcion": "Comentarios de los videos elegidos.",
+  "periodo_inicio": "2027-05-10T00:00:00-04:00",
+  "periodo_fin": "2027-05-12T11:00:00-04:00",
+  "ejecutada_en": "2027-05-12T12:10:00-04:00",
+  "filas": 350,
+  "tope": 300,
+  "llego_al_tope": false,
+  "pedidas": 6,
+  "leidas": 6,
+  "faltantes": [],
+  "limites": [
+   "Tope del proveedor por video."
+  ],
+  "extra": {
+   "objeto": "comentarios"
+  }
+ },
+ {
+  "id": "inf-rec-com-yt-evento",
+  "campana_id": "informe-ejemplo",
+  "canal": "YouTube",
+  "metodo": "Cuentas",
+  "descripcion": "Comentarios del video de la emisora.",
+  "periodo_inicio": "2027-05-10T00:00:00-04:00",
+  "periodo_fin": "2027-05-12T11:00:00-04:00",
+  "ejecutada_en": "2027-05-12T12:10:00-04:00",
+  "filas": 30,
+  "llego_al_tope": false,
+  "pedidas": 1,
+  "leidas": 1,
+  "faltantes": [],
+  "limites": [
+   "Se recolectaron todos los comentarios del video."
+  ],
+  "extra": {
+   "objeto": "comentarios"
+  }
+ },
+ {
+  "id": "inf-rec-com-fb-evento",
+  "campana_id": "informe-ejemplo",
+  "canal": "Facebook",
+  "metodo": "Páginas",
+  "descripcion": "Comentarios de cuatro publicaciones sobre el programa.",
+  "periodo_inicio": "2027-05-10T00:00:00-04:00",
+  "periodo_fin": "2027-05-12T11:00:00-04:00",
+  "ejecutada_en": "2027-05-12T12:10:00-04:00",
+  "filas": 120,
+  "tope": 100,
+  "llego_al_tope": true,
+  "pedidas": 4,
+  "leidas": 4,
+  "faltantes": [
+   {
+    "cuenta": "Video principal de la página del partido",
+    "es_organizacion": true,
+    "motivo": "El proveedor devolvió 85 de 2.820 comentarios."
+   }
+  ],
+  "limites": [
+   "Máximo de 100 comentarios por publicación."
+  ],
+  "extra": {
+   "objeto": "comentarios"
+  }
+ },
+ {
+  "id": "inf-rec-nt-2027-05-06",
+  "campana_id": "informe-ejemplo",
+  "canal": "Medio digital",
+  "metodo": "RSS",
+  "descripcion": "Agregador de noticias por RSS, edición Venezuela en español, 11 consultas por día.",
+  "consulta": "Términos de los cuatro ejes (ejemplo).",
+  "dia": "2027-05-06",
+  "periodo_inicio": "2027-05-06T00:00:00-04:00",
+  "periodo_fin": "2027-05-07T00:00:00-04:00",
+  "ejecutada_en": "2027-05-07T06:00:00-04:00",
+  "filas": 110,
+  "pedidas": 11,
+  "leidas": 11,
+  "limites": [
+   "Los ejes se asignan solo por el titular."
+  ]
+ },
+ {
+  "id": "inf-rec-x-figura-2027-05-06",
+  "campana_id": "informe-ejemplo",
+  "canal": "X",
+  "metodo": "Búsqueda avanzada",
+  "descripcion": "Búsqueda en español del eje Figura propia, ordenada por las más recientes.",
+  "consulta": "(términos del eje figura) lang:es -is:retweet",
+  "eje_id": "inf-eje-figura",
+  "dia": "2027-05-06",
+  "periodo_inicio": "2027-05-06T00:00:00-04:00",
+  "periodo_fin": "2027-05-07T00:00:00-04:00",
+  "cubre_desde": "2027-05-06T11:18:00-04:00",
+  "ejecutada_en": "2027-05-07T06:30:00-04:00",
+  "filas": 250,
+  "tope": 250,
+  "llego_al_tope": true,
+  "estimado": 472,
+  "pedidas": 1,
+  "leidas": 1,
+  "limites": [
+   "Tope de 250 publicaciones por eje y por día.",
+   "Con tope, el estimado del día completo supone un ritmo parejo de publicación."
+  ]
+ },
+ {
+  "id": "inf-rec-x-servicios-2027-05-06",
+  "campana_id": "informe-ejemplo",
+  "canal": "X",
+  "metodo": "Búsqueda avanzada",
+  "descripcion": "Búsqueda en español del eje Servicios públicos, ordenada por las más recientes.",
+  "consulta": "(términos del eje servicios) lang:es -is:retweet",
+  "eje_id": "inf-eje-servicios",
+  "dia": "2027-05-06",
+  "periodo_inicio": "2027-05-06T00:00:00-04:00",
+  "periodo_fin": "2027-05-07T00:00:00-04:00",
+  "ejecutada_en": "2027-05-07T06:30:00-04:00",
+  "filas": 30,
+  "tope": 250,
+  "llego_al_tope": false,
+  "pedidas": 1,
+  "leidas": 1,
+  "limites": [
+   "Tope de 250 publicaciones por eje y por día."
+  ]
+ },
+ {
+  "id": "inf-rec-x-fecha-2027-05-06",
+  "campana_id": "informe-ejemplo",
+  "canal": "X",
+  "metodo": "Búsqueda avanzada",
+  "descripcion": "Búsqueda en español del eje Fecha electoral, ordenada por las más recientes.",
+  "consulta": "(términos del eje fecha) lang:es -is:retweet",
+  "eje_id": "inf-eje-fecha",
+  "dia": "2027-05-06",
+  "periodo_inicio": "2027-05-06T00:00:00-04:00",
+  "periodo_fin": "2027-05-07T00:00:00-04:00",
+  "ejecutada_en": "2027-05-07T06:30:00-04:00",
+  "filas": 110,
+  "tope": 250,
+  "llego_al_tope": false,
+  "pedidas": 1,
+  "leidas": 1,
+  "limites": [
+   "Tope de 250 publicaciones por eje y por día."
+  ]
+ },
+ {
+  "id": "inf-rec-x-economia-2027-05-06",
+  "campana_id": "informe-ejemplo",
+  "canal": "X",
+  "metodo": "Búsqueda avanzada",
+  "descripcion": "Búsqueda en español del eje Economía y salarios, ordenada por las más recientes.",
+  "consulta": "(términos del eje economia) lang:es -is:retweet",
+  "eje_id": "inf-eje-economia",
+  "dia": "2027-05-06",
+  "periodo_inicio": "2027-05-06T00:00:00-04:00",
+  "periodo_fin": "2027-05-07T00:00:00-04:00",
+  "ejecutada_en": "2027-05-07T06:30:00-04:00",
+  "filas": 60,
+  "tope": 250,
+  "llego_al_tope": false,
+  "pedidas": 1,
+  "leidas": 1,
+  "limites": [
+   "Tope de 250 publicaciones por eje y por día."
+  ]
+ },
+ {
+  "id": "inf-rec-nt-2027-05-07",
+  "campana_id": "informe-ejemplo",
+  "canal": "Medio digital",
+  "metodo": "RSS",
+  "descripcion": "Agregador de noticias por RSS, edición Venezuela en español, 11 consultas por día.",
+  "consulta": "Términos de los cuatro ejes (ejemplo).",
+  "dia": "2027-05-07",
+  "periodo_inicio": "2027-05-07T00:00:00-04:00",
+  "periodo_fin": "2027-05-08T00:00:00-04:00",
+  "ejecutada_en": "2027-05-08T06:00:00-04:00",
+  "filas": 55,
+  "pedidas": 11,
+  "leidas": 11,
+  "limites": [
+   "Los ejes se asignan solo por el titular."
+  ]
+ },
+ {
+  "id": "inf-rec-x-figura-2027-05-07",
+  "campana_id": "informe-ejemplo",
+  "canal": "X",
+  "metodo": "Búsqueda avanzada",
+  "descripcion": "Búsqueda en español del eje Figura propia, ordenada por las más recientes.",
+  "consulta": "(términos del eje figura) lang:es -is:retweet",
+  "eje_id": "inf-eje-figura",
+  "dia": "2027-05-07",
+  "periodo_inicio": "2027-05-07T00:00:00-04:00",
+  "periodo_fin": "2027-05-08T00:00:00-04:00",
+  "ejecutada_en": "2027-05-08T06:30:00-04:00",
+  "filas": 190,
+  "tope": 250,
+  "llego_al_tope": false,
+  "pedidas": 1,
+  "leidas": 1,
+  "limites": [
+   "Tope de 250 publicaciones por eje y por día."
+  ]
+ },
+ {
+  "id": "inf-rec-x-servicios-2027-05-07",
+  "campana_id": "informe-ejemplo",
+  "canal": "X",
+  "metodo": "Búsqueda avanzada",
+  "descripcion": "Búsqueda en español del eje Servicios públicos, ordenada por las más recientes.",
+  "consulta": "(términos del eje servicios) lang:es -is:retweet",
+  "eje_id": "inf-eje-servicios",
+  "dia": "2027-05-07",
+  "periodo_inicio": "2027-05-07T00:00:00-04:00",
+  "periodo_fin": "2027-05-08T00:00:00-04:00",
+  "ejecutada_en": "2027-05-08T06:30:00-04:00",
+  "filas": 30,
+  "tope": 250,
+  "llego_al_tope": false,
+  "pedidas": 1,
+  "leidas": 1,
+  "limites": [
+   "Tope de 250 publicaciones por eje y por día."
+  ]
+ },
+ {
+  "id": "inf-rec-x-fecha-2027-05-07",
+  "campana_id": "informe-ejemplo",
+  "canal": "X",
+  "metodo": "Búsqueda avanzada",
+  "descripcion": "Búsqueda en español del eje Fecha electoral, ordenada por las más recientes.",
+  "consulta": "(términos del eje fecha) lang:es -is:retweet",
+  "eje_id": "inf-eje-fecha",
+  "dia": "2027-05-07",
+  "periodo_inicio": "2027-05-07T00:00:00-04:00",
+  "periodo_fin": "2027-05-08T00:00:00-04:00",
+  "ejecutada_en": "2027-05-08T06:30:00-04:00",
+  "filas": 105,
+  "tope": 250,
+  "llego_al_tope": false,
+  "pedidas": 1,
+  "leidas": 1,
+  "limites": [
+   "Tope de 250 publicaciones por eje y por día."
+  ]
+ },
+ {
+  "id": "inf-rec-x-economia-2027-05-07",
+  "campana_id": "informe-ejemplo",
+  "canal": "X",
+  "metodo": "Búsqueda avanzada",
+  "descripcion": "Búsqueda en español del eje Economía y salarios, ordenada por las más recientes.",
+  "consulta": "(términos del eje economia) lang:es -is:retweet",
+  "eje_id": "inf-eje-economia",
+  "dia": "2027-05-07",
+  "periodo_inicio": "2027-05-07T00:00:00-04:00",
+  "periodo_fin": "2027-05-08T00:00:00-04:00",
+  "ejecutada_en": "2027-05-08T06:30:00-04:00",
+  "filas": 55,
+  "tope": 250,
+  "llego_al_tope": false,
+  "pedidas": 1,
+  "leidas": 1,
+  "limites": [
+   "Tope de 250 publicaciones por eje y por día."
+  ]
+ },
+ {
+  "id": "inf-rec-nt-2027-05-08",
+  "campana_id": "informe-ejemplo",
+  "canal": "Medio digital",
+  "metodo": "RSS",
+  "descripcion": "Agregador de noticias por RSS, edición Venezuela en español, 11 consultas por día.",
+  "consulta": "Términos de los cuatro ejes (ejemplo).",
+  "dia": "2027-05-08",
+  "periodo_inicio": "2027-05-08T00:00:00-04:00",
+  "periodo_fin": "2027-05-09T00:00:00-04:00",
+  "ejecutada_en": "2027-05-09T06:00:00-04:00",
+  "filas": 95,
+  "pedidas": 11,
+  "leidas": 11,
+  "limites": [
+   "Los ejes se asignan solo por el titular."
+  ]
+ },
+ {
+  "id": "inf-rec-x-figura-2027-05-08",
+  "campana_id": "informe-ejemplo",
+  "canal": "X",
+  "metodo": "Búsqueda avanzada",
+  "descripcion": "Búsqueda en español del eje Figura propia, ordenada por las más recientes.",
+  "consulta": "(términos del eje figura) lang:es -is:retweet",
+  "eje_id": "inf-eje-figura",
+  "dia": "2027-05-08",
+  "periodo_inicio": "2027-05-08T00:00:00-04:00",
+  "periodo_fin": "2027-05-09T00:00:00-04:00",
+  "ejecutada_en": "2027-05-09T06:30:00-04:00",
+  "filas": 195,
+  "tope": 250,
+  "llego_al_tope": false,
+  "pedidas": 1,
+  "leidas": 1,
+  "limites": [
+   "Tope de 250 publicaciones por eje y por día."
+  ]
+ },
+ {
+  "id": "inf-rec-x-servicios-2027-05-08",
+  "campana_id": "informe-ejemplo",
+  "canal": "X",
+  "metodo": "Búsqueda avanzada",
+  "descripcion": "Búsqueda en español del eje Servicios públicos, ordenada por las más recientes.",
+  "consulta": "(términos del eje servicios) lang:es -is:retweet",
+  "eje_id": "inf-eje-servicios",
+  "dia": "2027-05-08",
+  "periodo_inicio": "2027-05-08T00:00:00-04:00",
+  "periodo_fin": "2027-05-09T00:00:00-04:00",
+  "ejecutada_en": "2027-05-09T06:30:00-04:00",
+  "filas": 30,
+  "tope": 250,
+  "llego_al_tope": false,
+  "pedidas": 1,
+  "leidas": 1,
+  "limites": [
+   "Tope de 250 publicaciones por eje y por día."
+  ]
+ },
+ {
+  "id": "inf-rec-x-fecha-2027-05-08",
+  "campana_id": "informe-ejemplo",
+  "canal": "X",
+  "metodo": "Búsqueda avanzada",
+  "descripcion": "Búsqueda en español del eje Fecha electoral, ordenada por las más recientes.",
+  "consulta": "(términos del eje fecha) lang:es -is:retweet",
+  "eje_id": "inf-eje-fecha",
+  "dia": "2027-05-08",
+  "periodo_inicio": "2027-05-08T00:00:00-04:00",
+  "periodo_fin": "2027-05-09T00:00:00-04:00",
+  "ejecutada_en": "2027-05-09T06:30:00-04:00",
+  "filas": 120,
+  "tope": 250,
+  "llego_al_tope": false,
+  "pedidas": 1,
+  "leidas": 1,
+  "limites": [
+   "Tope de 250 publicaciones por eje y por día."
+  ]
+ },
+ {
+  "id": "inf-rec-x-economia-2027-05-08",
+  "campana_id": "informe-ejemplo",
+  "canal": "X",
+  "metodo": "Búsqueda avanzada",
+  "descripcion": "Búsqueda en español del eje Economía y salarios, ordenada por las más recientes.",
+  "consulta": "(términos del eje economia) lang:es -is:retweet",
+  "eje_id": "inf-eje-economia",
+  "dia": "2027-05-08",
+  "periodo_inicio": "2027-05-08T00:00:00-04:00",
+  "periodo_fin": "2027-05-09T00:00:00-04:00",
+  "ejecutada_en": "2027-05-09T06:30:00-04:00",
+  "filas": 55,
+  "tope": 250,
+  "llego_al_tope": false,
+  "pedidas": 1,
+  "leidas": 1,
+  "limites": [
+   "Tope de 250 publicaciones por eje y por día."
+  ]
+ },
+ {
+  "id": "inf-rec-nt-2027-05-09",
+  "campana_id": "informe-ejemplo",
+  "canal": "Medio digital",
+  "metodo": "RSS",
+  "descripcion": "Agregador de noticias por RSS, edición Venezuela en español, 11 consultas por día.",
+  "consulta": "Términos de los cuatro ejes (ejemplo).",
+  "dia": "2027-05-09",
+  "periodo_inicio": "2027-05-09T00:00:00-04:00",
+  "periodo_fin": "2027-05-10T00:00:00-04:00",
+  "ejecutada_en": "2027-05-10T06:00:00-04:00",
+  "filas": 115,
+  "pedidas": 11,
+  "leidas": 11,
+  "limites": [
+   "Los ejes se asignan solo por el titular."
+  ]
+ },
+ {
+  "id": "inf-rec-x-figura-2027-05-09",
+  "campana_id": "informe-ejemplo",
+  "canal": "X",
+  "metodo": "Búsqueda avanzada",
+  "descripcion": "Búsqueda en español del eje Figura propia, ordenada por las más recientes.",
+  "consulta": "(términos del eje figura) lang:es -is:retweet",
+  "eje_id": "inf-eje-figura",
+  "dia": "2027-05-09",
+  "periodo_inicio": "2027-05-09T00:00:00-04:00",
+  "periodo_fin": "2027-05-10T00:00:00-04:00",
+  "cubre_desde": "2027-05-09T09:40:00-04:00",
+  "ejecutada_en": "2027-05-10T06:30:00-04:00",
+  "filas": 250,
+  "tope": 250,
+  "llego_al_tope": true,
+  "estimado": 419,
+  "pedidas": 1,
+  "leidas": 1,
+  "limites": [
+   "Tope de 250 publicaciones por eje y por día.",
+   "Con tope, el estimado del día completo supone un ritmo parejo de publicación."
+  ]
+ },
+ {
+  "id": "inf-rec-x-servicios-2027-05-09",
+  "campana_id": "informe-ejemplo",
+  "canal": "X",
+  "metodo": "Búsqueda avanzada",
+  "descripcion": "Búsqueda en español del eje Servicios públicos, ordenada por las más recientes.",
+  "consulta": "(términos del eje servicios) lang:es -is:retweet",
+  "eje_id": "inf-eje-servicios",
+  "dia": "2027-05-09",
+  "periodo_inicio": "2027-05-09T00:00:00-04:00",
+  "periodo_fin": "2027-05-10T00:00:00-04:00",
+  "ejecutada_en": "2027-05-10T06:30:00-04:00",
+  "filas": 35,
+  "tope": 250,
+  "llego_al_tope": false,
+  "pedidas": 1,
+  "leidas": 1,
+  "limites": [
+   "Tope de 250 publicaciones por eje y por día."
+  ]
+ },
+ {
+  "id": "inf-rec-x-fecha-2027-05-09",
+  "campana_id": "informe-ejemplo",
+  "canal": "X",
+  "metodo": "Búsqueda avanzada",
+  "descripcion": "Búsqueda en español del eje Fecha electoral, ordenada por las más recientes.",
+  "consulta": "(términos del eje fecha) lang:es -is:retweet",
+  "eje_id": "inf-eje-fecha",
+  "dia": "2027-05-09",
+  "periodo_inicio": "2027-05-09T00:00:00-04:00",
+  "periodo_fin": "2027-05-10T00:00:00-04:00",
+  "ejecutada_en": "2027-05-10T06:30:00-04:00",
+  "filas": 160,
+  "tope": 250,
+  "llego_al_tope": false,
+  "pedidas": 1,
+  "leidas": 1,
+  "limites": [
+   "Tope de 250 publicaciones por eje y por día."
+  ]
+ },
+ {
+  "id": "inf-rec-x-economia-2027-05-09",
+  "campana_id": "informe-ejemplo",
+  "canal": "X",
+  "metodo": "Búsqueda avanzada",
+  "descripcion": "Búsqueda en español del eje Economía y salarios, ordenada por las más recientes.",
+  "consulta": "(términos del eje economia) lang:es -is:retweet",
+  "eje_id": "inf-eje-economia",
+  "dia": "2027-05-09",
+  "periodo_inicio": "2027-05-09T00:00:00-04:00",
+  "periodo_fin": "2027-05-10T00:00:00-04:00",
+  "ejecutada_en": "2027-05-10T06:30:00-04:00",
+  "filas": 75,
+  "tope": 250,
+  "llego_al_tope": false,
+  "pedidas": 1,
+  "leidas": 1,
+  "limites": [
+   "Tope de 250 publicaciones por eje y por día."
+  ]
+ },
+ {
+  "id": "inf-rec-ig-cuentas-tema",
+  "campana_id": "informe-ejemplo",
+  "canal": "Instagram",
+  "metodo": "Cuentas",
+  "descripcion": "30 cuentas de prensa, política y organizaciones.",
+  "periodo_inicio": "2027-05-06T00:00:00-04:00",
+  "periodo_fin": "2027-05-10T00:00:00-04:00",
+  "ejecutada_en": "2027-05-10T07:00:00-04:00",
+  "filas": 169,
+  "pedidas": 30,
+  "leidas": 28,
+  "faltantes": [
+   {
+    "cuenta": "@portal_noticias_7",
+    "es_organizacion": true,
+    "motivo": "La cuenta no devolvió datos."
+   },
+   {
+    "cuenta": "@organizacion_ejemplo_1",
+    "es_organizacion": true,
+    "motivo": "Cuenta privada."
+   },
+   {
+    "cuenta": "@cuenta_personal_ig_9",
+    "motivo": "Cuenta privada."
+   }
+  ],
+  "limites": [
+   "Máximo de publicaciones por cuenta: a 9 cuentas les faltan sus días más antiguos.",
+   "Solo se guardaron publicaciones con algún eje."
+  ],
+  "extra": {
+   "cuentas_al_limite": 9
+  }
+ },
+ {
+  "id": "inf-rec-ig-etiquetas-tema",
+  "campana_id": "informe-ejemplo",
+  "canal": "Instagram",
+  "metodo": "Etiquetas",
+  "descripcion": "Seis etiquetas de ejemplo de los cuatro ejes.",
+  "consulta": "#eje_ejemplo_1, #eje_ejemplo_2, #eje_ejemplo_3, #eje_ejemplo_4, #eje_ejemplo_5, #eje_ejemplo_6",
+  "periodo_inicio": "2027-05-06T00:00:00-04:00",
+  "periodo_fin": "2027-05-10T00:00:00-04:00",
+  "ejecutada_en": "2027-05-10T07:05:00-04:00",
+  "filas": 12,
+  "pedidas": 6,
+  "leidas": 6,
+  "limites": [
+   "Las etiquetas devuelven solo las publicaciones más recientes."
+  ]
+ },
+ {
+  "id": "inf-rec-fb-paginas-tema",
+  "campana_id": "informe-ejemplo",
+  "canal": "Facebook",
+  "metodo": "Páginas",
+  "descripcion": "Páginas públicas de un partido y de nueve medios.",
+  "periodo_inicio": "2027-05-06T00:00:00-04:00",
+  "periodo_fin": "2027-05-10T00:00:00-04:00",
+  "ejecutada_en": "2027-05-10T07:10:00-04:00",
+  "filas": 45,
+  "pedidas": 10,
+  "leidas": 8,
+  "faltantes": [
+   {
+    "cuenta": "Página de la figura propia",
+    "es_organizacion": true,
+    "motivo": "La página no devolvió datos."
+   },
+   {
+    "cuenta": "Página de una organización de ejemplo",
+    "es_organizacion": true,
+    "motivo": "La página no devolvió datos."
+   },
+   {
+    "cuenta": "@portal_noticias_3",
+    "es_organizacion": true,
+    "motivo": "Faltan los días más antiguos.",
+    "desde": "2027-05-07T14:00:00-04:00"
+   }
+  ],
+  "limites": [
+   "Solo publicaciones con algún eje, con el texto de la publicación o el título del enlace."
+  ]
+ },
+ {
+  "id": "inf-rec-com-ig-tema",
+  "campana_id": "informe-ejemplo",
+  "canal": "Instagram",
+  "metodo": "Cuentas",
+  "descripcion": "Comentarios: los 25 más recientes de las 30 publicaciones con más comentarios.",
+  "periodo_inicio": "2027-05-06T00:00:00-04:00",
+  "periodo_fin": "2027-05-10T00:00:00-04:00",
+  "ejecutada_en": "2027-05-10T08:00:00-04:00",
+  "filas": 750,
+  "tope": 750,
+  "llego_al_tope": false,
+  "pedidas": 30,
+  "leidas": 30,
+  "limites": [
+   "Hasta 25 comentarios por publicación: no mide el volumen diario de comentarios."
+  ],
+  "extra": {
+   "objeto": "comentarios"
+  }
+ },
+ {
+  "id": "inf-rec-com-fb-tema",
+  "campana_id": "informe-ejemplo",
+  "canal": "Facebook",
+  "metodo": "Páginas",
+  "descripcion": "Comentarios: hasta 25 de las 12 publicaciones con más comentarios, en el orden que devuelve la página.",
+  "periodo_inicio": "2027-05-06T00:00:00-04:00",
+  "periodo_fin": "2027-05-10T00:00:00-04:00",
+  "ejecutada_en": "2027-05-10T08:00:00-04:00",
+  "filas": 300,
+  "tope": 300,
+  "llego_al_tope": false,
+  "pedidas": 12,
+  "leidas": 12,
+  "limites": [
+   "Hasta 25 comentarios por publicación: no mide el volumen diario de comentarios."
+  ],
+  "extra": {
+   "objeto": "comentarios"
+  }
+ }
+]

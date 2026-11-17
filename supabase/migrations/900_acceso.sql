@@ -6,7 +6,12 @@ set client_min_messages = warning;
 --   * el resto: solo las campañas donde está en miembros_campana, con ese rol.
 -- Roles por campaña:
 --   Administración: todo, incluido el equipo de la campaña.   Análisis: lee y escribe datos.
---   Solo lectura: lee todo, no escribe.                        Cliente: lee todo menos notas internas, no escribe.
+--   Solo lectura: lee todo, no escribe.                        Cliente: lee todo menos notas internas y las filas crudas del Informe
+--                                                              (autores, comentarios, codificaciones, recolecciones); no escribe.
+-- Qué protege el Informe: la salida de informe_datos (860) enmascara las cuentas personales (sin usuario, autor_id,
+-- mencion_id, url ni fuente; sus faltantes de recolección salen como "Cuenta personal"). Eso no oculta la tabla menciones:
+-- sus filas crudas (url, autor_id, fuente) siguen legibles para todo miembro de la campaña, Cliente incluido, como antes
+-- y como en la pantalla Menciones. Las urls de menciones no deben llevar el usuario de la cuenta (la semilla usa /p/<azar>).
 
 -- Cada función devuelve un conjunto sin parámetros: Postgres la evalúa una vez por consulta, no por fila.
 create or replace function public.mis_personas() returns setof text
@@ -383,6 +388,25 @@ create policy notas_cambia on public.notas_internas for update to authenticated
 drop policy if exists notas_baja on public.notas_internas;
 create policy notas_baja on public.notas_internas for delete to authenticated using (campana_id in (select public.campanas_editables()));
 
+-- ---------- filas crudas del Informe: el rol Cliente no las lee directo (solo agregadas por informe_datos) ----------
+-- autores (usuarios de cuentas pequeñas), comentarios (texto de terceros), codificaciones y recolecciones (faltantes).
+-- menciones no está aquí: Cliente la sigue leyendo (ver el encabezado).
+do $$
+declare t text; accion text;
+begin
+  foreach t in array array['autores', 'comentarios', 'codificaciones', 'recolecciones'] loop
+    if to_regclass('public.' || t) is null then continue; end if;
+    execute format('alter table public.%I enable row level security', t);
+    foreach accion in array array['_lee','_alta','_cambia','_baja'] loop
+      execute format('drop policy if exists %I on public.%I', t || accion, t);
+    end loop;
+    execute format('create policy %I on public.%I for select to authenticated using (campana_id in (select public.campanas_internas()))', t || '_lee', t);
+    execute format('create policy %I on public.%I for insert to authenticated with check (campana_id in (select public.campanas_editables()))', t || '_alta', t);
+    execute format('create policy %I on public.%I for update to authenticated using (campana_id in (select public.campanas_editables())) with check (campana_id in (select public.campanas_editables()))', t || '_cambia', t);
+    execute format('create policy %I on public.%I for delete to authenticated using (campana_id in (select public.campanas_editables()))', t || '_baja', t);
+  end loop;
+end $$;
+
 -- ---------- el resto de las tablas con campana_id: leen los miembros, escriben Administración y Análisis ----------
 do $$
 declare t text; accion text;
@@ -391,7 +415,7 @@ begin
     select c.table_name from information_schema.columns c
     join information_schema.tables tb on tb.table_schema = c.table_schema and tb.table_name = c.table_name
     where c.table_schema = 'public' and c.column_name = 'campana_id' and tb.table_type = 'BASE TABLE'
-      and c.table_name not in ('miembros_campana', 'notas_internas')
+      and c.table_name not in ('miembros_campana', 'notas_internas', 'autores', 'comentarios', 'codificaciones', 'recolecciones')
   loop
     execute format('alter table public.%I enable row level security', t);
     foreach accion in array array['_lee','_alta','_cambia','_baja'] loop

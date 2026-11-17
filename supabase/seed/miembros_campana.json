@@ -52,5 +52,41 @@
   "campana_id": "chacao",
   "persona_id": "lucia",
   "rol": "Administración"
+ },
+ {
+  "id": "inf-m-lucia",
+  "campana_id": "informe-ejemplo",
+  "persona_id": "lucia",
+  "rol": "Administración"
+ },
+ {
+  "id": "inf-m-daniela",
+  "campana_id": "informe-ejemplo",
+  "persona_id": "daniela",
+  "rol": "Análisis"
+ },
+ {
+  "id": "inf-m-andres",
+  "campana_id": "informe-ejemplo",
+  "persona_id": "andres",
+  "rol": "Análisis"
+ },
+ {
+  "id": "inf-m-carla",
+  "campana_id": "informe-ejemplo",
+  "persona_id": "carla",
+  "rol": "Análisis"
+ },
+ {
+  "id": "inf-m-andrea",
+  "campana_id": "informe-ejemplo",
+  "persona_id": "andrea",
+  "rol": "Análisis"
+ },
+ {
+  "id": "inf-m-tomas",
+  "campana_id": "informe-ejemplo",
+  "persona_id": "tomas",
+  "rol": "Análisis"
  }
 ]

@@ -94,5 +94,36 @@
   "figura_id": "duque",
   "relacion": "Propia",
   "orden": 1
+ },
+ {
+  "id": "inf-machado",
+  "campana_id": "informe-ejemplo",
+  "figura_id": "machado",
+  "relacion": "Propia",
+  "orden": 1,
+  "extra": {
+   "candidatura": true
+  }
+ },
+ {
+  "id": "inf-delcy-rodriguez",
+  "campana_id": "informe-ejemplo",
+  "figura_id": "delcy-rodriguez",
+  "relacion": "Rival",
+  "orden": 2
+ },
+ {
+  "id": "inf-capriles",
+  "campana_id": "informe-ejemplo",
+  "figura_id": "capriles",
+  "relacion": "Rival",
+  "orden": 3
+ },
+ {
+  "id": "inf-gonzalez-urrutia",
+  "campana_id": "informe-ejemplo",
+  "figura_id": "gonzalez-urrutia",
+  "relacion": "Aliada",
+  "orden": 4
  }
 ]

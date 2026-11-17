@@ -1,0 +1,74 @@
+[
+ {
+  "id": "inf-mu-comentarios",
+  "campana_id": "informe-ejemplo",
+  "nombre": "Comentarios, muestra por plataforma",
+  "objeto": "comentarios",
+  "universo": 1010,
+  "tamano": 340,
+  "semilla": "20270512",
+  "ponderacion": "por volumen",
+  "orden": 1,
+  "metodo": "Muestra aleatoria con semilla fija dentro de cada plataforma: todos los de YouTube y el resto en proporción al volumen. Lectura uno por uno, revisada.",
+  "estratos": [
+   {
+    "canal": "YouTube",
+    "universo": 30
+   },
+   {
+    "canal": "Instagram",
+    "universo": 510
+   },
+   {
+    "canal": "TikTok",
+    "universo": 350
+   },
+   {
+    "canal": "Facebook",
+    "universo": 120
+   }
+  ],
+  "extra": {
+   "reglas": [
+    "Los resúmenes del programa cuentan como neutral.",
+    "Los comentarios solo con emojis cuentan como neutral.",
+    "Una queja por una falla técnica de la transmisión cuenta como neutral."
+   ]
+  }
+ },
+ {
+  "id": "inf-mu-x",
+  "campana_id": "informe-ejemplo",
+  "nombre": "Publicaciones de X",
+  "objeto": "menciones",
+  "canal": "X",
+  "universo": 182,
+  "tamano": 150,
+  "semilla": "20270512",
+  "ponderacion": "ninguna",
+  "orden": 2,
+  "metodo": "Muestra aleatoria con semilla fija entre las publicaciones de X con la marca del programa o de la emisora."
+ },
+ {
+  "id": "inf-mu-tema",
+  "campana_id": "informe-ejemplo",
+  "nombre": "Comentarios de Instagram y Facebook",
+  "objeto": "comentarios",
+  "universo": 1143,
+  "tamano": 420,
+  "semilla": "20270511",
+  "ponderacion": "ninguna",
+  "orden": 3,
+  "metodo": "Hasta 25 comentarios de cada una de las publicaciones con más comentarios; 300 de Instagram y 120 de Facebook elegidos al azar. Un tema principal por comentario.",
+  "estratos": [
+   {
+    "canal": "Instagram",
+    "universo": 843
+   },
+   {
+    "canal": "Facebook",
+    "universo": 300
+   }
+  ]
+ }
+]

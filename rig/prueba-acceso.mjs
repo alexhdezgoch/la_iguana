@@ -57,9 +57,10 @@ await espera('ajeno no ve figuras de Brújula', 'ajeno', cuenta('select 1 from f
 await espera('ajeno no ve personas de Brújula', 'ajeno', cuenta(`select 1 from personas where org_id = 'brujula'`), n(0));
 await espera('ajeno no ve menciones ni alertas', 'ajeno', cuenta('select 1 from alertas union all select 1 from menciones'), n(0));
 await espera('ajeno no ve la vista de resumen', 'ajeno', cuenta('select 1 from v_campanas_resumen'), n(0));
-await espera('admin ve las 4 campañas del equipo', 'admin', cuenta('select 1 from campanas'), n(4));
-await espera('admin ve la vista de resumen', 'admin', cuenta('select 1 from v_campanas_resumen'), n(4));
-await espera('analista ve solo presidenciales', 'analista', cuenta('select 1 from campanas'), n(1));
+await espera('admin ve las 5 campañas del equipo', 'admin', cuenta('select 1 from campanas'), n(5));
+await espera('admin ve la vista de resumen', 'admin', cuenta('select 1 from v_campanas_resumen'), n(5));
+await espera('analista ve solo presidenciales e informe-ejemplo', 'analista', cuenta(`select 1 from campanas where id in ('presidenciales', 'informe-ejemplo')`), n(2));
+await espera('analista no ve otras campañas', 'analista', cuenta('select 1 from campanas'), n(2));
 await espera('analista no ve figuras vinculadas de Zulia', 'analista', cuenta(`select 1 from campana_figuras where campana_id = 'zulia'`), n(0));
 await espera('analista ve el directorio de figuras del equipo', 'analista', cuenta('select 1 from figuras'), n(10));
 await espera('cliente ve solo las figuras de su campaña', 'cliente', cuenta('select 1 from figuras'), n(8));
@@ -315,6 +316,129 @@ await espera('[13] analista no lee personas.user_id', 'analista', cuenta('select
 await espera('[13] select * de personas se rechaza (la app pide columnas)', 'analista', cuenta('select * from personas'), rechaza);
 await espera('[13] analista lee las columnas visibles de personas', 'analista', cuenta('select id, org_id, nombre, nombre_corto, iniciales, email, puesto, rol_org, activa, extra, creada_en from personas'), alguno);
 await espera('[13] nadie filtra personas por user_id', 'admin', cuenta(`select id from personas where user_id is not null`), rechaza);
+
+// ====================================================================
+// Informe (100_informe.sql y 860_informe.sql): filas crudas solo para el equipo interno; informe_datos para todo miembro.
+// ====================================================================
+const INF = `insert into autores (id, campana_id, canal, handle, seguidores) values ('pa-autor', 'presidenciales', 'X', '@persona_prueba', 50);
+  insert into ejes (id, campana_id, nombre) values ('pa-eje', 'presidenciales', 'Eje de prueba');
+  insert into recolecciones (id, campana_id, canal) values ('pa-recol', 'presidenciales', 'X');
+  insert into codigos (id, campana_id, nombre) values ('pa-codigo', 'presidenciales', 'Código de prueba');
+  insert into muestras (id, campana_id, nombre) values ('pa-muestra', 'presidenciales', 'Muestra de prueba');
+  insert into mencion_ejes (campana_id, mencion_id, eje_id) values ('presidenciales', 'pres-mencion-1', 'pa-eje');
+  insert into comentarios (id, campana_id, mencion_id, canal, publicada_en, texto) values ('pa-com', 'presidenciales', 'pres-mencion-1', 'X', now(), 'texto de un tercero');
+  insert into codificaciones (campana_id, muestra_id, comentario_id, sentimiento) values ('presidenciales', 'pa-muestra', 'pa-com', 'Neutral');
+  update menciones set autor_id = 'pa-autor' where id = 'pres-mencion-1';
+  insert into reportes (id, campana_id, nombre, tipo, extra) values ('pa-informe', 'presidenciales', 'Informe de prueba', 'Informe',
+    '{"informe": {"modo": "evento", "periodo_inicio": "2027-04-14", "periodo_fin": "2027-05-13", "eje_conversacion": "pa-eje", "eje_foco": "pa-eje"}}');`;
+const CRUDAS = ['autores', 'comentarios', 'codificaciones', 'recolecciones'];
+const ABIERTAS = ['ejes', 'mencion_ejes', 'codigos', 'muestras'];
+for (const t of CRUDAS) {
+  await espera(`[inf] lector lee ${t}`, 'lector', cuenta(`select 1 from ${t}`), alguno, INF);
+  await espera(`[inf] cliente NO lee ${t}`, 'cliente', cuenta(`select 1 from ${t}`), n(0), INF);
+}
+for (const t of [...CRUDAS, ...ABIERTAS]) await espera(`[inf] ajeno no ve ${t}`, 'ajeno', cuenta(`select 1 from ${t}`), n(0), INF);
+for (const t of ABIERTAS) await espera(`[inf] cliente lee ${t}`, 'cliente', cuenta(`select 1 from ${t}`), alguno, INF);
+await espera('[inf] anónimo no lee autores', 'anon', cuenta('select 1 from autores'), nada, INF);
+const altasInf = {
+  autores: `insert into autores (campana_id, canal, handle) values ('presidenciales', 'X', '@otra')`,
+  comentarios: `insert into comentarios (campana_id, mencion_id, canal) values ('presidenciales', 'pres-mencion-1', 'X')`,
+  recolecciones: `insert into recolecciones (campana_id, canal, metodo) values ('presidenciales', 'X', 'RSS')`,
+  codificaciones: `insert into codificaciones (campana_id, muestra_id, mencion_id, sentimiento) values ('presidenciales', 'pa-muestra', 'pres-mencion-1', 'Favorable')`,
+  ejes: `insert into ejes (campana_id, nombre) values ('presidenciales', 'Otro eje')`,
+  mencion_ejes: `insert into mencion_ejes (campana_id, mencion_id, eje_id, metodo) values ('presidenciales', 'pres-mencion-2', 'pa-eje', 'Manual')`,
+};
+for (const [t, sql] of Object.entries(altasInf)) {
+  await espera(`[inf] analista escribe ${t}`, 'analista', afecta(sql), n(1), INF);
+  await espera(`[inf] lector no escribe ${t}`, 'lector', afecta(sql), rechaza, INF);
+  await espera(`[inf] cliente no escribe ${t}`, 'cliente', afecta(sql), rechaza, INF);
+}
+await espera('[inf] lector no cambia ni borra autores', 'lector', async (c) =>
+  (await c.query(`update autores set seguidores = 1 where id = 'pa-autor'`)).rowCount + (await c.query(`delete from autores where id = 'pa-autor'`)).rowCount, n(0), INF);
+await espera('[inf] analista no escribe autores en Zulia', 'analista', afecta(`insert into autores (campana_id, canal, handle) values ('zulia', 'X', '@z')`), rechaza, INF);
+// Referencias entre campañas: ni ejes, ni autores, ni muestras de otra campaña.
+const ZULIA_INF = `${INF} insert into ejes (id, campana_id, nombre) values ('pa-eje-zulia', 'zulia', 'Eje de Zulia');
+  insert into autores (id, campana_id, canal, handle) values ('pa-autor-zulia', 'zulia', 'X', '@z');
+  insert into muestras (id, campana_id, nombre) values ('pa-muestra-zulia', 'zulia', 'Muestra de Zulia');`;
+await espera('[inf] analista no liga una mención a un eje de Zulia', 'analista', afecta(`insert into mencion_ejes (campana_id, mencion_id, eje_id) values ('presidenciales', 'pres-mencion-2', 'pa-eje-zulia')`), rechaza, ZULIA_INF);
+await espera('[inf] analista no pone un autor de Zulia en una mención', 'analista', afecta(`update menciones set autor_id = 'pa-autor-zulia' where id = 'pres-mencion-2'`), rechaza, ZULIA_INF);
+await espera('[inf] el dueño tampoco liga una codificación a una muestra de Zulia', 'base', afecta(`insert into codificaciones (campana_id, muestra_id, comentario_id, sentimiento) values ('presidenciales', 'pa-muestra-zulia', 'pa-com', 'Neutral')`), rechaza, ZULIA_INF);
+// Vocabularios.
+await espera('[inf] formato fuera del vocabulario se rechaza', 'analista', afecta(`update menciones set formato = 'Podcast' where id = 'pres-mencion-1'`), rechaza);
+await espera('[inf] codificación sin ítem o con dos ítems se rechaza', 'analista', async (c) => {
+  let rechazos = 0;
+  for (const sql of [`insert into codificaciones (campana_id, muestra_id, sentimiento) values ('presidenciales', 'pa-muestra', 'Neutral')`,
+    `insert into codificaciones (campana_id, muestra_id, mencion_id, comentario_id) values ('presidenciales', 'pa-muestra', 'pres-mencion-1', 'pa-com')`]) {
+    await c.query('savepoint s');
+    try { await c.query(sql); } catch { rechazos++; }
+    await c.query('rollback to savepoint s');
+  }
+  return rechazos;
+}, n(2), INF);
+// informe_datos: lo reciben los miembros (también Cliente, sin filas crudas), nunca un ajeno.
+const informe = uno(`select informe_datos('pa-informe')`);
+await espera('[inf] cliente recibe informe_datos de su campaña', 'cliente', informe, (r) => r.ok && r.valor?.reporte?.id === 'pa-informe', INF);
+await espera('[inf] lector recibe informe_datos', 'lector', informe, (r) => r.ok && r.valor?.campana?.id === 'presidenciales', INF);
+await espera('[inf] ajeno recibe null de informe_datos', 'ajeno', informe, vale(null), INF);
+await espera('[inf] anónimo no ejecuta informe_datos', 'anon', informe, (r) => !r.ok || r.valor == null, INF);
+await espera('[inf] informe_datos no muestra la cuenta chica ni el texto de comentarios al cliente', 'cliente', async (c) => {
+  const d = (await c.query(`select informe_datos('pa-informe')::text as t`)).rows[0].t;
+  return [d.includes('persona_prueba'), d.includes('texto de un tercero'), JSON.parse(d).series.conversacion.total.reduce((a, b) => a + b, 0)];
+}, (r) => r.ok && r.valor[0] === false && r.valor[1] === false && r.valor[2] >= 1, INF);
+// Informe de ejemplo sembrado (campaña informe-ejemplo): el cliente lo recibe sin cuentas chicas ni textos de comentarios.
+await espera('[inf] cliente recibe el Informe de ejemplo sin cuentas personales ni comentarios', 'cliente', async (c) => {
+  const d = (await c.query(`select informe_datos('inf-rep-evento')::text as t`)).rows[0].t;
+  return [JSON.parse(d).reporte.id, /cuenta_personal_|Comentario de ejemplo/.test(d)];
+}, (r) => r.ok && r.valor[0] === 'inf-rep-evento' && r.valor[1] === false);
+// Filas enmascaradas ("Cuenta personal"): sin mencion_id, url, autor_id ni fuente que identifique la cuenta, en los dos informes.
+function enmascaradas(d) {
+  const out = [];
+  const ver = (x) => {
+    if (Array.isArray(x)) return x.forEach(ver);
+    if (!x || typeof x !== 'object') return;
+    if (x.cuenta && typeof x.cuenta === 'object' && x.cuenta.visible === false) out.push(x);
+    Object.values(x).forEach(ver);
+  };
+  ver(d);
+  return out;
+}
+for (const rep of ['inf-rep-evento', 'inf-rep-tema']) {
+  await espera(`[inf] ${rep}: el cliente no recibe mencion_id, url ni autor_id de filas enmascaradas`, 'cliente', async (c) => {
+    const d = (await c.query(`select informe_datos($1) as d`, [rep])).rows[0].d;
+    const l = enmascaradas(d);
+    const malas = l.filter((x) => x.mencion_id != null || x.url != null || x.cuenta.autor_id != null || x.cuenta.handle != null || x.cuenta.url != null
+      || (x.fuente != null && x.fuente !== 'Cuenta personal') || 'id_externo' in x);
+    const faltantes = d.recolecciones.flatMap((r) => r.faltantes.map((f) => f.cuenta));
+    return { total: l.length, malas: malas.length, faltantes_personales: faltantes.filter((x) => /cuenta_personal/.test(x)).length,
+      faltantes_enmascarados: faltantes.filter((x) => x === 'Cuenta personal').length };
+  }, (r) => r.ok && r.valor.malas === 0 && r.valor.faltantes_personales === 0
+    // El de evento tiene filas enmascaradas en rankings y destacadas; el de tema, una cuenta personal en faltantes.
+    && (rep === 'inf-rep-evento' ? r.valor.total > 0 : r.valor.faltantes_enmascarados > 0));
+}
+await espera('[inf] las menciones de cuentas personales del Informe de ejemplo no salen por id ni url', 'base', async (c) => {
+  // Como el dueño: ids y urls de las menciones de cuentas no visibles; luego se buscan en la salida que recibe el cliente.
+  const ocultas = (await c.query(`select m.id, m.url from menciones m join autores a on a.id = m.autor_id
+    where m.campana_id = 'informe-ejemplo' and not public.informe_visible(a, m.canal)`)).rows;
+  await c.query('set local role authenticated');
+  await c.query(`select set_config('request.jwt.claims', $1, true)`, [JSON.stringify({ sub: U.cliente, role: 'authenticated' })]);
+  let fugas = 0;
+  for (const rep of ['inf-rep-evento', 'inf-rep-tema']) {
+    const t = (await c.query(`select informe_datos($1)::text as t`, [rep])).rows[0].t;
+    fugas += ocultas.filter((m) => t.includes(`"${m.id}"`) || (m.url && t.includes(m.url))).length;
+  }
+  return [ocultas.length > 0, fugas];
+}, (r) => r.ok && r.valor[0] === true && r.valor[1] === 0);
+await espera('[inf] autores del Informe de ejemplo con ids neutros (sin el usuario)', 'base', cuenta(`select 1 from autores where campana_id = 'informe-ejemplo'
+  and (id !~ '^inf-a-[0-9]{4}$' or position(ltrim(handle, '@') in id) > 0)`), n(0));
+await espera('[inf] urls de publicaciones del Informe de ejemplo sin el usuario de la cuenta', 'base', cuenta(`select 1 from menciones m join autores a on a.id = m.autor_id
+  where m.campana_id = 'informe-ejemplo' and position(ltrim(a.handle, '@') in m.url) > 0`), n(0));
+await espera('[inf] ajeno recibe null del Informe de ejemplo', 'ajeno', uno(`select informe_datos('inf-rep-tema')`), vale(null));
+await espera('[inf] cliente no lee comentarios crudos del Informe de ejemplo', 'cliente', cuenta(`select 1 from comentarios where campana_id = 'informe-ejemplo'`), n(0));
+await espera('[inf] lector no cambia el Informe de ejemplo', 'lector', afecta(`update reportes set nombre = 'x' where id = 'inf-rep-evento'`), n(0));
+await espera('[inf] 860 es re-ejecutable y deja el permiso', 'base', async (c) => {
+  await c.query(fs.readFileSync('supabase/migrations/860_informe.sql', 'utf8'));
+  return (await c.query(`select has_function_privilege('authenticated', 'public.informe_datos(text)', 'execute') and not has_function_privilege('anon', 'public.informe_datos(text)', 'execute') as ok`)).rows[0].ok;
+}, vale(true));
 
 console.log(`\n${casos - fallas} de ${casos} casos pasan.`);
 await pool.end();
